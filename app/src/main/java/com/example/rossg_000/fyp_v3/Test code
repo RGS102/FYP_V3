@@ -1,0 +1,20 @@
+/*
+        RelativeLayout layoutTest = new RelativeLayout(this);
+        layoutTest.setBackgroundColor(Color.BLUE);
+
+        RelativeLayout.LayoutParams buttonDetails = new RelativeLayout.LayoutParams(
+            RelativeLayout.LayoutParams.WRAP_CONTENT,
+            RelativeLayout.LayoutParams.WRAP_CONTENT
+        );
+
+        buttonDetails.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        buttonDetails.addRule(RelativeLayout.CENTER_VERTICAL);
+
+        Button buttonTest = new Button(this);
+        buttonTest.setText("click test");
+        buttonTest.setTextColor(Color.GREEN);
+
+        layoutTest.addView(buttonTest, buttonDetails);
+
+        setContentView(layoutTest);
+        */
