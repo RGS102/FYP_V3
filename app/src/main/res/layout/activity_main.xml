@@ -33,4 +33,6 @@
         tools:text="@string/button_to_journal" />
 
 
+
+
 </android.support.constraint.ConstraintLayout>
