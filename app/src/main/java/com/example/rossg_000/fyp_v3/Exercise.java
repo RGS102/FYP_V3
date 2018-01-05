@@ -45,7 +45,7 @@ public class Exercise extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(getApplicationContext(), "Clicked = " + view.getTag(), Toast.LENGTH_LONG).show();
-                taskDetailsListTest.set(i, new TaskDetails(getTaskId(), , 6, "test2", "level", 6));
+                taskDetailsListTest.set(i, new TaskDetails(6, "test", 6, "test2", "level", 6));
 
                 adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
                 taskDetails.setAdapter(adapter);
