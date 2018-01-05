@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.rossg_000.fyp_v3.Tasks">
 
+    <!--
     <TextView
         android:id="@+id/textView"
         android:layout_width="70dp"
@@ -33,6 +34,51 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         />
+    -->
+
+    <Button
+        android:id="@+id/toStretches"
+        android:layout_width="250dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:onClick="goToStretches"
+        android:text="Stretches"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Stretches" />
+
+    <Button
+        android:id="@+id/toExercise"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="goToExercise"
+        android:text="Exercises"
+        app:layout_constraintBottom_toTopOf="@+id/toMeditation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toStretches"
+        tools:text="Exercises" />
+
+    <Button
+        android:id="@+id/toMeditation"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:onClick="goToMeditation"
+        android:text="Meditation"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Meditation" />
 
 
 </android.support.constraint.ConstraintLayout>

@@ -1,7 +1,5 @@
 package com.example.rossg_000.fyp_v3;
 
-
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,21 +7,22 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+public class Exercise extends AppCompatActivity {
 
-public class Tasks extends AppCompatActivity
-{
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tasks);
-        /*
+        setContentView(R.layout.activity_exercise);
+
+
         ListView taskListView = (ListView) findViewById(R.id.taskListView);
         final HashMap<String, Integer> testHash = getHashMapTest();
         List<HashMap<String, String>> listItems = new ArrayList<>();
@@ -50,14 +49,15 @@ public class Tasks extends AppCompatActivity
                     {
                         String elementClicked = String.valueOf(adapterView.getItemAtPosition(i));
                         //when item in list is clicked, do stuff to it here
-                        Toast.makeText(Tasks.this, elementClicked, Toast.LENGTH_LONG).show(); //prints out at bottom of screen for a few seconds
+                        Toast.makeText(Exercise.this, elementClicked, Toast.LENGTH_LONG).show(); //prints out at bottom of screen for a few seconds
+
+
                     }
                 }
         );
-        */
+
     }
 
-    /*
     public HashMap<String, Integer> getHashMapTest()
     {
         final HashMap<String, Integer> testHash = new HashMap<>();
@@ -71,23 +71,5 @@ public class Tasks extends AppCompatActivity
         return testHash;
 
     }
-    */
-
-    public void goToStretches(View view) {
-        Intent intent = new Intent(this, Stretches.class);
-        startActivity(intent);
-    }
-
-
-    public void goToExercise(View view) {
-        Intent intent = new Intent(this, Exercise.class);
-        startActivity(intent);
-    }
-
-    public void goToMeditation(View view) {
-        Intent intent = new Intent(this, Meditation.class);
-        startActivity(intent);
-    }
-
 
 }
