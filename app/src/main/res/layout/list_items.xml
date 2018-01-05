@@ -44,21 +44,25 @@
     <TextView
         android:id="@+id/taskName"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="25dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/taskRequirementInteger"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="25dp"
         app:layout_constraintEnd_toStartOf="@+id/taskRequirementString"
         app:layout_constraintStart_toEndOf="@+id/taskName"
         app:layout_constraintTop_toTopOf="parent" />
@@ -66,10 +70,12 @@
     <TextView
         android:id="@+id/taskRequirementString"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_marginEnd="32dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -77,8 +83,10 @@
         android:id="@+id/taskLevelString"
         android:layout_width="50dp"
         android:layout_height="30dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="20dp"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/taskName" />
@@ -89,6 +97,8 @@
         android:layout_height="30dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="20dp"
         android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/taskLevelString"
         app:layout_constraintTop_toBottomOf="@+id/taskName" />

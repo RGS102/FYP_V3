@@ -1,25 +1,18 @@
 package com.example.rossg_000.fyp_v3;
 
-import android.provider.ContactsContract;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
+
 
 public class Exercise extends AppCompatActivity {
 
-    //TextView showValue;
-    //int counter = 0;
 
     private ListView taskDetails;
     private TaskDetailsAdapter adapter;
@@ -45,7 +38,8 @@ public class Exercise extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(getApplicationContext(), "Clicked = " + view.getTag(), Toast.LENGTH_LONG).show();
-                taskDetailsListTest.set(i, new TaskDetails(6, "test", 6, "test2", "level", 6));
+
+
 
                 adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
                 taskDetails.setAdapter(adapter);
