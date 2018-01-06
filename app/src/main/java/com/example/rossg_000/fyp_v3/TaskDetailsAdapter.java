@@ -53,7 +53,6 @@ public class TaskDetailsAdapter extends BaseAdapter{
         taskLevelInteger.setText(String.valueOf(taskDetailsListTest.get(i).getTaskLevelInteger()));
 
         viewTest.setTag(taskDetailsListTest.get(i).getId());
-        //viewTest.setTag(taskDetailsListTest.get(i).getTaskName());
 
         return viewTest;
     }
