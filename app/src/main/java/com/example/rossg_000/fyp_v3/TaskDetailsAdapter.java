@@ -45,12 +45,24 @@ public class TaskDetailsAdapter extends BaseAdapter{
         TextView taskRequirementString = (TextView) viewTest.findViewById(R.id.taskRequirementString);
         TextView taskLevelString = (TextView) viewTest.findViewById(R.id.taskLevelString);
         TextView taskLevelInteger = (TextView) viewTest.findViewById(R.id.taskLevelInteger);
+        TextView days = (TextView) viewTest.findViewById(R.id.days);
+        TextView hours = (TextView) viewTest.findViewById(R.id.hours);
+        TextView minutes = (TextView) viewTest.findViewById(R.id.minutes);
+        TextView seconds = (TextView) viewTest.findViewById(R.id.seconds);
 
         taskName.setText(taskDetailsListTest.get(i).getTaskName());
         taskRequirementInteger.setText(String.valueOf(taskDetailsListTest.get(i).getTaskRequirementInteger()));
         taskRequirementString.setText(taskDetailsListTest.get(i).getTaskRequirementString());
         taskLevelString.setText(taskDetailsListTest.get(i).getTaskLevelString());
         taskLevelInteger.setText(String.valueOf(taskDetailsListTest.get(i).getTaskLevelInteger()));
+
+        days.setText(String.valueOf(taskDetailsListTest.get(i).getDays()));
+        hours.setText(String.valueOf(taskDetailsListTest.get(i).getHours()));
+        minutes.setText(String.valueOf(taskDetailsListTest.get(i).getMinutes()));
+        seconds.setText(String.valueOf(taskDetailsListTest.get(i).getSeconds()));
+
+
+
 
         viewTest.setTag(taskDetailsListTest.get(i).getId());
 

@@ -11,14 +11,22 @@ public class TaskDetails {
     private String taskRequirementString;
     private String taskLevelString;
     private int taskLevelInteger;
+    private int days;
+    private int hours;
+    private int minutes;
+    private int seconds;
 
-    public TaskDetails(int Id, String taskName, int taskRequirementInteger, String taskRequirementString, String taskLevelString, int taskLevelInteger) {
+    public TaskDetails(int Id, String taskName, int taskRequirementInteger, String taskRequirementString, String taskLevelString, int taskLevelInteger, int days, int hours, int minutes, int seconds) {
         this.Id = Id;
         this.taskName = taskName;
         this.taskRequirementInteger = taskRequirementInteger;
         this.taskRequirementString = taskRequirementString;
         this.taskLevelString = taskLevelString;
         this.taskLevelInteger = taskLevelInteger;
+        this.days = days;
+        this.hours = hours;
+        this.minutes = minutes;
+        this.seconds = seconds;
     }
 
     public int getId() {
@@ -67,5 +75,37 @@ public class TaskDetails {
 
     public void setTaskLevelInteger(int taskLevelInteger) {
         this.taskLevelInteger = taskLevelInteger;
+    }
+
+    public int getDays() {
+        return days;
+    }
+
+    public void setDays(int days) {
+        this.days = days;
+    }
+
+    public int getHours() {
+        return hours;
+    }
+
+    public void setHours(int hours) {
+        this.hours = hours;
+    }
+
+    public int getMinutes() {
+        return minutes;
+    }
+
+    public void setMinutes(int minutes) {
+        this.minutes = minutes;
+    }
+
+    public int getSeconds() {
+        return seconds;
+    }
+
+    public void setSeconds(int seconds) {
+        this.seconds = seconds;
     }
 }
