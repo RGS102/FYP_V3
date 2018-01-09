@@ -41,7 +41,7 @@ public class Exercise extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                for(int f=0; f<100;f++)
+                for(int f=0; f<100;f++) //Remove this for loop when able to have this run in background
                 {
                     TaskDetails clickedList = taskDetailsListTest.get(i);
                     int cId = clickedList.getId();
