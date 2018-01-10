@@ -41,31 +41,18 @@ public class Exercise extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 TaskDetails clickedList = taskDetailsListTest.get(i);
-                int cId = clickedList.getId();
-                String cTaskName = clickedList.getTaskName();
-                int cRequirmentInteger = clickedList.getTaskRequirementInteger();
-                String cRequirmentString = clickedList.getTaskRequirementString();
-                String cLevelString = clickedList.getTaskLevelString();
                 int cLevelInteger = clickedList.getTaskLevelInteger();
-                int cDays = clickedList.getDays();
-                int cHours = clickedList.getHours();
-                int cMinutes = clickedList.getMinutes();
-                int cSeconds = clickedList.getSeconds();
 
+                if(cLevelInteger<10)
+                {
+                    difficultyLevels(clickedList, i, cLevelInteger+1);
+                }
 
-                if (cHours == 0 && cMinutes == 0 && cSeconds == 0) {cSeconds = 60; cMinutes = 59; cHours = 23; cDays -= 1;}
-                else if (cMinutes == 0 && cSeconds == 0) {cSeconds = 60; cMinutes = 59; cHours -= 1;}
-                else if (cSeconds == 0) {cSeconds = 60; cMinutes -= 1;}
-
-                taskDetailsListTest.set(i, new TaskDetails(cId, cTaskName, cRequirmentInteger, cRequirmentString, cLevelString, cLevelInteger+1, cDays, cHours, cMinutes, cSeconds));
 
                 adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
                 taskDetails.setAdapter(adapter);
                 saveData();
-
             }
-
-
         });
 
 
@@ -73,18 +60,12 @@ public class Exercise extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 TaskDetails clickedList = taskDetailsListTest.get(i);
-                int cId = clickedList.getId();
-                String cTaskName = clickedList.getTaskName();
-                int cRequirmentInteger = clickedList.getTaskRequirementInteger();
-                String cRequirmentString = clickedList.getTaskRequirementString();
-                String cLevelString = clickedList.getTaskLevelString();
                 int cLevelInteger = clickedList.getTaskLevelInteger();
-                int cDays = clickedList.getDays();
-                int cHours = clickedList.getHours();
-                int cMinutes = clickedList.getMinutes();
-                int cSeconds = clickedList.getSeconds();
 
-                taskDetailsListTest.set(i, new TaskDetails(cId, cTaskName, cRequirmentInteger, cRequirmentString, cLevelString, cLevelInteger-1, cDays, cHours, cMinutes, cSeconds));
+                if(cLevelInteger>1)
+                {
+                    difficultyLevels(clickedList, i, cLevelInteger-1);
+                }
 
                 adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
                 taskDetails.setAdapter(adapter);
@@ -117,12 +98,98 @@ public class Exercise extends AppCompatActivity {
         if(taskDetailsListTest == null){
             taskDetailsListTest = new ArrayList<>();
 
-            taskDetailsListTest.add(new TaskDetails(1, "Walk", 100, "steps", "Level:", 1,1,1, 1, 1));
-            taskDetailsListTest.add(new TaskDetails(2, "Run", 1, "mile(s)", "Level:", 1,2,2,2,2));
-            taskDetailsListTest.add(new TaskDetails(3, "Jog", 2, "mile(s)", "Level:", 1,3,3,3,3));
-            taskDetailsListTest.add(new TaskDetails(4, "Swim", 20, "lengths", "Level:", 2,4,4,4,4));
-            taskDetailsListTest.add(new TaskDetails(5, "Cycle", 10, "mile(s)", "Level:", 5, 5,5,5,5));
+            taskDetailsListTest.add(new TaskDetails(1, "Walk" , 1, "step(s)"  , "Level:", 0,1,1,1,1));
+            taskDetailsListTest.add(new TaskDetails(2, "Run"  , 1, "mile(s)"  , "Level:", 0,1,1,1,1));
+            taskDetailsListTest.add(new TaskDetails(3, "Jog"  , 1, "mile(s)"  , "Level:", 0,1,1,1,1));
+            taskDetailsListTest.add(new TaskDetails(4, "Swim" , 1, "length(s)", "Level:", 0,1,1,1,1));
+            taskDetailsListTest.add(new TaskDetails(5, "Cycle", 1, "mile(s)"  , "Level:", 0,1,1,1,1));
         }
     }
+
+    private void difficultyLevels(TaskDetails clickedList, int i, int cLevelInteger){
+        int cId = clickedList.getId();
+        String cTaskName = clickedList.getTaskName();
+        int cRequirmentInteger = clickedList.getTaskRequirementInteger();
+        String cRequirmentString = clickedList.getTaskRequirementString();
+        String cLevelString = clickedList.getTaskLevelString();
+        int cDays = clickedList.getDays();
+        int cHours = clickedList.getHours();
+        int cMinutes = clickedList.getMinutes();
+        int cSeconds = clickedList.getSeconds();
+
+        if(cId == 1){
+            if(cLevelInteger ==1){cRequirmentInteger = 1;}
+            if(cLevelInteger ==2){cRequirmentInteger = 2;}
+            if(cLevelInteger ==3){cRequirmentInteger = 3;}
+            if(cLevelInteger ==4){cRequirmentInteger = 4;}
+            if(cLevelInteger ==5){cRequirmentInteger = 5;}
+            if(cLevelInteger ==6){cRequirmentInteger = 6;}
+            if(cLevelInteger ==7){cRequirmentInteger = 7;}
+            if(cLevelInteger ==8){cRequirmentInteger = 8;}
+            if(cLevelInteger ==9){cRequirmentInteger = 9;}
+            if(cLevelInteger ==10){cRequirmentInteger = 10;}
+        }
+        if(cId == 2){
+            if(cLevelInteger ==1){cRequirmentInteger = 11;}
+            if(cLevelInteger ==2){cRequirmentInteger = 12;}
+            if(cLevelInteger ==3){cRequirmentInteger = 13;}
+            if(cLevelInteger ==4){cRequirmentInteger = 14;}
+            if(cLevelInteger ==5){cRequirmentInteger = 15;}
+            if(cLevelInteger ==6){cRequirmentInteger = 16;}
+            if(cLevelInteger ==7){cRequirmentInteger = 17;}
+            if(cLevelInteger ==8){cRequirmentInteger = 18;}
+            if(cLevelInteger ==9){cRequirmentInteger = 19;}
+            if(cLevelInteger ==10){cRequirmentInteger = 20;}
+        }
+        if(cId == 3){
+            if(cLevelInteger ==1){cRequirmentInteger = 21;}
+            if(cLevelInteger ==2){cRequirmentInteger = 22;}
+            if(cLevelInteger ==3){cRequirmentInteger = 23;}
+            if(cLevelInteger ==4){cRequirmentInteger = 24;}
+            if(cLevelInteger ==5){cRequirmentInteger = 25;}
+            if(cLevelInteger ==6){cRequirmentInteger = 26;}
+            if(cLevelInteger ==7){cRequirmentInteger = 27;}
+            if(cLevelInteger ==8){cRequirmentInteger = 28;}
+            if(cLevelInteger ==9){cRequirmentInteger = 29;}
+            if(cLevelInteger ==10){cRequirmentInteger = 30;}
+        }
+        if(cId == 4){
+            if(cLevelInteger ==1){cRequirmentInteger = 31;}
+            if(cLevelInteger ==2){cRequirmentInteger = 32;}
+            if(cLevelInteger ==3){cRequirmentInteger = 33;}
+            if(cLevelInteger ==4){cRequirmentInteger = 34;}
+            if(cLevelInteger ==5){cRequirmentInteger = 35;}
+            if(cLevelInteger ==6){cRequirmentInteger = 36;}
+            if(cLevelInteger ==7){cRequirmentInteger = 37;}
+            if(cLevelInteger ==8){cRequirmentInteger = 38;}
+            if(cLevelInteger ==9){cRequirmentInteger = 39;}
+            if(cLevelInteger ==10){cRequirmentInteger = 40;}
+        }
+        if(cId == 5){
+            if(cLevelInteger ==1){cRequirmentInteger = 41;}
+            if(cLevelInteger ==2){cRequirmentInteger = 42;}
+            if(cLevelInteger ==3){cRequirmentInteger = 43;}
+            if(cLevelInteger ==4){cRequirmentInteger = 44;}
+            if(cLevelInteger ==5){cRequirmentInteger = 45;}
+            if(cLevelInteger ==6){cRequirmentInteger = 46;}
+            if(cLevelInteger ==7){cRequirmentInteger = 47;}
+            if(cLevelInteger ==8){cRequirmentInteger = 48;}
+            if(cLevelInteger ==9){cRequirmentInteger = 49;}
+            if(cLevelInteger ==10){cRequirmentInteger = 50;}
+        }
+
+
+        taskDetailsListTest.set(i, new TaskDetails(cId, cTaskName, cRequirmentInteger, cRequirmentString, cLevelString, cLevelInteger, cDays, cHours, cMinutes, cSeconds));
+
+        /*
+        //Save for later
+        if (cHours == 0 && cMinutes == 0 && cSeconds == 0) {cSeconds = 60; cMinutes = 59; cHours = 23; cDays -= 1;}
+        else if (cMinutes == 0 && cSeconds == 0) {cSeconds = 60; cMinutes = 59; cHours -= 1;}
+        else if (cSeconds == 0) {cSeconds = 60; cMinutes -= 1;}
+        */
+
+    }
+
+
 
 }
