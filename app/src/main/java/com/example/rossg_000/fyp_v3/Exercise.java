@@ -16,6 +16,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,11 +27,53 @@ public class Exercise extends AppCompatActivity {
     private ListView taskDetails;
     private TaskDetailsAdapter adapter;
     private List<TaskDetails> taskDetailsListTest;
+    int count=0;
+    Thread thread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
+
+
+        thread = new Thread(){
+            @Override
+            public void run() {
+                try {
+                    while (!isInterrupted()) {
+                        Thread.sleep(1000);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                count+=1000;
+                                long startSeconds = 12;
+                                long startMinutes = 13;
+                                long startHours = 23;
+                                long startDay = 14;
+
+                                long startSecondsInMilli = startSeconds*1000;
+                                long startMinutesInMilli = startMinutes*60000;
+                                long startHoursInMilli = (startHours-1)*3600000;
+                                long startDayInMilli = (startDay-1)*86400000;
+                                long fullTime = startSecondsInMilli+startMinutesInMilli+startHoursInMilli+startDayInMilli;
+
+                                TextView timeRemaining = (TextView) findViewById(R.id.timeRemaining);
+                                fullTime = fullTime - count;
+                                SimpleDateFormat timeRemainingFormat = new SimpleDateFormat("dd:HH:mm:ss");
+                                String fullString = timeRemainingFormat.format(fullTime);
+                                timeRemaining.setText(fullString);
+                            }
+                        });
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        thread.start();
+
+
+
 
         taskDetails = (ListView) findViewById(R.id.taskListView);
         loadData();
@@ -47,7 +90,7 @@ public class Exercise extends AppCompatActivity {
                 {
                     difficultyLevels(clickedList, i, cLevelInteger+1);
                 }
-
+                //thread.start();
 
                 adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
                 taskDetails.setAdapter(adapter);
@@ -76,7 +119,6 @@ public class Exercise extends AppCompatActivity {
         });
         saveData();
     }
-
 
 
     private void saveData(){
