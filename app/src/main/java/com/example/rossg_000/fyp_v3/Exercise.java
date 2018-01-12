@@ -1,6 +1,7 @@
 package com.example.rossg_000.fyp_v3;
 
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -27,15 +28,21 @@ public class Exercise extends AppCompatActivity {
     private ListView taskDetails;
     private TaskDetailsAdapter adapter;
     private List<TaskDetails> taskDetailsListTest;
+
+
+    /*
     int count=0;
     Thread thread;
+    */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
 
+        final String [] taskInfo = popUpInfo();//{"test 1", "test 2", "In order to jog..."};
 
+        /*
         thread = new Thread(){
             @Override
             public void run() {
@@ -46,10 +53,10 @@ public class Exercise extends AppCompatActivity {
                             @Override
                             public void run() {
                                 count+=1000;
-                                long startSeconds = 12;
-                                long startMinutes = 13;
-                                long startHours = 23;
-                                long startDay = 14;
+                                long startSeconds = 5;
+                                long startMinutes = 0;
+                                long startHours = 0;
+                                long startDay = 1;
 
                                 long startSecondsInMilli = startSeconds*1000;
                                 long startMinutesInMilli = startMinutes*60000;
@@ -62,6 +69,10 @@ public class Exercise extends AppCompatActivity {
                                 SimpleDateFormat timeRemainingFormat = new SimpleDateFormat("dd:HH:mm:ss");
                                 String fullString = timeRemainingFormat.format(fullTime);
                                 timeRemaining.setText(fullString);
+                                //taskDetailsListTest.set(1, new TaskDetails(1, "a", count, "b", "c", 1, 1, 1, 1, count));
+                                //adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
+                                //taskDetails.setAdapter(adapter);
+                                //saveData();
                             }
                         });
                     }
@@ -71,7 +82,7 @@ public class Exercise extends AppCompatActivity {
             }
         };
         thread.start();
-
+    */
 
 
 
@@ -83,6 +94,7 @@ public class Exercise extends AppCompatActivity {
         taskDetails.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
                 TaskDetails clickedList = taskDetailsListTest.get(i);
                 int cLevelInteger = clickedList.getTaskLevelInteger();
 
@@ -95,6 +107,14 @@ public class Exercise extends AppCompatActivity {
                 adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
                 taskDetails.setAdapter(adapter);
                 saveData();
+
+
+                Intent intent = new Intent(getApplicationContext(), PopUpInfo.class);
+                intent.putExtra("details", taskInfo[i]);
+                startActivity(intent);
+
+
+
             }
         });
 
@@ -222,15 +242,23 @@ public class Exercise extends AppCompatActivity {
 
 
         taskDetailsListTest.set(i, new TaskDetails(cId, cTaskName, cRequirmentInteger, cRequirmentString, cLevelString, cLevelInteger, cDays, cHours, cMinutes, cSeconds));
+    }
 
-        /*
-        //Save for later
-        if (cHours == 0 && cMinutes == 0 && cSeconds == 0) {cSeconds = 60; cMinutes = 59; cHours = 23; cDays -= 1;}
-        else if (cMinutes == 0 && cSeconds == 0) {cSeconds = 60; cMinutes = 59; cHours -= 1;}
-        else if (cSeconds == 0) {cSeconds = 60; cMinutes -= 1;}
-        */
+
+    public String[] popUpInfo(){
+        String[] popUpInfo = new String[5];
+        popUpInfo[0] = "Walk: put one foot in front of the other";
+        popUpInfo[1] = "Run: put one foot in front of the other at a fast pace";
+        popUpInfo[2] = "Jog: ...";
+        popUpInfo[3] = "Swim: ...";
+        popUpInfo[4] = "Cycle: ...";
+
+        return popUpInfo;
+
+
 
     }
+
 
 
 

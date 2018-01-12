@@ -36,7 +36,12 @@
         </activity>
         <activity android:name=".Stretches" />
         <activity android:name=".Exercise" />
-        <activity android:name=".Meditation"></activity>
+        <activity android:name=".Meditation" />
+        <activity android:name=".PopUpInfo"
+            android:theme="@style/Theme.AppCompat.Dialog.Alert"
+            >
+
+        </activity>
     </application>
 
 </manifest>
