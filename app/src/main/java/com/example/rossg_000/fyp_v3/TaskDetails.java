@@ -11,22 +11,28 @@ public class TaskDetails {
     private String taskRequirementString;
     private String taskLevelString;
     private int taskLevelInteger;
+    private long timeRemaining;
+
+    /*
     private int days;
     private int hours;
     private int minutes;
     private int seconds;
-
-    public TaskDetails(int Id, String taskName, int taskRequirementInteger, String taskRequirementString, String taskLevelString, int taskLevelInteger, int days, int hours, int minutes, int seconds) {
+    */
+    public TaskDetails(int Id, String taskName, int taskRequirementInteger, String taskRequirementString, String taskLevelString, int taskLevelInteger, long timeRemaining){//, int days, int hours, int minutes, int seconds) {
         this.Id = Id;
         this.taskName = taskName;
         this.taskRequirementInteger = taskRequirementInteger;
         this.taskRequirementString = taskRequirementString;
         this.taskLevelString = taskLevelString;
         this.taskLevelInteger = taskLevelInteger;
+        this.timeRemaining = timeRemaining;
+        /*
         this.days = days;
         this.hours = hours;
         this.minutes = minutes;
         this.seconds = seconds;
+        */
     }
 
     public int getId() {
@@ -77,6 +83,15 @@ public class TaskDetails {
         this.taskLevelInteger = taskLevelInteger;
     }
 
+    public long getTimeRemaining() {
+        return timeRemaining;
+    }
+
+    public void setTimeRemaining(long timeRemaining) {
+        this.timeRemaining = timeRemaining;
+    }
+
+/*
     public int getDays() {
         return days;
     }
@@ -108,4 +123,5 @@ public class TaskDetails {
     public void setSeconds(int seconds) {
         this.seconds = seconds;
     }
+    */
 }

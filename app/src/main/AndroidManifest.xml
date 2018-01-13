@@ -37,11 +37,13 @@
         <activity android:name=".Stretches" />
         <activity android:name=".Exercise" />
         <activity android:name=".Meditation" />
-        <activity android:name=".PopUpInfo"
+        <activity
+            android:name=".PopUpInfo"
+            android:theme="@style/Theme.AppCompat.Dialog.Alert" />
+        <activity
+            android:name=".CompleteOrFail"
             android:theme="@style/Theme.AppCompat.Dialog.Alert"
-            >
-
-        </activity>
+            ></activity>
     </application>
 
 </manifest>
