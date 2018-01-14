@@ -2,8 +2,13 @@ package com.example.rossg_000.fyp_v3;
 
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,7 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Exercise extends AppCompatActivity {
+public class Exercise extends AppCompatActivity implements SensorEventListener {
 
 
     public static final int REQUEST_CODE_COMPLETE_OR_FAIL = 101;
@@ -35,6 +40,10 @@ public class Exercise extends AppCompatActivity {
     private TaskDetailsAdapter adapter;
     private List<TaskDetails> taskDetailsListTest;
     private int dataTest = 0;
+
+
+    SensorManager sensorManager;    //To do with the step count sensor, might change later
+    boolean running = false;    //To do with the step count sensor, might change later
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +55,14 @@ public class Exercise extends AppCompatActivity {
         loadData();
         adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
         taskDetails.setAdapter(adapter);
+
+
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);   //To do with the step count sensor, might change later
+
+
+
+
+
 
         taskDetails.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -157,11 +174,11 @@ public class Exercise extends AppCompatActivity {
         if(taskDetailsListTest == null){
             taskDetailsListTest = new ArrayList<>();
 
-            taskDetailsListTest.add(new TaskDetails(1, "Walk" , 1, "step(s)"  , "Level:", 0, 90061000));
-            taskDetailsListTest.add(new TaskDetails(2, "Run"  , 1, "mile(s)"  , "Level:", 0, 90062000));
-            taskDetailsListTest.add(new TaskDetails(3, "Jog"  , 1, "mile(s)"  , "Level:", 0, 90063000));
-            taskDetailsListTest.add(new TaskDetails(4, "Swim" , 1, "length(s)", "Level:", 0, 90064000));
-            taskDetailsListTest.add(new TaskDetails(5, "Cycle", 1, "mile(s)"  , "Level:", 0, 90065000));
+            taskDetailsListTest.add(new TaskDetails(1, "Walk" , 1, "step(s)"  , "Level:", 0, "Recommendations: 0"));
+            taskDetailsListTest.add(new TaskDetails(2, "Run"  , 1, "mile(s)"  , "Level:", 0, "Recommendations: 0"));
+            taskDetailsListTest.add(new TaskDetails(3, "Jog"  , 1, "mile(s)"  , "Level:", 0, "Recommendations: 0"));
+            taskDetailsListTest.add(new TaskDetails(4, "Swim" , 1, "length(s)", "Level:", 0, "Recommendations: 0"));
+            taskDetailsListTest.add(new TaskDetails(5, "Cycle", 1, "mile(s)"  , "Level:", 0, "Recommendations: 0"));
         }
     }
 
@@ -171,17 +188,22 @@ public class Exercise extends AppCompatActivity {
         int cRequirmentInteger = clickedList.getTaskRequirementInteger();
         String cRequirmentString = clickedList.getTaskRequirementString();
         String cLevelString = clickedList.getTaskLevelString();
-        long cTimeRemaining = clickedList.getTimeRemaining();
+        String cRecommendations = clickedList.getRecommendations();
         /*
         int cDays = clickedList.getDays();
         int cHours = clickedList.getHours();
         int cMinutes = clickedList.getMinutes();
         int cSeconds = clickedList.getSeconds();
         */
+
+        if(cLevelInteger > 10){ //JUST FOR TESTING PURPOSES - REMOVE/MODIFY LATER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            cLevelInteger = 1;
+        }
+
         if(cId == 1){
-            if(cLevelInteger == 1){cRequirmentInteger = 1; cTimeRemaining = 90061000;}
-            if(cLevelInteger == 2){cRequirmentInteger = 2; cTimeRemaining = 90062000;}
-            if(cLevelInteger == 3){cRequirmentInteger = 3; cTimeRemaining = 90063000;}
+            if(cLevelInteger == 1){cRequirmentInteger = 1; cRecommendations = "Recommendations: 1";}
+            if(cLevelInteger == 2){cRequirmentInteger = 2; cRecommendations = "Recommendations: 2";}
+            if(cLevelInteger == 3){cRequirmentInteger = 3; cRecommendations = "Recommendations: 3";}
             if(cLevelInteger == 4){cRequirmentInteger = 4;}
             if(cLevelInteger == 5){cRequirmentInteger = 5;}
             if(cLevelInteger == 6){cRequirmentInteger = 6;}
@@ -191,9 +213,9 @@ public class Exercise extends AppCompatActivity {
             if(cLevelInteger == 10){cRequirmentInteger = 10;}
         }
         if(cId == 2){
-            if(cLevelInteger ==1){cRequirmentInteger = 11; cTimeRemaining = 90064000;}
-            if(cLevelInteger ==2){cRequirmentInteger = 12; cTimeRemaining = 90065000;}
-            if(cLevelInteger ==3){cRequirmentInteger = 13; cTimeRemaining = 90066000;}
+            if(cLevelInteger ==1){cRequirmentInteger = 11; cRecommendations = "Recommendations: 4";}
+            if(cLevelInteger ==2){cRequirmentInteger = 12; cRecommendations = "Recommendations: 5";}
+            if(cLevelInteger ==3){cRequirmentInteger = 13; cRecommendations = "Recommendations: 6";}
             if(cLevelInteger ==4){cRequirmentInteger = 14;}
             if(cLevelInteger ==5){cRequirmentInteger = 15;}
             if(cLevelInteger ==6){cRequirmentInteger = 16;}
@@ -240,7 +262,9 @@ public class Exercise extends AppCompatActivity {
         }
 
 
-        taskDetailsListTest.set(i, new TaskDetails(cId, cTaskName, cRequirmentInteger, cRequirmentString, cLevelString, cLevelInteger, cTimeRemaining));
+
+
+        taskDetailsListTest.set(i, new TaskDetails(cId, cTaskName, cRequirmentInteger, cRequirmentString, cLevelString, cLevelInteger, cRecommendations));
         adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
         taskDetails.setAdapter(adapter);
         saveData();
@@ -262,9 +286,41 @@ public class Exercise extends AppCompatActivity {
 
     }
 
+    @Override   //To do with the step count sensor, might change later
+    protected void onResume(){
+        super.onResume();
+        running = true;
+        Sensor countSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+        if(countSensor!=null){
+            sensorManager.registerListener(this, countSensor, SensorManager.SENSOR_DELAY_UI);
+        }else{
+            Toast.makeText(this, "Sensor not found", Toast.LENGTH_SHORT).show();
+        }
 
 
+    }
 
+
+    @Override   //To do with the step count sensor, might change later
+    public void onSensorChanged(SensorEvent sensorEvent) {
+        if(running){
+            //testSensor.setText(String.valueOf(sensorEvent.values[0]));
+            TaskDetails a = taskDetailsListTest.get(0);
+            taskDetailsListTest.set(0,new TaskDetails(a.getId(), a.getTaskName(),a.getTaskRequirementInteger()-1,a.getTaskRequirementString(),a.getTaskLevelString(),a.getTaskLevelInteger(),a.getRecommendations()));
+            if(a.getTaskRequirementInteger()==0)
+            {
+                difficultyLevels(a,0, a.getTaskLevelInteger()+1);
+            }
+            adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
+            taskDetails.setAdapter(adapter);
+            saveData();
+        }
+    }
+
+    @Override   //To do with the step count sensor, might change later
+    public void onAccuracyChanged(Sensor sensor, int i) {
+
+    }
 }
 
                 /*

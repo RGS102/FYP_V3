@@ -46,7 +46,7 @@ public class TaskDetailsAdapter extends BaseAdapter{
         TextView taskRequirementString = (TextView) viewTest.findViewById(R.id.taskRequirementString);
         TextView taskLevelString = (TextView) viewTest.findViewById(R.id.taskLevelString);
         TextView taskLevelInteger = (TextView) viewTest.findViewById(R.id.taskLevelInteger);
-        TextView timeRemaining = (TextView) viewTest.findViewById(R.id.timeRemaining);
+        TextView recommendations = (TextView) viewTest.findViewById(R.id.Recommendations);
 
         /*
         TextView days = (TextView) viewTest.findViewById(R.id.days);
@@ -62,7 +62,7 @@ public class TaskDetailsAdapter extends BaseAdapter{
         taskRequirementString.setText(taskDetailsListTest.get(i).getTaskRequirementString());
         taskLevelString.setText(taskDetailsListTest.get(i).getTaskLevelString());
         taskLevelInteger.setText(String.valueOf(taskDetailsListTest.get(i).getTaskLevelInteger()));
-        timeRemaining.setText(String.valueOf(taskDetailsListTest.get(i).getTimeRemaining()));
+        recommendations.setText(taskDetailsListTest.get(i).getRecommendations());
 
         /*
         days.setText(String.valueOf(taskDetailsListTest.get(i).getDays()));

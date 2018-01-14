@@ -11,7 +11,7 @@ public class TaskDetails {
     private String taskRequirementString;
     private String taskLevelString;
     private int taskLevelInteger;
-    private long timeRemaining;
+    private String Recommendations;
 
     /*
     private int days;
@@ -19,14 +19,14 @@ public class TaskDetails {
     private int minutes;
     private int seconds;
     */
-    public TaskDetails(int Id, String taskName, int taskRequirementInteger, String taskRequirementString, String taskLevelString, int taskLevelInteger, long timeRemaining){//, int days, int hours, int minutes, int seconds) {
+    public TaskDetails(int Id, String taskName, int taskRequirementInteger, String taskRequirementString, String taskLevelString, int taskLevelInteger, String Recommendations){//, int days, int hours, int minutes, int seconds) {
         this.Id = Id;
         this.taskName = taskName;
         this.taskRequirementInteger = taskRequirementInteger;
         this.taskRequirementString = taskRequirementString;
         this.taskLevelString = taskLevelString;
         this.taskLevelInteger = taskLevelInteger;
-        this.timeRemaining = timeRemaining;
+        this.Recommendations = Recommendations;
         /*
         this.days = days;
         this.hours = hours;
@@ -83,12 +83,12 @@ public class TaskDetails {
         this.taskLevelInteger = taskLevelInteger;
     }
 
-    public long getTimeRemaining() {
-        return timeRemaining;
+    public String getRecommendations() {
+        return Recommendations;
     }
 
-    public void setTimeRemaining(long timeRemaining) {
-        this.timeRemaining = timeRemaining;
+    public void setRecommendations(String Recommendations) {
+        this.Recommendations = Recommendations;
     }
 
 /*
