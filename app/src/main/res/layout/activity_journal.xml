@@ -7,7 +7,7 @@
     tools:context="com.example.rossg_000.fyp_v3.Journal">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/journalTextView"
         android:layout_width="81dp"
         android:layout_height="0dp"
         android:layout_marginLeft="8dp"
@@ -20,5 +20,17 @@
         android:layout_marginTop="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp" />
+
+    <ListView
+        android:id="@+id/journalListView"
+        android:layout_width="363dp"
+        android:layout_height="477dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

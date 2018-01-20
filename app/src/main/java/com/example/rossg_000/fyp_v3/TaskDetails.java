@@ -9,9 +9,9 @@ public class TaskDetails {
     private String taskName;
     private int taskRequirementInteger;
     private String taskRequirementString;
-    private String taskLevelString;
+    //private String taskLevelString;
     private int taskLevelInteger;
-    private String Recommendations;
+    private int attempts;
 
     /*
     private int days;
@@ -19,14 +19,14 @@ public class TaskDetails {
     private int minutes;
     private int seconds;
     */
-    public TaskDetails(int Id, String taskName, int taskRequirementInteger, String taskRequirementString, String taskLevelString, int taskLevelInteger, String Recommendations){//, int days, int hours, int minutes, int seconds) {
+    public TaskDetails(int Id, String taskName, int taskRequirementInteger, String taskRequirementString, /*String taskLevelString,*/ int taskLevelInteger, int attempts){//, int days, int hours, int minutes, int seconds) {
         this.Id = Id;
         this.taskName = taskName;
         this.taskRequirementInteger = taskRequirementInteger;
         this.taskRequirementString = taskRequirementString;
-        this.taskLevelString = taskLevelString;
+        //this.taskLevelString = taskLevelString;
         this.taskLevelInteger = taskLevelInteger;
-        this.Recommendations = Recommendations;
+        this.attempts = attempts;
         /*
         this.days = days;
         this.hours = hours;
@@ -67,6 +67,7 @@ public class TaskDetails {
         this.taskRequirementString = taskRequirementString;
     }
 
+    /*
     public String getTaskLevelString() {
         return taskLevelString;
     }
@@ -74,6 +75,7 @@ public class TaskDetails {
     public void setTaskLevelString(String taskLevelString) {
         this.taskLevelString = taskLevelString;
     }
+    */
 
     public int getTaskLevelInteger() {
         return taskLevelInteger;
@@ -83,12 +85,12 @@ public class TaskDetails {
         this.taskLevelInteger = taskLevelInteger;
     }
 
-    public String getRecommendations() {
-        return Recommendations;
+    public int getAttempts() {
+        return attempts;
     }
 
-    public void setRecommendations(String Recommendations) {
-        this.Recommendations = Recommendations;
+    public void setAttempts(int attempts) {
+        this.attempts = attempts;
     }
 
 /*

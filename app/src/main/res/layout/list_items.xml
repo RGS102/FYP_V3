@@ -87,7 +87,7 @@
         android:layout_marginTop="8dp"
         android:textColor="@android:color/holo_red_light"
         android:textSize="20dp"
-        android:text="TextView"
+        android:text="Level:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/taskName" />
 
@@ -104,17 +104,27 @@
         app:layout_constraintTop_toBottomOf="@+id/taskName" />
 
     <TextView
-        android:id="@+id/Recommendations"
-        android:layout_width="0dp"
+        android:id="@+id/Attempts"
+        android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
         android:textColor="@android:color/holo_red_light"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/taskLevelInteger"
+        app:layout_constraintTop_toBottomOf="@+id/taskRequirementString" />
+
+    <TextView
+        android:id="@+id/AttemptString"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Attempts:"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/Attempts"
         app:layout_constraintTop_toBottomOf="@+id/taskRequirementString" />
 
 </android.support.constraint.ConstraintLayout>
