@@ -96,12 +96,25 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
                     TaskDetails clickedList = taskDetailsListTest.get(dataTest);
 
                     int cLevelInteger = clickedList.getTaskLevelInteger();
-                    //int levelTest = cLevelInteger + CompleteOrFail;
+                    int cAttempts = clickedList.getAttempts();
+                    //cAttempts+=1;
 
-                    //if(levelTest < 1){levelTest=1;}
-                    //if(levelTest > 10){levelTest=10;}
+                    if(CompleteOrFail == +1){
+                        difficultyLevels(clickedList, dataTest, cLevelInteger, CompleteOrFail);
+                    }
+                    else if(CompleteOrFail == -1){
+                        if(cAttempts >= 2){
+                            difficultyLevels(clickedList, dataTest, cLevelInteger, CompleteOrFail);
+                        }else{
+                            taskDetailsListTest.set(dataTest, new TaskDetails(clickedList.getId(), clickedList.getTaskName(),clickedList.getTaskRequirementInteger(),clickedList.getTaskRequirementString(),clickedList.getTaskLevelInteger(),clickedList.getAttempts()+1));
+                            adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
+                            taskDetails.setAdapter(adapter);
+                            saveData();
+                        }
+                    }
 
-                    difficultyLevels(clickedList, dataTest, cLevelInteger/*levelTest*/, CompleteOrFail);
+
+
                 }
         }
     }
@@ -175,11 +188,11 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         if(taskDetailsListTest == null){
             taskDetailsListTest = new ArrayList<>();
 
-            taskDetailsListTest.add(new TaskDetails(1, "Walk" , 500, "step(s)"  , 0, 0));
-            taskDetailsListTest.add(new TaskDetails(2, "Run"  , 1, "mile(s)"  , 0, 0));
-            taskDetailsListTest.add(new TaskDetails(3, "Jog"  , 1, "mile(s)"  ,  0, 0));
-            taskDetailsListTest.add(new TaskDetails(4, "Swim" , 1, "length(s)",  0, 0));
-            taskDetailsListTest.add(new TaskDetails(5, "Cycle", 1, "mile(s)"  ,  0, 0));
+            taskDetailsListTest.add(new TaskDetails(1, "Walk" , 500, "step(s)"  , 1, 1));
+            taskDetailsListTest.add(new TaskDetails(2, "Run"  , 1, "mile(s)"  , 1, 1));
+            taskDetailsListTest.add(new TaskDetails(3, "Jog"  , 1, "mile(s)"  ,  1, 1));
+            taskDetailsListTest.add(new TaskDetails(4, "Swim" , 1, "length(s)",  1, 1));
+            taskDetailsListTest.add(new TaskDetails(5, "Cycle", 1, "mile(s)"  ,  1, 1));
         }
     }
 
@@ -269,7 +282,7 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
             if(cLevelInteger ==10){cRequirmentInteger = 50;}
         }
 
-
+        cAttempts = 1;
 
 
         taskDetailsListTest.set(i, new TaskDetails(cId, cTaskName, cRequirmentInteger, cRequirmentString, /*cLevelString,*/ cLevelInteger, cAttempts));
