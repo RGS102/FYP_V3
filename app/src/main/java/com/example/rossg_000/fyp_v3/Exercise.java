@@ -24,14 +24,11 @@ import java.util.List;
 
 
 public class Exercise extends AppCompatActivity implements SensorEventListener {
-
-
     public static final int REQUEST_CODE_COMPLETE_OR_FAIL = 101;
     private ListView taskDetails;
     private TaskDetailsAdapter adapter;
     private List<TaskDetails> taskDetailsListTest;
     private int dataTest = 0;
-
     TextView stepCounter;   //TESTING PURPOSE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     SensorManager sensorManager;    //To do with the step count sensor, might change later
     boolean running = false;    //To do with the step count sensor, might change later

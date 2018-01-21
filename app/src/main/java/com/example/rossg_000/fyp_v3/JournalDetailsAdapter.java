@@ -34,6 +34,7 @@ public class JournalDetailsAdapter extends BaseAdapter {
     @Override
     public long getItemId(int i) {
         return i;
+        //return journalDetailsListTest.get(getCount()-i);
     }
 
     @Override
