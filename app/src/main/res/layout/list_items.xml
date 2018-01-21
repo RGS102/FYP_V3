@@ -121,7 +121,7 @@
         android:layout_height="30dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
-        android:text="Attempts:"
+        android:text="Attempt:"
         android:textColor="@android:color/holo_red_light"
         android:textSize="20dp"
         app:layout_constraintEnd_toStartOf="@+id/Attempts"

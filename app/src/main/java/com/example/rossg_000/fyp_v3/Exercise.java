@@ -9,25 +9,16 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 import java.lang.reflect.Type;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,11 +51,6 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         stepCounter = (TextView) findViewById(R.id.ExerciseTextView);   //TESTING PURPOSE!!!!!!!!!!!!!!!!!!!!!!!!
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);   //To do with the step count sensor, might change later
 
-
-
-
-
-
         taskDetails.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -73,7 +59,6 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
                 startActivity(intent);
             }
         });
-
 
         taskDetails.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -91,30 +76,23 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch(requestCode){
             case REQUEST_CODE_COMPLETE_OR_FAIL:
-                if(resultCode== Activity.RESULT_OK){
+                if(resultCode== Activity.RESULT_OK) {
                     int CompleteOrFail = com.example.rossg_000.fyp_v3.CompleteOrFail.getResult(data);
                     TaskDetails clickedList = taskDetailsListTest.get(dataTest);
 
                     int cLevelInteger = clickedList.getTaskLevelInteger();
                     int cAttempts = clickedList.getAttempts();
-                    //cAttempts+=1;
 
-                    if(CompleteOrFail == +1){
-                        difficultyLevels(clickedList, dataTest, cLevelInteger, CompleteOrFail);
-                    }
-                    else if(CompleteOrFail == -1){
-                        if(cAttempts >= 2){
-                            difficultyLevels(clickedList, dataTest, cLevelInteger, CompleteOrFail);
-                        }else{
+                    if(CompleteOrFail == +1){difficultyLevels(clickedList, dataTest, cLevelInteger, CompleteOrFail);}
+                    else if(CompleteOrFail == -1) {
+                        if(cAttempts >= 2){difficultyLevels(clickedList, dataTest, cLevelInteger, CompleteOrFail);}
+                        else {
                             taskDetailsListTest.set(dataTest, new TaskDetails(clickedList.getId(), clickedList.getTaskName(),clickedList.getTaskRequirementInteger(),clickedList.getTaskRequirementString(),clickedList.getTaskLevelInteger(),clickedList.getAttempts()+1));
                             adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
                             taskDetails.setAdapter(adapter);
                             saveData();
                         }
                     }
-
-
-
                 }
         }
     }
@@ -187,7 +165,6 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
 
         if(taskDetailsListTest == null){
             taskDetailsListTest = new ArrayList<>();
-
             taskDetailsListTest.add(new TaskDetails(1, "Walk" , 500, "step(s)"  , 1, 1));
             taskDetailsListTest.add(new TaskDetails(2, "Run"  , 1, "mile(s)"  , 1, 1));
             taskDetailsListTest.add(new TaskDetails(3, "Jog"  , 1, "mile(s)"  ,  1, 1));
@@ -201,25 +178,17 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         String cTaskName = clickedList.getTaskName();
         int cRequirmentInteger = clickedList.getTaskRequirementInteger();
         String cRequirmentString = clickedList.getTaskRequirementString();
-        //String cLevelString = clickedList.getTaskLevelString();
         int cAttempts = clickedList.getAttempts();
-        /*
-        int cDays = clickedList.getDays();
-        int cHours = clickedList.getHours();
-        int cMinutes = clickedList.getMinutes();
-        int cSeconds = clickedList.getSeconds();
-        */
+
 
         cLevelInteger = cLevelInteger + levelUpOrDown;
+        passToJournal(cId, cTaskName, cRequirmentInteger, cRequirmentString, cLevelInteger, cAttempts, levelUpOrDown);
+        cAttempts = 1;
 
 
-
-        if(cLevelInteger > 10){ //JUST FOR TESTING PURPOSES - REMOVE/MODIFY LATER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            cLevelInteger = 1;
-        }
-        if(cLevelInteger<1){
-            cLevelInteger = 1;
-        }
+        //JUST FOR TESTING PURPOSES - REMOVE/MODIFY LATER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        if(cLevelInteger > 10){cLevelInteger = 1;}
+        if(cLevelInteger<1){cLevelInteger = 1;}
 
         if(cId == 1){
             if(cLevelInteger == 1){cRequirmentInteger = 500;}
@@ -282,15 +251,15 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
             if(cLevelInteger ==10){cRequirmentInteger = 50;}
         }
 
-        cAttempts = 1;
 
 
-        taskDetailsListTest.set(i, new TaskDetails(cId, cTaskName, cRequirmentInteger, cRequirmentString, /*cLevelString,*/ cLevelInteger, cAttempts));
+
+
+        taskDetailsListTest.set(i, new TaskDetails(cId, cTaskName, cRequirmentInteger, cRequirmentString, cLevelInteger, cAttempts));
         adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
         taskDetails.setAdapter(adapter);
         saveData();
     }
-
 
     public String[] popUpInfo(){
         //Fill this in later, position in array should correspond to position of list view
@@ -302,9 +271,6 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         popUpInfo[4] = "Cycle: ...";
 
         return popUpInfo;
-
-
-
     }
 
     @Override   //To do with the step count sensor, might change later
@@ -312,13 +278,9 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         super.onResume();
         running = true;
         Sensor countSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
-        if(countSensor!=null){
-            sensorManager.registerListener(this, countSensor, SensorManager.SENSOR_DELAY_UI);
-        }else{
-            Toast.makeText(this, "Sensor not found", Toast.LENGTH_SHORT).show();
-        }
+        if(countSensor!=null){sensorManager.registerListener(this, countSensor, SensorManager.SENSOR_DELAY_UI);
+        }else{Toast.makeText(this, "Sensor not found", Toast.LENGTH_SHORT).show();}
     }
-
 
     @Override   //To do with the step count sensor, might change later
     public void onSensorChanged(SensorEvent sensorEvent) {
@@ -327,10 +289,7 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
 
             TaskDetails a = taskDetailsListTest.get(0);
             taskDetailsListTest.set(0,new TaskDetails(a.getId(), a.getTaskName(),a.getTaskRequirementInteger()-1,a.getTaskRequirementString(),/*a.getTaskLevelString(),*/a.getTaskLevelInteger(),a.getAttempts()));
-            if(a.getTaskRequirementInteger()==0)
-            {
-                difficultyLevels(a,0, a.getTaskLevelInteger(),1);
-            }
+            if(a.getTaskRequirementInteger()==0) {difficultyLevels(a,0, a.getTaskLevelInteger(),1);}
             adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
             taskDetails.setAdapter(adapter);
             saveData();
@@ -341,19 +300,23 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
     public void onAccuracyChanged(Sensor sensor, int i) {
 
     }
+
+
+
+    //Not sure about this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    public void passToJournal(int ID, String TaskName, int RequirmentInteger, String RequirmentString, int level, int attempts, int upOrDown){
+        Intent passInfoToJournal = new Intent(this, Journal.class);
+        passInfoToJournal.putExtra("ID", ID);
+        passInfoToJournal.putExtra("TaskName", TaskName);
+        passInfoToJournal.putExtra("RequirmentInteger", RequirmentInteger);
+        passInfoToJournal.putExtra("RequirmentString", RequirmentString);
+        passInfoToJournal.putExtra("level", level);
+        passInfoToJournal.putExtra("attempts", attempts);
+        passInfoToJournal.putExtra("upOrDown", upOrDown);
+
+        startActivity(passInfoToJournal);
+    }
+
+
 }
 
-                /*
-                //Just below the first on click
-                TaskDetails clickedList = taskDetailsListTest.get(i);
-                int cLevelInteger = clickedList.getTaskLevelInteger();
-
-                if(cLevelInteger<10)
-                {
-                    difficultyLevels(clickedList, i, cLevelInteger + 1);
-                }
-
-                adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
-                taskDetails.setAdapter(adapter);
-                saveData();
-                */
