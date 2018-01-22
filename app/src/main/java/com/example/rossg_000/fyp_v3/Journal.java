@@ -10,7 +10,6 @@ import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.List;
 
 public class Journal extends AppCompatActivity{
@@ -26,8 +25,6 @@ public class Journal extends AppCompatActivity{
 
         JournalDetails = (ListView) findViewById(R.id.journalListView);
         loadData();
-        adapter = new JournalDetailsAdapter(getApplicationContext(), journalDetailsListTest);
-        JournalDetails.setAdapter(adapter);
         Bundle bundle = getIntent().getExtras();
 
         if(bundle!= null) {
@@ -46,11 +43,10 @@ public class Journal extends AppCompatActivity{
             if(upOrDowntemp == 1){upOrDown = "up";
             }else if(upOrDowntemp==-1){upOrDown = "down";}
 
-            Collections.reverse(journalDetailsListTest);
-            journalDetailsListTest.add(new JournalDetails(ID, TaskName,RequirmentInteger,RequirmentString, level, attempts, upOrDown, formattedTime, formattedDate));
+            journalDetailsListTest.add(0,new JournalDetails(ID, TaskName,RequirmentInteger,RequirmentString, level, attempts, upOrDown, formattedTime, formattedDate));
         }
 
-        Collections.reverse(journalDetailsListTest);
+        adapter = new JournalDetailsAdapter(getApplicationContext(), journalDetailsListTest);
         JournalDetails.setAdapter(adapter);
         saveData();
     }

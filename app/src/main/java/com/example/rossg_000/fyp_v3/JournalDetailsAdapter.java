@@ -48,7 +48,7 @@ public class JournalDetailsAdapter extends BaseAdapter {
         TextView time = (TextView) journalViewTest.findViewById(R.id.Time);
         TextView date = (TextView) journalViewTest.findViewById(R.id.Date);
 
-        levelUpOrDown.setText(journalDetailsListTest.get(i).getUpOrDown());                  //CHANGE LATER
+        levelUpOrDown.setText(journalDetailsListTest.get(i).getUpOrDown());
         nameOfActivity.setText(journalDetailsListTest.get(i).getTaskName());
         level.setText(String.valueOf(journalDetailsListTest.get(i).getTaskLevelInteger()));
         attempts.setText(String.valueOf(journalDetailsListTest.get(i).getAttempts()));
