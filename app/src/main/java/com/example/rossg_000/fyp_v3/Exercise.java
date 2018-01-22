@@ -248,10 +248,6 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
             if(cLevelInteger ==10){cRequirmentInteger = 50;}
         }
 
-
-
-
-
         taskDetailsListTest.set(i, new TaskDetails(cId, cTaskName, cRequirmentInteger, cRequirmentString, cLevelInteger, cAttempts));
         adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
         taskDetails.setAdapter(adapter);
@@ -260,7 +256,7 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
 
     public String[] popUpInfo(){
         //Fill this in later, position in array should correspond to position of list view
-        String[] popUpInfo = new String[5];
+        String[] popUpInfo = new String[5]; //Dont forget to change size of array to match amount of elements in it
         popUpInfo[0] = "Walk: put one foot in front of the other";
         popUpInfo[1] = "Run: put one foot in front of the other at a fast pace";
         popUpInfo[2] = "Jog: ...";

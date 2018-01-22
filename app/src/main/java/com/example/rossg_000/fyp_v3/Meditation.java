@@ -29,10 +29,6 @@ public class Meditation extends AppCompatActivity {
     private TaskDetailsAdapter adapter;
     private List<TaskDetails> meditationDetailsListTest;
     private int dataTest = 0;
-    //TextView stepCounter;   //TESTING PURPOSE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    //SensorManager sensorManager;    //To do with the step count sensor, might change later
-    //boolean running = false;    //To do with the step count sensor, might change later
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +40,6 @@ public class Meditation extends AppCompatActivity {
         loadData();
         adapter = new TaskDetailsAdapter(getApplicationContext(), meditationDetailsListTest);
         meditationDetails.setAdapter(adapter);
-
-
-        //stepCounter = (TextView) findViewById(R.id.ExerciseTextView);   //TESTING PURPOSE!!!!!!!!!!!!!!!!!!!!!!!!
-        //sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);   //To do with the step count sensor, might change later
 
         meditationDetails.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -199,10 +191,6 @@ public class Meditation extends AppCompatActivity {
             if(cLevelInteger ==10){cRequirmentInteger = 50;}
         }
 
-
-
-
-
         meditationDetailsListTest.set(i, new TaskDetails(cId, cTaskName, cRequirmentInteger, cRequirmentString, cLevelInteger, cAttempts));
         adapter = new TaskDetailsAdapter(getApplicationContext(), meditationDetailsListTest);
         meditationDetails.setAdapter(adapter);
@@ -211,16 +199,15 @@ public class Meditation extends AppCompatActivity {
 
     public String[] popUpInfo(){
         //Fill this in later, position in array should correspond to position of list view
-        String[] popUpInfo = new String[5];
-        popUpInfo[0] = "Walk: put one foot in front of the other";
-        popUpInfo[1] = "Run: put one foot in front of the other at a fast pace";
-        popUpInfo[2] = "Jog: ...";
-        popUpInfo[3] = "Swim: ...";
-        popUpInfo[4] = "Cycle: ...";
+        String[] popUpInfo = new String[5]; //Dont forget to change size of array to match amount of elements in it
+        popUpInfo[0] = "111111111111111111111111111111111111111111111111111111111";
+        popUpInfo[1] = "222222 222222 222222 222222 22222 2222222 222222 22222222";
+        popUpInfo[2] = "3";
+        popUpInfo[3] = "4";
+        popUpInfo[4] = "5";
 
         return popUpInfo;
     }
-
 
     //Not sure about this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     public void passToJournal(int ID, String TaskName, int RequirmentInteger, String RequirmentString, int level, int attempts, int upOrDown){
