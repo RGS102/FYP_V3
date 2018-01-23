@@ -12,9 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class CompleteOrFail extends AppCompatActivity {
-    //NumberPicker numberPicker;
-    //TextView test1;
-    //int test2;
     private EditText Progress;
     private EditText Duration;
 
@@ -23,15 +20,8 @@ public class CompleteOrFail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complete_or_fail);
 
-
         Button Complete = (Button) findViewById(R.id.Complete);
         Button Fail = (Button) findViewById(R.id.Fail);
-        //Progress = (EditText) findViewById(R.id.Progress);
-
-        //Toast.makeText(CompleteOrFail.this,numberPicker.getMaxValue(), Toast.LENGTH_LONG).show();
-
-
-
 
         Complete.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -49,10 +39,6 @@ public class CompleteOrFail extends AppCompatActivity {
                     String durationValue = Duration.getText().toString();
                     finalDuration = Integer.parseInt(durationValue);
                 }
-
-                //String value = Progress.getText().toString();
-                //int finalValue = Integer.parseInt(value);
-                //Toast.makeText(CompleteOrFail.this,"Test1 " + finalValue, Toast.LENGTH_LONG).show();
 
                 Intent intent = new Intent();
                 intent.putExtra("CompleteOrFail", 1);
@@ -78,5 +64,4 @@ public class CompleteOrFail extends AppCompatActivity {
     public static int getResult(Intent intent){
         return intent.getIntExtra("CompleteOrFail", 0);
     }
-
 }

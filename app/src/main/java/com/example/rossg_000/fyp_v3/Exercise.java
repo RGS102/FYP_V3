@@ -1,6 +1,5 @@
 package com.example.rossg_000.fyp_v3;
 
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -29,7 +28,7 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
     private TaskDetailsAdapter adapter;
     private List<TaskDetails> taskDetailsListTest;
     private int dataTest = 0;
-    TextView stepCounter;   //TESTING PURPOSE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    //TextView stepCounter;   //TESTING PURPOSE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     SensorManager sensorManager;    //To do with the step count sensor, might change later
     boolean running = false;    //To do with the step count sensor, might change later
 
@@ -41,10 +40,10 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         final String [] taskInfo = popUpInfo();
         taskDetails = (ListView) findViewById(R.id.taskListView);
         loadData();
-
         adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
         taskDetails.setAdapter(adapter);
-        stepCounter = (TextView) findViewById(R.id.ExerciseTextView);   //TESTING PURPOSE!!!!!!!!!!!!!!!!!!!!!!!!
+
+        //stepCounter = (TextView) findViewById(R.id.ExerciseTextView);   //TESTING PURPOSE!!!!!!!!!!!!!!!!!!!!!!!!
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);   //To do with the step count sensor, might change later
 
         taskDetails.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -81,16 +80,11 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
                     int progressMade = data.getIntExtra("Progress", 0);
                     int duration = data.getIntExtra("Duration", 0);
 
-                    if(CompleteOrFail == +1){
-                        if(progressMade > 0) {progressUpdate(clickedList, dataTest, progressMade, duration);}
-                    }
+                    if(CompleteOrFail == +1){if(progressMade > 0) {progressUpdate(clickedList, dataTest, progressMade, duration);}}
                     else if(CompleteOrFail == -1) {
                         if(cAttempts >= 2){difficultyLevels(clickedList, dataTest, cLevelInteger, CompleteOrFail, progressMade, duration);}
                         else {difficultyLevels(clickedList, dataTest, cLevelInteger, 0, progressMade, duration);}
-                    }
-                }
-        }
-    }
+                    }}}}
 
     /*
     private void countDownTimer(final TaskDetails clickedList, final int i)
@@ -165,8 +159,7 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
             taskDetailsListTest.add(new TaskDetails(3, "Jog"  , 1, "mile(s)"  ,  1, 1));
             taskDetailsListTest.add(new TaskDetails(4, "Swim" , 1, "length(s)",  1, 1));
             taskDetailsListTest.add(new TaskDetails(5, "Cycle", 1, "mile(s)"  ,  1, 1));
-        }
-    }
+        }}
 
     private void difficultyLevels(TaskDetails clickedList, int i, int cLevelInteger, int levelUpOrDown, int progress, int duration){
         int cId = clickedList.getId();
@@ -175,16 +168,12 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         String cRequirmentString = clickedList.getTaskRequirementString();
         int cAttempts = clickedList.getAttempts();
 
-
         cLevelInteger = cLevelInteger + levelUpOrDown;
-        //UNCOMMENT THIS AFTER TESTING
         passToJournal(cId, cTaskName, cRequirmentInteger, cRequirmentString, cLevelInteger, cAttempts, levelUpOrDown, progress, duration);
         cAttempts = 1;
 
-
-        //JUST FOR TESTING PURPOSES - REMOVE/MODIFY LATER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        if(cLevelInteger > 10){cLevelInteger = 1;}
-        if(cLevelInteger<1){cLevelInteger = 1;}
+        if(cLevelInteger > 10){cLevelInteger = 1;}  //JUST FOR TESTING PURPOSES - REMOVE/MODIFY LATER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        if(cLevelInteger<1){cLevelInteger = 1;} //JUST FOR TESTING PURPOSES - REMOVE/MODIFY LATER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         if(cId == 1){
             if(cLevelInteger == 1){cRequirmentInteger = 500;}
@@ -253,7 +242,6 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         saveData();
     }
 
-
     private void progressUpdate(TaskDetails clickedList, int i, int progress, int duration){
         int a = clickedList.getId();
         String b = clickedList.getTaskName();
@@ -264,19 +252,14 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
 
         int newValue = c - progress;
 
-        if(newValue <= 0){
-            difficultyLevels(clickedList, i, e, +1, progress,duration);
-        }
+        if(newValue <= 0){difficultyLevels(clickedList, i, e, +1, progress,duration);}
         else{
             passToJournal(a,b,newValue,d,e,f,0,progress,duration);
             taskDetailsListTest.set(i, new TaskDetails(a,b,newValue,d,e,f));
             adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
             taskDetails.setAdapter(adapter);
             saveData();
-        }
-    }
-
-
+        }}
 
     public String[] popUpInfo(){
         //Fill this in later, position in array should correspond to position of list view
@@ -302,25 +285,18 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
     @Override   //To do with the step count sensor, might change later
     public void onSensorChanged(SensorEvent sensorEvent) {
         if(running){
-            stepCounter.setText(String.valueOf(sensorEvent.values[0])); //TESTING PURPOSE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
+            //stepCounter.setText(String.valueOf(sensorEvent.values[0])); //TESTING PURPOSE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             TaskDetails a = taskDetailsListTest.get(0);
             taskDetailsListTest.set(0,new TaskDetails(a.getId(), a.getTaskName(),a.getTaskRequirementInteger()-1,a.getTaskRequirementString(),/*a.getTaskLevelString(),*/a.getTaskLevelInteger(),a.getAttempts()));
             if(a.getTaskRequirementInteger()==0) {difficultyLevels(a,0, a.getTaskLevelInteger(),1, 0, 0);}
             adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
             taskDetails.setAdapter(adapter);
             saveData();
-        }
-    }
+        }}
 
     @Override   //To do with the step count sensor, might change later
     public void onAccuracyChanged(Sensor sensor, int i) {
-
     }
-
-
-
-    //JUST COMMENTED THIS OUT FOR THE MINUTE TO TEST STUFF, WORKS RELATIVELY FINE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     public void passToJournal(int ID, String TaskName, int RequirmentInteger, String RequirmentString, int level, int attempts, int upOrDown, int progress, int duration){
         Intent passInfoToJournal = new Intent(this, Journal.class);

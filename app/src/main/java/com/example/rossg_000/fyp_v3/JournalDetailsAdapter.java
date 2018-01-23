@@ -34,7 +34,6 @@ public class JournalDetailsAdapter extends BaseAdapter {
     @Override
     public long getItemId(int i) {
         return i;
-        //return journalDetailsListTest.get(getCount()-i);
     }
 
     @Override
@@ -46,9 +45,7 @@ public class JournalDetailsAdapter extends BaseAdapter {
         TextView JournalAttempt = (TextView) journalViewTest.findViewById(R.id.JournalAttempt);
         TextView JournalTaskAction = (TextView) journalViewTest.findViewById(R.id.JournalTaskAction);
         TextView JournalTaskProgress = (TextView) journalViewTest.findViewById(R.id.JournalTaskProgress);
-
         TextView JournalTaskMeasurement = (TextView) journalViewTest.findViewById(R.id.JournalTaskMeasurement);
-
         TextView JournalDuration = (TextView) journalViewTest.findViewById(R.id.JournalDuration);
         TextView JournalLevelUpORDown = (TextView) journalViewTest.findViewById(R.id.JournalLevelUpOrDown);
         TextView time = (TextView) journalViewTest.findViewById(R.id.JournalCurrentTime);
@@ -59,30 +56,11 @@ public class JournalDetailsAdapter extends BaseAdapter {
         JournalAttempt.setText(String.valueOf(journalDetailsListTest.get(i).getAttempts()));
         JournalTaskAction.setText(journalDetailsListTest.get(i).getTaskAction());
         JournalTaskProgress.setText(String.valueOf(journalDetailsListTest.get(i).getProgressMade()));
-
         JournalTaskMeasurement.setText(journalDetailsListTest.get(i).getTaskRequirementString());
-
         JournalDuration.setText(String.valueOf(journalDetailsListTest.get(i).getDuration()));
         JournalLevelUpORDown.setText(journalDetailsListTest.get(i).getUpOrDown());
         time.setText(journalDetailsListTest.get(i).getTime());
         date.setText(journalDetailsListTest.get(i).getDate());
-
-
-        /*
-        TextView levelUpOrDown = (TextView) journalViewTest.findViewById(R.id.levelUpOrDown);
-        TextView nameOfActivity = (TextView) journalViewTest.findViewById(R.id.nameOfActivity);
-        TextView level = (TextView) journalViewTest.findViewById(R.id.level);
-        TextView attempts = (TextView) journalViewTest.findViewById(R.id.JournalAttempts);
-        TextView time = (TextView) journalViewTest.findViewById(R.id.Time);
-        TextView date = (TextView) journalViewTest.findViewById(R.id.Date);
-
-        levelUpOrDown.setText(journalDetailsListTest.get(i).getUpOrDown());
-        nameOfActivity.setText(journalDetailsListTest.get(i).getTaskName());
-        level.setText(String.valueOf(journalDetailsListTest.get(i).getTaskLevelInteger()));
-        attempts.setText(String.valueOf(journalDetailsListTest.get(i).getAttempts()));
-        time.setText(journalDetailsListTest.get(i).getTime());
-        date.setText(journalDetailsListTest.get(i).getDate());
-        */
 
         journalViewTest.setTag(journalDetailsListTest.get(i).getId());
         return journalViewTest;

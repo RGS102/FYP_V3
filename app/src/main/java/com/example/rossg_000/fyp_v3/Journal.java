@@ -37,13 +37,8 @@ public class Journal extends AppCompatActivity{
             int upOrDowntemp = bundle.getInt("upOrDown");
             int progressMade = bundle.getInt("progress");
             int duration = bundle.getInt("duration");
-
-
             String formattedTime = new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
             String formattedDate = new SimpleDateFormat("dd-MM-yy").format(Calendar.getInstance().getTime());
-
-            //int progressMade = 1;
-            //int duration = 2;
 
             String[] taskArray = {"Walked", "Ran", "a", "b", "c"};
             String taskAction = taskArray[ID-1];
@@ -75,7 +70,6 @@ public class Journal extends AppCompatActivity{
         String json = sharedPreferences.getString("journal list", null);
         Type type = new TypeToken<ArrayList<JournalDetails>>() {}.getType(); //class to be implemented
         journalDetailsListTest = gson.fromJson(json, type);
-
         if(journalDetailsListTest == null){journalDetailsListTest = new ArrayList<>();}
     }
 }

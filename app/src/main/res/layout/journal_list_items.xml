@@ -11,12 +11,11 @@
         android:id="@+id/JournalTaskName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,161 +23,179 @@
         android:id="@+id/JournalLevelString"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="25dp"
         android:text="Level"
-        app:layout_constraintEnd_toStartOf="@+id/JournalLevel"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/JournalTaskName" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/JournalLevel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
-        android:layout_marginTop="34dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="25dp"
         android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@+id/JournalAttemptString"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="15dp"
+        app:layout_constraintStart_toEndOf="@+id/JournalLevelString"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/JournalAttemptString"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="34dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="25dp"
         android:text="Attempt:"
-        app:layout_constraintEnd_toStartOf="@+id/JournalAttempt"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="15dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/JournalAttempt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="34dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="25dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="15dp"
+        app:layout_constraintStart_toEndOf="@+id/JournalAttemptString"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/JournalTaskAction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="45dp"
         android:text="Ran"
-        app:layout_constraintEnd_toStartOf="@+id/JournalTaskProgress"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/JournalLevelString" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/JournalTaskProgress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="61dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="45dp"
         android:text="20"
-        app:layout_constraintEnd_toStartOf="@+id/JournalTaskMeasurement"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="15dp"
+        app:layout_constraintStart_toEndOf="@+id/JournalTaskAction"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/JournalTaskMeasurement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="61dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="45dp"
         android:text="miles"
-        app:layout_constraintEnd_toStartOf="@+id/JournalForString"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="15dp"
+        app:layout_constraintStart_toEndOf="@+id/JournalTaskProgress"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/JournalForString"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="61dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="45dp"
         android:text="for"
-        app:layout_constraintEnd_toStartOf="@+id/JournalDuration"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="15dp"
+        app:layout_constraintStart_toEndOf="@+id/JournalTaskMeasurement"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/JournalDuration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="61dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="45dp"
         android:text="20"
-        app:layout_constraintEnd_toStartOf="@+id/JournalTimeMeasurement"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="15dp"
+        app:layout_constraintStart_toEndOf="@+id/JournalForString"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/JournalTimeMeasurement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="61dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="45dp"
         android:text="minutes"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="15dp"
+        app:layout_constraintStart_toEndOf="@+id/JournalDuration"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/JournalLevelUpOrDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="65dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/JournalTaskAction" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/JournalTimeString"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="85dp"
         android:text="Time:"
-        app:layout_constraintEnd_toStartOf="@+id/JournalCurrentTime"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/JournalLevelUpOrDown" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/JournalCurrentTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="114dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="85dp"
         android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@+id/JournalDateString"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="15dp"
+        app:layout_constraintStart_toEndOf="@+id/JournalTimeString"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/JournalDateString"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="114dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="85dp"
         android:text="Date:"
-        app:layout_constraintEnd_toStartOf="@+id/JournalCurrentDate"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="15dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/JournalCurrentDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="114dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="85dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="15dp"
+        app:layout_constraintStart_toEndOf="@+id/JournalDateString"
         app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

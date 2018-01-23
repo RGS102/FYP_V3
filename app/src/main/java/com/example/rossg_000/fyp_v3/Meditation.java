@@ -1,29 +1,20 @@
 package com.example.rossg_000.fyp_v3;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Meditation extends AppCompatActivity {
-
     public static final int REQUEST_CODE_COMPLETE_OR_FAIL = 101;
     private ListView meditationDetails;
     private TaskDetailsAdapter adapter;
@@ -69,23 +60,16 @@ public class Meditation extends AppCompatActivity {
                 if(resultCode== Activity.RESULT_OK) {
                     int CompleteOrFail = com.example.rossg_000.fyp_v3.CompleteOrFail.getResult(data);
                     TaskDetails clickedList = meditationDetailsListTest.get(dataTest);
-
-
                     int cLevelInteger = clickedList.getTaskLevelInteger();
                     int cAttempts = clickedList.getAttempts();
                     int progressMade = data.getIntExtra("Progress", 0);
                     int duration = data.getIntExtra("Duration", 0);
 
-                    if(CompleteOrFail == +1){
-                        if(progressMade > 0) {progressUpdate(clickedList, dataTest, progressMade, duration);}
-                    }
+                    if(CompleteOrFail == +1){if(progressMade > 0) {progressUpdate(clickedList, dataTest, progressMade, duration);}}
                     else if(CompleteOrFail == -1) {
                         if(cAttempts >= 2){difficultyLevels(clickedList, dataTest, cLevelInteger, CompleteOrFail, progressMade, duration);}
                         else {difficultyLevels(clickedList, dataTest, cLevelInteger, 0, progressMade, duration);}
-                    }
-                }
-        }
-    }
+                    }}}}
 
     private void saveData(){
         SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
@@ -120,15 +104,12 @@ public class Meditation extends AppCompatActivity {
         String cRequirmentString = clickedList.getTaskRequirementString();
         int cAttempts = clickedList.getAttempts();
 
-
         cLevelInteger = cLevelInteger + levelUpOrDown;
         passToJournal(cId, cTaskName, cRequirmentInteger, cRequirmentString, cLevelInteger, cAttempts, levelUpOrDown, progress, duration);
         cAttempts = 1;
 
-
-        //JUST FOR TESTING PURPOSES - REMOVE/MODIFY LATER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        if(cLevelInteger > 10){cLevelInteger = 1;}
-        if(cLevelInteger<1){cLevelInteger = 1;}
+        if(cLevelInteger > 10){cLevelInteger = 1;}//JUST FOR TESTING PURPOSES - REMOVE/MODIFY LATER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        if(cLevelInteger<1){cLevelInteger = 1;}//JUST FOR TESTING PURPOSES - REMOVE/MODIFY LATER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         if(cId == 1){
             if(cLevelInteger == 1){cRequirmentInteger = 500;}
@@ -207,19 +188,14 @@ public class Meditation extends AppCompatActivity {
 
         int newValue = c - progress;
 
-        if(newValue <= 0){
-            difficultyLevels(clickedList, i, e, +1, progress,duration);
-        }
+        if(newValue <= 0){difficultyLevels(clickedList, i, e, +1, progress,duration);}
         else{
             passToJournal(a,b,newValue,d,e,f,0,progress,duration);
             meditationDetailsListTest.set(i, new TaskDetails(a,b,newValue,d,e,f));
             adapter = new TaskDetailsAdapter(getApplicationContext(), meditationDetailsListTest);
             meditationDetails.setAdapter(adapter);
             saveData();
-        }
-    }
-
-
+        }}
 
     public String[] popUpInfo(){
         //Fill this in later, position in array should correspond to position of list view
@@ -233,7 +209,6 @@ public class Meditation extends AppCompatActivity {
         return popUpInfo;
     }
 
-    //Not sure about this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     public void passToJournal(int ID, String TaskName, int RequirmentInteger, String RequirmentString, int level, int attempts, int upOrDown, int progress, int duration) {
         Intent passInfoToJournal = new Intent(this, Journal.class);
         passInfoToJournal.putExtra("ID", ID);
