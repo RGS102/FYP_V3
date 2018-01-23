@@ -35,15 +35,24 @@ public class Journal extends AppCompatActivity{
             int level = bundle.getInt("level");
             int attempts = bundle.getInt("attempts");
             int upOrDowntemp = bundle.getInt("upOrDown");
+            int progressMade = bundle.getInt("progress");
+            int duration = bundle.getInt("duration");
+
 
             String formattedTime = new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
             String formattedDate = new SimpleDateFormat("dd-MM-yy").format(Calendar.getInstance().getTime());
 
-            String upOrDown = "";
-            if(upOrDowntemp == 1){upOrDown = "up";
-            }else if(upOrDowntemp==-1){upOrDown = "down";}
+            //int progressMade = 1;
+            //int duration = 2;
 
-            journalDetailsListTest.add(0,new JournalDetails(ID, TaskName,RequirmentInteger,RequirmentString, level, attempts, upOrDown, formattedTime, formattedDate));
+            String[] taskArray = {"Walked", "Ran", "a", "b", "c"};
+            String taskAction = taskArray[ID-1];
+
+            String upOrDown = "";
+            if(upOrDowntemp == 1){upOrDown = "Leveled up";
+            }else if(upOrDowntemp==-1){upOrDown = "Leveled down";}
+
+            journalDetailsListTest.add(0,new JournalDetails(ID, TaskName,RequirmentInteger,RequirmentString, level, attempts, upOrDown, formattedTime, formattedDate, progressMade, duration, taskAction));
         }
 
         adapter = new JournalDetailsAdapter(getApplicationContext(), journalDetailsListTest);

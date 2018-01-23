@@ -70,18 +70,18 @@ public class Meditation extends AppCompatActivity {
                     int CompleteOrFail = com.example.rossg_000.fyp_v3.CompleteOrFail.getResult(data);
                     TaskDetails clickedList = meditationDetailsListTest.get(dataTest);
 
+
                     int cLevelInteger = clickedList.getTaskLevelInteger();
                     int cAttempts = clickedList.getAttempts();
+                    int progressMade = data.getIntExtra("Progress", 0);
+                    int duration = data.getIntExtra("Duration", 0);
 
-                    if(CompleteOrFail == +1){difficultyLevels(clickedList, dataTest, cLevelInteger, CompleteOrFail);}
+                    if(CompleteOrFail == +1){
+                        if(progressMade > 0) {progressUpdate(clickedList, dataTest, progressMade, duration);}
+                    }
                     else if(CompleteOrFail == -1) {
-                        if(cAttempts >= 2){difficultyLevels(clickedList, dataTest, cLevelInteger, CompleteOrFail);}
-                        else {
-                            meditationDetailsListTest.set(dataTest, new TaskDetails(clickedList.getId(), clickedList.getTaskName(),clickedList.getTaskRequirementInteger(),clickedList.getTaskRequirementString(),clickedList.getTaskLevelInteger(),clickedList.getAttempts()+1));
-                            adapter = new TaskDetailsAdapter(getApplicationContext(), meditationDetailsListTest);
-                            meditationDetails.setAdapter(adapter);
-                            saveData();
-                        }
+                        if(cAttempts >= 2){difficultyLevels(clickedList, dataTest, cLevelInteger, CompleteOrFail, progressMade, duration);}
+                        else {difficultyLevels(clickedList, dataTest, cLevelInteger, 0, progressMade, duration);}
                     }
                 }
         }
@@ -113,7 +113,7 @@ public class Meditation extends AppCompatActivity {
         }
     }
 
-    private void difficultyLevels(TaskDetails clickedList, int i, int cLevelInteger, int levelUpOrDown){
+    private void difficultyLevels(TaskDetails clickedList, int i, int cLevelInteger, int levelUpOrDown, int progress, int duration){
         int cId = clickedList.getId();
         String cTaskName = clickedList.getTaskName();
         int cRequirmentInteger = clickedList.getTaskRequirementInteger();
@@ -122,7 +122,7 @@ public class Meditation extends AppCompatActivity {
 
 
         cLevelInteger = cLevelInteger + levelUpOrDown;
-        passToJournal(cId, cTaskName, cRequirmentInteger, cRequirmentString, cLevelInteger, cAttempts, levelUpOrDown);
+        passToJournal(cId, cTaskName, cRequirmentInteger, cRequirmentString, cLevelInteger, cAttempts, levelUpOrDown, progress, duration);
         cAttempts = 1;
 
 
@@ -197,6 +197,30 @@ public class Meditation extends AppCompatActivity {
         saveData();
     }
 
+    private void progressUpdate(TaskDetails clickedList, int i, int progress, int duration){
+        int a = clickedList.getId();
+        String b = clickedList.getTaskName();
+        int c = clickedList.getTaskRequirementInteger();
+        String d = clickedList.getTaskRequirementString();
+        int e = clickedList.getTaskLevelInteger();
+        int f = clickedList.getAttempts();
+
+        int newValue = c - progress;
+
+        if(newValue <= 0){
+            difficultyLevels(clickedList, i, e, +1, progress,duration);
+        }
+        else{
+            passToJournal(a,b,newValue,d,e,f,0,progress,duration);
+            meditationDetailsListTest.set(i, new TaskDetails(a,b,newValue,d,e,f));
+            adapter = new TaskDetailsAdapter(getApplicationContext(), meditationDetailsListTest);
+            meditationDetails.setAdapter(adapter);
+            saveData();
+        }
+    }
+
+
+
     public String[] popUpInfo(){
         //Fill this in later, position in array should correspond to position of list view
         String[] popUpInfo = new String[5]; //Dont forget to change size of array to match amount of elements in it
@@ -210,15 +234,17 @@ public class Meditation extends AppCompatActivity {
     }
 
     //Not sure about this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    public void passToJournal(int ID, String TaskName, int RequirmentInteger, String RequirmentString, int level, int attempts, int upOrDown){
+    public void passToJournal(int ID, String TaskName, int RequirmentInteger, String RequirmentString, int level, int attempts, int upOrDown, int progress, int duration) {
         Intent passInfoToJournal = new Intent(this, Journal.class);
         passInfoToJournal.putExtra("ID", ID);
         passInfoToJournal.putExtra("TaskName", TaskName);
         passInfoToJournal.putExtra("RequirmentInteger", RequirmentInteger);
-        passInfoToJournal.putExtra("RequirmentString", RequirmentString);
+        passInfoToJournal.putExtra("RequirementString", RequirmentString);
         passInfoToJournal.putExtra("level", level);
         passInfoToJournal.putExtra("attempts", attempts);
         passInfoToJournal.putExtra("upOrDown", upOrDown);
+        passInfoToJournal.putExtra("progress", progress);
+        passInfoToJournal.putExtra("duration", duration);
 
         startActivity(passInfoToJournal);
     }

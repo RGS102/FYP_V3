@@ -6,134 +6,179 @@
     android:layout_height="match_parent"
     tools:layout_editor_absoluteY="81dp">
 
+
     <TextView
-        android:id="@+id/you_leveled"
-        android:layout_width="77dp"
-        android:layout_height="20dp"
+        android:id="@+id/JournalTaskName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:text="You leveled"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="15dp"
-        app:layout_constraintEnd_toStartOf="@+id/levelUpOrDown"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/levelUpOrDown"
+        android:id="@+id/JournalLevelString"
         android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="32dp"
-        android:text="levelUpOrDown"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="15dp"
-        app:layout_constraintEnd_toStartOf="@+id/to_level"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/to_level"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="32dp"
-        android:text="to level"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="15dp"
-        app:layout_constraintEnd_toStartOf="@+id/level"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/nameOfActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="NameOfActivity"
-        android:textColor="@android:color/holo_red_light"
-        android:textSize="15dp"
-        app:layout_constraintEnd_toStartOf="@+id/attemptString"
+        android:text="Level"
+        app:layout_constraintEnd_toStartOf="@+id/JournalLevel"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/JournalTaskName" />
+
+    <TextView
+        android:id="@+id/JournalLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="34dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/JournalAttemptString"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/attemptString"
+        android:id="@+id/JournalAttemptString"
         android:layout_width="wrap_content"
-        android:layout_height="20dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        android:text="- Attempt:"
-        android:textColor="@android:color/holo_red_light"
-        android:textSize="15dp"
-        app:layout_constraintEnd_toStartOf="@+id/JournalAttempts"
+        android:layout_marginTop="34dp"
+        android:text="Attempt:"
+        app:layout_constraintEnd_toStartOf="@+id/JournalAttempt"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/JournalAttempts"
+        android:id="@+id/JournalAttempt"
         android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginEnd="148dp"
-        android:layout_marginTop="8dp"
-        android:text="Attempts"
-        android:textColor="@android:color/holo_red_light"
-        android:textSize="15dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="34dp"
+        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/level"
+        android:id="@+id/JournalTaskAction"
         android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginTop="32dp"
-        android:text="levelInteger"
-        android:textColor="@android:color/holo_red_light"
-        android:textSize="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/Time"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="56dp"
-        android:text="time"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/Date"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginTop="56dp"
-        android:text="Date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/TimeString"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="8dp"
+        android:text="Ran"
+        app:layout_constraintEnd_toStartOf="@+id/JournalTaskProgress"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/JournalLevelString" />
+
+    <TextView
+        android:id="@+id/JournalTaskProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="61dp"
+        android:text="20"
+        app:layout_constraintEnd_toStartOf="@+id/JournalTaskMeasurement"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/JournalTaskMeasurement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="61dp"
+        android:text="miles"
+        app:layout_constraintEnd_toStartOf="@+id/JournalForString"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/JournalForString"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="61dp"
+        android:text="for"
+        app:layout_constraintEnd_toStartOf="@+id/JournalDuration"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/JournalDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="61dp"
+        android:text="20"
+        app:layout_constraintEnd_toStartOf="@+id/JournalTimeMeasurement"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/JournalTimeMeasurement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="61dp"
+        android:text="minutes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/JournalLevelUpOrDown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/JournalTaskAction" />
+
+    <TextView
+        android:id="@+id/JournalTimeString"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="Time:"
+        app:layout_constraintEnd_toStartOf="@+id/JournalCurrentTime"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/JournalLevelUpOrDown" />
+
+    <TextView
+        android:id="@+id/JournalCurrentTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="114dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/JournalDateString"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/DateString"
+        android:id="@+id/JournalDateString"
         android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginEnd="110dp"
-        android:layout_marginTop="56dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="114dp"
         android:text="Date:"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/JournalCurrentDate"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/JournalCurrentDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="114dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

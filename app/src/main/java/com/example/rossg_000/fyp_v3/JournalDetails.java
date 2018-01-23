@@ -14,8 +14,11 @@ public class JournalDetails {
     private String upOrDown;
     private String time;
     private String date;
+    private int progressMade;
+    private int duration;
+    private String taskAction;
 
-    public JournalDetails(int Id, String taskName, int taskRequirementInteger, String taskRequirementString, int taskLevelInteger, int attempts, String upOrDown, String time, String date){
+    public JournalDetails(int Id, String taskName, int taskRequirementInteger, String taskRequirementString, int taskLevelInteger, int attempts, String upOrDown, String time, String date, int progressMade, int duration, String taskAction){
         this.Id = Id;
         this.taskName = taskName;
         this.taskRequirementInteger = taskRequirementInteger;
@@ -25,6 +28,9 @@ public class JournalDetails {
         this.upOrDown = upOrDown;
         this.time = time;
         this.date = date;
+        this.progressMade = progressMade;
+        this.duration = duration;
+        this.taskAction = taskAction;
     }
 
     public int getId() {
@@ -97,6 +103,30 @@ public class JournalDetails {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public int getProgressMade() {
+        return progressMade;
+    }
+
+    public void setProgressMade(int progressMade) {
+        this.progressMade = progressMade;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public String getTaskAction() {
+        return taskAction;
+    }
+
+    public void setTaskAction(String taskAction) {
+        this.taskAction = taskAction;
     }
 }
 
