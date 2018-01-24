@@ -33,28 +33,64 @@
         tools:text="@string/button_to_journal" />
 
     <TextView
-        android:id="@+id/StepCountText"
-        android:layout_width="wrap_content"
-        android:layout_height="19dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:text="Total Steps:"
-        app:layout_constraintBottom_toTopOf="@+id/StepCount"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/StepCount"
+        android:id="@+id/CompletedTasksString"
         android:layout_width="wrap_content"
         android:layout_height="19dp"
         android:layout_marginBottom="150dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:text="Tasks Completed:"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/CompletedTasks"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:layout_marginBottom="150dp"
+        android:layout_marginStart="44dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/CompletedTasksString" />
+
+    <TextView
+        android:id="@+id/MeditationsCompletedString"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Meditations Completed:"
+        app:layout_constraintBottom_toTopOf="@+id/CompletedTasksString"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/ExercisesCompletedString"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Exercises Completed:"
+        app:layout_constraintBottom_toTopOf="@+id/MeditationsCompletedString"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/MeditationsCompleted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/CompletedTasks"
+        app:layout_constraintStart_toEndOf="@+id/MeditationsCompletedString" />
+
+    <TextView
+        android:id="@+id/ExercisesCompleted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="22dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/MeditationsCompleted"
+        app:layout_constraintStart_toEndOf="@+id/ExercisesCompletedString" />
 
 
 </android.support.constraint.ConstraintLayout>

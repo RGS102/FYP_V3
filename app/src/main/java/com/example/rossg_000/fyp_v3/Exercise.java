@@ -32,6 +32,12 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
     SensorManager sensorManager;    //To do with the step count sensor, might change later
     boolean running = false;    //To do with the step count sensor, might change later
 
+    private static int taskCompleted = 0;
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -236,6 +242,8 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
             if(cLevelInteger ==10){cRequirmentInteger = 50;}
         }
 
+        if(levelUpOrDown==+1){taskCompleted += 1;}
+
         taskDetailsListTest.set(i, new TaskDetails(cId, cTaskName, cRequirmentInteger, cRequirmentString, cLevelInteger, cAttempts));
         adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
         taskDetails.setAdapter(adapter);
@@ -311,6 +319,10 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         passInfoToJournal.putExtra("duration", duration);
 
         startActivity(passInfoToJournal);
+    }
+
+    public static int getTaskCompleted(){
+        return taskCompleted;
     }
 }
 

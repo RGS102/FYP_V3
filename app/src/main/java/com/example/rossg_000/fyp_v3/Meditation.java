@@ -20,6 +20,7 @@ public class Meditation extends AppCompatActivity {
     private TaskDetailsAdapter adapter;
     private List<TaskDetails> meditationDetailsListTest;
     private int dataTest = 0;
+    private static int taskCompleted = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -172,6 +173,9 @@ public class Meditation extends AppCompatActivity {
             if(cLevelInteger ==10){cRequirmentInteger = 50;}
         }
 
+
+        if(levelUpOrDown==+1){taskCompleted += 1;}
+
         meditationDetailsListTest.set(i, new TaskDetails(cId, cTaskName, cRequirmentInteger, cRequirmentString, cLevelInteger, cAttempts));
         adapter = new TaskDetailsAdapter(getApplicationContext(), meditationDetailsListTest);
         meditationDetails.setAdapter(adapter);
@@ -222,5 +226,9 @@ public class Meditation extends AppCompatActivity {
         passInfoToJournal.putExtra("duration", duration);
 
         startActivity(passInfoToJournal);
+    }
+
+    public static int getTaskCompleted(){
+        return taskCompleted;
     }
 }
