@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="74dp"
+        android:layout_marginTop="20dp"
         android:text="Give Up"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,17 +21,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginTop="74dp"
+        android:layout_marginTop="20dp"
         android:text="Submit Progress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/NumberInput"
-        android:layout_width="107dp"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginTop="164dp"
+        android:layout_marginTop="100dp"
         android:ems="10"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,8 +39,8 @@
 
     <EditText
         android:id="@+id/DurationInput"
-        android:layout_width="107dp"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
@@ -52,9 +52,9 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="170dp"
+        android:layout_marginTop="120dp"
         android:text="Progress made:"
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="15dp"
@@ -68,12 +68,11 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="20dp"
         android:text="Time spent (Minutes):"
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="15dp"
         app:layout_constraintEnd_toStartOf="@+id/DurationInput"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
