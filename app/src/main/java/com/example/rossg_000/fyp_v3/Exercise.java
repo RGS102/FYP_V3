@@ -35,6 +35,14 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
     private static int taskCompleted = 0;
 
 
+    private int excess = 0;
+
+
+
+    //private static TaskDetails listArgument = null;
+    //private static int levelTest = 0;
+
+
 
 
 
@@ -64,10 +72,13 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         taskDetails.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                dataTest = i;
-                final Intent intent2 = new Intent(getApplicationContext(), CompleteOrFail.class);
-                startActivityForResult(intent2, REQUEST_CODE_COMPLETE_OR_FAIL);
-                return true;
+                if(i!=0) {
+                    dataTest = i;
+                    final Intent intent2 = new Intent(getApplicationContext(), CompleteOrFail.class);
+                    startActivityForResult(intent2, REQUEST_CODE_COMPLETE_OR_FAIL);
+                }
+                    return true;
+
             }
         });
         saveData();
@@ -86,11 +97,30 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
                     int progressMade = data.getIntExtra("Progress", 0);
                     int duration = data.getIntExtra("Duration", 0);
 
-                    if(CompleteOrFail == +1){if(progressMade > 0) {progressUpdate(clickedList, dataTest, progressMade, duration);}}
-                    else if(CompleteOrFail == -1) {
-                        if(cAttempts >= 2){difficultyLevels(clickedList, dataTest, cLevelInteger, CompleteOrFail, progressMade, duration);}
-                        else {difficultyLevels(clickedList, dataTest, cLevelInteger, 0, progressMade, duration);}
-                    }}}}
+                    if(CompleteOrFail == +1)
+                    {
+                        if(progressMade > 0)
+                        {
+                            progressUpdate(clickedList, dataTest, progressMade, duration);
+                        }
+                    }
+                    else if(CompleteOrFail == -1)
+                    {
+                        if(cAttempts >= 2)
+                        {
+                            //if(excess!=0){
+                            //    excess=excess/2;
+                           // }
+                            difficultyLevels(clickedList, dataTest, cLevelInteger, CompleteOrFail, progressMade, duration);
+                        }
+                        else
+                        {
+                            difficultyLevels(clickedList, dataTest, cLevelInteger, 0, progressMade, duration);
+                        }
+                    }
+                }
+        }
+    }
 
     /*
     private void countDownTimer(final TaskDetails clickedList, final int i)
@@ -167,6 +197,7 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
             taskDetailsListTest.add(new TaskDetails(5, "Cycle", 1, "mile(s)"  ,  1, 1));
         }}
 
+
     private void difficultyLevels(TaskDetails clickedList, int i, int cLevelInteger, int levelUpOrDown, int progress, int duration){
         int cId = clickedList.getId();
         String cTaskName = clickedList.getTaskName();
@@ -174,9 +205,13 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         String cRequirmentString = clickedList.getTaskRequirementString();
         int cAttempts = clickedList.getAttempts();
 
-        cLevelInteger = cLevelInteger + levelUpOrDown;
+
+
+
         passToJournal(cId, cTaskName, cRequirmentInteger, cRequirmentString, cLevelInteger, cAttempts, levelUpOrDown, progress, duration);
-        cAttempts = 1;
+        cLevelInteger = cLevelInteger + levelUpOrDown;
+
+        //cAttempts = 1;
 
         if(cLevelInteger > 10){cLevelInteger = 1;}  //JUST FOR TESTING PURPOSES - REMOVE/MODIFY LATER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         if(cLevelInteger<1){cLevelInteger = 1;} //JUST FOR TESTING PURPOSES - REMOVE/MODIFY LATER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -195,15 +230,15 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         }
         if(cId == 2){
             if(cLevelInteger ==1){cRequirmentInteger = 11;}
-            if(cLevelInteger ==2){cRequirmentInteger = 12;}
-            if(cLevelInteger ==3){cRequirmentInteger = 13;}
-            if(cLevelInteger ==4){cRequirmentInteger = 14;}
-            if(cLevelInteger ==5){cRequirmentInteger = 15;}
-            if(cLevelInteger ==6){cRequirmentInteger = 16;}
-            if(cLevelInteger ==7){cRequirmentInteger = 17;}
-            if(cLevelInteger ==8){cRequirmentInteger = 18;}
-            if(cLevelInteger ==9){cRequirmentInteger = 19;}
-            if(cLevelInteger ==10){cRequirmentInteger = 20;}
+            if(cLevelInteger ==2){cRequirmentInteger = 12+excess;}
+            if(cLevelInteger ==3){cRequirmentInteger = 13+excess;}
+            if(cLevelInteger ==4){cRequirmentInteger = 14+excess;}
+            if(cLevelInteger ==5){cRequirmentInteger = 15+excess;}
+            if(cLevelInteger ==6){cRequirmentInteger = 16+excess;}
+            if(cLevelInteger ==7){cRequirmentInteger = 17+excess;}
+            if(cLevelInteger ==8){cRequirmentInteger = 18+excess;}
+            if(cLevelInteger ==9){cRequirmentInteger = 19+excess;}
+            if(cLevelInteger ==10){cRequirmentInteger = 20+excess;}
         }
         if(cId == 3){
             if(cLevelInteger ==1){cRequirmentInteger = 21;}
@@ -242,7 +277,10 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
             if(cLevelInteger ==10){cRequirmentInteger = 50;}
         }
 
-        if(levelUpOrDown==+1){taskCompleted += 1;}
+        if(levelUpOrDown==+1){taskCompleted += 1; cAttempts=1;}
+        if(levelUpOrDown==0){cAttempts+=1;}
+        if(levelUpOrDown==-1){cAttempts=1;}
+        //cAttempts=1;
 
         taskDetailsListTest.set(i, new TaskDetails(cId, cTaskName, cRequirmentInteger, cRequirmentString, cLevelInteger, cAttempts));
         adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
@@ -250,24 +288,40 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         saveData();
     }
 
+
     private void progressUpdate(TaskDetails clickedList, int i, int progress, int duration){
-        int a = clickedList.getId();
-        String b = clickedList.getTaskName();
         int c = clickedList.getTaskRequirementInteger();
-        String d = clickedList.getTaskRequirementString();
         int e = clickedList.getTaskLevelInteger();
         int f = clickedList.getAttempts();
 
         int newValue = c - progress;
 
-        if(newValue <= 0){difficultyLevels(clickedList, i, e, +1, progress,duration);}
-        else{
-            passToJournal(a,b,newValue,d,e,f,0,progress,duration);
-            taskDetailsListTest.set(i, new TaskDetails(a,b,newValue,d,e,f));
-            adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
-            taskDetails.setAdapter(adapter);
-            saveData();
-        }}
+        if(newValue <= 0)
+        {
+            //excess = newValue*-1;
+            //excess = excess/2;
+            difficultyLevels(clickedList, i, e, +1, progress,duration);
+        }
+        else
+        {
+            if(f>=2)
+            {
+                difficultyLevels(clickedList, i, e, -1, progress,duration);
+            }
+            else
+            {
+                difficultyLevels(clickedList, i, e, 0, progress,duration);
+            }
+        }
+
+
+
+    }
+
+
+
+
+
 
     public String[] popUpInfo(){
         //Fill this in later, position in array should correspond to position of list view
@@ -324,5 +378,12 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
     public static int getTaskCompleted(){
         return taskCompleted;
     }
+
+    //public static TaskDetails getList(){return listArgument;}
+
+    //public static int getLevelTest(){return levelTest;}
+
+
+
 }
 

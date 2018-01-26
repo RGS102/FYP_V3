@@ -105,9 +105,9 @@ public class Meditation extends AppCompatActivity {
         String cRequirmentString = clickedList.getTaskRequirementString();
         int cAttempts = clickedList.getAttempts();
 
-        cLevelInteger = cLevelInteger + levelUpOrDown;
         passToJournal(cId, cTaskName, cRequirmentInteger, cRequirmentString, cLevelInteger, cAttempts, levelUpOrDown, progress, duration);
-        cAttempts = 1;
+        cLevelInteger = cLevelInteger + levelUpOrDown;
+        //cAttempts = 1;
 
         if(cLevelInteger > 10){cLevelInteger = 1;}//JUST FOR TESTING PURPOSES - REMOVE/MODIFY LATER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         if(cLevelInteger<1){cLevelInteger = 1;}//JUST FOR TESTING PURPOSES - REMOVE/MODIFY LATER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -173,8 +173,9 @@ public class Meditation extends AppCompatActivity {
             if(cLevelInteger ==10){cRequirmentInteger = 50;}
         }
 
-
-        if(levelUpOrDown==+1){taskCompleted += 1;}
+        if(levelUpOrDown==+1){taskCompleted += 1; cAttempts=1;}
+        if(levelUpOrDown==0){cAttempts+=1;}
+        if(levelUpOrDown==-1){cAttempts=1;}
 
         meditationDetailsListTest.set(i, new TaskDetails(cId, cTaskName, cRequirmentInteger, cRequirmentString, cLevelInteger, cAttempts));
         adapter = new TaskDetailsAdapter(getApplicationContext(), meditationDetailsListTest);
