@@ -35,7 +35,7 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
     private static int taskCompleted = 0;
 
 
-    private int excess = 0;
+    private int[] excessArray = new int[]{0,0,0,0,0};
 
 
 
@@ -104,6 +104,8 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
                             progressUpdate(clickedList, dataTest, progressMade, duration);
                         }
                     }
+
+                    /*
                     else if(CompleteOrFail == -1)
                     {
                         if(cAttempts >= 2)
@@ -118,6 +120,8 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
                             difficultyLevels(clickedList, dataTest, cLevelInteger, 0, progressMade, duration);
                         }
                     }
+                    */
+
                 }
         }
     }
@@ -205,16 +209,10 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         String cRequirmentString = clickedList.getTaskRequirementString();
         int cAttempts = clickedList.getAttempts();
 
-
-
-
         passToJournal(cId, cTaskName, cRequirmentInteger, cRequirmentString, cLevelInteger, cAttempts, levelUpOrDown, progress, duration);
         cLevelInteger = cLevelInteger + levelUpOrDown;
 
-        //cAttempts = 1;
-
-        if(cLevelInteger > 10){cLevelInteger = 1;}  //JUST FOR TESTING PURPOSES - REMOVE/MODIFY LATER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        if(cLevelInteger<1){cLevelInteger = 1;} //JUST FOR TESTING PURPOSES - REMOVE/MODIFY LATER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        if(cLevelInteger<1){cLevelInteger = 1;}
 
         if(cId == 1){
             if(cLevelInteger == 1){cRequirmentInteger = 500;}
@@ -227,60 +225,63 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
             if(cLevelInteger == 8){cRequirmentInteger = 1200;}
             if(cLevelInteger == 9){cRequirmentInteger = 1300;}
             if(cLevelInteger == 10){cRequirmentInteger = 1400;}
+            if(cLevelInteger >= 11){cRequirmentInteger = 1400;}
         }
         if(cId == 2){
-            if(cLevelInteger ==1){cRequirmentInteger = 11;}
-            if(cLevelInteger ==2){cRequirmentInteger = 12+excess;}
-            if(cLevelInteger ==3){cRequirmentInteger = 13+excess;}
-            if(cLevelInteger ==4){cRequirmentInteger = 14+excess;}
-            if(cLevelInteger ==5){cRequirmentInteger = 15+excess;}
-            if(cLevelInteger ==6){cRequirmentInteger = 16+excess;}
-            if(cLevelInteger ==7){cRequirmentInteger = 17+excess;}
-            if(cLevelInteger ==8){cRequirmentInteger = 18+excess;}
-            if(cLevelInteger ==9){cRequirmentInteger = 19+excess;}
-            if(cLevelInteger ==10){cRequirmentInteger = 20+excess;}
+            if(cLevelInteger == 1){cRequirmentInteger = 11 + excessArray[1];}
+            if(cLevelInteger == 2){cRequirmentInteger = 12 + excessArray[1];}
+            if(cLevelInteger == 3){cRequirmentInteger = 13 + excessArray[1];}
+            if(cLevelInteger == 4){cRequirmentInteger = 14 + excessArray[1];}
+            if(cLevelInteger == 5){cRequirmentInteger = 15 + excessArray[1];}
+            if(cLevelInteger == 6){cRequirmentInteger = 16 + excessArray[1];}
+            if(cLevelInteger == 7){cRequirmentInteger = 17 + excessArray[1];}
+            if(cLevelInteger == 8){cRequirmentInteger = 18 + excessArray[1];}
+            if(cLevelInteger == 9){cRequirmentInteger = 19 + excessArray[1];}
+            if(cLevelInteger == 10){cRequirmentInteger = 20+ excessArray[1];}
+            if(cLevelInteger >= 11){cRequirmentInteger = 21+ excessArray[1];}
         }
         if(cId == 3){
-            if(cLevelInteger ==1){cRequirmentInteger = 21;}
-            if(cLevelInteger ==2){cRequirmentInteger = 22;}
-            if(cLevelInteger ==3){cRequirmentInteger = 23;}
-            if(cLevelInteger ==4){cRequirmentInteger = 24;}
-            if(cLevelInteger ==5){cRequirmentInteger = 25;}
-            if(cLevelInteger ==6){cRequirmentInteger = 26;}
-            if(cLevelInteger ==7){cRequirmentInteger = 27;}
-            if(cLevelInteger ==8){cRequirmentInteger = 28;}
-            if(cLevelInteger ==9){cRequirmentInteger = 29;}
-            if(cLevelInteger ==10){cRequirmentInteger = 30;}
+            if(cLevelInteger == 1){cRequirmentInteger = 21 + excessArray[2];}
+            if(cLevelInteger == 2){cRequirmentInteger = 22 + excessArray[2];}
+            if(cLevelInteger == 3){cRequirmentInteger = 23 + excessArray[2];}
+            if(cLevelInteger == 4){cRequirmentInteger = 24 + excessArray[2];}
+            if(cLevelInteger == 5){cRequirmentInteger = 25 + excessArray[2];}
+            if(cLevelInteger == 6){cRequirmentInteger = 26 + excessArray[2];}
+            if(cLevelInteger == 7){cRequirmentInteger = 27 + excessArray[2];}
+            if(cLevelInteger == 8){cRequirmentInteger = 28 + excessArray[2];}
+            if(cLevelInteger == 9){cRequirmentInteger = 29 + excessArray[2];}
+            if(cLevelInteger == 10){cRequirmentInteger = 30+ excessArray[2];}
+            if(cLevelInteger >= 11){cRequirmentInteger = 21+ excessArray[2];}
         }
         if(cId == 4){
-            if(cLevelInteger ==1){cRequirmentInteger = 31;}
-            if(cLevelInteger ==2){cRequirmentInteger = 32;}
-            if(cLevelInteger ==3){cRequirmentInteger = 33;}
-            if(cLevelInteger ==4){cRequirmentInteger = 34;}
-            if(cLevelInteger ==5){cRequirmentInteger = 35;}
-            if(cLevelInteger ==6){cRequirmentInteger = 36;}
-            if(cLevelInteger ==7){cRequirmentInteger = 37;}
-            if(cLevelInteger ==8){cRequirmentInteger = 38;}
-            if(cLevelInteger ==9){cRequirmentInteger = 39;}
-            if(cLevelInteger ==10){cRequirmentInteger = 40;}
+            if(cLevelInteger == 1){cRequirmentInteger = 31 + excessArray[3];}
+            if(cLevelInteger == 2){cRequirmentInteger = 32 + excessArray[3];}
+            if(cLevelInteger == 3){cRequirmentInteger = 33 + excessArray[3];}
+            if(cLevelInteger == 4){cRequirmentInteger = 34 + excessArray[3];}
+            if(cLevelInteger == 5){cRequirmentInteger = 35 + excessArray[3];}
+            if(cLevelInteger == 6){cRequirmentInteger = 36 + excessArray[3];}
+            if(cLevelInteger == 7){cRequirmentInteger = 37 + excessArray[3];}
+            if(cLevelInteger == 8){cRequirmentInteger = 38 + excessArray[3];}
+            if(cLevelInteger == 9){cRequirmentInteger = 39 + excessArray[3];}
+            if(cLevelInteger == 10){cRequirmentInteger = 40+ excessArray[3];}
+            if(cLevelInteger >= 11){cRequirmentInteger = 41+ excessArray[3];}
         }
         if(cId == 5){
-            if(cLevelInteger ==1){cRequirmentInteger = 41;}
-            if(cLevelInteger ==2){cRequirmentInteger = 42;}
-            if(cLevelInteger ==3){cRequirmentInteger = 43;}
-            if(cLevelInteger ==4){cRequirmentInteger = 44;}
-            if(cLevelInteger ==5){cRequirmentInteger = 45;}
-            if(cLevelInteger ==6){cRequirmentInteger = 46;}
-            if(cLevelInteger ==7){cRequirmentInteger = 47;}
-            if(cLevelInteger ==8){cRequirmentInteger = 48;}
-            if(cLevelInteger ==9){cRequirmentInteger = 49;}
-            if(cLevelInteger ==10){cRequirmentInteger = 50;}
+            if(cLevelInteger == 1){cRequirmentInteger = 41 + excessArray[4];}
+            if(cLevelInteger == 2){cRequirmentInteger = 42 + excessArray[4];}
+            if(cLevelInteger == 3){cRequirmentInteger = 43 + excessArray[4];}
+            if(cLevelInteger == 4){cRequirmentInteger = 44 + excessArray[4];}
+            if(cLevelInteger == 5){cRequirmentInteger = 45 + excessArray[4];}
+            if(cLevelInteger == 6){cRequirmentInteger = 46 + excessArray[4];}
+            if(cLevelInteger == 7){cRequirmentInteger = 47 + excessArray[4];}
+            if(cLevelInteger == 8){cRequirmentInteger = 48 + excessArray[4];}
+            if(cLevelInteger == 9){cRequirmentInteger = 49 + excessArray[4];}
+            if(cLevelInteger == 10){cRequirmentInteger = 50+ excessArray[4];}
+            if(cLevelInteger >= 11){cRequirmentInteger = 51+ excessArray[4];}
         }
 
         if(levelUpOrDown==+1){taskCompleted += 1; cAttempts=1;}
-        if(levelUpOrDown==0){cAttempts+=1;}
         if(levelUpOrDown==-1){cAttempts=1;}
-        //cAttempts=1;
 
         taskDetailsListTest.set(i, new TaskDetails(cId, cTaskName, cRequirmentInteger, cRequirmentString, cLevelInteger, cAttempts));
         adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
@@ -288,40 +289,47 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         saveData();
     }
 
-
     private void progressUpdate(TaskDetails clickedList, int i, int progress, int duration){
+        int a = clickedList.getId();
+        String b = clickedList.getTaskName();
         int c = clickedList.getTaskRequirementInteger();
+        String d = clickedList.getTaskRequirementString();
         int e = clickedList.getTaskLevelInteger();
         int f = clickedList.getAttempts();
 
         int newValue = c - progress;
+        taskDetailsListTest.set(i, new TaskDetails(a,b,newValue,d,e,f));
+        adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
+        taskDetails.setAdapter(adapter);
+        saveData();
 
         if(newValue <= 0)
         {
-            //excess = newValue*-1;
-            //excess = excess/2;
+            int temp = newValue*-1;
+            int temp2 = excessArray[i];
+            if(temp > temp2){excessArray[i] = temp;}
             difficultyLevels(clickedList, i, e, +1, progress,duration);
         }
         else
         {
             if(f>=2)
             {
+                int temp = excessArray[i];
+                if(temp>=2) {temp = temp/2;}
+                else{temp = 0;}
+                excessArray[i]=temp;
                 difficultyLevels(clickedList, i, e, -1, progress,duration);
             }
             else
             {
-                difficultyLevels(clickedList, i, e, 0, progress,duration);
+                passToJournal(a,b,newValue,d,e,f+1,0, progress, duration);
+                taskDetailsListTest.set(i, new TaskDetails(a,b,newValue,d,e,f+1));
+                adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
+                taskDetails.setAdapter(adapter);
+                saveData();
             }
         }
-
-
-
     }
-
-
-
-
-
 
     public String[] popUpInfo(){
         //Fill this in later, position in array should correspond to position of list view
@@ -379,9 +387,6 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         return taskCompleted;
     }
 
-    //public static TaskDetails getList(){return listArgument;}
-
-    //public static int getLevelTest(){return levelTest;}
 
 
 

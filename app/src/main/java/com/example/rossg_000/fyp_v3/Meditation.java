@@ -67,10 +67,11 @@ public class Meditation extends AppCompatActivity {
                     int duration = data.getIntExtra("Duration", 0);
 
                     if(CompleteOrFail == +1){if(progressMade > 0) {progressUpdate(clickedList, dataTest, progressMade, duration);}}
-                    else if(CompleteOrFail == -1) {
+                    /*else if(CompleteOrFail == -1) {
                         if(cAttempts >= 2){difficultyLevels(clickedList, dataTest, cLevelInteger, CompleteOrFail, progressMade, duration);}
                         else {difficultyLevels(clickedList, dataTest, cLevelInteger, 0, progressMade, duration);}
-                    }}}}
+                    }*/
+                }}}
 
     private void saveData(){
         SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
@@ -123,6 +124,7 @@ public class Meditation extends AppCompatActivity {
             if(cLevelInteger == 8){cRequirmentInteger = 1200;}
             if(cLevelInteger == 9){cRequirmentInteger = 1300;}
             if(cLevelInteger == 10){cRequirmentInteger = 1400;}
+            if(cLevelInteger >= 11){cRequirmentInteger = 1400;}
         }
         if(cId == 2){
             if(cLevelInteger ==1){cRequirmentInteger = 11;}
@@ -135,6 +137,7 @@ public class Meditation extends AppCompatActivity {
             if(cLevelInteger ==8){cRequirmentInteger = 18;}
             if(cLevelInteger ==9){cRequirmentInteger = 19;}
             if(cLevelInteger ==10){cRequirmentInteger = 20;}
+            if(cLevelInteger >= 11){cRequirmentInteger = 21;}
         }
         if(cId == 3){
             if(cLevelInteger ==1){cRequirmentInteger = 21;}
@@ -147,6 +150,7 @@ public class Meditation extends AppCompatActivity {
             if(cLevelInteger ==8){cRequirmentInteger = 28;}
             if(cLevelInteger ==9){cRequirmentInteger = 29;}
             if(cLevelInteger ==10){cRequirmentInteger = 30;}
+            if(cLevelInteger >= 11){cRequirmentInteger = 31;}
         }
         if(cId == 4){
             if(cLevelInteger ==1){cRequirmentInteger = 31;}
@@ -159,6 +163,7 @@ public class Meditation extends AppCompatActivity {
             if(cLevelInteger ==8){cRequirmentInteger = 38;}
             if(cLevelInteger ==9){cRequirmentInteger = 39;}
             if(cLevelInteger ==10){cRequirmentInteger = 40;}
+            if(cLevelInteger >= 11){cRequirmentInteger = 41;}
         }
         if(cId == 5){
             if(cLevelInteger ==1){cRequirmentInteger = 41;}
@@ -171,10 +176,11 @@ public class Meditation extends AppCompatActivity {
             if(cLevelInteger ==8){cRequirmentInteger = 48;}
             if(cLevelInteger ==9){cRequirmentInteger = 49;}
             if(cLevelInteger ==10){cRequirmentInteger = 50;}
+            if(cLevelInteger >= 11){cRequirmentInteger = 51;}
         }
 
         if(levelUpOrDown==+1){taskCompleted += 1; cAttempts=1;}
-        if(levelUpOrDown==0){cAttempts+=1;}
+        //if(levelUpOrDown==0){cAttempts+=1;}
         if(levelUpOrDown==-1){cAttempts=1;}
 
         meditationDetailsListTest.set(i, new TaskDetails(cId, cTaskName, cRequirmentInteger, cRequirmentString, cLevelInteger, cAttempts));
@@ -193,14 +199,35 @@ public class Meditation extends AppCompatActivity {
 
         int newValue = c - progress;
 
-        if(newValue <= 0){difficultyLevels(clickedList, i, e, +1, progress,duration);}
-        else{
-            passToJournal(a,b,newValue,d,e,f,0,progress,duration);
-            meditationDetailsListTest.set(i, new TaskDetails(a,b,newValue,d,e,f));
-            adapter = new TaskDetailsAdapter(getApplicationContext(), meditationDetailsListTest);
-            meditationDetails.setAdapter(adapter);
-            saveData();
-        }}
+        meditationDetailsListTest.set(i, new TaskDetails(a,b,newValue,d,e,f));
+        adapter = new TaskDetailsAdapter(getApplicationContext(), meditationDetailsListTest);
+        meditationDetails.setAdapter(adapter);
+        saveData();
+
+
+        if(newValue <= 0)
+        {
+            //excess = newValue*-1;
+            //excess = excess/2;
+            difficultyLevels(clickedList, i, e, +1, progress,duration);
+        }
+        else
+        {
+            if(f>=2)
+            {
+                difficultyLevels(clickedList, i, e, -1, progress,duration);
+            }
+            else
+            {
+                passToJournal(a,b,newValue,d,e,f+1,0, progress, duration);
+                meditationDetailsListTest.set(i, new TaskDetails(a,b,newValue,d,e,f));
+                adapter = new TaskDetailsAdapter(getApplicationContext(), meditationDetailsListTest);
+                meditationDetails.setAdapter(adapter);
+                saveData();
+            }
+        }
+
+    }
 
     public String[] popUpInfo(){
         //Fill this in later, position in array should correspond to position of list view

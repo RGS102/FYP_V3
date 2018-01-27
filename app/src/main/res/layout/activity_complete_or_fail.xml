@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.rossg_000.fyp_v3.CompleteOrFail">
 
+    <!--
     <Button
         android:id="@+id/Fail"
         android:layout_width="wrap_content"
@@ -15,6 +16,8 @@
         android:text="Give Up"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+     -->
+
 
     <Button
         android:id="@+id/Complete"

@@ -21,7 +21,7 @@ public class CompleteOrFail extends AppCompatActivity {
         setContentView(R.layout.activity_complete_or_fail);
 
         Button Complete = (Button) findViewById(R.id.Complete);
-        Button Fail = (Button) findViewById(R.id.Fail);
+        //Button Fail = (Button) findViewById(R.id.Fail);
 
         Complete.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -49,6 +49,7 @@ public class CompleteOrFail extends AppCompatActivity {
             }
         });
 
+        /*
         Fail.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -59,6 +60,7 @@ public class CompleteOrFail extends AppCompatActivity {
                 finish();
             }
         });
+        */
     }
 
     public static int getResult(Intent intent){

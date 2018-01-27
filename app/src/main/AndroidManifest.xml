@@ -47,6 +47,7 @@
             android:label="Meditation"/>
         <activity
             android:name=".PopUpInfo"
+            android:label="Activity Information"
             android:theme="@style/Theme.AppCompat.Dialog.Alert" />
         <activity
             android:name=".CompleteOrFail"
