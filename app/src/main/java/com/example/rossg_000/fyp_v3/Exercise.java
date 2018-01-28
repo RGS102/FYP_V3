@@ -28,19 +28,13 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
     private TaskDetailsAdapter adapter;
     private List<TaskDetails> taskDetailsListTest;
     private int dataTest = 0;
-    //TextView stepCounter;   //TESTING PURPOSE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     SensorManager sensorManager;    //To do with the step count sensor, might change later
     boolean running = false;    //To do with the step count sensor, might change later
-
     private static int taskCompleted = 0;
-
-
     private int[] excessArray = new int[]{0,0,0,0,0};
 
 
 
-    //private static TaskDetails listArgument = null;
-    //private static int levelTest = 0;
 
 
 
@@ -126,56 +120,6 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         }
     }
 
-    /*
-    private void countDownTimer(final TaskDetails clickedList, final int i)
-    {
-        thread = new Thread(){
-            @Override
-            public void run() {
-                try {
-                    while (!isInterrupted()) {
-                        Thread.sleep(1000);
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                count+=1000;
-                                long fullTime = clickedList.getTimeRemaining();
-
-                                TextView timeRemaining = (TextView) findViewById(R.id.timeRemaining);
-                                fullTime = fullTime - count;
-                                //SimpleDateFormat timeRemainingFormat = new SimpleDateFormat("dd:HH:mm:ss");
-                                //String fullString = timeRemainingFormat.format(fullTime);
-                                //timeRemaining.setText(fullString);
-
-                                taskDetailsListTest.set(i, new TaskDetails(clickedList.getId(), clickedList.getTaskName(),clickedList.getTaskRequirementInteger(),clickedList.getTaskRequirementString(),clickedList.getTaskLevelString(),clickedList.getTaskLevelInteger(), fullTime));
-                                */
-                                /*
-                                int testSeconds = (int)fullTime/1000;
-                                int testMinutes = testSeconds/60;
-                                int testHours = testMinutes/60;
-                                int testDays = testHours/60;
-
-                                taskDetailsListTest.set(i, new TaskDetails(1, clickedList.getTaskName(), clickedList.getTaskRequirementInteger()+9, clickedList.getTaskRequirementString(), clickedList.getTaskLevelString(), clickedList.getTaskLevelInteger(), testDays, testHours%24, testMinutes%60, testSeconds%60));
-                                */
-                                /*
-                                adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
-                                taskDetails.setAdapter(adapter);
-                                saveData();
-
-
-
-                            }
-                        });
-                    }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-        thread.start();
-    }
-    */
-
     private void saveData(){
         SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -194,7 +138,7 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
 
         if(taskDetailsListTest == null){
             taskDetailsListTest = new ArrayList<>();
-            taskDetailsListTest.add(new TaskDetails(1, "Walk" , 500, "step(s)"  , 1, 1));
+            taskDetailsListTest.add(new TaskDetails(1, "Walk" , 5, "step(s)"  , 1, 1));
             taskDetailsListTest.add(new TaskDetails(2, "Run"  , 1, "mile(s)"  , 1, 1));
             taskDetailsListTest.add(new TaskDetails(3, "Jog"  , 1, "mile(s)"  ,  1, 1));
             taskDetailsListTest.add(new TaskDetails(4, "Swim" , 1, "length(s)",  1, 1));
@@ -386,9 +330,5 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
     public static int getTaskCompleted(){
         return taskCompleted;
     }
-
-
-
-
 }
 
