@@ -8,29 +8,23 @@ public class JournalDetails {
     private int Id;
     private String taskName;
     private int taskRequirementInteger;
-    private String taskRequirementString;
     private int taskLevelInteger;
     private int attempts;
     private String upOrDown;
     private String time;
     private String date;
-    private int progressMade;
-    private int duration;
-    private String taskAction;
+    private String progressString;
 
-    public JournalDetails(int Id, String taskName, int taskRequirementInteger, String taskRequirementString, int taskLevelInteger, int attempts, String upOrDown, String time, String date, int progressMade, int duration, String taskAction){
+    public JournalDetails(int Id, String taskName, int taskRequirementInteger, int taskLevelInteger, int attempts, String upOrDown, String time, String date, String progressString){
         this.Id = Id;
         this.taskName = taskName;
         this.taskRequirementInteger = taskRequirementInteger;
-        this.taskRequirementString = taskRequirementString;
         this.taskLevelInteger = taskLevelInteger;
         this.attempts = attempts;
         this.upOrDown = upOrDown;
         this.time = time;
         this.date = date;
-        this.progressMade = progressMade;
-        this.duration = duration;
-        this.taskAction = taskAction;
+        this.progressString = progressString;
     }
 
     public int getId() {
@@ -55,14 +49,6 @@ public class JournalDetails {
 
     public void setTaskRequirementInteger(int taskRequirementInteger) {
         this.taskRequirementInteger = taskRequirementInteger;
-    }
-
-    public String getTaskRequirementString() {
-        return taskRequirementString;
-    }
-
-    public void setTaskRequirementString(String taskRequirementString) {
-        this.taskRequirementString = taskRequirementString;
     }
 
     public int getTaskLevelInteger() {
@@ -105,28 +91,12 @@ public class JournalDetails {
         this.date = date;
     }
 
-    public int getProgressMade() {
-        return progressMade;
+    public String getProgressString() {
+        return progressString;
     }
 
-    public void setProgressMade(int progressMade) {
-        this.progressMade = progressMade;
-    }
-
-    public int getDuration() {
-        return duration;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
-
-    public String getTaskAction() {
-        return taskAction;
-    }
-
-    public void setTaskAction(String taskAction) {
-        this.taskAction = taskAction;
+    public void setProgressString(String progressString) {
+        this.progressString = progressString;
     }
 }
 

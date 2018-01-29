@@ -266,7 +266,7 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
             }
             else
             {
-                passToJournal(a,b,newValue,d,e,f+1,0, progress, duration);
+                passToJournal(a,b,newValue,d,e,f,0, progress, duration);
                 taskDetailsListTest.set(i, new TaskDetails(a,b,newValue,d,e,f+1));
                 adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
                 taskDetails.setAdapter(adapter);

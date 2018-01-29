@@ -43,11 +43,17 @@ public class Journal extends AppCompatActivity{
             String[] taskArray = {"Walked", "Ran", "a", "b", "c"};
             String taskAction = taskArray[ID-1];
 
+            String progressString="";
+
+            if(duration == 0){
+                progressString = taskAction + " " + String.valueOf(progressMade) + " " + RequirmentString;
+            }else{progressString = taskAction + " " +  String.valueOf(progressMade) + " " + RequirmentString + " for " + String.valueOf(duration) + " minutes";}
+
             String upOrDown = "";
             if(upOrDowntemp == 1){upOrDown = "Leveled up";
             }else if(upOrDowntemp==-1){upOrDown = "Leveled down";}
 
-            journalDetailsListTest.add(0,new JournalDetails(ID, TaskName,RequirmentInteger,RequirmentString, level, attempts, upOrDown, formattedTime, formattedDate, progressMade, duration, taskAction));
+            journalDetailsListTest.add(0,new JournalDetails(ID, TaskName,RequirmentInteger, level, attempts, upOrDown, formattedTime, formattedDate, progressString));
         }
 
         adapter = new JournalDetailsAdapter(getApplicationContext(), journalDetailsListTest);

@@ -38,8 +38,24 @@ public class MainActivity extends AppCompatActivity {
         completedExercises.setText(String.valueOf(i));
         completedMeditations.setText(String.valueOf(j));
         completedTasks.setText(String.valueOf(k));
-
     }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        TextView completedTasks = (TextView)findViewById(R.id.CompletedTasks);
+        TextView completedExercises = (TextView)findViewById(R.id.ExercisesCompleted);
+        TextView completedMeditations = (TextView)findViewById(R.id.MeditationsCompleted);
+
+        int i = Exercise.getTaskCompleted();
+        int j = Meditation.getTaskCompleted();
+        int k = i + j;
+
+        completedExercises.setText(String.valueOf(i));
+        completedMeditations.setText(String.valueOf(j));
+        completedTasks.setText(String.valueOf(k));
+    }
+
 
     /** Called when the user taps the button */
     public void goToPage(View view) {

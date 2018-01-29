@@ -30,11 +30,11 @@ import java.util.concurrent.TimeUnit;
 
 public class Tasks extends AppCompatActivity {
     Handler handler = new Handler();
-    long timeInMilli = 00;
     Button start;
     Button stop;
     TextView timeDisplay;
     boolean pause = false;
+    long timeInMilli = 0;
     long temp = 0;
 
 
@@ -54,7 +54,6 @@ public class Tasks extends AppCompatActivity {
                 pause = false;
                 temp = 0;
 
-                //startTime = SystemClock.uptimeMillis();
                 handler.removeCallbacks(updateTimer);
                 handler.postDelayed(updateTimer, 0);
             }
@@ -84,13 +83,36 @@ public class Tasks extends AppCompatActivity {
                 //SimpleDateFormat timeRemainingFormat = new SimpleDateFormat("HH:mm:ss");
                 //String time = timeRemainingFormat.format(timeInMilli);
 
+                //WEIRD GLITCH AFTER COMING BACK FROM STANDBY WHILE CLOCK IS RUNNING
+                long seconds = timeInMilli/1000;
+                long minutes = seconds/60;
+                long hours = minutes/60;
+                seconds = seconds%60;
 
+                //MODULO MIGHT FIX THE 61 SECONDS GLITCH
+                //ALSO PROBABLY NEEDS TO SAVE AND LOAD THE LAST VALUE OF MILLISECONDS
+
+                String secString = String.valueOf(seconds);;// = String.valueOf(seconds);
+                String minString = String.valueOf(minutes);;
+                String hourString = String.valueOf(hours);;
+
+
+                if(seconds<10){secString = "0"+ String.valueOf(seconds);}
+                if(minutes<10){minString = "0"+ String.valueOf(minutes);}
+                if(hours<10){hourString = "0"+ String.valueOf(hours);}
+
+                String time = hourString + ":" + minString +":"+ secString;
+
+
+                /*
                 String time = String.format("%d:%d:%d:%d",
                         TimeUnit.MILLISECONDS.toDays(timeInMilli),
                         TimeUnit.MILLISECONDS.toHours(timeInMilli),
                         TimeUnit.MILLISECONDS.toMinutes(timeInMilli),
                         TimeUnit.MILLISECONDS.toSeconds(timeInMilli)
                         - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(timeInMilli)));
+                */
+
                 temp = timeInMilli;
                 timeDisplay.setText(time);
 
