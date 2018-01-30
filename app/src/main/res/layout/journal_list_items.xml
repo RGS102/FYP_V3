@@ -14,8 +14,9 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="TextView"
-        android:textColor="@android:color/holo_blue_dark"
+        android:textColor="@android:color/background_dark"
         android:textSize="15dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,7 +27,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="45dp"
         android:text="Level:"
-        android:textColor="@android:color/holo_blue_dark"
+        android:textColor="@android:color/background_dark"
         android:textSize="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -38,7 +39,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="45dp"
         android:text="TextView"
-        android:textColor="@android:color/holo_blue_dark"
+        android:textColor="@android:color/background_dark"
         android:textSize="15dp"
         app:layout_constraintStart_toEndOf="@+id/JournalLevelString"
         app:layout_constraintTop_toTopOf="parent" />
@@ -50,7 +51,7 @@
         android:layout_marginStart="150dp"
         android:layout_marginTop="45dp"
         android:text="Attempt:"
-        android:textColor="@android:color/holo_blue_dark"
+        android:textColor="@android:color/background_dark"
         android:textSize="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -62,7 +63,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="45dp"
         android:text="TextView"
-        android:textColor="@android:color/holo_blue_dark"
+        android:textColor="@android:color/background_dark"
         android:textSize="15dp"
         app:layout_constraintStart_toEndOf="@+id/JournalAttemptString"
         app:layout_constraintTop_toTopOf="parent" />
@@ -74,7 +75,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="85dp"
         android:text="TextView"
-        android:textColor="@android:color/holo_blue_dark"
+        android:textColor="@android:color/background_dark"
         android:textSize="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -86,7 +87,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="25dp"
         android:text="Time:"
-        android:textColor="@android:color/holo_blue_dark"
+        android:textColor="@android:color/background_dark"
         android:textSize="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -98,7 +99,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="25dp"
         android:text="TextView"
-        android:textColor="@android:color/holo_blue_dark"
+        android:textColor="@android:color/background_dark"
         android:textSize="15dp"
         app:layout_constraintStart_toEndOf="@+id/JournalTimeString"
         app:layout_constraintTop_toTopOf="parent" />
@@ -110,7 +111,7 @@
         android:layout_marginStart="150dp"
         android:layout_marginTop="25dp"
         android:text="Date:"
-        android:textColor="@android:color/holo_blue_dark"
+        android:textColor="@android:color/background_dark"
         android:textSize="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -122,7 +123,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="25dp"
         android:text="TextView"
-        android:textColor="@android:color/holo_blue_dark"
+        android:textColor="@android:color/background_dark"
         android:textSize="15dp"
         app:layout_constraintStart_toEndOf="@+id/JournalDateString"
         app:layout_constraintTop_toTopOf="parent" />
@@ -134,7 +135,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="65dp"
         android:text="TextView"
-        android:textColor="@android:color/holo_blue_dark"
+        android:textColor="@android:color/background_dark"
         android:textSize="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
