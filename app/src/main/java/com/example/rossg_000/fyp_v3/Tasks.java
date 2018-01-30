@@ -73,29 +73,24 @@ public class Tasks extends AppCompatActivity {
         });
     }
 
-
     Runnable updateTimer = new Runnable() {
         @Override
         public void run() {
             if (pause == false) {
                 timeInMilli += 1000;
 
-                //SimpleDateFormat timeRemainingFormat = new SimpleDateFormat("HH:mm:ss");
-                //String time = timeRemainingFormat.format(timeInMilli);
-
                 //WEIRD GLITCH AFTER COMING BACK FROM STANDBY WHILE CLOCK IS RUNNING
                 long seconds = timeInMilli/1000;
                 long minutes = seconds/60;
                 long hours = minutes/60;
                 seconds = seconds%60;
+                minutes = minutes%60;
 
-                //MODULO MIGHT FIX THE 61 SECONDS GLITCH
                 //ALSO PROBABLY NEEDS TO SAVE AND LOAD THE LAST VALUE OF MILLISECONDS
 
-                String secString = String.valueOf(seconds);;// = String.valueOf(seconds);
-                String minString = String.valueOf(minutes);;
-                String hourString = String.valueOf(hours);;
-
+                String secString = String.valueOf(seconds);
+                String minString = String.valueOf(minutes);
+                String hourString = String.valueOf(hours);
 
                 if(seconds<10){secString = "0"+ String.valueOf(seconds);}
                 if(minutes<10){minString = "0"+ String.valueOf(minutes);}
@@ -104,19 +99,8 @@ public class Tasks extends AppCompatActivity {
                 String time = hourString + ":" + minString +":"+ secString;
 
 
-                /*
-                String time = String.format("%d:%d:%d:%d",
-                        TimeUnit.MILLISECONDS.toDays(timeInMilli),
-                        TimeUnit.MILLISECONDS.toHours(timeInMilli),
-                        TimeUnit.MILLISECONDS.toMinutes(timeInMilli),
-                        TimeUnit.MILLISECONDS.toSeconds(timeInMilli)
-                        - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(timeInMilli)));
-                */
-
                 temp = timeInMilli;
                 timeDisplay.setText(time);
-
-                //timeDisplay.setText(hours+":"+String.format("%2d", minutes)+":"+ String.format("%2d", seconds));//+ ":" + String.format("%2d", milliseconds));
                 handler.postDelayed(this, 0);
             }
         }

@@ -20,6 +20,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 
 public class Exercise extends AppCompatActivity implements SensorEventListener {
@@ -31,7 +32,10 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
     SensorManager sensorManager;    //To do with the step count sensor, might change later
     boolean running = false;    //To do with the step count sensor, might change later
     private static int taskCompleted = 0;
-    private int[] excessArray = new int[]{0,0,0,0,0};
+    //private int[] excessArray = new int[]{0,0,0,0,0};
+
+
+    private List<Integer> excessList;
 
 
 
@@ -60,6 +64,8 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
                 final Intent intent = new Intent(getApplicationContext(), PopUpInfo.class);
                 intent.putExtra("details", taskInfo[i]);
                 startActivity(intent);
+                //loadExcess();
+                //Toast.makeText(Exercise.this, "Excess: " +excessList.get(i), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -93,29 +99,8 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
 
                     if(CompleteOrFail == +1)
                     {
-                        if(progressMade > 0)
-                        {
-                            progressUpdate(clickedList, dataTest, progressMade, duration);
-                        }
+                        if(progressMade > 0) {progressUpdate(clickedList, dataTest, progressMade, duration);}
                     }
-
-                    /*
-                    else if(CompleteOrFail == -1)
-                    {
-                        if(cAttempts >= 2)
-                        {
-                            //if(excess!=0){
-                            //    excess=excess/2;
-                           // }
-                            difficultyLevels(clickedList, dataTest, cLevelInteger, CompleteOrFail, progressMade, duration);
-                        }
-                        else
-                        {
-                            difficultyLevels(clickedList, dataTest, cLevelInteger, 0, progressMade, duration);
-                        }
-                    }
-                    */
-
                 }
         }
     }
@@ -138,11 +123,11 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
 
         if(taskDetailsListTest == null){
             taskDetailsListTest = new ArrayList<>();
-            taskDetailsListTest.add(new TaskDetails(1, "Walk" , 5, "step(s)"  , 1, 1));
-            taskDetailsListTest.add(new TaskDetails(2, "Run"  , 1, "mile(s)"  , 1, 1));
-            taskDetailsListTest.add(new TaskDetails(3, "Jog"  , 1, "mile(s)"  ,  1, 1));
-            taskDetailsListTest.add(new TaskDetails(4, "Swim" , 1, "length(s)",  1, 1));
-            taskDetailsListTest.add(new TaskDetails(5, "Cycle", 1, "mile(s)"  ,  1, 1));
+            taskDetailsListTest.add(new TaskDetails(1, "Walk" , 500, "step(s)"  , 1, 1));
+            taskDetailsListTest.add(new TaskDetails(2, "Run"  , 11, "mile(s)"  , 1, 1));
+            taskDetailsListTest.add(new TaskDetails(3, "Jog"  , 21, "mile(s)"  ,  1, 1));
+            taskDetailsListTest.add(new TaskDetails(4, "Swim" , 31, "length(s)",  1, 1));
+            taskDetailsListTest.add(new TaskDetails(5, "Cycle", 41, "mile(s)"  ,  1, 1));
         }}
 
 
@@ -157,6 +142,9 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         cLevelInteger = cLevelInteger + levelUpOrDown;
 
         if(cLevelInteger<1){cLevelInteger = 1;}
+        //loadExcessArray();
+        loadExcess();
+        int e = excessList.get(i);
 
         if(cId == 1){
             if(cLevelInteger == 1){cRequirmentInteger = 500;}
@@ -172,56 +160,56 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
             if(cLevelInteger >= 11){cRequirmentInteger = 1400;}
         }
         if(cId == 2){
-            if(cLevelInteger == 1){cRequirmentInteger = 11 + excessArray[1];}
-            if(cLevelInteger == 2){cRequirmentInteger = 12 + excessArray[1];}
-            if(cLevelInteger == 3){cRequirmentInteger = 13 + excessArray[1];}
-            if(cLevelInteger == 4){cRequirmentInteger = 14 + excessArray[1];}
-            if(cLevelInteger == 5){cRequirmentInteger = 15 + excessArray[1];}
-            if(cLevelInteger == 6){cRequirmentInteger = 16 + excessArray[1];}
-            if(cLevelInteger == 7){cRequirmentInteger = 17 + excessArray[1];}
-            if(cLevelInteger == 8){cRequirmentInteger = 18 + excessArray[1];}
-            if(cLevelInteger == 9){cRequirmentInteger = 19 + excessArray[1];}
-            if(cLevelInteger == 10){cRequirmentInteger = 20+ excessArray[1];}
-            if(cLevelInteger >= 11){cRequirmentInteger = 21+ excessArray[1];}
+            if(cLevelInteger == 1){cRequirmentInteger = 11 + e;}
+            if(cLevelInteger == 2){cRequirmentInteger = 12 + e;}
+            if(cLevelInteger == 3){cRequirmentInteger = 13 + e;}
+            if(cLevelInteger == 4){cRequirmentInteger = 14 + e;}
+            if(cLevelInteger == 5){cRequirmentInteger = 15 + e;}
+            if(cLevelInteger == 6){cRequirmentInteger = 16 + e;}
+            if(cLevelInteger == 7){cRequirmentInteger = 17 + e;}
+            if(cLevelInteger == 8){cRequirmentInteger = 18 + e;}
+            if(cLevelInteger == 9){cRequirmentInteger = 19 + e;}
+            if(cLevelInteger == 10){cRequirmentInteger = 20+ e;}
+            if(cLevelInteger >= 11){cRequirmentInteger = 21+ e;}
         }
         if(cId == 3){
-            if(cLevelInteger == 1){cRequirmentInteger = 21 + excessArray[2];}
-            if(cLevelInteger == 2){cRequirmentInteger = 22 + excessArray[2];}
-            if(cLevelInteger == 3){cRequirmentInteger = 23 + excessArray[2];}
-            if(cLevelInteger == 4){cRequirmentInteger = 24 + excessArray[2];}
-            if(cLevelInteger == 5){cRequirmentInteger = 25 + excessArray[2];}
-            if(cLevelInteger == 6){cRequirmentInteger = 26 + excessArray[2];}
-            if(cLevelInteger == 7){cRequirmentInteger = 27 + excessArray[2];}
-            if(cLevelInteger == 8){cRequirmentInteger = 28 + excessArray[2];}
-            if(cLevelInteger == 9){cRequirmentInteger = 29 + excessArray[2];}
-            if(cLevelInteger == 10){cRequirmentInteger = 30+ excessArray[2];}
-            if(cLevelInteger >= 11){cRequirmentInteger = 21+ excessArray[2];}
+            if(cLevelInteger == 1){cRequirmentInteger = 21 + e;}
+            if(cLevelInteger == 2){cRequirmentInteger = 22 + e;}
+            if(cLevelInteger == 3){cRequirmentInteger = 23 + e;}
+            if(cLevelInteger == 4){cRequirmentInteger = 24 + e;}
+            if(cLevelInteger == 5){cRequirmentInteger = 25 + e;}
+            if(cLevelInteger == 6){cRequirmentInteger = 26 + e;}
+            if(cLevelInteger == 7){cRequirmentInteger = 27 + e;}
+            if(cLevelInteger == 8){cRequirmentInteger = 28 + e;}
+            if(cLevelInteger == 9){cRequirmentInteger = 29 + e;}
+            if(cLevelInteger == 10){cRequirmentInteger = 30+ e;}
+            if(cLevelInteger >= 11){cRequirmentInteger = 21+ e;}
         }
         if(cId == 4){
-            if(cLevelInteger == 1){cRequirmentInteger = 31 + excessArray[3];}
-            if(cLevelInteger == 2){cRequirmentInteger = 32 + excessArray[3];}
-            if(cLevelInteger == 3){cRequirmentInteger = 33 + excessArray[3];}
-            if(cLevelInteger == 4){cRequirmentInteger = 34 + excessArray[3];}
-            if(cLevelInteger == 5){cRequirmentInteger = 35 + excessArray[3];}
-            if(cLevelInteger == 6){cRequirmentInteger = 36 + excessArray[3];}
-            if(cLevelInteger == 7){cRequirmentInteger = 37 + excessArray[3];}
-            if(cLevelInteger == 8){cRequirmentInteger = 38 + excessArray[3];}
-            if(cLevelInteger == 9){cRequirmentInteger = 39 + excessArray[3];}
-            if(cLevelInteger == 10){cRequirmentInteger = 40+ excessArray[3];}
-            if(cLevelInteger >= 11){cRequirmentInteger = 41+ excessArray[3];}
+            if(cLevelInteger == 1){cRequirmentInteger = 31 + e;}
+            if(cLevelInteger == 2){cRequirmentInteger = 32 + e;}
+            if(cLevelInteger == 3){cRequirmentInteger = 33 + e;}
+            if(cLevelInteger == 4){cRequirmentInteger = 34 + e;}
+            if(cLevelInteger == 5){cRequirmentInteger = 35 + e;}
+            if(cLevelInteger == 6){cRequirmentInteger = 36 + e;}
+            if(cLevelInteger == 7){cRequirmentInteger = 37 + e;}
+            if(cLevelInteger == 8){cRequirmentInteger = 38 + e;}
+            if(cLevelInteger == 9){cRequirmentInteger = 39 + e;}
+            if(cLevelInteger == 10){cRequirmentInteger = 40+ e;}
+            if(cLevelInteger >= 11){cRequirmentInteger = 41+ e;}
         }
         if(cId == 5){
-            if(cLevelInteger == 1){cRequirmentInteger = 41 + excessArray[4];}
-            if(cLevelInteger == 2){cRequirmentInteger = 42 + excessArray[4];}
-            if(cLevelInteger == 3){cRequirmentInteger = 43 + excessArray[4];}
-            if(cLevelInteger == 4){cRequirmentInteger = 44 + excessArray[4];}
-            if(cLevelInteger == 5){cRequirmentInteger = 45 + excessArray[4];}
-            if(cLevelInteger == 6){cRequirmentInteger = 46 + excessArray[4];}
-            if(cLevelInteger == 7){cRequirmentInteger = 47 + excessArray[4];}
-            if(cLevelInteger == 8){cRequirmentInteger = 48 + excessArray[4];}
-            if(cLevelInteger == 9){cRequirmentInteger = 49 + excessArray[4];}
-            if(cLevelInteger == 10){cRequirmentInteger = 50+ excessArray[4];}
-            if(cLevelInteger >= 11){cRequirmentInteger = 51+ excessArray[4];}
+            if(cLevelInteger == 1){cRequirmentInteger = 41 + e;}
+            if(cLevelInteger == 2){cRequirmentInteger = 42 + e;}
+            if(cLevelInteger == 3){cRequirmentInteger = 43 + e;}
+            if(cLevelInteger == 4){cRequirmentInteger = 44 + e;}
+            if(cLevelInteger == 5){cRequirmentInteger = 45 + e;}
+            if(cLevelInteger == 6){cRequirmentInteger = 46 + e;}
+            if(cLevelInteger == 7){cRequirmentInteger = 47 + e;}
+            if(cLevelInteger == 8){cRequirmentInteger = 48 + e;}
+            if(cLevelInteger == 9){cRequirmentInteger = 49 + e;}
+            if(cLevelInteger == 10){cRequirmentInteger = 50+ e;}
+            if(cLevelInteger >= 11){cRequirmentInteger = 51+ e;}
         }
 
         if(levelUpOrDown==+1){taskCompleted += 1; cAttempts=1;}
@@ -247,21 +235,28 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         taskDetails.setAdapter(adapter);
         saveData();
 
+        loadExcess();
+
         if(newValue <= 0)
         {
             int temp = newValue*-1;
-            int temp2 = excessArray[i];
-            if(temp > temp2){excessArray[i] = temp;}
+            int temp2 = excessList.get(i);
+            if(temp > temp2)
+            {
+                excessList.set(i, temp);
+                saveExcess();
+            }
+
             difficultyLevels(clickedList, i, e, +1, progress,duration);
         }
         else
         {
             if(f>=2)
             {
-                int temp = excessArray[i];
+                int temp = excessList.get(i);
                 if(temp>=2) {temp = temp/2;}
                 else{temp = 0;}
-                excessArray[i]=temp;
+                saveExcess();
                 difficultyLevels(clickedList, i, e, -1, progress,duration);
             }
             else
@@ -330,5 +325,39 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
     public static int getTaskCompleted(){
         return taskCompleted;
     }
+
+    private void saveExcess(){
+        SharedPreferences sharedPreferences = getSharedPreferences("shareTest", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(excessList);
+        editor.putString("excess list", json);
+        editor.apply();
+    }
+
+    private void loadExcess(){
+        SharedPreferences sharedPreferences = getSharedPreferences("shareTest", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("excess list", null);
+        Type type = new TypeToken<ArrayList<Integer>>() {}.getType();
+        excessList = gson.fromJson(json, type);
+
+        if(excessList == null){
+            excessList = new ArrayList<>();
+            excessList.add(0);
+            excessList.add(0);
+            excessList.add(0);
+            excessList.add(0);
+            excessList.add(0);
+
+        }
+
+    }
+
+
+
+
+
+
 }
 
