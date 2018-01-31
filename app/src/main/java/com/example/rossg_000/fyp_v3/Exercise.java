@@ -29,13 +29,15 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
     private TaskDetailsAdapter adapter;
     private List<TaskDetails> taskDetailsListTest;
     private int dataTest = 0;
+    private int compareValue = 0;
     SensorManager sensorManager;    //To do with the step count sensor, might change later
     boolean running = false;    //To do with the step count sensor, might change later
     private static int taskCompleted = 0;
-    //private int[] excessArray = new int[]{0,0,0,0,0};
-
-
     private List<Integer> excessList;
+
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    //If adding more exercises change: loadData, difficultyLevels, popUpInfo, loadExcess
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
 
@@ -128,6 +130,10 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
             taskDetailsListTest.add(new TaskDetails(3, "Jog"  , 21, "mile(s)"  ,  1, 1));
             taskDetailsListTest.add(new TaskDetails(4, "Swim" , 31, "length(s)",  1, 1));
             taskDetailsListTest.add(new TaskDetails(5, "Cycle", 41, "mile(s)"  ,  1, 1));
+            taskDetailsListTest.add(new TaskDetails(6, "Push Ups:", 11, "push up(s)",  1, 1));
+            taskDetailsListTest.add(new TaskDetails(7, "Sit ups:" , 11, "sit up(s)",  1, 1));
+            taskDetailsListTest.add(new TaskDetails(8, "Crunches:"  , 11, "crunches(s)",  1, 1));
+            taskDetailsListTest.add(new TaskDetails(9, "Squats:"  , 11, "squats(s)",  1, 1));
         }}
 
 
@@ -142,76 +148,56 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         cLevelInteger = cLevelInteger + levelUpOrDown;
 
         if(cLevelInteger<1){cLevelInteger = 1;}
-        //loadExcessArray();
         loadExcess();
         int e = excessList.get(i);
 
         if(cId == 1){
-            if(cLevelInteger == 1){cRequirmentInteger = 500;}
-            if(cLevelInteger == 2){cRequirmentInteger = 600;}
-            if(cLevelInteger == 3){cRequirmentInteger = 700;}
-            if(cLevelInteger == 4){cRequirmentInteger = 800;}
-            if(cLevelInteger == 5){cRequirmentInteger = 900;}
-            if(cLevelInteger == 6){cRequirmentInteger = 1000;}
-            if(cLevelInteger == 7){cRequirmentInteger = 1100;}
-            if(cLevelInteger == 8){cRequirmentInteger = 1200;}
-            if(cLevelInteger == 9){cRequirmentInteger = 1300;}
-            if(cLevelInteger == 10){cRequirmentInteger = 1400;}
-            if(cLevelInteger >= 11){cRequirmentInteger = 1400;}
-        }
+            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+                int[] tempArray = {500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400};
+                cRequirmentInteger = tempArray[cLevelInteger-1];}
+            else{cRequirmentInteger = 1400;}}
         if(cId == 2){
-            if(cLevelInteger == 1){cRequirmentInteger = 11 + e;}
-            if(cLevelInteger == 2){cRequirmentInteger = 12 + e;}
-            if(cLevelInteger == 3){cRequirmentInteger = 13 + e;}
-            if(cLevelInteger == 4){cRequirmentInteger = 14 + e;}
-            if(cLevelInteger == 5){cRequirmentInteger = 15 + e;}
-            if(cLevelInteger == 6){cRequirmentInteger = 16 + e;}
-            if(cLevelInteger == 7){cRequirmentInteger = 17 + e;}
-            if(cLevelInteger == 8){cRequirmentInteger = 18 + e;}
-            if(cLevelInteger == 9){cRequirmentInteger = 19 + e;}
-            if(cLevelInteger == 10){cRequirmentInteger = 20+ e;}
-            if(cLevelInteger >= 11){cRequirmentInteger = 21+ e;}
-        }
+            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
+            else{cRequirmentInteger = 21+e;}}
         if(cId == 3){
-            if(cLevelInteger == 1){cRequirmentInteger = 21 + e;}
-            if(cLevelInteger == 2){cRequirmentInteger = 22 + e;}
-            if(cLevelInteger == 3){cRequirmentInteger = 23 + e;}
-            if(cLevelInteger == 4){cRequirmentInteger = 24 + e;}
-            if(cLevelInteger == 5){cRequirmentInteger = 25 + e;}
-            if(cLevelInteger == 6){cRequirmentInteger = 26 + e;}
-            if(cLevelInteger == 7){cRequirmentInteger = 27 + e;}
-            if(cLevelInteger == 8){cRequirmentInteger = 28 + e;}
-            if(cLevelInteger == 9){cRequirmentInteger = 29 + e;}
-            if(cLevelInteger == 10){cRequirmentInteger = 30+ e;}
-            if(cLevelInteger >= 11){cRequirmentInteger = 21+ e;}
-        }
+            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
+            else{cRequirmentInteger = 21+e;}}
         if(cId == 4){
-            if(cLevelInteger == 1){cRequirmentInteger = 31 + e;}
-            if(cLevelInteger == 2){cRequirmentInteger = 32 + e;}
-            if(cLevelInteger == 3){cRequirmentInteger = 33 + e;}
-            if(cLevelInteger == 4){cRequirmentInteger = 34 + e;}
-            if(cLevelInteger == 5){cRequirmentInteger = 35 + e;}
-            if(cLevelInteger == 6){cRequirmentInteger = 36 + e;}
-            if(cLevelInteger == 7){cRequirmentInteger = 37 + e;}
-            if(cLevelInteger == 8){cRequirmentInteger = 38 + e;}
-            if(cLevelInteger == 9){cRequirmentInteger = 39 + e;}
-            if(cLevelInteger == 10){cRequirmentInteger = 40+ e;}
-            if(cLevelInteger >= 11){cRequirmentInteger = 41+ e;}
-        }
+            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
+            else{cRequirmentInteger = 21+e;}}
         if(cId == 5){
-            if(cLevelInteger == 1){cRequirmentInteger = 41 + e;}
-            if(cLevelInteger == 2){cRequirmentInteger = 42 + e;}
-            if(cLevelInteger == 3){cRequirmentInteger = 43 + e;}
-            if(cLevelInteger == 4){cRequirmentInteger = 44 + e;}
-            if(cLevelInteger == 5){cRequirmentInteger = 45 + e;}
-            if(cLevelInteger == 6){cRequirmentInteger = 46 + e;}
-            if(cLevelInteger == 7){cRequirmentInteger = 47 + e;}
-            if(cLevelInteger == 8){cRequirmentInteger = 48 + e;}
-            if(cLevelInteger == 9){cRequirmentInteger = 49 + e;}
-            if(cLevelInteger == 10){cRequirmentInteger = 50+ e;}
-            if(cLevelInteger >= 11){cRequirmentInteger = 51+ e;}
-        }
+            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
+            else{cRequirmentInteger = 21+e;}}
+        if(cId == 6){
+            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
+            else{cRequirmentInteger = 21+e;}}
+        if(cId == 7){
+            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
+            else{cRequirmentInteger = 21+e;}}
+        if(cId == 8){
+            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
+            else{cRequirmentInteger = 21+e;}}
+        if(cId == 9){
+            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
+            else{cRequirmentInteger = 21+e;}}
 
+        if(compareValue > cRequirmentInteger){cRequirmentInteger = compareValue + e;}
         if(levelUpOrDown==+1){taskCompleted += 1; cAttempts=1;}
         if(levelUpOrDown==-1){cAttempts=1;}
 
@@ -230,6 +216,7 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         int f = clickedList.getAttempts();
 
         int newValue = c - progress;
+        compareValue = progress;
         taskDetailsListTest.set(i, new TaskDetails(a,b,newValue,d,e,f));
         adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
         taskDetails.setAdapter(adapter);
@@ -272,12 +259,37 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
 
     public String[] popUpInfo(){
         //Fill this in later, position in array should correspond to position of list view
-        String[] popUpInfo = new String[5]; //Dont forget to change size of array to match amount of elements in it
-        popUpInfo[0] = "Walk: put one foot in front of the other";
-        popUpInfo[1] = "Run: put one foot in front of the other at a fast pace";
-        popUpInfo[2] = "Jog: ...";
-        popUpInfo[3] = "Swim: ...";
-        popUpInfo[4] = "Cycle: ...";
+        String[] popUpInfo = new String[9]; //Dont forget to change size of array to match amount of elements in it
+        popUpInfo[0] = "Walk:" +
+                "\n\nPut one foot in front of the other";
+        popUpInfo[1] = "Run:" +
+                "\n\nMove at a faster speed than a walk" +
+                "\n\nAim to never have both or either foot on the ground at the same time";
+        popUpInfo[2] = "Jog:" +
+                "\n\nRun at a steady gentle pace";
+        popUpInfo[3] = "Swim:" +
+                "\n\nPropel body through water" +
+                "\n\nStyle of swimming depends on preference";
+        popUpInfo[4] = "Cycle:" +
+                "\n\nRide a bicycle";
+        popUpInfo[5] = "Push Ups:" +
+                "\n\nStarting Position: Kneel with hands flat on the floor, feet together, and shoulders directly above your hands" +
+                "\n\nDownward phase: slowly lower your body until your chest/chin touches the floor" +
+                "\n\nUpward phase: Press up through your arms, while maintaining a rigid torso and keep your head aligned with your spine";
+        popUpInfo[6] = "Sit Ups:" +
+                "\n\nStarting position: Lie on floor with bent knees, with feet shoulder width apart and flat on floor, with your hands crossed on chest/behind head/at ears/at side, head tucked forward" +
+                "\n\nUpward phase: Curl your body upwards off the floor to an upright semi-seated position, exhale as you rise" +
+                "\n\nDownward phase: Return to starting position, inhaling as you do so";
+        popUpInfo[7] = "Crunches:" +
+                "\n\nStarting position: Lie on floor with bent knees, with feet shoulder width apart and flat on floor, arms crossed on chest or hands lightly at ears" +
+                "\n\nUpward phase: Raise only your head and shoulders from the floor to feel the abdominal muscles contract, exhale while rising" +
+                "\n\nAvoid pulling or flexing your head foreward" +
+                "\n\nDownward phase: Return to starting position while inhaling";
+        popUpInfo[8] = "Squats:" +
+                "\n\nStarting position: Stand with feet hip width apart, arms down by your side, and a staight posture" +
+                "\n\nDownward phase: Shift hips backwards, bend your knees and descend until your heels feel as if they are about to lift off the floor" +
+                "\n\nUpwards phase: Return to starting position";
+
 
         return popUpInfo;
     }
@@ -344,12 +356,15 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
 
         if(excessList == null){
             excessList = new ArrayList<>();
-            excessList.add(0);
-            excessList.add(0);
-            excessList.add(0);
-            excessList.add(0);
-            excessList.add(0);
-
+            excessList.add(0);  //Walk
+            excessList.add(0);  //Run
+            excessList.add(0);  //Jog
+            excessList.add(0);  //Swim
+            excessList.add(0);  //Cycle
+            excessList.add(0);  //Push ups
+            excessList.add(0);  //Sit ups
+            excessList.add(0);  //Crunches
+            excessList.add(0);  //Squats
         }
 
     }

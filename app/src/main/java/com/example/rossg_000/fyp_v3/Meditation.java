@@ -20,11 +20,9 @@ public class Meditation extends AppCompatActivity {
     private TaskDetailsAdapter adapter;
     private List<TaskDetails> meditationDetailsListTest;
     private int dataTest = 0;
+    private int compareValue = 0;
     private static int taskCompleted = 0;
-    //private int[] excessArray = new int[]{0,0,0,0,0};
     private List<Integer> excessList;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +93,7 @@ public class Meditation extends AppCompatActivity {
 
         if(meditationDetailsListTest == null){
             meditationDetailsListTest = new ArrayList<>();
-            meditationDetailsListTest.add(new TaskDetails(1, "a" , 500, "step(s)"  , 1, 1));
+            meditationDetailsListTest.add(new TaskDetails(1, "a" , 1, "step(s)"  , 1, 1));
             meditationDetailsListTest.add(new TaskDetails(2, "b"  , 1, "mile(s)"  , 1, 1));
             meditationDetailsListTest.add(new TaskDetails(3, "c"  , 1, "mile(s)"  ,  1, 1));
             meditationDetailsListTest.add(new TaskDetails(4, "d" , 1, "length(s)",  1, 1));
@@ -119,69 +117,43 @@ public class Meditation extends AppCompatActivity {
         int e = excessList.get(i);
 
         if(cId == 1){
-            if(cLevelInteger == 1){cRequirmentInteger = 500;}
-            if(cLevelInteger == 2){cRequirmentInteger = 600;}
-            if(cLevelInteger == 3){cRequirmentInteger = 700;}
-            if(cLevelInteger == 4){cRequirmentInteger = 800;}
-            if(cLevelInteger == 5){cRequirmentInteger = 900;}
-            if(cLevelInteger == 6){cRequirmentInteger = 1000;}
-            if(cLevelInteger == 7){cRequirmentInteger = 1100;}
-            if(cLevelInteger == 8){cRequirmentInteger = 1200;}
-            if(cLevelInteger == 9){cRequirmentInteger = 1300;}
-            if(cLevelInteger == 10){cRequirmentInteger = 1400;}
-            if(cLevelInteger >= 11){cRequirmentInteger = 1400;}
+            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;
+            }
+            else{cRequirmentInteger = 21+e;}
         }
         if(cId == 2){
-            if(cLevelInteger == 1){cRequirmentInteger = 11 + e;}
-            if(cLevelInteger == 2){cRequirmentInteger = 12 + e;}
-            if(cLevelInteger == 3){cRequirmentInteger = 13 + e;}
-            if(cLevelInteger == 4){cRequirmentInteger = 14 + e;}
-            if(cLevelInteger == 5){cRequirmentInteger = 15 + e;}
-            if(cLevelInteger == 6){cRequirmentInteger = 16 + e;}
-            if(cLevelInteger == 7){cRequirmentInteger = 17 + e;}
-            if(cLevelInteger == 8){cRequirmentInteger = 18 + e;}
-            if(cLevelInteger == 9){cRequirmentInteger = 19 + e;}
-            if(cLevelInteger == 10){cRequirmentInteger = 20+ e;}
-            if(cLevelInteger >= 11){cRequirmentInteger = 21+ e;}
+            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;
+            }
+            else{cRequirmentInteger = 21+e;}
         }
         if(cId == 3){
-            if(cLevelInteger == 1){cRequirmentInteger = 21 + e;}
-            if(cLevelInteger == 2){cRequirmentInteger = 22 + e;}
-            if(cLevelInteger == 3){cRequirmentInteger = 23 + e;}
-            if(cLevelInteger == 4){cRequirmentInteger = 24 + e;}
-            if(cLevelInteger == 5){cRequirmentInteger = 25 + e;}
-            if(cLevelInteger == 6){cRequirmentInteger = 26 + e;}
-            if(cLevelInteger == 7){cRequirmentInteger = 27 + e;}
-            if(cLevelInteger == 8){cRequirmentInteger = 28 + e;}
-            if(cLevelInteger == 9){cRequirmentInteger = 29 + e;}
-            if(cLevelInteger == 10){cRequirmentInteger = 30+ e;}
-            if(cLevelInteger >= 11){cRequirmentInteger = 21+ e;}
+            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;
+            }
+            else{cRequirmentInteger = 21+e;}
         }
         if(cId == 4){
-            if(cLevelInteger == 1){cRequirmentInteger = 31 + e;}
-            if(cLevelInteger == 2){cRequirmentInteger = 32 + e;}
-            if(cLevelInteger == 3){cRequirmentInteger = 33 + e;}
-            if(cLevelInteger == 4){cRequirmentInteger = 34 + e;}
-            if(cLevelInteger == 5){cRequirmentInteger = 35 + e;}
-            if(cLevelInteger == 6){cRequirmentInteger = 36 + e;}
-            if(cLevelInteger == 7){cRequirmentInteger = 37 + e;}
-            if(cLevelInteger == 8){cRequirmentInteger = 38 + e;}
-            if(cLevelInteger == 9){cRequirmentInteger = 39 + e;}
-            if(cLevelInteger == 10){cRequirmentInteger = 40+ e;}
-            if(cLevelInteger >= 11){cRequirmentInteger = 41+ e;}
+            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;
+            }
+            else{cRequirmentInteger = 21+e;}
         }
         if(cId == 5){
-            if(cLevelInteger == 1){cRequirmentInteger = 41 + e;}
-            if(cLevelInteger == 2){cRequirmentInteger = 42 + e;}
-            if(cLevelInteger == 3){cRequirmentInteger = 43 + e;}
-            if(cLevelInteger == 4){cRequirmentInteger = 44 + e;}
-            if(cLevelInteger == 5){cRequirmentInteger = 45 + e;}
-            if(cLevelInteger == 6){cRequirmentInteger = 46 + e;}
-            if(cLevelInteger == 7){cRequirmentInteger = 47 + e;}
-            if(cLevelInteger == 8){cRequirmentInteger = 48 + e;}
-            if(cLevelInteger == 9){cRequirmentInteger = 49 + e;}
-            if(cLevelInteger == 10){cRequirmentInteger = 50+ e;}
-            if(cLevelInteger >= 11){cRequirmentInteger = 51+ e;}
+            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;
+            }
+            else{cRequirmentInteger = 21+e;}
+        }
+
+        if(compareValue > cRequirmentInteger){
+            cRequirmentInteger = compareValue + e;
         }
 
         if(levelUpOrDown==+1){taskCompleted += 1; cAttempts=1;}
@@ -202,6 +174,7 @@ public class Meditation extends AppCompatActivity {
         int f = clickedList.getAttempts();
 
         int newValue = c - progress;
+        compareValue = progress;
 
         meditationDetailsListTest.set(i, new TaskDetails(a,b,newValue,d,e,f));
         adapter = new TaskDetailsAdapter(getApplicationContext(), meditationDetailsListTest);

@@ -40,7 +40,7 @@ public class Journal extends AppCompatActivity{
             String formattedTime = new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
             String formattedDate = new SimpleDateFormat("dd-MM-yy").format(Calendar.getInstance().getTime());
 
-            String[] taskArray = {"Walked", "Ran", "a", "b", "c"};
+            String[] taskArray = {"Walked", "Ran", "Jogged", "Swam", "Cycled", "Performed", "Performed", "Performed", "Performed"};
             String taskAction = taskArray[ID-1];
 
             String progressString="";
