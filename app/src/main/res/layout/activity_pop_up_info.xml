@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#645188"
     tools:context="com.example.rossg_000.fyp_v3.PopUpInfo">
 
     <TextView
@@ -15,7 +16,7 @@
         android:layout_marginTop="8dp"
         android:text="TextView"
         android:textSize="20dp"
-        android:fontFamily="sans-serif"
+        android:fontFamily="serif"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
