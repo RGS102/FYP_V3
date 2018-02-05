@@ -4,19 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#645188"
+    android:background="#191919"
     tools:context="com.example.rossg_000.fyp_v3.PopUpInfo">
 
     <TextView
         android:id="@+id/TaskPopUpInfo"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_height="600dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="TextView"
-        android:textSize="20dp"
         android:fontFamily="serif"
+        android:text="TextView"
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

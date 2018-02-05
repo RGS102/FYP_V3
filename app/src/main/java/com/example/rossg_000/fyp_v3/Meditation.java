@@ -253,8 +253,10 @@ public class Meditation extends AppCompatActivity {
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
 
-        if(compareValue > cRequirmentInteger){
-            cRequirmentInteger = compareValue + e;
+        if(levelUpOrDown!=-1) {
+            if (compareValue > cRequirmentInteger) {
+                cRequirmentInteger = compareValue + e;
+            }
         }
 
         if(levelUpOrDown==+1){taskCompleted += 1; cAttempts=1;}
@@ -303,6 +305,7 @@ public class Meditation extends AppCompatActivity {
                 int temp = excessList.get(i);
                 if(temp>=2) {temp = temp/2;}
                 else{temp = 0;}
+                excessList.set(i, temp);
                 saveExcess();
                 difficultyLevels(clickedList, i, e, -1, progress,duration);
             }

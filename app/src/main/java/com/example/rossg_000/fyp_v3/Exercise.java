@@ -19,6 +19,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -66,8 +67,10 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
                 final Intent intent = new Intent(getApplicationContext(), PopUpInfo.class);
                 intent.putExtra("details", taskInfo[i]);
                 startActivity(intent);
-                //loadExcess();
-                //Toast.makeText(Exercise.this, "Excess: " +excessList.get(i), Toast.LENGTH_SHORT).show();
+
+
+                loadExcess();
+                Toast.makeText(Exercise.this, "Excess: " +excessList.get(i), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -127,27 +130,27 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
             taskDetailsListTest = new ArrayList<>();
             taskDetailsListTest.add(new TaskDetails(1, "Walk" , 500, "step(s)"  , 1, 1));
             taskDetailsListTest.add(new TaskDetails(2, "Run"  , 11, "mile(s)"  , 1, 1));
-            taskDetailsListTest.add(new TaskDetails(3, "Jog"  , 21, "mile(s)"  ,  1, 1));
-            taskDetailsListTest.add(new TaskDetails(4, "Swim" , 31, "length(s)",  1, 1));
-            taskDetailsListTest.add(new TaskDetails(5, "Cycle", 41, "mile(s)"  ,  1, 1));
+            taskDetailsListTest.add(new TaskDetails(3, "Jog"  , 11, "mile(s)"  ,  1, 1));
+            taskDetailsListTest.add(new TaskDetails(4, "Swim" , 11, "length(s)",  1, 1));
+            taskDetailsListTest.add(new TaskDetails(5, "Cycle", 11, "mile(s)"  ,  1, 1));
             taskDetailsListTest.add(new TaskDetails(6, "Push Ups:", 11, "push up(s)",  1, 1));
             taskDetailsListTest.add(new TaskDetails(7, "Sit Ups:" , 11, "sit up(s)",  1, 1));
             taskDetailsListTest.add(new TaskDetails(8, "Crunches:"  , 11, "crunches(s)",  1, 1));
             taskDetailsListTest.add(new TaskDetails(9, "Squats:"  , 11, "squats(s)",  1, 1));
-            taskDetailsListTest.add(new TaskDetails(10, "Superman" , 10, "times"  , 1, 1));
+            taskDetailsListTest.add(new TaskDetails(10, "Superman" , 11, "times"  , 1, 1));
             taskDetailsListTest.add(new TaskDetails(11, "Tuck Jump"  , 11, "times"  , 1, 1));
-            taskDetailsListTest.add(new TaskDetails(12, "Prone Walkout"  , 21, "times"  ,  1, 1));
-            taskDetailsListTest.add(new TaskDetails(13, "Burpees" , 31, "times",  1, 1));
-            taskDetailsListTest.add(new TaskDetails(14, "Plank", 41, "times"  ,  1, 1));
+            taskDetailsListTest.add(new TaskDetails(12, "Prone Walkout"  , 11, "times"  ,  1, 1));
+            taskDetailsListTest.add(new TaskDetails(13, "Burpees" , 11, "times",  1, 1));
+            taskDetailsListTest.add(new TaskDetails(14, "Plank", 11, "times"  ,  1, 1));
             taskDetailsListTest.add(new TaskDetails(15, "Wall Sit", 11, "times",  1, 1));
             taskDetailsListTest.add(new TaskDetails(16, "Lunge" , 11, "times",  1, 1));
             taskDetailsListTest.add(new TaskDetails(17, "Clock Lunge"  , 11, "times",  1, 1));
             taskDetailsListTest.add(new TaskDetails(18, "Single Leg Deadlift"  , 11, "times",  1, 1));
-            taskDetailsListTest.add(new TaskDetails(19, "Step-Up" , 10, "times"  , 1, 1));
+            taskDetailsListTest.add(new TaskDetails(19, "Step-Up" , 11, "times"  , 1, 1));
             taskDetailsListTest.add(new TaskDetails(20, "Calf Raise"  , 11, "times"  , 1, 1));
-            taskDetailsListTest.add(new TaskDetails(21, "Tricep Dip"  , 21, "times"  ,  1, 1));
-            taskDetailsListTest.add(new TaskDetails(22, "Boxer" , 31, "times",  1, 1));
-            taskDetailsListTest.add(new TaskDetails(23, "Flutter Kicks", 41, "times"  ,  1, 1));
+            taskDetailsListTest.add(new TaskDetails(21, "Tricep Dip"  , 11, "times"  ,  1, 1));
+            taskDetailsListTest.add(new TaskDetails(22, "Boxer" , 11, "times",  1, 1));
+            taskDetailsListTest.add(new TaskDetails(23, "Flutter Kicks", 11, "times"  ,  1, 1));
             taskDetailsListTest.add(new TaskDetails(24, "Shoulder Bridge", 11, "times",  1, 1));
             taskDetailsListTest.add(new TaskDetails(25, "Sprinter Sit Up" , 11, "times",  1, 1));
         }}
@@ -163,10 +166,12 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         compareValue = progress;
 
         taskDetailsListTest.set(i, new TaskDetails(a,b,newValue,d,e,f));
+
+
+
         adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
         taskDetails.setAdapter(adapter);
         saveData();
-
         loadExcess();
 
         if(newValue <= 0) {
@@ -181,6 +186,8 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
                 int temp = excessList.get(i);
                 if(temp>=2) {temp = temp/2;}
                 else{temp = 0;}
+                excessList.set(i, temp);
+
                 saveExcess();
                 difficultyLevels(clickedList, i, e, -1, progress,duration);}
             else {
@@ -329,11 +336,21 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
 
-        if(compareValue > cRequirmentInteger){cRequirmentInteger = compareValue + e;}
+        if(levelUpOrDown!=-1){
+            if(compareValue > cRequirmentInteger){cRequirmentInteger = compareValue + e;}
+        }
         if(levelUpOrDown==+1){taskCompleted += 1; cAttempts=1;}
         if(levelUpOrDown==-1){cAttempts=1;}
 
         taskDetailsListTest.set(i, new TaskDetails(cId, cTaskName, cRequirmentInteger, cRequirmentString, cLevelInteger, cAttempts));
+
+
+        //To put a completed task at the second position of the arraylist, need to fix popupinfo
+        //Collections.swap(taskDetailsListTest, i,1);
+        //Collections.swap(excessList, i, 1);
+        //saveExcess();
+        //String temp = popUpInfo[i];
+
         adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
         taskDetails.setAdapter(adapter);
         saveData();

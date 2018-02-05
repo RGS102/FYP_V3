@@ -78,7 +78,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="50dp"
         android:text="00:00:00"
-        android:textColor="@android:color/holo_blue_dark"
+        android:textColor="@android:color/white"
         android:textSize="30dp"
         app:layout_constraintBottom_toTopOf="@+id/toStretches"
         app:layout_constraintEnd_toEndOf="parent"
@@ -93,7 +93,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="50dp"
         android:text="Timer:"
-        android:textColor="@android:color/holo_blue_dark"
+        android:textColor="@android:color/white"
         android:textSize="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
