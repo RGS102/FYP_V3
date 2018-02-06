@@ -61,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
         int i = Exercise.getTaskCompleted();
         int test = i*10;
         int test2 = test/100;
-        exerciseProgressBar.setProgress(test2);
+        exerciseProgressBar.setProgress(30);
+
 
 
 
