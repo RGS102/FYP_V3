@@ -2,11 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.rossg_000.fyp_v3">
 
-    <!--
-    android:theme="@style/AppTheme"
-    -->
-
-
+    <!--     android:theme="@style/AppTheme" -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -43,13 +39,13 @@
         </activity>
         <activity
             android:name=".Stretches"
-            android:label="Stretches"/>
+            android:label="Stretches" />
         <activity
             android:name=".Exercise"
-            android:label="Exercises"/>
+            android:label="Exercises" />
         <activity
             android:name=".Meditation"
-            android:label="Meditation"/>
+            android:label="Meditation" />
         <activity
             android:name=".PopUpInfo"
             android:label="Activity Information"
@@ -57,8 +53,11 @@
         <activity
             android:name=".CompleteOrFail"
             android:label="Progress Report"
-            android:theme="@style/Theme.AppCompat.Dialog.Alert"
-            ></activity>
+            android:theme="@style/Theme.AppCompat.Dialog.Alert" />
+        <activity
+            android:name=".Rewards"
+            android:label="Rewards">
+        </activity>
     </application>
 
 </manifest>

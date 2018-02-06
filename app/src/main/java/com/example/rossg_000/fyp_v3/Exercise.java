@@ -211,127 +211,127 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         int e = excessList.get(i);
 
         if(cId == 1){
-            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+            if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400};
                 cRequirmentInteger = tempArray[cLevelInteger-1];}
             else{cRequirmentInteger = 1400;}}
         if(cId == 2){
-            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+            if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 3){
-            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+            if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 4){
-            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+            if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 5){
-            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+            if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 6){
-            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+            if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 7){
-            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+            if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 8){
-            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+            if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 9){
-            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+            if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 10){
-            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+            if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 11){
-            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+            if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 12){
-            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+            if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 13){
-            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+            if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 14){
-            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+            if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 15){
-            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+            if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 16){
-            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+            if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 17){
-            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+            if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 18){
-            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+            if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 19){
-            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+            if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 20){
-            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+            if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 21){
-            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+            if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 22){
-            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+            if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 23){
-            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+            if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 24){
-            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+            if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 25){
-            if(cLevelInteger >= 1 || cLevelInteger <= 10) {
+            if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}

@@ -29,6 +29,7 @@ import java.util.concurrent.TimeUnit;
 
 
 public class Tasks extends AppCompatActivity {
+    /*
     Handler handler = new Handler();
     Button start;
     Button stop;
@@ -36,13 +37,33 @@ public class Tasks extends AppCompatActivity {
     boolean pause = false;
     long timeInMilli = 0;
     long temp = 0;
-
+    */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tasks);
 
+        TextView completedTasks = (TextView)findViewById(R.id.CompletedTasks);
+        TextView completedExercises = (TextView)findViewById(R.id.ExercisesCompleted);
+        TextView completedMeditations = (TextView)findViewById(R.id.MeditationsCompleted);
+        //TextView userTitle = (TextView)findViewById(R.id.UserTitle);
+
+        int i = Exercise.getTaskCompleted();
+        int j = Meditation.getTaskCompleted();
+        int k = i + j;
+        //String title = Rewards.getUserTitle();
+
+        completedExercises.setText(String.valueOf(i));
+        completedMeditations.setText(String.valueOf(j));
+        completedTasks.setText(String.valueOf(k));
+        //userTitle.setText(title);
+
+
+
+
+
+        /*
         start = (Button) findViewById(R.id.Start);
         stop = (Button) findViewById(R.id.Stop);
         timeDisplay = (TextView) findViewById(R.id.TimeDisplay);
@@ -71,8 +92,35 @@ public class Tasks extends AppCompatActivity {
                 }
             }
         });
+        */
     }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+        TextView completedTasks = (TextView)findViewById(R.id.CompletedTasks);
+        TextView completedExercises = (TextView)findViewById(R.id.ExercisesCompleted);
+        TextView completedMeditations = (TextView)findViewById(R.id.MeditationsCompleted);
+        //TextView userTitle = (TextView)findViewById(R.id.UserTitle);
+
+        int i = Exercise.getTaskCompleted();
+        int j = Meditation.getTaskCompleted();
+        int k = i + j;
+        //String title = Rewards.getUserTitle();
+
+        completedExercises.setText(String.valueOf(i));
+        completedMeditations.setText(String.valueOf(j));
+        completedTasks.setText(String.valueOf(k));
+        //userTitle.setText(title);
+    }
+
+
+
+
+
+
+
+    /*
     Runnable updateTimer = new Runnable() {
         @Override
         public void run() {
@@ -105,6 +153,7 @@ public class Tasks extends AppCompatActivity {
             }
         }
     };
+    */
 
 
     public void goToStretches(View view) {
