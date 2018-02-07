@@ -9,6 +9,7 @@ import android.view.View;
 import android.graphics.Color;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -22,6 +23,11 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    private static boolean taskAlmostComplete = false;
+    private static boolean exeAlmostComplete = false;
+    private static boolean medAlmostComplete = false;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume(){
         super.onResume();
 
+        ImageView trophy = (ImageView) findViewById(R.id.Trophy);
         TextView userTitle = (TextView)findViewById(R.id.UserTitle);
         String title = Rewards.getUserTitle();
         userTitle.setText(title);
@@ -56,12 +63,21 @@ public class MainActivity extends AppCompatActivity {
         ProgressBar exerciseProgressBar = (ProgressBar) findViewById(R.id.ExerciseProgressBar);
         ProgressBar meditationProgressBar = (ProgressBar) findViewById(R.id.MeditationProgressBar);
 
-
         int i = Exercise.getTaskCompleted();
         int j = Meditation.getTaskCompleted();
         int k = i + j;
 
-        if(k % 20 == 0){taskProgressBar.setProgress(0);}
+        if(((k % 20 == 0) && taskAlmostComplete == true) ||
+           ((i % 10 == 0) && exeAlmostComplete == true) ||
+           ((j % 10 == 0) && medAlmostComplete == true)){
+            trophy.setVisibility(View.VISIBLE);
+        }
+        else{
+            trophy.setVisibility(View.INVISIBLE);
+        }
+
+
+        if((k % 20 == 0) && taskAlmostComplete == false){taskProgressBar.setProgress(0);}
         if(k % 20 == 1){taskProgressBar.setProgress(5);}
         if(k % 20 == 2){taskProgressBar.setProgress(10);}
         if(k % 20 == 3){taskProgressBar.setProgress(15);}
@@ -80,9 +96,11 @@ public class MainActivity extends AppCompatActivity {
         if(k % 20 == 16){taskProgressBar.setProgress(80);}
         if(k % 20 == 17){taskProgressBar.setProgress(85);}
         if(k % 20 == 18){taskProgressBar.setProgress(90);}
-        if(k % 20 == 19){taskProgressBar.setProgress(95);}
+        if(k % 20 == 19){taskProgressBar.setProgress(95); taskAlmostComplete = true;}
+        if((k % 20 == 0) && taskAlmostComplete == true){taskProgressBar.setProgress(100); taskAlmostComplete = false;}
 
-        if(i % 10 == 0){exerciseProgressBar.setProgress(0);}
+
+        if((i % 10 == 0) && exeAlmostComplete == false){exerciseProgressBar.setProgress(0);}
         if(i % 10 == 1){exerciseProgressBar.setProgress(10);}
         if(i % 10 == 2){exerciseProgressBar.setProgress(20);}
         if(i % 10 == 3){exerciseProgressBar.setProgress(30);}
@@ -90,10 +108,11 @@ public class MainActivity extends AppCompatActivity {
         if(i % 10 == 5){exerciseProgressBar.setProgress(50);}
         if(i % 10 == 6){exerciseProgressBar.setProgress(60);}
         if(i % 10 == 7){exerciseProgressBar.setProgress(70);}
-        if(i % 10 == 8){exerciseProgressBar.setProgress(80);}
-        if(i % 10 == 9){exerciseProgressBar.setProgress(90);}
+        if(i % 10 == 8){exerciseProgressBar.setProgress(80); }
+        if(i % 10 == 9){exerciseProgressBar.setProgress(90); exeAlmostComplete = true;}
+        if((i % 10 == 0) && exeAlmostComplete == true){exerciseProgressBar.setProgress(100); exeAlmostComplete = false;}
 
-        if(j % 10 == 0){meditationProgressBar.setProgress(0);}
+        if((j % 10 == 0) && medAlmostComplete == false){meditationProgressBar.setProgress(0);}
         if(j % 10 == 1){meditationProgressBar.setProgress(10);}
         if(j % 10 == 2){meditationProgressBar.setProgress(20);}
         if(j % 10 == 3){meditationProgressBar.setProgress(30);}
@@ -102,7 +121,13 @@ public class MainActivity extends AppCompatActivity {
         if(j % 10 == 6){meditationProgressBar.setProgress(60);}
         if(j % 10 == 7){meditationProgressBar.setProgress(70);}
         if(j % 10 == 8){meditationProgressBar.setProgress(80);}
-        if(j % 10 == 9){meditationProgressBar.setProgress(90);}
+        if(j % 10 == 9){meditationProgressBar.setProgress(90); medAlmostComplete = true;}
+        if((j % 10 == 0) && medAlmostComplete == true){meditationProgressBar.setProgress(100); medAlmostComplete = false;}
+
+
+
+
+
     }
 
 
