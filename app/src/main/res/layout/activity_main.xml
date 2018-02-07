@@ -193,19 +193,105 @@
             app:layout_constraintTop_toBottomOf="@+id/YouAreString" />
     </LinearLayout>
 
-    <ProgressBar
-        android:id="@+id/ExerciseProgressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="103dp"
-        android:layout_height="97dp"
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.18"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.61">
+
+        <FrameLayout
+            android:id="@+id/TaskFrameLayout"
+            android:layout_width="200dp"
+            android:layout_height="35dp">
+
+            <ProgressBar
+                android:id="@+id/TaskProgressBar"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:progressTint="@android:color/holo_red_dark" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="Task: progress to next reward"
+                    android:textSize="10dp" />
+            </RelativeLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/ExerciseFrameLayout"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/TaskFrameLayout">
+
+
+            <ProgressBar
+                android:id="@+id/ExerciseProgressBar"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:progressTint="@android:color/holo_red_dark" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="Exercise: progress to next reward"
+                    android:textSize="10dp" />
+            </RelativeLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/MeditationFrameLayout"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/ExerciseFrameLayout">
+
+            <ProgressBar
+                android:id="@+id/MeditationProgressBar"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:progressTint="@android:color/holo_red_dark" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="Meditation: progress to next reward"
+                    android:textSize="10dp" />
+            </RelativeLayout>
+        </FrameLayout>
+    </LinearLayout>
 
 
 </android.support.constraint.ConstraintLayout>

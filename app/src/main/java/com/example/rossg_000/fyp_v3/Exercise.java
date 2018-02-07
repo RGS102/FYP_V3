@@ -550,11 +550,5 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         }
 
     }
-
-
-
-
-
-
 }
 
