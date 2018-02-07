@@ -116,6 +116,7 @@ public class Rewards extends AppCompatActivity {
         if(rewardList == null){
             rewardList = new ArrayList<String>();
             rewardList.add("A Rookie");
+            rewardList.add("A Beta Tester");
         }
     }
 
