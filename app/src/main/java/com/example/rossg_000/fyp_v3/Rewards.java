@@ -22,11 +22,10 @@ public class Rewards extends AppCompatActivity {
     private ListView rewardDetails;
     private RewardsDetailsAdapter adapter;
     private List<String> rewardList;
-    private static String title = "A Rookie";
-    //private static int exerciseProgress = 0;
-    private static int checkedExercise = 0;
-    private static int checkedMeditation = 0;
-    private static int checkedTasks = 0;
+    //private static String title = "A Rookie";
+    //private static int checkedExercise = 0;
+    //private static int checkedMeditation = 0;
+    //private static int checkedTasks = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +40,9 @@ public class Rewards extends AppCompatActivity {
         rewardDetails.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //Toast.makeText(Rewards.this, "test", Toast.LENGTH_SHORT).show();
-                title = rewardList.get(i);
+                //Toast.makeText(Rewards.this, "test" + checkedExercise, Toast.LENGTH_SHORT).show();
+                String title = rewardList.get(i);
+                MainActivity.setTitleDisplay(title);
             }
         });
     }
@@ -51,9 +51,16 @@ public class Rewards extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        int i = Exercise.getTaskCompleted();
-        int j = Meditation.getTaskCompleted();
-        int k = i + j;
+        int i = MainActivity.getExercisesCompleted();
+        int j = MainActivity.getMeditationsCompleted();
+        int k = MainActivity.getTasksCompleted();
+
+
+        //boolean exeRewardEarned = Main.getExeRewardEarned
+        //med
+        //task
+
+        //pass all three to unlockRewards
 
 
         unlockRewards(k,i,j);
@@ -63,12 +70,16 @@ public class Rewards extends AppCompatActivity {
     private void unlockRewards(int task, int exe, int med){
         loadData();
 
+        int checkedTasks = MainActivity.getCheckedTasks();
+        int checkedExercise = MainActivity.getCheckedExercises();
+        int checkedMeditation = MainActivity.getCheckedMeditations();
+
         if((exe % 10 == 0) && checkedExercise != exe){
             if(!rewardList.contains("tester")) {rewardList.add(0,"tester");}
             else if(!rewardList.contains("2")) {rewardList.add(0,"2");}
             else if(!rewardList.contains("3")) {rewardList.add(0,"3");}
 
-            checkedExercise = exe;
+            MainActivity.setCheckedExercises(exe);
         }
 
         if((med % 10 == 0) && checkedMeditation != med){
@@ -76,7 +87,7 @@ public class Rewards extends AppCompatActivity {
             else if(!rewardList.contains("5")) {rewardList.add(0,"5");}
             else if(!rewardList.contains("6")) {rewardList.add(0,"6");}
 
-            checkedMeditation = med;
+            MainActivity.setCheckedMeditations(med);
         }
 
         if((task % 20 == 0) && checkedTasks != task){
@@ -84,18 +95,13 @@ public class Rewards extends AppCompatActivity {
             else if(!rewardList.contains("8")) {rewardList.add(0,"8");}
             else if(!rewardList.contains("9")) {rewardList.add(0,"9");}
 
-            checkedTasks = task;
+            MainActivity.setCheckedTasks(task);
         }
-
-
-
 
         adapter = new RewardsDetailsAdapter(getApplicationContext(), rewardList);
         rewardDetails.setAdapter(adapter);
         saveData();
     }
-
-
 
     private void saveData(){
         SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
@@ -119,11 +125,4 @@ public class Rewards extends AppCompatActivity {
             rewardList.add("A Beta Tester");
         }
     }
-
-
-    public static String getUserTitle(){
-        return title;
-    }
-
-    //public static int getExerciseProgress(){return exerciseProgress;}
 }

@@ -33,7 +33,13 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
     private int compareValue = 0;
     SensorManager sensorManager;    //To do with the step count sensor, might change later
     boolean running = false;    //To do with the step count sensor, might change later
-    private static int taskCompleted = 0;
+
+
+    //private static int taskCompleted = 0;   //Remove this and all its other bits
+
+
+
+
     private List<Integer> excessList;
 
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -51,6 +57,14 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
+
+        /*
+        SharedPreferences sharedPreferences = getSharedPreferences("Share Exercise Progress", MODE_PRIVATE);
+        taskCompleted = sharedPreferences.getInt("Exercise Completion", taskCompleted);
+        */
+
+
+
 
         final String [] taskInfo = popUpInfo();
         taskDetails = (ListView) findViewById(R.id.taskListView);
@@ -336,11 +350,25 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
 
+        int exercisesCompleted = MainActivity.getExercisesCompleted();
+        int tasksCompleted = MainActivity.getTasksCompleted();
+
         if(levelUpOrDown!=-1){
             if(compareValue > cRequirmentInteger){cRequirmentInteger = compareValue + e;}
         }
-        if(levelUpOrDown==+1){taskCompleted += 1; cAttempts=1;}
+        if(levelUpOrDown==+1){cAttempts=1; exercisesCompleted +=1; tasksCompleted +=1;}
         if(levelUpOrDown==-1){cAttempts=1;}
+
+        MainActivity.setExercisesCompleted(exercisesCompleted);
+        MainActivity.setTasksCompleted(tasksCompleted);
+
+        /*
+        SharedPreferences.Editor editor = getSharedPreferences("Share Exercise Progress", MODE_PRIVATE).edit();
+        editor.putInt("Exercise Completion", taskCompleted);
+        editor.commit();
+        */
+
+
 
         taskDetailsListTest.set(i, new TaskDetails(cId, cTaskName, cRequirmentInteger, cRequirmentString, cLevelInteger, cAttempts));
 
@@ -500,9 +528,15 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         startActivity(passInfoToJournal);
     }
 
-    public static int getTaskCompleted(){
-        return taskCompleted;
-    }
+
+
+
+    //public static int getTaskCompleted(){return taskCompleted;}
+
+
+
+
+
 
     private void saveExcess(){
         SharedPreferences sharedPreferences = getSharedPreferences("shareTest", MODE_PRIVATE);

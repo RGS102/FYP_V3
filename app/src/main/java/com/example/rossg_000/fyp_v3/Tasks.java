@@ -39,29 +39,29 @@ public class Tasks extends AppCompatActivity {
     long temp = 0;
     */
 
+    //private static int i = 0;
+    //private static int j = 0;
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tasks);
 
+
         TextView completedTasks = (TextView)findViewById(R.id.CompletedTasks);
         TextView completedExercises = (TextView)findViewById(R.id.ExercisesCompleted);
         TextView completedMeditations = (TextView)findViewById(R.id.MeditationsCompleted);
-        //TextView userTitle = (TextView)findViewById(R.id.UserTitle);
 
-        int i = Exercise.getTaskCompleted();
-        int j = Meditation.getTaskCompleted();
-        int k = i + j;
-        //String title = Rewards.getUserTitle();
+        int i = MainActivity.getExercisesCompleted();
+        int j = MainActivity.getMeditationsCompleted();
+        int k = MainActivity.getTasksCompleted();
 
         completedExercises.setText(String.valueOf(i));
         completedMeditations.setText(String.valueOf(j));
         completedTasks.setText(String.valueOf(k));
-        //userTitle.setText(title);
-
-
-
-
 
         /*
         start = (Button) findViewById(R.id.Start);
@@ -101,24 +101,15 @@ public class Tasks extends AppCompatActivity {
         TextView completedTasks = (TextView)findViewById(R.id.CompletedTasks);
         TextView completedExercises = (TextView)findViewById(R.id.ExercisesCompleted);
         TextView completedMeditations = (TextView)findViewById(R.id.MeditationsCompleted);
-        //TextView userTitle = (TextView)findViewById(R.id.UserTitle);
 
-        int i = Exercise.getTaskCompleted();
-        int j = Meditation.getTaskCompleted();
+        int i = MainActivity.getExercisesCompleted();
+        int j = MainActivity.getMeditationsCompleted();
         int k = i + j;
-        //String title = Rewards.getUserTitle();
 
         completedExercises.setText(String.valueOf(i));
         completedMeditations.setText(String.valueOf(j));
         completedTasks.setText(String.valueOf(k));
-        //userTitle.setText(title);
     }
-
-
-
-
-
-
 
     /*
     Runnable updateTimer = new Runnable() {

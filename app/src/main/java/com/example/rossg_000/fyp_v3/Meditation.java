@@ -21,7 +21,6 @@ public class Meditation extends AppCompatActivity {
     private List<TaskDetails> meditationDetailsListTest;
     private int dataTest = 0;
     private int compareValue = 0;
-    private static int taskCompleted = 0;
     private List<Integer> excessList;
 
     @Override
@@ -259,8 +258,22 @@ public class Meditation extends AppCompatActivity {
             }
         }
 
-        if(levelUpOrDown==+1){taskCompleted += 1; cAttempts=1;}
+
+
+        int meditationsCompleted = MainActivity.getMeditationsCompleted();
+        int tasksCompleted = MainActivity.getTasksCompleted();
+
+
+        if(levelUpOrDown!=-1){
+            if(compareValue > cRequirmentInteger){cRequirmentInteger = compareValue + e;}
+        }
+        if(levelUpOrDown==+1){cAttempts=1; meditationsCompleted+=1; tasksCompleted +=1;}
         if(levelUpOrDown==-1){cAttempts=1;}
+
+        MainActivity.setMeditationsCompleted(meditationsCompleted);
+        MainActivity.setTasksCompleted(tasksCompleted);
+
+
 
         meditationDetailsListTest.set(i, new TaskDetails(cId, cTaskName, cRequirmentInteger, cRequirmentString, cLevelInteger, cAttempts));
         adapter = new TaskDetailsAdapter(getApplicationContext(), meditationDetailsListTest);
@@ -438,10 +451,6 @@ public class Meditation extends AppCompatActivity {
         passInfoToJournal.putExtra("duration", duration);
 
         startActivity(passInfoToJournal);
-    }
-
-    public static int getTaskCompleted(){
-        return taskCompleted;
     }
 
     private void saveExcess(){
