@@ -3,9 +3,14 @@ package com.example.rossg_000.fyp_v3;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.graphics.Color;
 import android.widget.ArrayAdapter;
@@ -104,104 +109,55 @@ public class MainActivity extends AppCompatActivity {
         setTitleDisplay(titleDisplay);
 
         updateValues();
-        updateProgressBars();
+        updateTitle();
     }
 
     @Override
     protected void onResume(){
         super.onResume();
+        updateTitle();
+    }
 
-        updateProgressBars();
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_main, menu);
+        Drawable drawable = menu.findItem(R.id.questionMark).getIcon();
+        if(drawable!=null){
+            drawable.mutate();
+            drawable.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
+        }
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int res_id = item.getItemId();
+        if(res_id == R.id.questionMark){
+            //Toast.makeText(getApplicationContext(), "Clicked ?", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this, HowTo.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 
-    public void updateProgressBars(){
-        ProgressBar taskProgressBar = (ProgressBar) findViewById(R.id.TaskProgressBar);
-        ProgressBar exerciseProgressBar = (ProgressBar) findViewById(R.id.ExerciseProgressBar);
-        ProgressBar meditationProgressBar = (ProgressBar) findViewById(R.id.MeditationProgressBar);
-        ImageView trophy = (ImageView) findViewById(R.id.Trophy);
-        TextView userTitle = (TextView)findViewById(R.id.UserTitle);
 
+
+    public void updateTitle(){
+        TextView userTitle = (TextView)findViewById(R.id.UserTitle);
         String title = getTitleDisplay();
         userTitle.setText(title);
-
-        int i = getExercisesCompleted();
-        int j = getMeditationsCompleted();
-        int k = getTasksCompleted();
-
-        Boolean taskAlmostComplete = isTaskAlmostComplete();//MainActivity.taskAlmostComplete;
-        Boolean exeAlmostComplete = isExeAlmostComplete();//MainActivity.exeAlmostComplete;
-        Boolean medAlmostComplete = isMedAlmostComplete();//MainActivity.medAlmostComplete;
-
-        if(((k % 20 == 0) && taskAlmostComplete == true) ||
-                ((i % 10 == 0) && exeAlmostComplete == true) ||
-                ((j % 10 == 0) && medAlmostComplete == true)){
-            trophy.setVisibility(View.VISIBLE);
-        }
-        else{
-            trophy.setVisibility(View.INVISIBLE);
-        }
-
-
-        if((k % 20 == 0) && taskAlmostComplete == false){taskProgressBar.setProgress(0);}
-        if(k % 20 == 1){taskProgressBar.setProgress(5);}
-        if(k % 20 == 2){taskProgressBar.setProgress(10);}
-        if(k % 20 == 3){taskProgressBar.setProgress(15);}
-        if(k % 20 == 4){taskProgressBar.setProgress(20);}
-        if(k % 20 == 5){taskProgressBar.setProgress(25);}
-        if(k % 20 == 6){taskProgressBar.setProgress(30);}
-        if(k % 20 == 7){taskProgressBar.setProgress(35);}
-        if(k % 20 == 8){taskProgressBar.setProgress(40);}
-        if(k % 20 == 9){taskProgressBar.setProgress(45);}
-        if(k % 20 == 10){taskProgressBar.setProgress(50);}
-        if(k % 20 == 11){taskProgressBar.setProgress(55);}
-        if(k % 20 == 12){taskProgressBar.setProgress(60);}
-        if(k % 20 == 13){taskProgressBar.setProgress(65);}
-        if(k % 20 == 14){taskProgressBar.setProgress(70);}
-        if(k % 20 == 15){taskProgressBar.setProgress(75);}
-        if(k % 20 == 16){taskProgressBar.setProgress(80);}
-        if(k % 20 == 17){taskProgressBar.setProgress(85);}
-        if(k % 20 == 18){taskProgressBar.setProgress(90);}
-        if(k % 20 == 19){taskProgressBar.setProgress(95); setTaskAlmostComplete(true);}
-        if((k % 20 == 0) && taskAlmostComplete == true){taskProgressBar.setProgress(100); setTaskAlmostComplete(false);}
-
-
-        if((i % 10 == 0) && exeAlmostComplete == false){exerciseProgressBar.setProgress(0);}
-        if(i % 10 == 1){exerciseProgressBar.setProgress(10);}
-        if(i % 10 == 2){exerciseProgressBar.setProgress(20);}
-        if(i % 10 == 3){exerciseProgressBar.setProgress(30);}
-        if(i % 10 == 4){exerciseProgressBar.setProgress(40);}
-        if(i % 10 == 5){exerciseProgressBar.setProgress(50);}
-        if(i % 10 == 6){exerciseProgressBar.setProgress(60);}
-        if(i % 10 == 7){exerciseProgressBar.setProgress(70);}
-        if(i % 10 == 8){exerciseProgressBar.setProgress(80); }
-        if(i % 10 == 9){exerciseProgressBar.setProgress(90); setExeAlmostComplete(true);}
-        if((i % 10 == 0) && exeAlmostComplete == true){exerciseProgressBar.setProgress(100); setExeAlmostComplete(false);}
-
-        if((j % 10 == 0) && medAlmostComplete == false){meditationProgressBar.setProgress(0);}
-        if(j % 10 == 1){meditationProgressBar.setProgress(10);}
-        if(j % 10 == 2){meditationProgressBar.setProgress(20);}
-        if(j % 10 == 3){meditationProgressBar.setProgress(30);}
-        if(j % 10 == 4){meditationProgressBar.setProgress(40);}
-        if(j % 10 == 5){meditationProgressBar.setProgress(50);}
-        if(j % 10 == 6){meditationProgressBar.setProgress(60);}
-        if(j % 10 == 7){meditationProgressBar.setProgress(70);}
-        if(j % 10 == 8){meditationProgressBar.setProgress(80);}
-        if(j % 10 == 9){meditationProgressBar.setProgress(90); setMedAlmostComplete(true);}
-        if((j % 10 == 0) && medAlmostComplete == true){meditationProgressBar.setProgress(100); setMedAlmostComplete(false);}
-
     }
-
-
-
-
 
     public void updateValues(){
         final Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(MainActivity.this, "Exercises Completed = " + exercisesCompleted +
+                /*
+                Toast.makeText(MainActivity.this, "Tasks Completed = " + tasksCompleted +
+                        "\nExercises Completed = " + exercisesCompleted +
                         "\nMeditation Completed = " + meditationsCompleted +
                         "\nCheckedExe = " + checkedExercises +
                         "\nCheckedMed = " + checkedMeditations +
@@ -212,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
                         "\nAlmost M = " + medAlmostComplete
 
                         ,Toast.LENGTH_LONG).show();
-
+                    */
 
                 SharedPreferences.Editor editor = getSharedPreferences("SharedPreference One", MODE_PRIVATE).edit();
                 editor.putInt("Task Completed", tasksCompleted);
@@ -254,11 +210,7 @@ public class MainActivity extends AppCompatActivity {
                 editor10.putString("Title Display", titleDisplay);
                 editor10.commit();
 
-
-
-
-
-                handler.postDelayed(this, 10000);
+                handler.postDelayed(this, 5000);
             }
         });
     }
@@ -370,4 +322,12 @@ public class MainActivity extends AppCompatActivity {
     public static void setTitleDisplay(String titleDisplay) {
         MainActivity.titleDisplay = titleDisplay;
     }
+
+
+
+
+
+
+
+
 }

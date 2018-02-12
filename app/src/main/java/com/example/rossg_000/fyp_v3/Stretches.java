@@ -90,18 +90,18 @@ public class Stretches extends AppCompatActivity {
     public String[] popUpInfo(){
         //Fill this in later, position in array should correspond to position of list view
         String[] popUpInfo = new String[12];    //Dont forget to change size of array to match amount of elements in it
-        popUpInfo[0] = "Stretch 1 test test test test test test test test test test test test test test test test test test";
-        popUpInfo[1] = "Stretch 2";
-        popUpInfo[2] = "Stretch 3";
-        popUpInfo[3] = "Stretch 4";
-        popUpInfo[4] = "Stretch 5";
-        popUpInfo[5] = "Stretch 6";
-        popUpInfo[6] = "Stretch 7";
-        popUpInfo[7] = "Stretch 8";
-        popUpInfo[8] = "Stretch 9";
-        popUpInfo[9] = "Stretch 10";
-        popUpInfo[10] = "Stretch 11";
-        popUpInfo[11] = "Stretch 12";
+        popUpInfo[0] = "\n\nStretch 1 test test test test test test test test test test test test test test test test test test";
+        popUpInfo[1] = "\n\nStretch 2";
+        popUpInfo[2] = "\n\nStretch 3";
+        popUpInfo[3] = "\n\nStretch 4";
+        popUpInfo[4] = "\n\nStretch 5";
+        popUpInfo[5] = "\n\nStretch 6";
+        popUpInfo[6] = "\n\nStretch 7";
+        popUpInfo[7] = "\n\nStretch 8";
+        popUpInfo[8] = "\n\nStretch 9";
+        popUpInfo[9] = "\n\nStretch 10";
+        popUpInfo[10] = "\n\nStretch 11";
+        popUpInfo[11] = "\n\nStretch 12";
         //popUpInfo[12] = "Stretch 5";
 
         return popUpInfo;

@@ -6,7 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -62,7 +65,7 @@ public class Rewards extends AppCompatActivity {
 
         //pass all three to unlockRewards
 
-
+        updateProgressBars();
         unlockRewards(k,i,j);
     }
 
@@ -125,4 +128,84 @@ public class Rewards extends AppCompatActivity {
             rewardList.add("A Beta Tester");
         }
     }
+
+    public void updateProgressBars(){
+        ProgressBar taskProgressBar = (ProgressBar) findViewById(R.id.TaskProgressBar);
+        ProgressBar exerciseProgressBar = (ProgressBar) findViewById(R.id.ExerciseProgressBar);
+        ProgressBar meditationProgressBar = (ProgressBar) findViewById(R.id.MeditationProgressBar);
+        ImageView trophy = (ImageView) findViewById(R.id.Trophy);
+        //TextView userTitle = (TextView)findViewById(R.id.UserTitle);
+
+        //String title = getTitleDisplay();
+        //userTitle.setText(title);
+
+        int i = MainActivity.getExercisesCompleted();
+        int j = MainActivity.getMeditationsCompleted();
+        int k = MainActivity.getTasksCompleted();
+
+        Boolean taskAlmostComplete = MainActivity.isTaskAlmostComplete();//MainActivity.taskAlmostComplete;
+        Boolean exeAlmostComplete = MainActivity.isExeAlmostComplete();//MainActivity.exeAlmostComplete;
+        Boolean medAlmostComplete = MainActivity.isMedAlmostComplete();//MainActivity.medAlmostComplete;
+
+        if(((k % 20 == 0) && taskAlmostComplete == true) ||
+                ((i % 10 == 0) && exeAlmostComplete == true) ||
+                ((j % 10 == 0) && medAlmostComplete == true)){
+            trophy.setVisibility(View.VISIBLE);
+        }
+        else{
+            trophy.setVisibility(View.INVISIBLE);
+        }
+
+
+        if((k % 20 == 0) && taskAlmostComplete == false){taskProgressBar.setProgress(0);}
+        if(k % 20 == 1){taskProgressBar.setProgress(5);}
+        if(k % 20 == 2){taskProgressBar.setProgress(10);}
+        if(k % 20 == 3){taskProgressBar.setProgress(15);}
+        if(k % 20 == 4){taskProgressBar.setProgress(20);}
+        if(k % 20 == 5){taskProgressBar.setProgress(25);}
+        if(k % 20 == 6){taskProgressBar.setProgress(30);}
+        if(k % 20 == 7){taskProgressBar.setProgress(35);}
+        if(k % 20 == 8){taskProgressBar.setProgress(40);}
+        if(k % 20 == 9){taskProgressBar.setProgress(45);}
+        if(k % 20 == 10){taskProgressBar.setProgress(50);}
+        if(k % 20 == 11){taskProgressBar.setProgress(55);}
+        if(k % 20 == 12){taskProgressBar.setProgress(60);}
+        if(k % 20 == 13){taskProgressBar.setProgress(65);}
+        if(k % 20 == 14){taskProgressBar.setProgress(70);}
+        if(k % 20 == 15){taskProgressBar.setProgress(75);}
+        if(k % 20 == 16){taskProgressBar.setProgress(80);}
+        if(k % 20 == 17){taskProgressBar.setProgress(85);}
+        if(k % 20 == 18){taskProgressBar.setProgress(90);}
+        if(k % 20 == 19){taskProgressBar.setProgress(95); MainActivity.setTaskAlmostComplete(true);}
+        if((k % 20 == 0) && taskAlmostComplete == true){taskProgressBar.setProgress(100); MainActivity.setTaskAlmostComplete(false);}
+
+
+        if((i % 10 == 0) && exeAlmostComplete == false){exerciseProgressBar.setProgress(0);}
+        if(i % 10 == 1){exerciseProgressBar.setProgress(10);}
+        if(i % 10 == 2){exerciseProgressBar.setProgress(20);}
+        if(i % 10 == 3){exerciseProgressBar.setProgress(30);}
+        if(i % 10 == 4){exerciseProgressBar.setProgress(40);}
+        if(i % 10 == 5){exerciseProgressBar.setProgress(50);}
+        if(i % 10 == 6){exerciseProgressBar.setProgress(60);}
+        if(i % 10 == 7){exerciseProgressBar.setProgress(70);}
+        if(i % 10 == 8){exerciseProgressBar.setProgress(80); }
+        if(i % 10 == 9){exerciseProgressBar.setProgress(90); MainActivity.setExeAlmostComplete(true);}
+        if((i % 10 == 0) && exeAlmostComplete == true){exerciseProgressBar.setProgress(100); MainActivity.setExeAlmostComplete(false);}
+
+        if((j % 10 == 0) && medAlmostComplete == false){meditationProgressBar.setProgress(0);}
+        if(j % 10 == 1){meditationProgressBar.setProgress(10);}
+        if(j % 10 == 2){meditationProgressBar.setProgress(20);}
+        if(j % 10 == 3){meditationProgressBar.setProgress(30);}
+        if(j % 10 == 4){meditationProgressBar.setProgress(40);}
+        if(j % 10 == 5){meditationProgressBar.setProgress(50);}
+        if(j % 10 == 6){meditationProgressBar.setProgress(60);}
+        if(j % 10 == 7){meditationProgressBar.setProgress(70);}
+        if(j % 10 == 8){meditationProgressBar.setProgress(80);}
+        if(j % 10 == 9){meditationProgressBar.setProgress(90); MainActivity.setMedAlmostComplete(true);}
+        if((j % 10 == 0) && medAlmostComplete == true){meditationProgressBar.setProgress(100); MainActivity.setMedAlmostComplete(false);}
+
+    }
+
+
+
 }
