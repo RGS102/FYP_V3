@@ -9,9 +9,9 @@
 
     <ImageButton
         android:id="@+id/toStretchesButton"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginBottom="170dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginBottom="60dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:onClick="goToStretches"
@@ -23,10 +23,10 @@
 
     <ImageButton
         android:id="@+id/toExerciseButton"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginBottom="70dp"
-        android:layout_marginStart="50dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginBottom="60dp"
+        android:layout_marginStart="25dp"
         android:onClick="goToExercise"
         android:src="@drawable/sit_ups"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -34,10 +34,10 @@
 
     <ImageButton
         android:id="@+id/toMeditationButton"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginBottom="70dp"
-        android:layout_marginEnd="50dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginBottom="60dp"
+        android:layout_marginEnd="25dp"
         android:onClick="goToMeditation"
         android:src="@drawable/floating_guru"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -105,7 +105,6 @@
         android:layout_marginTop="70dp"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/toStretches"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

@@ -130,6 +130,14 @@
                 android:layout_height="match_parent"
                 android:visibility="invisible"
                 app:srcCompat="@drawable/trophy" />
+
+            <ImageView
+                android:id="@+id/NotTrophy"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible"
+                app:srcCompat="@drawable/circle" />
+
         </FrameLayout>
     </LinearLayout>
 

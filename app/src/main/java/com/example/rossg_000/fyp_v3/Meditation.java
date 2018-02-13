@@ -1,20 +1,27 @@
 package com.example.rossg_000.fyp_v3;
 
 import android.app.Activity;
+import android.app.Service;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Meditation extends AppCompatActivity {
+public class Meditation extends AppCompatActivity implements SensorEventListener{
     public static final int REQUEST_CODE_COMPLETE_OR_FAIL = 101;
     private ListView meditationDetails;
     private TaskDetailsAdapter adapter;
@@ -23,10 +30,17 @@ public class Meditation extends AppCompatActivity {
     private int compareValue = 0;
     private List<Integer> excessList;
 
+    SensorManager sensorManager;
+    Sensor sensor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meditation);
+
+        sensorManager = (SensorManager) getSystemService(Service.SENSOR_SERVICE);
+        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+
 
         final String [] meditationInfo = popUpInfo();
         meditationDetails = (ListView) findViewById(R.id.MeditationListView);
@@ -526,5 +540,42 @@ public class Meditation extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        sensorManager.unregisterListener(this);
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        sensorManager.registerListener(this, sensor, sensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent sensorEvent) {
+        if(sensorEvent.sensor.getType() == Sensor.TYPE_LIGHT){
+            TextView lightSensor = (TextView) findViewById(R.id.LightSensor);
+            if(sensorEvent.values[0] >= 0 && sensorEvent.values[0] < 50){
+                lightSensor.setText("Too Dark " + sensorEvent.values[0]);
+            }
+            if(sensorEvent.values[0] >= 50 && sensorEvent.values[0] < 100){
+                lightSensor.setText("Dark " + sensorEvent.values[0]);
+            }
+            if(sensorEvent.values[0] >= 100 && sensorEvent.values[0] < 150){
+                lightSensor.setText("Medium " + sensorEvent.values[0]);
+            }
+            if(sensorEvent.values[0] >= 150 && sensorEvent.values[0] < 200){
+                lightSensor.setText("Bright " + sensorEvent.values[0]);
+            }
+            if(sensorEvent.values[0] >= 200 && sensorEvent.values[0] < 250){
+                lightSensor.setText("Too Bright " + sensorEvent.values[0]);
+            }
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int i) {
+
+    }
 }

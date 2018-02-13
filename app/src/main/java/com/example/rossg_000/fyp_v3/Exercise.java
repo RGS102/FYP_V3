@@ -393,7 +393,8 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
                 "\n\nRun:" +
                 "\n\nMove at a faster speed than a walk" +
                 "\n\nAim to never have both or either foot on the ground at the same time";
-        popUpInfo[2] = "\n\nJog:" +
+        popUpInfo[2] =
+                "\n\nJog:" +
                 "\n\nRun at a steady gentle pace";
         popUpInfo[3] =
                 "\n\nSwim:" +
@@ -455,7 +456,8 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
                 "\n\nRest your back against a wall" +
                 "\n\nEnsure your thighs parallel to the ground, your knees are directly above your ankles and your back is straight" +
                 "\n\nHold for 60 second or until your legs start to ache";
-        popUpInfo[15] = "\n\nLunge" +
+        popUpInfo[15] =
+                "\n\nLunge" +
                 "\n\nStarting position: Standing, hands on hips and feet hip width apart" +
                 "\n\nWith one leg step out forward, slowly lowering your body until the knee on your opposite leg is close to touching the floor and bent at least 90 degrees" +
                 "\n\nReturn to starting position" +

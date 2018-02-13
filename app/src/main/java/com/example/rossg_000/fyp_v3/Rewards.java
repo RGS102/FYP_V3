@@ -25,10 +25,9 @@ public class Rewards extends AppCompatActivity {
     private ListView rewardDetails;
     private RewardsDetailsAdapter adapter;
     private List<String> rewardList;
-    //private static String title = "A Rookie";
-    //private static int checkedExercise = 0;
-    //private static int checkedMeditation = 0;
-    //private static int checkedTasks = 0;
+
+    //Rewards can be skipped over if not visited on "modulo = 0" phase - fix this
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,10 +133,7 @@ public class Rewards extends AppCompatActivity {
         ProgressBar exerciseProgressBar = (ProgressBar) findViewById(R.id.ExerciseProgressBar);
         ProgressBar meditationProgressBar = (ProgressBar) findViewById(R.id.MeditationProgressBar);
         ImageView trophy = (ImageView) findViewById(R.id.Trophy);
-        //TextView userTitle = (TextView)findViewById(R.id.UserTitle);
-
-        //String title = getTitleDisplay();
-        //userTitle.setText(title);
+        ImageView notTrophy = (ImageView) findViewById(R.id.NotTrophy);
 
         int i = MainActivity.getExercisesCompleted();
         int j = MainActivity.getMeditationsCompleted();
@@ -151,9 +147,11 @@ public class Rewards extends AppCompatActivity {
                 ((i % 10 == 0) && exeAlmostComplete == true) ||
                 ((j % 10 == 0) && medAlmostComplete == true)){
             trophy.setVisibility(View.VISIBLE);
+            notTrophy.setVisibility(View.INVISIBLE);
         }
         else{
             trophy.setVisibility(View.INVISIBLE);
+            notTrophy.setVisibility(View.VISIBLE);
         }
 
 

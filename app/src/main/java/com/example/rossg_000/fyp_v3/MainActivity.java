@@ -1,11 +1,23 @@
 package com.example.rossg_000.fyp_v3;
 
-import android.app.Activity;
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,24 +25,16 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.graphics.Color;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import static java.lang.Math.atan2;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SensorEventListener{
 
     //Run in background permission required?
+    //Get rid of "implements SensorEventListner" above if you remove the accelerometer from this class
 
 
     public static boolean taskAlmostComplete = false;
@@ -62,11 +66,47 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    private TextView Xtest, Ytest, Ztest;
+    private SensorManager sensorManager;
+    private Sensor sensor;
+
+    //private final int LOCATION_REQUEST_COARSE_CODE = 123; //WORKS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Sensor test
+
+        sensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
+        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        sensorManager.registerListener(this, sensor, sensorManager.SENSOR_DELAY_NORMAL);
+
+        Xtest = (TextView) findViewById(R.id.XCo);
+        Ytest = (TextView) findViewById(R.id.YCo);
+        Ztest = (TextView) findViewById(R.id.ZCo);
+
+
+
+        /*
+        //Works!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)!= PackageManager.PERMISSION_GRANTED)
+        {
+            askPermission(Manifest.permission.ACCESS_COARSE_LOCATION, LOCATION_REQUEST_COARSE_CODE);
+        }
+        */
+
+        /*
+        LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,10,0,this);
+        this.onLocationChanged(null);
+        */
+
+        //Sensor test
+
 
         SharedPreferences sharedPreferences = getSharedPreferences("SharedPreference One", MODE_PRIVATE);
         tasksCompleted = sharedPreferences.getInt("Task Completed", tasksCompleted);
@@ -140,8 +180,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
 
 
     public void updateTitle(){
@@ -325,9 +363,96 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    @Override
+    public void onSensorChanged(SensorEvent sensorEvent) {
+        //Xtest.setText("X: " + sensorEvent.values[0]);
+        //Ytest.setText("Y: " + sensorEvent.values[1]);
+        //Ztest.setText("Z: " + sensorEvent.values[2]);
+        double roll = 0.00;
+        double pitch = 0.00;
+
+        float x = sensorEvent.values[0];
+        float y = sensorEvent.values[1];
+        float z = sensorEvent.values[2];
+
+        double i = Math.sqrt(x*x + y*y + z*z);
+
+        roll = atan2(y,z)*57.3;
+        pitch = atan2((-x), Math.sqrt(y*y + z*z))*5.73;
+
+        Xtest.setText("Roll: " + roll);
+        Ytest.setText("Pitch: " + pitch);
+        if(roll > 50.0){
+            Ztest.setText("50");
+        }
+        else{
+            Ztest.setText("0");
+        }
+    }
+
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int i) {
+
+    }
 
 
 
+    /*
+    //WORKS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    private void askPermission(String permission, int requestCode){
+        if(ContextCompat.checkSelfPermission(this, permission)!= PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{permission}, requestCode);
+        }else{
+            //Toast.makeText(this, "permission granted", Toast.LENGTH_LONG).show();
+        }
+    }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 
+        //super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch(requestCode){
+            case LOCATION_REQUEST_COARSE_CODE:
+                if(grantResults.length>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED){
+                    //Toast.makeText(this, "permission granted", Toast.LENGTH_LONG).show();
+                }
+                else{
+                    //Toast.makeText(this, "permission denied", Toast.LENGTH_LONG).show();
+                }
+
+        }
+    }
+    */
+
+    /*
+    @Override
+    public void onLocationChanged(Location location) {
+
+        TextView xText = (TextView)findViewById(R.id.XCo);
+        if(location==null){
+            xText.setText("-.- m/s");
+        }
+        else{
+            float currentSpeed = location.getSpeed();
+            xText.setText(currentSpeed + " m/s");
+        }
+
+    }
+
+    @Override
+    public void onStatusChanged(String s, int i, Bundle bundle) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String s) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String s) {
+
+    }
+    */
 }
