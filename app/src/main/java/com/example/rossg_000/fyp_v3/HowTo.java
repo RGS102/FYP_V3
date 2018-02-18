@@ -7,10 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -73,7 +71,6 @@ public class HowTo extends AppCompatActivity {
             howToList.add(new StretchDetails("Tracked Activities"));
             howToList.add(new StretchDetails("Trophys and Reward"));
             howToList.add(new StretchDetails("Adaptivity"));
-
         }
     }
 

@@ -2,8 +2,11 @@ package com.example.rossg_000.fyp_v3;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -18,11 +21,13 @@ public class Stretches extends AppCompatActivity {
     private ListView stretchDetails;
     private StretchDetailsAdapter adapter;
     private List<StretchDetails> stretchList;
+    private GestureDetectorCompat gestureDetectorCompat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stretches);
+        gestureDetectorCompat = new GestureDetectorCompat(this, new Stretches.Gesture());
 
         final String [] stretchInfo = popUpInfo();
         stretchDetails = (ListView) findViewById(R.id.StretchesListView);
@@ -39,17 +44,6 @@ public class Stretches extends AppCompatActivity {
             }
         });
 
-        /*
-        taskDetails.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                dataTest = i;
-                final Intent intent2 = new Intent(getApplicationContext(), CompleteOrFail.class);
-                startActivityForResult(intent2, REQUEST_CODE_COMPLETE_OR_FAIL);
-                return true;
-            }
-        });
-        */
         saveData();
     }
 
@@ -83,7 +77,6 @@ public class Stretches extends AppCompatActivity {
             stretchList.add(new StretchDetails("Stretch 10"));
             stretchList.add(new StretchDetails("Stretch 11"));
             stretchList.add(new StretchDetails("Stretch 12"));
-
         }
     }
 
@@ -102,9 +95,31 @@ public class Stretches extends AppCompatActivity {
         popUpInfo[9] = "\n\nStretch 10";
         popUpInfo[10] = "\n\nStretch 11";
         popUpInfo[11] = "\n\nStretch 12";
-        //popUpInfo[12] = "Stretch 5";
 
         return popUpInfo;
     }
 
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        this.gestureDetectorCompat.onTouchEvent(event);
+        return super.onTouchEvent(event);
+    }
+
+    class Gesture extends GestureDetector.SimpleOnGestureListener{
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+            if(e2.getX() > e1.getX()){
+                Intent intent = new Intent(Stretches.this, Exercise.class);
+                startActivity(intent);
+            }
+            if(e2.getX() < e1.getX()){
+                Intent intent = new Intent(Stretches.this, Meditation.class);
+                startActivity(intent);
+
+            }
+
+            return true;
+            //return super.onFling(e1, e2, velocityX, velocityY);
+        }
+    }
 }

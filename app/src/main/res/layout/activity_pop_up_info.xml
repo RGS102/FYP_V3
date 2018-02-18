@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#191919"
+    android:background="@drawable/underwater"
     tools:context="com.example.rossg_000.fyp_v3.PopUpInfo">
 
     <TextView

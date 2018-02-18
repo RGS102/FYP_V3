@@ -4,97 +4,65 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.AudioManager;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
 import android.media.ToneGenerator;
-import android.net.Uri;
+import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.StringTokenizer;
-
 import static java.lang.Math.atan2;
 
 
 public class Exercise extends AppCompatActivity implements SensorEventListener {
     public static final int REQUEST_CODE_COMPLETE_OR_FAIL = 101;
+
+    private GestureDetectorCompat gestureDetectorCompat;
     private ListView taskDetails;
     private TaskDetailsAdapter adapter;
     private List<TaskDetails> taskDetailsListTest;
+    private List<Integer> excessList;
     private int dataTest = 0;
     private int compareValue = 0;
-    SensorManager sensorManager;    //To do with the step count sensor, might change later
-    boolean running = false;    //To do with the step count sensor, might change later
-    boolean sitUpsRunning = false;
-
-    //private SensorManager sensorManager2;
-    //private Sensor sensor;
-
-
-
-    private List<Integer> excessList;
-
     private SensorManager sensorManager2;
     private Sensor sensor2;
     private boolean notePlayed = false;
 
-
+    SensorManager sensorManager;    //To do with the step count sensor, might change later
+    boolean running = false;    //To do with the step count sensor, might change later
+    boolean sitUpsRunning = false;
 
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //If adding more exercises change: loadData, difficultyLevels, popUpInfo, loadExcess
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-
-
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
-
+        gestureDetectorCompat = new GestureDetectorCompat(this, new Exercise.Gesture());
         final String [] taskInfo = popUpInfo();
         taskDetails = (ListView) findViewById(R.id.taskListView);
         loadData();
         adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
         taskDetails.setAdapter(adapter);
-
-        //stepCounter = (TextView) findViewById(R.id.ExerciseTextView);   //TESTING PURPOSE!!!!!!!!!!!!!!!!!!!!!!!!
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);   //To do with the step count sensor, might change later
-
-
         sensorManager2 = (SensorManager)getSystemService(SENSOR_SERVICE);
         sensor2 = sensorManager2.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         sensorManager2.registerListener(this, sensor2, sensorManager2.SENSOR_DELAY_NORMAL);
-
-
-
-        //sensorManager2 = (SensorManager) getSystemService(SENSOR_SERVICE);
-        //sensor = sensorManager2.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        //sensorManager2.registerListener(this, sensor, sensorManager2.SENSOR_DELAY_NORMAL);
-
-
 
         taskDetails.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -112,12 +80,12 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         taskDetails.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if(i != 0 && i != 6) {
+                if(i != 0 && i != 4) {
                     dataTest = i;
                     final Intent intent2 = new Intent(getApplicationContext(), CompleteOrFail.class);
                     startActivityForResult(intent2, REQUEST_CODE_COMPLETE_OR_FAIL);
                 }
-                if(i == 6)
+                if(i == 4)
                 {
                     if(sitUpsRunning == false){sitUpsRunning = true;}
                     else if(sitUpsRunning == true){sitUpsRunning = false;}
@@ -172,15 +140,15 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
             taskDetailsListTest.add(new TaskDetails(2, "Run"  , 11, "mile(s)"  , 1, 1));
             taskDetailsListTest.add(new TaskDetails(3, "Jog"  , 11, "mile(s)"  ,  1, 1));
             taskDetailsListTest.add(new TaskDetails(4, "Swim" , 11, "length(s)",  1, 1));
-            taskDetailsListTest.add(new TaskDetails(5, "Cycle", 11, "mile(s)"  ,  1, 1));
+            taskDetailsListTest.add(new TaskDetails(5, "Sit Ups:", 11, "sit up(s)"  ,  1, 1));
             taskDetailsListTest.add(new TaskDetails(6, "Push Ups:", 11, "push up(s)",  1, 1));
-            taskDetailsListTest.add(new TaskDetails(7, "Sit Ups:" , 11, "sit up(s)",  1, 1));
+            taskDetailsListTest.add(new TaskDetails(7, "Cycle" , 11, "mile(s)",  1, 1));
             taskDetailsListTest.add(new TaskDetails(8, "Crunches:"  , 11, "crunches(s)",  1, 1));
             taskDetailsListTest.add(new TaskDetails(9, "Squats:"  , 11, "squats(s)",  1, 1));
-            taskDetailsListTest.add(new TaskDetails(10, "Superman" , 11, "times"  , 1, 1));
+            taskDetailsListTest.add(new TaskDetails(10, "Superman:" , 11, "superman(s)"  , 1, 1));
             taskDetailsListTest.add(new TaskDetails(11, "Tuck Jump"  , 11, "times"  , 1, 1));
             taskDetailsListTest.add(new TaskDetails(12, "Prone Walkout"  , 11, "times"  ,  1, 1));
-            taskDetailsListTest.add(new TaskDetails(13, "Burpees" , 11, "times",  1, 1));
+            taskDetailsListTest.add(new TaskDetails(13, "Burpees:" , 11, "burpees",  1, 1));
             taskDetailsListTest.add(new TaskDetails(14, "Plank", 11, "times"  ,  1, 1));
             taskDetailsListTest.add(new TaskDetails(15, "Wall Sit", 11, "times",  1, 1));
             taskDetailsListTest.add(new TaskDetails(16, "Lunge" , 11, "times",  1, 1));
@@ -190,7 +158,7 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
             taskDetailsListTest.add(new TaskDetails(20, "Calf Raise"  , 11, "times"  , 1, 1));
             taskDetailsListTest.add(new TaskDetails(21, "Tricep Dip"  , 11, "times"  ,  1, 1));
             taskDetailsListTest.add(new TaskDetails(22, "Boxer" , 11, "times",  1, 1));
-            taskDetailsListTest.add(new TaskDetails(23, "Flutter Kicks", 11, "times"  ,  1, 1));
+            taskDetailsListTest.add(new TaskDetails(23, "Flutter Kick", 11, "times"  ,  1, 1));
             taskDetailsListTest.add(new TaskDetails(24, "Shoulder Bridge", 11, "times",  1, 1));
             taskDetailsListTest.add(new TaskDetails(25, "Sprinter Sit Up" , 11, "times",  1, 1));
         }}
@@ -204,11 +172,7 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         int f = clickedList.getAttempts();
         int newValue = c - progress;
         compareValue = progress;
-
         taskDetailsListTest.set(i, new TaskDetails(a,b,newValue,d,e,f));
-
-
-
         adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
         taskDetails.setAdapter(adapter);
         saveData();
@@ -388,22 +352,7 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         MainActivity.setExercisesCompleted(exercisesCompleted);
         MainActivity.setTasksCompleted(tasksCompleted);
 
-        /*
-        SharedPreferences.Editor editor = getSharedPreferences("Share Exercise Progress", MODE_PRIVATE).edit();
-        editor.putInt("Exercise Completion", taskCompleted);
-        editor.commit();
-        */
-
-
-
         taskDetailsListTest.set(i, new TaskDetails(cId, cTaskName, cRequirmentInteger, cRequirmentString, cLevelInteger, cAttempts));
-
-
-        //To put a completed task at the second position of the arraylist, need to fix popupinfo
-        //Collections.swap(taskDetailsListTest, i,1);
-        //Collections.swap(excessList, i, 1);
-        //saveExcess();
-        //String temp = popUpInfo[i];
 
         adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
         taskDetails.setAdapter(adapter);
@@ -428,18 +377,18 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
                 "\n\nPropel body through water" +
                 "\n\nStyle of swimming depends on preference";
         popUpInfo[4] =
-                "\n\nCycle:" +
-                "\n\nRide a bicycle";
+                "\n\nSit Ups:" +
+                "\n\nStarting position: Lie on floor with bent knees, with feet shoulder width apart and flat on floor, with your hands crossed on chest/behind head/at ears/at side, head tucked forward" +
+                "\n\nUpward phase: Curl your body upwards off the floor to an upright semi-seated position, exhale as you rise" +
+                "\n\nDownward phase: Return to starting position, inhaling as you do so";
         popUpInfo[5] =
                 "\n\nPush Ups:" +
                 "\n\nStarting Position: Kneel with hands flat on the floor, feet together, and shoulders directly above your hands" +
                 "\n\nDownward phase: slowly lower your body until your chest/chin touches the floor" +
                 "\n\nUpward phase: Press up through your arms, while maintaining a rigid torso and keep your head aligned with your spine";
         popUpInfo[6] =
-                "\n\nSit Ups:" +
-                "\n\nStarting position: Lie on floor with bent knees, with feet shoulder width apart and flat on floor, with your hands crossed on chest/behind head/at ears/at side, head tucked forward" +
-                "\n\nUpward phase: Curl your body upwards off the floor to an upright semi-seated position, exhale as you rise" +
-                "\n\nDownward phase: Return to starting position, inhaling as you do so";
+                "\n\nCycle:" +
+                "\n\nRide a bicycle";
         popUpInfo[7] =
                 "\n\nCrunches:" +
                 "\n\nStarting position: Lie on floor with bent knees, with feet shoulder width apart and flat on floor, arms crossed on chest or hands lightly at ears" +
@@ -554,7 +503,6 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         {
             if (running)
             {
-                //stepCounter.setText(String.valueOf(sensorEvent.values[0])); //TESTING PURPOSE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 TaskDetails a = taskDetailsListTest.get(0);
                 taskDetailsListTest.set(0, new TaskDetails(a.getId(), a.getTaskName(), a.getTaskRequirementInteger() - 1, a.getTaskRequirementString(),/*a.getTaskLevelString(),*/a.getTaskLevelInteger(), a.getAttempts()));
                 if (a.getTaskRequirementInteger() == 0)
@@ -572,7 +520,7 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
             if(sitUpsRunning == true)
             {
                 double roll = 0.00;
-                double pitch = 0.00;
+                //double pitch = 0.00;
 
                 float x = sensorEvent.values[0];
                 float y = sensorEvent.values[1];
@@ -581,7 +529,7 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
                 double i = Math.sqrt(x * x + y * y + z * z);
 
                 roll = atan2(y, z) * 57.3;
-                pitch = atan2((-x), Math.sqrt(y * y + z * z)) * 5.73;
+                //pitch = atan2((-x), Math.sqrt(y * y + z * z)) * 5.73;
 
                 if (roll >= 0 && roll <= 19) {notePlayed = false;}
                 if (roll >= 90 && roll <= 99 && notePlayed == false)
@@ -590,12 +538,12 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
                     toneGenerator.startTone(ToneGenerator.TONE_CDMA_PIP, 100);
                     notePlayed = true;
 
-                    TaskDetails a = taskDetailsListTest.get(6);
-                    taskDetailsListTest.set(6, new TaskDetails(a.getId(), a.getTaskName(), a.getTaskRequirementInteger() - 1, a.getTaskRequirementString(),/*a.getTaskLevelString(),*/a.getTaskLevelInteger(), a.getAttempts()));
+                    TaskDetails a = taskDetailsListTest.get(4);
+                    taskDetailsListTest.set(4, new TaskDetails(a.getId(), a.getTaskName(), a.getTaskRequirementInteger() - 1, a.getTaskRequirementString(),/*a.getTaskLevelString(),*/a.getTaskLevelInteger(), a.getAttempts()));
                     if (a.getTaskRequirementInteger() == 0)
                     {
                         toneGenerator.startTone(ToneGenerator.TONE_CDMA_PRESSHOLDKEY_LITE, 150);
-                        difficultyLevels(a, 6, a.getTaskLevelInteger(), 1, 0, 0);
+                        difficultyLevels(a, 4, a.getTaskLevelInteger(), 1, 0, 0);
                     }
 
                     adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
@@ -625,16 +573,6 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         startActivity(passInfoToJournal);
     }
 
-
-
-
-    //public static int getTaskCompleted(){return taskCompleted;}
-
-
-
-
-
-
     private void saveExcess(){
         SharedPreferences sharedPreferences = getSharedPreferences("shareTest", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -657,9 +595,9 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
             excessList.add(0);  //Run
             excessList.add(0);  //Jog
             excessList.add(0);  //Swim
-            excessList.add(0);  //Cycle
-            excessList.add(0);  //Push ups
             excessList.add(0);  //Sit ups
+            excessList.add(0);  //Push ups
+            excessList.add(0);  //Cycle
             excessList.add(0);  //Crunches
             excessList.add(0);  //Squats
             excessList.add(0);  //10
@@ -681,7 +619,29 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         }
     }
 
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        this.gestureDetectorCompat.onTouchEvent(event);
+        return super.onTouchEvent(event);
+    }
 
+    class Gesture extends GestureDetector.SimpleOnGestureListener{
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+            if(e2.getX() > e1.getX()){
+                Intent intent = new Intent(Exercise.this, Meditation.class);
+                startActivity(intent);
+            }
+            if(e2.getX() < e1.getX()){
+                Intent intent = new Intent(Exercise.this, Stretches.class);
+                startActivity(intent);
+
+            }
+
+            return true;
+            //return super.onFling(e1, e2, velocityX, velocityY);
+        }
+    }
 
 
 }

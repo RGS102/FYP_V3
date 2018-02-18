@@ -14,7 +14,7 @@
         android:layout_marginTop="8dp"
         android:text="TextView"
         android:textColor="@android:color/white"
-        android:textSize="20dp"
+        android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,7 +26,7 @@
         android:layout_marginTop="8dp"
         android:text="TextView"
         android:textColor="@android:color/white"
-        android:textSize="20dp"
+        android:textSize="18dp"
         app:layout_constraintStart_toEndOf="@+id/taskName"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,7 +38,7 @@
         android:layout_marginTop="8dp"
         android:text="TextView"
         android:textColor="@android:color/white"
-        android:textSize="20dp"
+        android:textSize="18dp"
         app:layout_constraintStart_toEndOf="@+id/taskRequirementInteger"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,45 +47,47 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="43dp"
         android:text="Level:"
         android:textColor="@android:color/white"
         android:textSize="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/taskName" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/taskLevelInteger"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="43dp"
         android:text="TextView"
         android:textColor="@android:color/white"
         android:textSize="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/taskName" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/Attempts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
+        android:layout_marginTop="63dp"
         android:text="TextView"
         android:textColor="@android:color/white"
         android:textSize="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/taskLevelInteger" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/AttemptString"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="63dp"
         android:text="Attempt:"
         android:textColor="@android:color/white"
         android:textSize="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/taskLevelString" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

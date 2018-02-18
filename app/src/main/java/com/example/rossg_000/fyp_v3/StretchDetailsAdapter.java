@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-
 import java.util.List;
 
 /**
@@ -43,7 +42,6 @@ public class StretchDetailsAdapter extends BaseAdapter{
         stretchName.setText(StretchesList.get(i).getStretchName());
         stretchesViewTest.setTag(StretchesList.get(i).getStretchName());
         return stretchesViewTest;
-
     }
 
 }

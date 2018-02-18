@@ -41,7 +41,6 @@ public class RewardsDetailsAdapter extends BaseAdapter {
         View rewardViewTest = View.inflate(contextRewardsTest, R.layout.stretches_list_items, null);
         TextView reward = (TextView) rewardViewTest.findViewById(R.id.StretchName);
         reward.setText(RewardList.get(i));
-        //stretchesViewTest.setTag(StretchesList.get(i).getStretchName());
         return rewardViewTest;
 
     }

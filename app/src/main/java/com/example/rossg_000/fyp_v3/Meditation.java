@@ -8,13 +8,15 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
@@ -29,6 +31,7 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
     private int dataTest = 0;
     private int compareValue = 0;
     private List<Integer> excessList;
+    private GestureDetectorCompat gestureDetectorCompat;
 
     SensorManager sensorManager;
     Sensor sensor;
@@ -37,11 +40,9 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meditation);
-
+        gestureDetectorCompat = new GestureDetectorCompat(this, new Meditation.Gesture());
         sensorManager = (SensorManager) getSystemService(Service.SENSOR_SERVICE);
         sensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
-
-
         final String [] meditationInfo = popUpInfo();
         meditationDetails = (ListView) findViewById(R.id.MeditationListView);
         loadData();
@@ -82,10 +83,6 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
                     int duration = data.getIntExtra("Duration", 0);
 
                     if(CompleteOrFail == +1){if(progressMade > 0) {progressUpdate(clickedList, dataTest, progressMade, duration);}}
-                    /*else if(CompleteOrFail == -1) {
-                        if(cAttempts >= 2){difficultyLevels(clickedList, dataTest, cLevelInteger, CompleteOrFail, progressMade, duration);}
-                        else {difficultyLevels(clickedList, dataTest, cLevelInteger, 0, progressMade, duration);}
-                    }*/
                 }}}
 
     private void saveData(){
@@ -107,31 +104,29 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
         if(meditationDetailsListTest == null){
             meditationDetailsListTest = new ArrayList<>();
 
-            meditationDetailsListTest.add(new TaskDetails(26,"Deep Breathing",1, "times",1,1));
-            meditationDetailsListTest.add(new TaskDetails(27,"Power Nap",1, "times",1,1));
-            meditationDetailsListTest.add(new TaskDetails(28,"Progressive Muscle Relaxation",1, "times",1,1));
-            meditationDetailsListTest.add(new TaskDetails(29,"Body Scan",1, "times",1,1));
-            meditationDetailsListTest.add(new TaskDetails(30,"Open Monitoring Meditation",1, "times",1,1));
-            meditationDetailsListTest.add(new TaskDetails(31,"Focused Attention meditation",1, "times",1,1));
-            meditationDetailsListTest.add(new TaskDetails(32,"Walking Meditation",1, "times",1,1));
-            meditationDetailsListTest.add(new TaskDetails(33,"Yoga",1, "times",1,1));
-            meditationDetailsListTest.add(new TaskDetails(34,"Tai Chi",1, "times",1,1));
-            meditationDetailsListTest.add(new TaskDetails(35,"Sleep",1, "times",1,1));
+            meditationDetailsListTest.add(new TaskDetails(26,"Deep Breathing",1, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(27,"Power Nap",1, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(28,"Muscle Relaxation",1, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(29,"Body Scan",1, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(30,"Open Monitoring",1, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(31,"Focused Attention",1, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(32,"Walking Meditation",1, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(33,"Yoga",1, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(34,"Tai Chi",1, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(35,"Sleep",1, "hour(s)",1,1));
             meditationDetailsListTest.add(new TaskDetails(36,"Mindful Eating",1, "times",1,1));
-            meditationDetailsListTest.add(new TaskDetails(37,"Visualisation",1, "times",1,1));
-            meditationDetailsListTest.add(new TaskDetails(38,"Mantra Meditation",1, "times",1,1));
-            meditationDetailsListTest.add(new TaskDetails(39,"Metta Meditation",1, "times",1,1));
-            meditationDetailsListTest.add(new TaskDetails(40,"Self Enquiry",1, "times",1,1));
-            meditationDetailsListTest.add(new TaskDetails(41,"Scalp Soother",1, "times",1,1));
-            meditationDetailsListTest.add(new TaskDetails(42,"Easy on the Eyes",1, "times",1,1));
-            meditationDetailsListTest.add(new TaskDetails(43,"Sinus Pressure Relief",1, "times",1,1));
-            meditationDetailsListTest.add(new TaskDetails(44,"Shoulder Tension Relief",1, "times",1,1));
-            meditationDetailsListTest.add(new TaskDetails(45,"Listen to Music",1, "times",1,1));
-            meditationDetailsListTest.add(new TaskDetails(46,"Reading",1, "times",1,1));
-            meditationDetailsListTest.add(new TaskDetails(47,"Effortless Presence",1, "times",1,1));
-            meditationDetailsListTest.add(new TaskDetails(48,"Zen Meditation",1, "times",1,1));
-
-
+            meditationDetailsListTest.add(new TaskDetails(37,"Visualisation",1, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(38,"Mantra Meditation",1, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(39,"Metta Meditation",1, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(40,"Self Enquiry",1, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(41,"Scalp Soother",1, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(42,"Easy on the Eyes",1, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(43,"Sinus Pressure Relief",1, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(44,"Shoulder Tension Relief",1, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(45,"Listen to Music",1, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(46,"Reading",1, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(47,"Effortless Presence",1, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(48,"Zen Meditation",1, "minute(s)",1,1));
         }
     }
 
@@ -145,8 +140,7 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
         passToJournal(cId, cTaskName, cRequirmentInteger, cRequirmentString, cLevelInteger, cAttempts, levelUpOrDown, progress, duration);
         cLevelInteger = cLevelInteger + levelUpOrDown;
 
-        if(cLevelInteger<1){cLevelInteger = 1;}//JUST FOR TESTING PURPOSES - REMOVE/MODIFY LATER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
+        if(cLevelInteger<1){cLevelInteger = 1;}
         loadExcess();
         int e = excessList.get(i);
 
@@ -272,22 +266,15 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
             }
         }
 
-
-
         int meditationsCompleted = MainActivity.getMeditationsCompleted();
         int tasksCompleted = MainActivity.getTasksCompleted();
 
-
-        if(levelUpOrDown!=-1){
-            if(compareValue > cRequirmentInteger){cRequirmentInteger = compareValue + e;}
-        }
+        if(levelUpOrDown!=-1){if(compareValue > cRequirmentInteger){cRequirmentInteger = compareValue + e;}}
         if(levelUpOrDown==+1){cAttempts=1; meditationsCompleted+=1; tasksCompleted +=1;}
         if(levelUpOrDown==-1){cAttempts=1;}
 
         MainActivity.setMeditationsCompleted(meditationsCompleted);
         MainActivity.setTasksCompleted(tasksCompleted);
-
-
 
         meditationDetailsListTest.set(i, new TaskDetails(cId, cTaskName, cRequirmentInteger, cRequirmentString, cLevelInteger, cAttempts));
         adapter = new TaskDetailsAdapter(getApplicationContext(), meditationDetailsListTest);
@@ -302,15 +289,12 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
         String d = clickedList.getTaskRequirementString();
         int e = clickedList.getTaskLevelInteger();
         int f = clickedList.getAttempts();
-
         int newValue = c - progress;
         compareValue = progress;
-
         meditationDetailsListTest.set(i, new TaskDetails(a,b,newValue,d,e,f));
         adapter = new TaskDetailsAdapter(getApplicationContext(), meditationDetailsListTest);
         meditationDetails.setAdapter(adapter);
         saveData();
-
         loadExcess();
 
         if(newValue <= 0)
@@ -469,9 +453,6 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
                 "\n\nWith your mouth closed and eyes lowered, focus your gaze on the ground a few feet in front of you" +
                 "\n\nFocus on your breathing";
 
-
-
-
         return popUpInfo;
     }
 
@@ -537,7 +518,6 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
             excessList.add(0);
             excessList.add(0);
         }
-
     }
 
     @Override
@@ -575,7 +555,29 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
     }
 
     @Override
-    public void onAccuracyChanged(Sensor sensor, int i) {
+    public void onAccuracyChanged(Sensor sensor, int i) {}
 
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        this.gestureDetectorCompat.onTouchEvent(event);
+        return super.onTouchEvent(event);
+    }
+
+    class Gesture extends GestureDetector.SimpleOnGestureListener{
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+            if(e2.getX() > e1.getX()){
+                Intent intent = new Intent(Meditation.this, Stretches.class);
+                startActivity(intent);
+            }
+            if(e2.getX() < e1.getX()){
+                Intent intent = new Intent(Meditation.this, Exercise.class);
+                startActivity(intent);
+
+            }
+
+            return true;
+            //return super.onFling(e1, e2, velocityX, velocityY);
+        }
     }
 }

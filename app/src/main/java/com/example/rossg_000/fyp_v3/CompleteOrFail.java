@@ -7,9 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.NumberPicker;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class CompleteOrFail extends AppCompatActivity {
     private EditText Progress;
@@ -19,9 +16,7 @@ public class CompleteOrFail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complete_or_fail);
-
         Button Complete = (Button) findViewById(R.id.Complete);
-        //Button Fail = (Button) findViewById(R.id.Fail);
 
         Complete.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -48,19 +43,6 @@ public class CompleteOrFail extends AppCompatActivity {
                 finish();
             }
         });
-
-        /*
-        Fail.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                //Toast.makeText(CompleteOrFail.this, "Fail", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent();
-                intent.putExtra("CompleteOrFail", -1);
-                setResult(Activity.RESULT_OK, intent);
-                finish();
-            }
-        });
-        */
     }
 
     public static int getResult(Intent intent){
