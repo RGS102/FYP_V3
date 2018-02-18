@@ -4,10 +4,18 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.AudioManager;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.media.ToneGenerator;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +31,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import static java.lang.Math.atan2;
+
 
 public class Exercise extends AppCompatActivity implements SensorEventListener {
     public static final int REQUEST_CODE_COMPLETE_OR_FAIL = 101;
@@ -33,7 +43,7 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
     private int compareValue = 0;
     SensorManager sensorManager;    //To do with the step count sensor, might change later
     boolean running = false;    //To do with the step count sensor, might change later
-
+    boolean sitUpsRunning = false;
 
     //private SensorManager sensorManager2;
     //private Sensor sensor;
@@ -41,6 +51,12 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
 
 
     private List<Integer> excessList;
+
+    private SensorManager sensorManager2;
+    private Sensor sensor2;
+    private boolean notePlayed = false;
+
+
 
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //If adding more exercises change: loadData, difficultyLevels, popUpInfo, loadExcess
@@ -68,6 +84,12 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);   //To do with the step count sensor, might change later
 
 
+        sensorManager2 = (SensorManager)getSystemService(SENSOR_SERVICE);
+        sensor2 = sensorManager2.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        sensorManager2.registerListener(this, sensor2, sensorManager2.SENSOR_DELAY_NORMAL);
+
+
+
         //sensorManager2 = (SensorManager) getSystemService(SENSOR_SERVICE);
         //sensor = sensorManager2.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         //sensorManager2.registerListener(this, sensor, sensorManager2.SENSOR_DELAY_NORMAL);
@@ -90,13 +112,18 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         taskDetails.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if(i!=0) {
+                if(i != 0 && i != 6) {
                     dataTest = i;
                     final Intent intent2 = new Intent(getApplicationContext(), CompleteOrFail.class);
                     startActivityForResult(intent2, REQUEST_CODE_COMPLETE_OR_FAIL);
                 }
-                    return true;
+                if(i == 6)
+                {
+                    if(sitUpsRunning == false){sitUpsRunning = true;}
+                    else if(sitUpsRunning == true){sitUpsRunning = false;}
+                }
 
+                return true;
             }
         });
         saveData();
@@ -523,18 +550,60 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
 
     @Override   //To do with the step count sensor, might change later
     public void onSensorChanged(SensorEvent sensorEvent) {
-        if(running){
-            //stepCounter.setText(String.valueOf(sensorEvent.values[0])); //TESTING PURPOSE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            TaskDetails a = taskDetailsListTest.get(0);
-            taskDetailsListTest.set(0,new TaskDetails(a.getId(), a.getTaskName(),a.getTaskRequirementInteger()-1,a.getTaskRequirementString(),/*a.getTaskLevelString(),*/a.getTaskLevelInteger(),a.getAttempts()));
-            if(a.getTaskRequirementInteger()==0) {difficultyLevels(a,0, a.getTaskLevelInteger(),1, 0, 0);}
-            adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
-            taskDetails.setAdapter(adapter);
-            saveData();
+        if (sensorEvent.sensor.getType() == Sensor.TYPE_STEP_COUNTER)
+        {
+            if (running)
+            {
+                //stepCounter.setText(String.valueOf(sensorEvent.values[0])); //TESTING PURPOSE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                TaskDetails a = taskDetailsListTest.get(0);
+                taskDetailsListTest.set(0, new TaskDetails(a.getId(), a.getTaskName(), a.getTaskRequirementInteger() - 1, a.getTaskRequirementString(),/*a.getTaskLevelString(),*/a.getTaskLevelInteger(), a.getAttempts()));
+                if (a.getTaskRequirementInteger() == 0)
+                {
+                    difficultyLevels(a, 0, a.getTaskLevelInteger(), 1, 0, 0);
+                }
+
+                adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
+                taskDetails.setAdapter(adapter);
+                saveData();
+            }
         }
+        if(sensorEvent.sensor.getType() == Sensor.TYPE_ACCELEROMETER)
+        {
+            if(sitUpsRunning == true)
+            {
+                double roll = 0.00;
+                double pitch = 0.00;
 
+                float x = sensorEvent.values[0];
+                float y = sensorEvent.values[1];
+                float z = sensorEvent.values[2];
 
+                double i = Math.sqrt(x * x + y * y + z * z);
 
+                roll = atan2(y, z) * 57.3;
+                pitch = atan2((-x), Math.sqrt(y * y + z * z)) * 5.73;
+
+                if (roll >= 0 && roll <= 19) {notePlayed = false;}
+                if (roll >= 90 && roll <= 99 && notePlayed == false)
+                {
+                    ToneGenerator toneGenerator = new ToneGenerator(AudioManager.STREAM_MUSIC, 200);
+                    toneGenerator.startTone(ToneGenerator.TONE_CDMA_PIP, 100);
+                    notePlayed = true;
+
+                    TaskDetails a = taskDetailsListTest.get(6);
+                    taskDetailsListTest.set(6, new TaskDetails(a.getId(), a.getTaskName(), a.getTaskRequirementInteger() - 1, a.getTaskRequirementString(),/*a.getTaskLevelString(),*/a.getTaskLevelInteger(), a.getAttempts()));
+                    if (a.getTaskRequirementInteger() == 0)
+                    {
+                        toneGenerator.startTone(ToneGenerator.TONE_CDMA_PRESSHOLDKEY_LITE, 150);
+                        difficultyLevels(a, 6, a.getTaskLevelInteger(), 1, 0, 0);
+                    }
+
+                    adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
+                    taskDetails.setAdapter(adapter);
+                    saveData();
+                }
+            }
+        }
     }
 
     @Override   //To do with the step count sensor, might change later

@@ -14,6 +14,9 @@ import android.hardware.SensorManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -31,7 +34,7 @@ import android.widget.Toast;
 import static java.lang.Math.atan2;
 
 
-public class MainActivity extends AppCompatActivity implements SensorEventListener{
+public class MainActivity extends AppCompatActivity{
 
     //Run in background permission required?
     //Get rid of "implements SensorEventListner" above if you remove the accelerometer from this class
@@ -41,6 +44,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     public static boolean exeAlmostComplete = false;
     public static boolean medAlmostComplete = false;
 
+    public static boolean taskRewardGiven = false;
+    public static boolean exeRewardGiven = false;
+    public static boolean medRewardGiven = false;
+
     public static int tasksCompleted = 0;
     public static int exercisesCompleted = 0;
     public static int meditationsCompleted = 0;
@@ -48,6 +55,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     public static int checkedTasks = 0;
     public static int checkedExercises = 0;
     public static int checkedMeditations = 0;
+
+    public static int taskRewardsEarned = 0;
+    public static int exerciseRewardsEarned = 0;
+    public static int meditationRewardsEarned = 0;
 
     public static String titleDisplay = "A Rookie";
 
@@ -66,9 +77,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
 
 
-    private TextView Xtest, Ytest, Ztest;
-    private SensorManager sensorManager;
-    private Sensor sensor;
+    //private TextView Xtest, Ytest, Ztest;
+    //private SensorManager sensorManager;
+    //private Sensor sensor;
+
+    //private boolean notePlayed = false;
 
     //private final int LOCATION_REQUEST_COARSE_CODE = 123; //WORKS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -81,6 +94,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         //Sensor test
 
+        /*
         sensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
         sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         sensorManager.registerListener(this, sensor, sensorManager.SENSOR_DELAY_NORMAL);
@@ -88,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         Xtest = (TextView) findViewById(R.id.XCo);
         Ytest = (TextView) findViewById(R.id.YCo);
         Ztest = (TextView) findViewById(R.id.ZCo);
-
+        */
 
 
         /*
@@ -148,14 +162,42 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         titleDisplay = sharedPreferences10.getString("Title Display", titleDisplay);
         setTitleDisplay(titleDisplay);
 
+        SharedPreferences sharedPreferences11 = getSharedPreferences("SharedPreference Eleven", MODE_PRIVATE);
+        taskRewardsEarned = sharedPreferences11.getInt("Task Earned", taskRewardsEarned);
+        setTaskRewardsEarned(taskRewardsEarned);
+
+        SharedPreferences sharedPreferences12 = getSharedPreferences("SharedPreference Twelve", MODE_PRIVATE);
+        exerciseRewardsEarned = sharedPreferences12.getInt("Exe Earned", exerciseRewardsEarned);
+        setExerciseRewardsEarned(exerciseRewardsEarned);
+
+        SharedPreferences sharedPreferences13 = getSharedPreferences("SharedPreference Thirteen", MODE_PRIVATE);
+        meditationRewardsEarned = sharedPreferences13.getInt("Med Earned", meditationRewardsEarned);
+        setMeditationRewardsEarned(meditationRewardsEarned);
+
+        SharedPreferences sharedPreferences14 = getSharedPreferences("SharedPreference Fourteen", MODE_PRIVATE);
+        taskRewardGiven = sharedPreferences14.getBoolean("Task Given", taskRewardGiven);
+        setTaskRewardGiven(taskRewardGiven);
+
+        SharedPreferences sharedPreferences15 = getSharedPreferences("SharedPreference Fifteen", MODE_PRIVATE);
+        exeRewardGiven = sharedPreferences15.getBoolean("Exe Given", exeRewardGiven);
+        setExeRewardGiven(exeRewardGiven);
+
+        SharedPreferences sharedPreferences16 = getSharedPreferences("SharedPreference Sixteen", MODE_PRIVATE);
+        medRewardGiven = sharedPreferences16.getBoolean("Med Given", medRewardGiven);
+        setMedRewardGiven(medRewardGiven);
+
+        //load rewards earned
+
         updateValues();
         updateTitle();
+        isRewardEarned();
     }
 
     @Override
     protected void onResume(){
         super.onResume();
         updateTitle();
+        isRewardEarned();
     }
 
     @Override
@@ -174,7 +216,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     public boolean onOptionsItemSelected(MenuItem item) {
         int res_id = item.getItemId();
         if(res_id == R.id.questionMark){
-            //Toast.makeText(getApplicationContext(), "Clicked ?", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(this, HowTo.class);
             startActivity(intent);
         }
@@ -248,10 +289,93 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 editor10.putString("Title Display", titleDisplay);
                 editor10.commit();
 
+                //save rewards earned
+
+                SharedPreferences.Editor editor11 = getSharedPreferences("SharedPreference Eleven", MODE_PRIVATE).edit();
+                editor11.putInt("Task Earned", taskRewardsEarned);
+                editor11.commit();
+
+                SharedPreferences.Editor editor12 = getSharedPreferences("SharedPreference Twelve", MODE_PRIVATE).edit();
+                editor12.putInt("Exe Earned", exerciseRewardsEarned);
+                editor12.commit();
+
+                SharedPreferences.Editor editor13 = getSharedPreferences("SharedPreference Thirteen", MODE_PRIVATE).edit();
+                editor13.putInt("Med Earned", meditationRewardsEarned);
+                editor13.commit();
+
+
+
+
+
+                SharedPreferences.Editor editor14 = getSharedPreferences("SharedPreference Fourteen", MODE_PRIVATE).edit();
+                editor14.putBoolean("Task Given", taskRewardGiven);
+                editor14.commit();
+
+                SharedPreferences.Editor editor15 = getSharedPreferences("SharedPreference Fifteen", MODE_PRIVATE).edit();
+                editor15.putBoolean("Exe Given", exeRewardGiven);
+                editor15.commit();
+
+                SharedPreferences.Editor editor16 = getSharedPreferences("SharedPreference Sixteen", MODE_PRIVATE).edit();
+                editor16.putBoolean("Med Given", medRewardGiven);
+                editor16.commit();
+
+
+
+
+
                 handler.postDelayed(this, 5000);
             }
         });
     }
+
+    public void isRewardEarned(){
+        int i = MainActivity.getExercisesCompleted();
+        int j = MainActivity.getMeditationsCompleted();
+        int k = MainActivity.getTasksCompleted();
+
+        int exeRewards = MainActivity.getExerciseRewardsEarned();
+        int medRewards = MainActivity.getMeditationRewardsEarned();
+        int taskRewards = MainActivity.getTaskRewardsEarned();
+
+        boolean exeBool = MainActivity.isExeRewardGiven();
+        boolean medBool = MainActivity.isMedRewardGiven();
+        boolean taskBool = MainActivity.isTaskRewardGiven();
+
+        if(i%10==0 && i!=0 && exeBool == false)
+        {
+            exeRewards+=1;
+            setExerciseRewardsEarned(exeRewards);
+            setExeRewardGiven(true);
+        }
+        else if(i%10!=0){
+            setExeRewardGiven(false);
+        }
+
+        if(j%10==0 && j!=0 && medBool == false)
+        {
+            medRewards+=1;
+            setMeditationRewardsEarned(medRewards);
+            setMedRewardGiven(true);
+        }
+        else if(j%10!=0){
+            setMedRewardGiven(false);
+        }
+
+        if(k%20==0 && k!=0 && taskBool == false)
+        {
+            taskRewards+=1;
+            setTaskRewardsEarned(taskRewards);
+            setTaskRewardGiven(true);
+        }
+        else if(k%20!=0){
+            setTaskRewardGiven(false);
+        }
+    }
+
+
+
+
+
 
     /** Called when the user taps the button */
     public void goToPage(View view) {
@@ -363,6 +487,62 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
 
 
+
+
+    public static int getTaskRewardsEarned() {
+        return taskRewardsEarned;
+    }
+
+    public static void setTaskRewardsEarned(int taskRewardsEarned) {
+        MainActivity.taskRewardsEarned = taskRewardsEarned;
+    }
+
+    public static int getExerciseRewardsEarned() {
+        return exerciseRewardsEarned;
+    }
+
+    public static void setExerciseRewardsEarned(int exerciseRewardsEarned) {
+        MainActivity.exerciseRewardsEarned = exerciseRewardsEarned;
+    }
+
+    public static int getMeditationRewardsEarned() {
+        return meditationRewardsEarned;
+    }
+
+    public static void setMeditationRewardsEarned(int meditationRewardsEarned) {
+        MainActivity.meditationRewardsEarned = meditationRewardsEarned;
+    }
+
+
+
+
+
+
+    public static boolean isTaskRewardGiven() {
+        return taskRewardGiven;
+    }
+
+    public static void setTaskRewardGiven(boolean taskRewardGiven) {
+        MainActivity.taskRewardGiven = taskRewardGiven;
+    }
+
+    public static boolean isExeRewardGiven() {
+        return exeRewardGiven;
+    }
+
+    public static void setExeRewardGiven(boolean exeRewardGiven) {
+        MainActivity.exeRewardGiven = exeRewardGiven;
+    }
+
+    public static boolean isMedRewardGiven() {
+        return medRewardGiven;
+    }
+
+    public static void setMedRewardGiven(boolean medRewardGiven) {
+        MainActivity.medRewardGiven = medRewardGiven;
+    }
+
+    /*
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
         //Xtest.setText("X: " + sensorEvent.values[0]);
@@ -382,12 +562,41 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         Xtest.setText("Roll: " + roll);
         Ytest.setText("Pitch: " + pitch);
-        if(roll > 50.0){
-            Ztest.setText("50");
+
+        */
+        //if(roll >= 0 && roll <= 9){Ztest.setText("0"); /*notePlayed = false;*/}
+        //if(roll >= 10 && roll <= 19){Ztest.setText("10");/*notePlayed = false;*/}
+        //if(roll >= 20 && roll <= 29){Ztest.setText("20");/*notePlayed = false;*/}
+        /*if(roll >= 30 && roll <= 39){Ztest.setText("20");}
+        if(roll >= 40 && roll <= 49){Ztest.setText("40");}
+        if(roll >= 50 && roll <= 59){Ztest.setText("50");}
+        if(roll >= 60 && roll <= 69){Ztest.setText("60");}
+        if(roll >= 70 && roll <= 79){Ztest.setText("70");}
+        if(roll >= 80 && roll <= 89){Ztest.setText("80");}
+        if(roll >= 90 && roll <= 99 /*&& notePlayed == false*//*)
+        {
+            Ztest.setText("90");
+            //Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+            //Ringtone ringtone = RingtoneManager.getRingtone(getApplicationContext(), notification);
+            //ringtone.play();
+            //notePlayed = true;
         }
-        else{
-            Ztest.setText("0");
-        }
+        if(roll >= 100 && roll <= 109){Ztest.setText("100");}
+        if(roll >= 110 && roll <= 119){Ztest.setText("110");}
+        if(roll >= 120 && roll <= 129){Ztest.setText("120");}
+        if(roll >= 130 && roll <= 139){Ztest.setText("130");}
+        if(roll >= 140 && roll <= 149){Ztest.setText("140");}
+        if(roll >= 150 && roll <= 159){Ztest.setText("150");}
+        if(roll >= 160 && roll <= 169){Ztest.setText("160");}
+        if(roll >= 170 && roll <= 179){Ztest.setText("170");}
+        if(roll >= 180 && roll <= 189){Ztest.setText("180");}
+        //else{Ztest.setText("0");}
+
+        //if(roll > 50.0){
+        //    Ztest.setText("50");
+        //}
+        //else{Ztest.setText("0");}
+
     }
 
 
@@ -395,6 +604,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     public void onAccuracyChanged(Sensor sensor, int i) {
 
     }
+
 
 
 

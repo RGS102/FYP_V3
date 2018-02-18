@@ -64,6 +64,15 @@ public class Rewards extends AppCompatActivity {
 
         //pass all three to unlockRewards
 
+
+        //int tempi = Main.getAvailableExerciseRewards
+        //if tempi > 0{
+        //Display trophy, give reward, setAvailableExerciseRewards-1
+
+
+
+
+
         updateProgressBars();
         unlockRewards(k,i,j);
     }
@@ -72,6 +81,46 @@ public class Rewards extends AppCompatActivity {
     private void unlockRewards(int task, int exe, int med){
         loadData();
 
+        int exeRewards = MainActivity.getExerciseRewardsEarned();
+        int medRewards = MainActivity.getMeditationRewardsEarned();
+        int taskRewards = MainActivity.getTaskRewardsEarned();
+
+        if(exeRewards > 0){
+            if(!rewardList.contains("tester")) {rewardList.add(0,"tester");}
+            else if(!rewardList.contains("2")) {rewardList.add(0,"2");}
+            else if(!rewardList.contains("3")) {rewardList.add(0,"3");}
+
+            exeRewards-=1;
+            MainActivity.setExerciseRewardsEarned(exeRewards);
+        }
+
+        if(medRewards > 0){
+            if(!rewardList.contains("4")) {rewardList.add(0,"4");}
+            else if(!rewardList.contains("5")) {rewardList.add(0,"5");}
+            else if(!rewardList.contains("6")) {rewardList.add(0,"6");}
+
+            medRewards-=1;
+            MainActivity.setMeditationRewardsEarned(medRewards);
+        }
+
+        if(taskRewards > 0){
+            if(!rewardList.contains("7")) {rewardList.add(0,"7");}
+            else if(!rewardList.contains("8")) {rewardList.add(0,"8");}
+            else if(!rewardList.contains("9")) {rewardList.add(0,"9");}
+
+            taskRewards-=1;
+            MainActivity.setTaskRewardsEarned(taskRewards);
+        }
+
+        adapter = new RewardsDetailsAdapter(getApplicationContext(), rewardList);
+        rewardDetails.setAdapter(adapter);
+        saveData();
+
+
+
+        /*
+
+        //SOME OF THIS WILL BE USED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         int checkedTasks = MainActivity.getCheckedTasks();
         int checkedExercise = MainActivity.getCheckedExercises();
         int checkedMeditation = MainActivity.getCheckedMeditations();
@@ -103,6 +152,7 @@ public class Rewards extends AppCompatActivity {
         adapter = new RewardsDetailsAdapter(getApplicationContext(), rewardList);
         rewardDetails.setAdapter(adapter);
         saveData();
+        */
     }
 
     private void saveData(){
@@ -138,6 +188,12 @@ public class Rewards extends AppCompatActivity {
         int i = MainActivity.getExercisesCompleted();
         int j = MainActivity.getMeditationsCompleted();
         int k = MainActivity.getTasksCompleted();
+
+        //int tempi = Main.getAvailableExerciseRewards
+        //if tempi > 0{
+        //Display trophy, give reward, setAvailableExerciseRewards-1
+
+
 
         Boolean taskAlmostComplete = MainActivity.isTaskAlmostComplete();//MainActivity.taskAlmostComplete;
         Boolean exeAlmostComplete = MainActivity.isExeAlmostComplete();//MainActivity.exeAlmostComplete;

@@ -14,7 +14,7 @@
         android:layout_marginTop="8dp"
         android:text="TextView"
         android:textColor="@android:color/white"
-        android:textSize="25dp"
+        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,7 +26,7 @@
         android:layout_marginTop="8dp"
         android:text="TextView"
         android:textColor="@android:color/white"
-        android:textSize="25dp"
+        android:textSize="20dp"
         app:layout_constraintStart_toEndOf="@+id/taskName"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,7 +38,7 @@
         android:layout_marginTop="8dp"
         android:text="TextView"
         android:textColor="@android:color/white"
-        android:textSize="25dp"
+        android:textSize="20dp"
         app:layout_constraintStart_toEndOf="@+id/taskRequirementInteger"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -50,7 +50,7 @@
         android:layout_marginTop="5dp"
         android:text="Level:"
         android:textColor="@android:color/white"
-        android:textSize="20dp"
+        android:textSize="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/taskName" />
 
@@ -62,7 +62,7 @@
         android:layout_marginTop="5dp"
         android:text="TextView"
         android:textColor="@android:color/white"
-        android:textSize="20dp"
+        android:textSize="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/taskName" />
 
@@ -73,7 +73,7 @@
         android:layout_marginStart="100dp"
         android:text="TextView"
         android:textColor="@android:color/white"
-        android:textSize="20dp"
+        android:textSize="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/taskLevelInteger" />
 
@@ -84,7 +84,7 @@
         android:layout_marginStart="10dp"
         android:text="Attempt:"
         android:textColor="@android:color/white"
-        android:textSize="20dp"
+        android:textSize="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/taskLevelString" />
 
