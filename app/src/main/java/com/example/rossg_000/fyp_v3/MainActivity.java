@@ -253,9 +253,11 @@ public class MainActivity extends AppCompatActivity{
             exeRewards+=1;
             setExerciseRewardsEarned(exeRewards);
             setExeRewardGiven(true);
+            setExeAlmostComplete(true);
         }
         else if(i%10!=0){
             setExeRewardGiven(false);
+            setExeAlmostComplete(false);
         }
 
         if(j%10==0 && j!=0 && medBool == false)
@@ -263,9 +265,11 @@ public class MainActivity extends AppCompatActivity{
             medRewards+=1;
             setMeditationRewardsEarned(medRewards);
             setMedRewardGiven(true);
+            setMedAlmostComplete(true);
         }
         else if(j%10!=0){
             setMedRewardGiven(false);
+            setMedAlmostComplete(false);
         }
 
         if(k%20==0 && k!=0 && taskBool == false)
@@ -273,14 +277,16 @@ public class MainActivity extends AppCompatActivity{
             taskRewards+=1;
             setTaskRewardsEarned(taskRewards);
             setTaskRewardGiven(true);
+            setTaskAlmostComplete(true);
         }
         else if(k%20!=0){
             setTaskRewardGiven(false);
+            setTaskAlmostComplete(false);
         }
     }
 
     /** Called when the user taps the button */
-    public void goToPage(View view) {
+    public void goToTask(View view) {
         Intent intent = new Intent(this, Tasks.class);
         startActivity(intent);
     }
@@ -294,6 +300,24 @@ public class MainActivity extends AppCompatActivity{
         Intent intent = new Intent(this, Rewards.class);
         startActivity(intent);
     }
+
+    public void goToExercise(View view) {
+        Intent intent = new Intent(this, Exercise.class);
+        startActivity(intent);
+    }
+
+    public void goToMeditation(View view) {
+        Intent intent = new Intent(this, Meditation.class);
+        startActivity(intent);
+    }
+
+    public void goToStretches(View view){
+        Intent intent = new Intent(this, Stretches.class);
+        startActivity(intent);
+    }
+
+
+
 
     public static int getTasksCompleted() {
         return tasksCompleted;

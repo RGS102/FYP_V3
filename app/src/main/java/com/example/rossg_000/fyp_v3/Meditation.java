@@ -8,9 +8,12 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.MediaRecorder;
+import android.os.Handler;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -43,6 +46,14 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
         gestureDetectorCompat = new GestureDetectorCompat(this, new Meditation.Gesture());
         sensorManager = (SensorManager) getSystemService(Service.SENSOR_SERVICE);
         sensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+
+
+
+        //temperatureSensor = sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE);
+
+
+
+
         final String [] meditationInfo = popUpInfo();
         meditationDetails = (ListView) findViewById(R.id.MeditationListView);
         loadData();
@@ -534,7 +545,9 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
+
         if(sensorEvent.sensor.getType() == Sensor.TYPE_LIGHT){
+
             TextView lightSensor = (TextView) findViewById(R.id.LightSensor);
             if(sensorEvent.values[0] >= 0 && sensorEvent.values[0] < 50){
                 lightSensor.setText("Too Dark " + sensorEvent.values[0]);
@@ -551,8 +564,20 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
             if(sensorEvent.values[0] >= 200 && sensorEvent.values[0] < 250){
                 lightSensor.setText("Too Bright " + sensorEvent.values[0]);
             }
+
         }
+
+
+        //if(sensorEvent.sensor.getType() == Sensor.TYPE_AMBIENT_TEMPERATURE) {
+            //TextView lightSensor = (TextView) findViewById(R.id.LightSensor);
+            //float ambientTemp = sensorEvent.values[0];
+            //lightSensor.setText(String.valueOf(ambientTemp));
+       // }
+
     }
+
+
+
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {}
@@ -573,7 +598,6 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
             if(e2.getX() < e1.getX()){
                 Intent intent = new Intent(Meditation.this, Exercise.class);
                 startActivity(intent);
-
             }
 
             return true;

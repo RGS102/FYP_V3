@@ -33,7 +33,9 @@ public class Rewards extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String title = rewardList.get(i);
-                MainActivity.setTitleDisplay(title);
+                if(!"??????".equals(title)){
+                    MainActivity.setTitleDisplay(title);
+                }
             }
         });
     }
@@ -59,48 +61,48 @@ public class Rewards extends AppCompatActivity {
         int taskRewards = MainActivity.getTaskRewardsEarned();
 
         if(exeRewards > 0){
-            if(!rewardList.contains("A Couch Potato")) {rewardList.add(0,"A Couch Potato");}
-            else if(!rewardList.contains("A Try Hard")) {rewardList.add(0,"A Try Hard");}
-            else if(!rewardList.contains("Destined For Greatness")) {rewardList.add(0,"Destined For Greatness");}
-            else if(!rewardList.contains("Determined")) {rewardList.add(0,"Determined");}
-            else if(!rewardList.contains("Pretty Good")) {rewardList.add(0,"Pretty Good");}
-            else if(!rewardList.contains("Fit")) {rewardList.add(0,"Fit");}
-            else if(!rewardList.contains("Strong Like Bull")) {rewardList.add(0,"Strong Like Bull");}
-            else if(!rewardList.contains("Unbreakable")) {rewardList.add(0,"Unbreakable");}
-            else if(!rewardList.contains("Unstoppable")) {rewardList.add(0,"Unstoppable");}
-            else if(!rewardList.contains("The Champion")) {rewardList.add(0,"The Champion");}
+            if(!rewardList.contains("A Couch Potato")) {rewardList.add(0,"A Couch Potato"); rewardList.remove(rewardList.size()-1);}
+            else if(!rewardList.contains("A Try Hard")) {rewardList.add(0,"A Try Hard"); rewardList.remove(rewardList.size()-1);}
+            else if(!rewardList.contains("Destined For Greatness")) {rewardList.add(0,"Destined For Greatness"); rewardList.remove(rewardList.size()-1);}
+            else if(!rewardList.contains("Determined")) {rewardList.add(0,"Determined"); rewardList.remove(rewardList.size()-1);}
+            else if(!rewardList.contains("Pretty Good")) {rewardList.add(0,"Pretty Good"); rewardList.remove(rewardList.size()-1);}
+            else if(!rewardList.contains("Fit")) {rewardList.add(0,"Fit"); rewardList.remove(rewardList.size()-1);}
+            else if(!rewardList.contains("Strong Like Bull")) {rewardList.add(0,"Strong Like Bull"); rewardList.remove(rewardList.size()-1); }
+            else if(!rewardList.contains("Unbreakable")) {rewardList.add(0,"Unbreakable"); rewardList.remove(rewardList.size()-1);}
+            else if(!rewardList.contains("Unstoppable")) {rewardList.add(0,"Unstoppable"); rewardList.remove(rewardList.size()-1);}
+            else if(!rewardList.contains("The Champion")) {rewardList.add(0,"The Champion"); rewardList.remove(rewardList.size()-1);}
 
             exeRewards-=1;
             MainActivity.setExerciseRewardsEarned(exeRewards);
         }
 
         if(medRewards > 0){
-            if(!rewardList.contains("A Hippie Wannabe")) {rewardList.add(0,"A Hippie Wannabe");}
-            else if(!rewardList.contains("Enjoying Yourself")) {rewardList.add(0,"Enjoying Yourself");}
-            else if(!rewardList.contains("Enjoying Life")) {rewardList.add(0,"Enjoying Life");}
-            else if(!rewardList.contains("Rested")) {rewardList.add(0,"Rested");}
-            else if(!rewardList.contains("Relaxing")) {rewardList.add(0,"Relaxing");}
-            else if(!rewardList.contains("Peaceful")) {rewardList.add(0,"Peaceful");}
-            else if(!rewardList.contains("Powerful")) {rewardList.add(0,"Powerful");}
-            else if(!rewardList.contains("A Great Person")) {rewardList.add(0,"A Great Person");}
-            else if(!rewardList.contains("The Best You")) {rewardList.add(0,"The Best You");}
-            else if(!rewardList.contains("At One")) {rewardList.add(0,"At One");}
+            if(!rewardList.contains("A Hippie Wannabe")) {rewardList.add(0,"A Hippie Wannabe"); rewardList.remove(rewardList.size()-1);}
+            else if(!rewardList.contains("Enjoying Yourself")) {rewardList.add(0,"Enjoying Yourself"); rewardList.remove(rewardList.size()-1);}
+            else if(!rewardList.contains("Enjoying Life")) {rewardList.add(0,"Enjoying Life"); rewardList.remove(rewardList.size()-1);}
+            else if(!rewardList.contains("Rested")) {rewardList.add(0,"Rested"); rewardList.remove(rewardList.size()-1);}
+            else if(!rewardList.contains("Relaxing")) {rewardList.add(0,"Relaxing"); rewardList.remove(rewardList.size()-1);}
+            else if(!rewardList.contains("Peaceful")) {rewardList.add(0,"Peaceful"); rewardList.remove(rewardList.size()-1);}
+            else if(!rewardList.contains("Powerful")) {rewardList.add(0,"Powerful"); rewardList.remove(rewardList.size()-1);}
+            else if(!rewardList.contains("A Great Person")) {rewardList.add(0,"A Great Person"); rewardList.remove(rewardList.size()-1);}
+            else if(!rewardList.contains("The Best You")) {rewardList.add(0,"The Best You"); rewardList.remove(rewardList.size()-1);}
+            else if(!rewardList.contains("At One")) {rewardList.add(0,"At One"); rewardList.remove(rewardList.size()-1);}
 
             medRewards-=1;
             MainActivity.setMeditationRewardsEarned(medRewards);
         }
 
         if(taskRewards > 0){
-            if(!rewardList.contains("A Long Way From The Top")) {rewardList.add(0,"A Long Way From The Top");}
-            else if(!rewardList.contains("Moving On Up")) {rewardList.add(0,"Moving On Up");}
-            else if(!rewardList.contains("Heroic")) {rewardList.add(0,"Heroic");}
-            else if(!rewardList.contains("Legendary")) {rewardList.add(0,"Legendary");}
-            else if(!rewardList.contains("The Task Master")) {rewardList.add(0,"The Task Master");}
-            else if(!rewardList.contains("Still Going?")) {rewardList.add(0,"Still Going?");}
-            else if(!rewardList.contains("Improbable")) {rewardList.add(0,"Improbable");}
-            else if(!rewardList.contains("Impossible")) {rewardList.add(0,"Impossible");}
-            else if(!rewardList.contains("The One In The Prophecy")) {rewardList.add(0,"The One In The Prophecy");}
-            else if(!rewardList.contains("The Chosen One")) {rewardList.add(0,"The Chosen One");}
+            if(!rewardList.contains("A Long Way From The Top")) {rewardList.add(0,"A Long Way From The Top"); rewardList.remove(rewardList.size()-1);}
+            else if(!rewardList.contains("Moving On Up")) {rewardList.add(0,"Moving On Up"); rewardList.remove(rewardList.size()-1);}
+            else if(!rewardList.contains("Heroic")) {rewardList.add(0,"Heroic"); rewardList.remove(rewardList.size()-1);}
+            else if(!rewardList.contains("Legendary")) {rewardList.add(0,"Legendary"); rewardList.remove(rewardList.size()-1);}
+            else if(!rewardList.contains("The Task Master")) {rewardList.add(0,"The Task Master"); rewardList.remove(rewardList.size()-1);}
+            else if(!rewardList.contains("Still Going?")) {rewardList.add(0,"Still Going?"); rewardList.remove(rewardList.size()-1);}
+            else if(!rewardList.contains("Improbable")) {rewardList.add(0,"Improbable"); rewardList.remove(rewardList.size()-1);}
+            else if(!rewardList.contains("Impossible")) {rewardList.add(0,"Impossible"); rewardList.remove(rewardList.size()-1);}
+            else if(!rewardList.contains("The One In The Prophecy")) {rewardList.add(0,"The One In The Prophecy"); rewardList.remove(rewardList.size()-1);}
+            else if(!rewardList.contains("The Chosen One")) {rewardList.add(0,"The Chosen One"); rewardList.remove(rewardList.size()-1);}
 
             taskRewards-=1;
             MainActivity.setTaskRewardsEarned(taskRewards);
@@ -169,6 +171,9 @@ public class Rewards extends AppCompatActivity {
             rewardList = new ArrayList<String>();
             rewardList.add("A Rookie");
             rewardList.add("A Beta Tester");
+            for(int i = 0; i<30; i++){
+                rewardList.add("??????");
+            }
         }
     }
 
@@ -224,8 +229,8 @@ public class Rewards extends AppCompatActivity {
         if(k % 20 == 16){taskProgressBar.setProgress(80);}
         if(k % 20 == 17){taskProgressBar.setProgress(85);}
         if(k % 20 == 18){taskProgressBar.setProgress(90);}
-        if(k % 20 == 19){taskProgressBar.setProgress(95); MainActivity.setTaskAlmostComplete(true);}
-        if((k % 20 == 0) && taskAlmostComplete == true){taskProgressBar.setProgress(100); MainActivity.setTaskAlmostComplete(false);}
+        if(k % 20 == 19){taskProgressBar.setProgress(95); /*MainActivity.setTaskAlmostComplete(true);*/}
+        if((k % 20 == 0) && taskAlmostComplete == true){taskProgressBar.setProgress(100); /*MainActivity.setTaskAlmostComplete(false);*/}
 
 
         if((i % 10 == 0) && exeAlmostComplete == false){exerciseProgressBar.setProgress(0);}
@@ -237,8 +242,8 @@ public class Rewards extends AppCompatActivity {
         if(i % 10 == 6){exerciseProgressBar.setProgress(60);}
         if(i % 10 == 7){exerciseProgressBar.setProgress(70);}
         if(i % 10 == 8){exerciseProgressBar.setProgress(80); }
-        if(i % 10 == 9){exerciseProgressBar.setProgress(90); MainActivity.setExeAlmostComplete(true);}
-        if((i % 10 == 0) && exeAlmostComplete == true){exerciseProgressBar.setProgress(100); MainActivity.setExeAlmostComplete(false);}
+        if(i % 10 == 9){exerciseProgressBar.setProgress(90); /*MainActivity.setExeAlmostComplete(true);*/}
+        if((i % 10 == 0) && exeAlmostComplete == true){exerciseProgressBar.setProgress(100); /*MainActivity.setExeAlmostComplete(false);*/}
 
         if((j % 10 == 0) && medAlmostComplete == false){meditationProgressBar.setProgress(0);}
         if(j % 10 == 1){meditationProgressBar.setProgress(10);}
@@ -249,8 +254,8 @@ public class Rewards extends AppCompatActivity {
         if(j % 10 == 6){meditationProgressBar.setProgress(60);}
         if(j % 10 == 7){meditationProgressBar.setProgress(70);}
         if(j % 10 == 8){meditationProgressBar.setProgress(80);}
-        if(j % 10 == 9){meditationProgressBar.setProgress(90); MainActivity.setMedAlmostComplete(true);}
-        if((j % 10 == 0) && medAlmostComplete == true){meditationProgressBar.setProgress(100); MainActivity.setMedAlmostComplete(false);}
+        if(j % 10 == 9){meditationProgressBar.setProgress(90); /*MainActivity.setMedAlmostComplete(true);*/}
+        if((j % 10 == 0) && medAlmostComplete == true){meditationProgressBar.setProgress(100); /*MainActivity.setMedAlmostComplete(false);*/}
 
     }
 

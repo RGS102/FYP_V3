@@ -17,8 +17,12 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CompoundButton;
 import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.Toast;
+import android.widget.ToggleButton;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
@@ -44,6 +48,7 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
     SensorManager sensorManager;    //To do with the step count sensor, might change later
     boolean running = false;    //To do with the step count sensor, might change later
     boolean sitUpsRunning = false;
+    Switch sitUpToggle;
 
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //If adding more exercises change: loadData, difficultyLevels, popUpInfo, loadExcess
@@ -64,6 +69,21 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         sensor2 = sensorManager2.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         sensorManager2.registerListener(this, sensor2, sensorManager2.SENSOR_DELAY_NORMAL);
 
+        sitUpToggle = (Switch) findViewById(R.id.switch1);
+        sitUpToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b == true){
+                    sitUpToggle.setTextOn("On");
+                    sitUpsRunning = true;
+                }
+                else{
+                    sitUpToggle.setTextOff("Off");
+                    sitUpsRunning = false;
+                }
+            }
+        });
+
         taskDetails.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -73,7 +93,7 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
 
 
                 loadExcess();
-                Toast.makeText(Exercise.this, "Excess: " +excessList.get(i), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Exercise.this, "Excess: " +excessList.get(i), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -85,11 +105,11 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
                     final Intent intent2 = new Intent(getApplicationContext(), CompleteOrFail.class);
                     startActivityForResult(intent2, REQUEST_CODE_COMPLETE_OR_FAIL);
                 }
-                if(i == 4)
-                {
-                    if(sitUpsRunning == false){sitUpsRunning = true;}
-                    else if(sitUpsRunning == true){sitUpsRunning = false;}
-                }
+                //if(i == 4)
+                //{
+                //    if(sitUpsRunning == false){sitUpsRunning = true;}
+                //    else if(sitUpsRunning == true){sitUpsRunning = false;}
+                //}
 
                 return true;
             }
@@ -642,7 +662,5 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
             //return super.onFling(e1, e2, velocityX, velocityY);
         }
     }
-
-
 }
 
