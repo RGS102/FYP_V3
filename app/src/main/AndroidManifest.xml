@@ -11,11 +11,13 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/trident3"
-        android:label="FYP_V3"
+        android:label="Trident"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,6 +27,7 @@
         <activity
             android:name=".Tasks"
             android:label="Tasks"
+            android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
@@ -35,6 +38,7 @@
         <activity
             android:name=".Journal"
             android:label="Journal"
+            android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
@@ -44,27 +48,34 @@
         </activity>
         <activity
             android:name=".Stretches"
-            android:label="Stretches" />
+            android:label="Stretches"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Exercise"
-            android:label="Exercises" />
+            android:label="Exercises"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Meditation"
-            android:label="Meditation" />
+            android:label="Meditation"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".PopUpInfo"
             android:label="Activity Information"
-            android:theme="@style/Theme.AppCompat.Dialog.Alert" />
+            android:theme="@style/Theme.AppCompat.Dialog.Alert"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".CompleteOrFail"
             android:label="Progress Report"
-            android:theme="@style/Theme.AppCompat.Dialog.Alert" />
+            android:theme="@style/Theme.AppCompat.Dialog.Alert"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Rewards"
-            android:label="Rewards"></activity>
+            android:label="Rewards"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".HowTo"
-            android:label="FAQ"></activity>
+            android:label="FAQ"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

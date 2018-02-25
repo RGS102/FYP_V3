@@ -21,13 +21,13 @@ public class Journal extends AppCompatActivity{
     private ListView JournalDetails;
     private JournalDetailsAdapter adapter;
     private List<JournalDetails> journalDetailsListTest;
-    private GestureDetectorCompat gestureDetectorCompat;
+    //private GestureDetectorCompat gestureDetectorCompat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_journal);
-        gestureDetectorCompat = new GestureDetectorCompat(this, new Journal.Gesture());
+        //gestureDetectorCompat = new GestureDetectorCompat(this, new Journal.Gesture());
 
         JournalDetails = (ListView) findViewById(R.id.journalListView);
         loadData();
@@ -100,6 +100,7 @@ public class Journal extends AppCompatActivity{
         if(journalDetailsListTest == null){journalDetailsListTest = new ArrayList<>();}
     }
 
+    /*
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         this.gestureDetectorCompat.onTouchEvent(event);
@@ -122,5 +123,6 @@ public class Journal extends AppCompatActivity{
             //return super.onFling(e1, e2, velocityX, velocityY);
         }
     }
+    */
 
 }

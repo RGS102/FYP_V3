@@ -34,7 +34,7 @@ import static java.lang.Math.atan2;
 public class Exercise extends AppCompatActivity implements SensorEventListener {
     public static final int REQUEST_CODE_COMPLETE_OR_FAIL = 101;
 
-    private GestureDetectorCompat gestureDetectorCompat;
+    //private GestureDetectorCompat gestureDetectorCompat;
     private ListView taskDetails;
     private TaskDetailsAdapter adapter;
     private List<TaskDetails> taskDetailsListTest;
@@ -58,7 +58,7 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
-        gestureDetectorCompat = new GestureDetectorCompat(this, new Exercise.Gesture());
+        //gestureDetectorCompat = new GestureDetectorCompat(this, new Exercise.Gesture());
         final String [] taskInfo = popUpInfo();
         taskDetails = (ListView) findViewById(R.id.taskListView);
         loadData();
@@ -157,30 +157,30 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         if(taskDetailsListTest == null){
             taskDetailsListTest = new ArrayList<>();
             taskDetailsListTest.add(new TaskDetails(1, "Walk" , 500, "step(s)"  , 1, 1));
-            taskDetailsListTest.add(new TaskDetails(2, "Run"  , 11, "mile(s)"  , 1, 1));
-            taskDetailsListTest.add(new TaskDetails(3, "Jog"  , 11, "mile(s)"  ,  1, 1));
-            taskDetailsListTest.add(new TaskDetails(4, "Swim" , 11, "length(s)",  1, 1));
-            taskDetailsListTest.add(new TaskDetails(5, "Sit Ups:", 11, "sit up(s)"  ,  1, 1));
-            taskDetailsListTest.add(new TaskDetails(6, "Push Ups:", 11, "push up(s)",  1, 1));
-            taskDetailsListTest.add(new TaskDetails(7, "Cycle" , 11, "mile(s)",  1, 1));
-            taskDetailsListTest.add(new TaskDetails(8, "Crunches:"  , 11, "crunches(s)",  1, 1));
-            taskDetailsListTest.add(new TaskDetails(9, "Squats:"  , 11, "squats(s)",  1, 1));
-            taskDetailsListTest.add(new TaskDetails(10, "Superman:" , 11, "superman(s)"  , 1, 1));
-            taskDetailsListTest.add(new TaskDetails(11, "Tuck Jump"  , 11, "times"  , 1, 1));
-            taskDetailsListTest.add(new TaskDetails(12, "Prone Walkout"  , 11, "times"  ,  1, 1));
-            taskDetailsListTest.add(new TaskDetails(13, "Burpees:" , 11, "burpees",  1, 1));
-            taskDetailsListTest.add(new TaskDetails(14, "Plank", 11, "times"  ,  1, 1));
-            taskDetailsListTest.add(new TaskDetails(15, "Wall Sit", 11, "times",  1, 1));
-            taskDetailsListTest.add(new TaskDetails(16, "Lunge" , 11, "times",  1, 1));
-            taskDetailsListTest.add(new TaskDetails(17, "Clock Lunge"  , 11, "times",  1, 1));
-            taskDetailsListTest.add(new TaskDetails(18, "Single Leg Deadlift"  , 11, "times",  1, 1));
-            taskDetailsListTest.add(new TaskDetails(19, "Step-Up" , 11, "times"  , 1, 1));
-            taskDetailsListTest.add(new TaskDetails(20, "Calf Raise"  , 11, "times"  , 1, 1));
-            taskDetailsListTest.add(new TaskDetails(21, "Tricep Dip"  , 11, "times"  ,  1, 1));
-            taskDetailsListTest.add(new TaskDetails(22, "Boxer" , 11, "times",  1, 1));
-            taskDetailsListTest.add(new TaskDetails(23, "Flutter Kick", 11, "times"  ,  1, 1));
-            taskDetailsListTest.add(new TaskDetails(24, "Shoulder Bridge", 11, "times",  1, 1));
-            taskDetailsListTest.add(new TaskDetails(25, "Sprinter Sit Up" , 11, "times",  1, 1));
+            taskDetailsListTest.add(new TaskDetails(2, "Run"  , 1, "mile(s)"  , 1, 1));
+            taskDetailsListTest.add(new TaskDetails(3, "Jog"  , 1, "mile(s)"  ,  1, 1));
+            taskDetailsListTest.add(new TaskDetails(4, "Swim" , 1, "length(s)",  1, 1));
+            taskDetailsListTest.add(new TaskDetails(5, "Sit Ups:", 10, "sit up(s)"  ,  1, 1));
+            taskDetailsListTest.add(new TaskDetails(6, "Push Ups:", 10, "push up(s)",  1, 1));
+            taskDetailsListTest.add(new TaskDetails(7, "Cycle" , 10, "mile(s)",  1, 1));
+            taskDetailsListTest.add(new TaskDetails(8, "Crunches:"  , 10, "crunches(s)",  1, 1));
+            taskDetailsListTest.add(new TaskDetails(9, "Squats:"  , 10, "squats(s)",  1, 1));
+            taskDetailsListTest.add(new TaskDetails(10, "Superman:" , 10, "superman(s)"  , 1, 1));
+            taskDetailsListTest.add(new TaskDetails(11, "Tuck Jump"  , 10, "times"  , 1, 1));
+            taskDetailsListTest.add(new TaskDetails(12, "Prone Walkout"  , 10, "times"  ,  1, 1));
+            taskDetailsListTest.add(new TaskDetails(13, "Burpees:" , 10, "burpees",  1, 1));
+            taskDetailsListTest.add(new TaskDetails(14, "Plank", 10, "times"  ,  1, 1));
+            taskDetailsListTest.add(new TaskDetails(15, "Wall Sit", 10, "times",  1, 1));
+            taskDetailsListTest.add(new TaskDetails(16, "Lunge" , 10, "times",  1, 1));
+            taskDetailsListTest.add(new TaskDetails(17, "Clock Lunge"  , 10, "times",  1, 1));
+            taskDetailsListTest.add(new TaskDetails(18, "Single Leg Deadlift"  , 10, "times",  1, 1));
+            taskDetailsListTest.add(new TaskDetails(19, "Step-Up" , 10, "times"  , 1, 1));
+            taskDetailsListTest.add(new TaskDetails(20, "Calf Raise"  , 10, "times"  , 1, 1));
+            taskDetailsListTest.add(new TaskDetails(21, "Tricep Dip"  , 10, "times"  ,  1, 1));
+            taskDetailsListTest.add(new TaskDetails(22, "Boxer" , 10, "times",  1, 1));
+            taskDetailsListTest.add(new TaskDetails(23, "Flutter Kick", 10, "times"  ,  1, 1));
+            taskDetailsListTest.add(new TaskDetails(24, "Shoulder Bridge", 10, "times",  1, 1));
+            taskDetailsListTest.add(new TaskDetails(25, "Sprinter Sit Up" , 10, "times",  1, 1));
         }}
 
     private void progressUpdate(TaskDetails clickedList, int i, int progress, int duration){
@@ -241,122 +241,122 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
             else{cRequirmentInteger = 1400;}}
         if(cId == 2){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {1,2,3,4,5,6,7,8,9,10};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 3){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {1,2,3,4,5,6,7,8,9,10};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 4){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {1,2,3,4,5,6,7,8,9,10};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 5){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 6){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 7){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 8){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 9){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 10){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 11){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 12){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 13){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 14){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 15){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 16){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 17){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 18){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 19){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 20){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 21){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 22){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 23){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 24){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 25){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
 
@@ -639,6 +639,7 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         }
     }
 
+    /*
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         this.gestureDetectorCompat.onTouchEvent(event);
@@ -662,5 +663,6 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
             //return super.onFling(e1, e2, velocityX, velocityY);
         }
     }
+    */
 }
 

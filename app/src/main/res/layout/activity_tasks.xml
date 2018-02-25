@@ -9,106 +9,192 @@
     tools:context="com.example.rossg_000.fyp_v3.Tasks">
 
 
-    <LinearLayout
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_height="150dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#8C131e72"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        card_view:cardCornerRadius="1dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.4"
+            android:scaleType="fitXY"
+            android:src="@drawable/cardviewbackground1" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:layout_height="match_parent"
+            android:gravity="center|start"
+            android:layout_marginStart="10dp"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/CompletedTasksString"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tasks Completed:"
-                android:layout_marginEnd="10dp"
-                android:textColor="@android:color/black"
-                android:textSize="25dp" />
+                <TextView
+                    android:id="@+id/DailyTaskOneString"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Exercise: "
+                    android:textColor="@android:color/black"
+                    android:textSize="20dp"/>
 
-            <TextView
-                android:id="@+id/CompletedTasks"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:textColor="@android:color/black"
-                android:textSize="25dp" />
+                <TextView
+                    android:id="@+id/DailyTaskOne"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Walk and Jog"
+                    android:textColor="@android:color/black"
+                    android:textSize="20dp"
+                    android:layout_marginBottom="20dp"/>
+
+                <TextView
+                    android:id="@+id/DailyTaskTwoString"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Meditation: "
+                    android:textColor="@android:color/black"
+                    android:textSize="20dp"/>
+
+                <TextView
+                    android:id="@+id/DailyTaskTwo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Deep Breathing and Body Scan"
+                    android:textColor="@android:color/black"
+                    android:textSize="20dp"/>
         </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+
+
+
+
+
+
+
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="300dp"
+        android:backgroundTint="#8C131e72"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/cardView"
+        card_view:cardCornerRadius="1dp">
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.4"
+            android:scaleType="fitXY"
+            android:src="@drawable/cardviewbackground1" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_height="match_parent"
             android:gravity="center"
-            android:layout_marginTop="100dp"
-            android:layout_marginBottom="100dp"
-            >
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/ExercisesCompletedString"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Exercises Completed:"
-                android:layout_marginEnd="10dp"
-                android:textColor="@android:color/black"
-                android:textSize="25dp" />
+                android:gravity="center|start"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/ExercisesCompleted"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/CompletedTasksString"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="92dp"
+                    android:layout_marginStart="10dp"
+                    android:text="Tasks Completed:"
+                    android:textColor="@android:color/black"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/CompletedTasks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@android:color/black"
+                    android:textSize="20dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="0"
-                android:textColor="@android:color/black"
-                android:textSize="25dp" />
+                android:gravity="center|start"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ExercisesCompletedString"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="61dp"
+                    android:layout_marginStart="10dp"
+                    android:text="Exercises Completed:"
+                    android:textColor="@android:color/black"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/ExercisesCompleted"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@android:color/black"
+                    android:textSize="20dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|start"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/MeditationsCompletedString"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginStart="10dp"
+                    android:text="Meditations Completed:"
+                    android:textColor="@android:color/black"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/MeditationsCompleted"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@android:color/black"
+                    android:textSize="20dp" />
+            </LinearLayout>
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/MeditationsCompletedString"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Meditations Completed:"
-                android:layout_marginEnd="10dp"
-                android:textColor="@android:color/black"
-                android:textSize="25dp" />
-
-            <TextView
-                android:id="@+id/MeditationsCompleted"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:textColor="@android:color/black"
-                android:textSize="25dp" />
-        </LinearLayout>
+    </android.support.v7.widget.CardView>
 
 
-
-
-
-
-
-
-    </LinearLayout>
-
-
-
-
-
-
-
-
-
-
-
+    <ImageButton
+        android:id="@+id/GetNewTasks"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/red_button" />
 
 
 

@@ -34,7 +34,9 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
     private int dataTest = 0;
     private int compareValue = 0;
     private List<Integer> excessList;
-    private GestureDetectorCompat gestureDetectorCompat;
+    //private GestureDetectorCompat gestureDetectorCompat;
+    private Sensor temperature;
+    private Sensor humidity;
 
     SensorManager sensorManager;
     Sensor sensor;
@@ -43,13 +45,38 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meditation);
-        gestureDetectorCompat = new GestureDetectorCompat(this, new Meditation.Gesture());
+
+
+
+        //gestureDetectorCompat = new GestureDetectorCompat(this, new Meditation.Gesture());
+
+
+
         sensorManager = (SensorManager) getSystemService(Service.SENSOR_SERVICE);
         sensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
 
 
 
         //temperatureSensor = sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE);
+        TextView temperatureTextView = (TextView) findViewById(R.id.TemperatureSensor);
+        TextView humidityTextView = (TextView) findViewById(R.id.HumiditySensor);
+
+
+
+        temperature = sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE);
+        if(temperature != null){
+            sensorManager.registerListener(Meditation.this, temperature, SensorManager.SENSOR_DELAY_NORMAL);
+        }else{
+            temperatureTextView.setText("Temperature Sensor Not Supported");
+        }
+
+        humidity = sensorManager.getDefaultSensor(Sensor.TYPE_RELATIVE_HUMIDITY);
+        if(humidity != null){
+            sensorManager.registerListener(Meditation.this, humidity, SensorManager.SENSOR_DELAY_NORMAL);
+        }else{
+            humidityTextView.setText("Humidity Sensor Not Supported");
+        }
+
 
 
 
@@ -545,26 +572,26 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
-
-        if(sensorEvent.sensor.getType() == Sensor.TYPE_LIGHT){
-
+        if(sensorEvent.sensor.getType() == Sensor.TYPE_LIGHT)
+        {
             TextView lightSensor = (TextView) findViewById(R.id.LightSensor);
-            if(sensorEvent.values[0] >= 0 && sensorEvent.values[0] < 50){
-                lightSensor.setText("Too Dark " + sensorEvent.values[0]);
-            }
-            if(sensorEvent.values[0] >= 50 && sensorEvent.values[0] < 100){
-                lightSensor.setText("Dark " + sensorEvent.values[0]);
-            }
-            if(sensorEvent.values[0] >= 100 && sensorEvent.values[0] < 150){
-                lightSensor.setText("Medium " + sensorEvent.values[0]);
-            }
-            if(sensorEvent.values[0] >= 150 && sensorEvent.values[0] < 200){
-                lightSensor.setText("Bright " + sensorEvent.values[0]);
-            }
-            if(sensorEvent.values[0] >= 200 && sensorEvent.values[0] < 250){
-                lightSensor.setText("Too Bright " + sensorEvent.values[0]);
-            }
+            if(sensorEvent.values[0] >= 0 && sensorEvent.values[0] < 50){lightSensor.setText("Too Dark " + sensorEvent.values[0]);}
+            if(sensorEvent.values[0] >= 50 && sensorEvent.values[0] < 100){lightSensor.setText("Dark " + sensorEvent.values[0]);}
+            if(sensorEvent.values[0] >= 100 && sensorEvent.values[0] < 150){lightSensor.setText("Medium " + sensorEvent.values[0]);}
+            if(sensorEvent.values[0] >= 150 && sensorEvent.values[0] < 200){lightSensor.setText("Bright " + sensorEvent.values[0]);}
+            if(sensorEvent.values[0] >= 200 && sensorEvent.values[0] < 250){lightSensor.setText("Too Bright " + sensorEvent.values[0]);}
+        }
 
+        else if(sensorEvent.sensor.getType() == Sensor.TYPE_AMBIENT_TEMPERATURE)
+        {
+            TextView temperatureTextView = (TextView) findViewById(R.id.TemperatureSensor);
+            temperatureTextView.setText("Temperature: " + sensorEvent.values[0]);
+        }
+
+        else if(sensorEvent.sensor.getType() == Sensor.TYPE_RELATIVE_HUMIDITY)
+        {
+            TextView humidityTextView = (TextView) findViewById(R.id.HumiditySensor);
+            humidityTextView.setText("Humidity: " + sensorEvent.values[0]);
         }
 
 
@@ -582,6 +609,7 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {}
 
+    /*
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         this.gestureDetectorCompat.onTouchEvent(event);
@@ -604,4 +632,5 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
             //return super.onFling(e1, e2, velocityX, velocityY);
         }
     }
+    */
 }

@@ -21,13 +21,13 @@ public class Stretches extends AppCompatActivity {
     private ListView stretchDetails;
     private StretchDetailsAdapter adapter;
     private List<StretchDetails> stretchList;
-    private GestureDetectorCompat gestureDetectorCompat;
+    //private GestureDetectorCompat gestureDetectorCompat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stretches);
-        gestureDetectorCompat = new GestureDetectorCompat(this, new Stretches.Gesture());
+        //gestureDetectorCompat = new GestureDetectorCompat(this, new Stretches.Gesture());
 
         final String [] stretchInfo = popUpInfo();
         stretchDetails = (ListView) findViewById(R.id.StretchesListView);
@@ -99,6 +99,7 @@ public class Stretches extends AppCompatActivity {
         return popUpInfo;
     }
 
+    /*
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         this.gestureDetectorCompat.onTouchEvent(event);
@@ -121,5 +122,5 @@ public class Stretches extends AppCompatActivity {
             return true;
             //return super.onFling(e1, e2, velocityX, velocityY);
         }
-    }
+    }*/
 }

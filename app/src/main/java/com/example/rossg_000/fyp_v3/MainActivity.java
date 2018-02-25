@@ -20,7 +20,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity{
 
     //private final int LOCATION_REQUEST_COARSE_CODE = 123; //WORKS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    private GestureDetectorCompat gestureDetectorCompat;    //swipe
+    //private GestureDetectorCompat gestureDetectorCompat;    //swipe
     public static String titleDisplay = "A Rookie";
 
     public static boolean taskAlmostComplete = false;
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        gestureDetectorCompat = new GestureDetectorCompat(this, new Gesture()); //swipe
+        //gestureDetectorCompat = new GestureDetectorCompat(this, new Gesture()); //swipe
 
         /*
         //Works!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -475,6 +475,7 @@ public class MainActivity extends AppCompatActivity{
     */
 
     //Swipe
+    /*
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         this.gestureDetectorCompat.onTouchEvent(event);
@@ -498,5 +499,6 @@ public class MainActivity extends AppCompatActivity{
             //return super.onFling(e1, e2, velocityX, velocityY);
         }
     }
+    */
     //Swipe
 }
