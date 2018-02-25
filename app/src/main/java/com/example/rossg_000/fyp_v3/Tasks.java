@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.Calendar;
@@ -15,6 +16,7 @@ import java.util.Random;
 
 public class Tasks extends AppCompatActivity {
     //private GestureDetectorCompat gestureDetectorCompat;
+    //private ImageButton getNewTasks = (ImageButton) findViewById(R.id.GetNewTasks);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,17 +24,37 @@ public class Tasks extends AppCompatActivity {
         setContentView(R.layout.activity_tasks);
         //gestureDetectorCompat = new GestureDetectorCompat(this, new Tasks.Gesture());
 
+
         Calendar calendar = Calendar.getInstance();
         int today = calendar.get(Calendar.DAY_OF_MONTH);
         SharedPreferences sharedPreferences = getSharedPreferences("Days", 0);
         int yesterday = sharedPreferences.getInt("Days", 0);
 
+        //SharedPreferences sharedPreferences3 = getSharedPreferences("Button Clicked", 0);
+        //Boolean buttonClicked = sharedPreferences2.getBoolean("Button Clicked", true);
+
         if(yesterday != today){
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt("Days", today);
             editor.commit();
+
+            //SharedPreferences.Editor editor2 = sharedPreferences3.edit();
+            //editor2.putBoolean("Button Clicked", false);
+            //editor2.commit();
+            //getNewTasks.setEnabled(true);
             dailyTasks();
         }
+
+        //Boolean buttonClicked = sharedPreferences3.getBoolean("Button Clicked", true);
+
+        //if(buttonClicked == false){
+        //    getNewTasks.setEnabled(true);
+       // }
+
+
+
+
+
 
         SharedPreferences sharedPreferences1 = getSharedPreferences("DT1", 0);
         String taskOne = sharedPreferences1.getString("DT1", "Walk and Jog");
@@ -131,12 +153,21 @@ public class Tasks extends AppCompatActivity {
         SharedPreferences.Editor editor2 = sharedPreferences2.edit();
         editor2.putString("DT2", dailyMeditations);
         editor2.commit();
-
-
-
-
-
     }
+
+    /*
+    public void onClickGetNewTasks(View view) {
+        getNewTasks.setEnabled(true);
+        SharedPreferences sharedPreferences3 = getSharedPreferences("Button Clicked", 0);
+        SharedPreferences.Editor editor2 = sharedPreferences3.edit();
+        editor2.putBoolean("Button Clicked", true);
+        editor2.commit();
+
+        dailyTasks();
+    }*/
+
+
+
 
     /*
     @Override
