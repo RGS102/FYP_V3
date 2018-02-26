@@ -34,9 +34,9 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
     private int dataTest = 0;
     private int compareValue = 0;
     private List<Integer> excessList;
-    //private GestureDetectorCompat gestureDetectorCompat;
     private Sensor temperature;
     private Sensor humidity;
+    private Sensor light;
 
     SensorManager sensorManager;
     Sensor sensor;
@@ -46,22 +46,17 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meditation);
 
-
-
-        //gestureDetectorCompat = new GestureDetectorCompat(this, new Meditation.Gesture());
-
-
-
         sensorManager = (SensorManager) getSystemService(Service.SENSOR_SERVICE);
-        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
-
-
-
-        //temperatureSensor = sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE);
         TextView temperatureTextView = (TextView) findViewById(R.id.TemperatureSensor);
         TextView humidityTextView = (TextView) findViewById(R.id.HumiditySensor);
+        TextView lightTextView = (TextView) findViewById(R.id.LightSensor);
 
-
+        light = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+        if(light != null){
+            sensorManager.registerListener(Meditation.this, light, SensorManager.SENSOR_DELAY_NORMAL);
+        }else{
+            lightTextView.setText("Light Sensor Not Supported");
+        }
 
         temperature = sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE);
         if(temperature != null){
@@ -575,23 +570,44 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
         if(sensorEvent.sensor.getType() == Sensor.TYPE_LIGHT)
         {
             TextView lightSensor = (TextView) findViewById(R.id.LightSensor);
-            if(sensorEvent.values[0] >= 0 && sensorEvent.values[0] < 50){lightSensor.setText("Too Dark " + sensorEvent.values[0]);}
-            if(sensorEvent.values[0] >= 50 && sensorEvent.values[0] < 100){lightSensor.setText("Dark " + sensorEvent.values[0]);}
-            if(sensorEvent.values[0] >= 100 && sensorEvent.values[0] < 150){lightSensor.setText("Medium " + sensorEvent.values[0]);}
-            if(sensorEvent.values[0] >= 150 && sensorEvent.values[0] < 200){lightSensor.setText("Bright " + sensorEvent.values[0]);}
-            if(sensorEvent.values[0] >= 200 && sensorEvent.values[0] < 250){lightSensor.setText("Too Bright " + sensorEvent.values[0]);}
+            if(sensorEvent.values[0] >= 0 && sensorEvent.values[0] < 50){lightSensor.setText("Too Dark");}
+            else if(sensorEvent.values[0] >= 50 && sensorEvent.values[0] < 100){lightSensor.setText("Dark");}
+            else if(sensorEvent.values[0] >= 100 && sensorEvent.values[0] < 150){lightSensor.setText("Tranquil");}
+            else if(sensorEvent.values[0] >= 150 && sensorEvent.values[0] < 250){lightSensor.setText("Bright");}
+            else if(sensorEvent.values[0] >= 250){lightSensor.setText("Too Bright");}
+            else{lightSensor.setText("Error");}
+
         }
 
         else if(sensorEvent.sensor.getType() == Sensor.TYPE_AMBIENT_TEMPERATURE)
         {
             TextView temperatureTextView = (TextView) findViewById(R.id.TemperatureSensor);
-            temperatureTextView.setText("Temperature: " + sensorEvent.values[0]);
+            if(sensorEvent.values[0] <= 0){temperatureTextView.setText("Too Cold");}
+            else if(sensorEvent.values[0] >= 1 && sensorEvent.values[0] < 20){temperatureTextView.setText("Cold");}
+            else if(sensorEvent.values[0] >= 20 && sensorEvent.values[0] < 26){temperatureTextView.setText("Perfect 20-25 C");}
+            else if(sensorEvent.values[0] >= 26 && sensorEvent.values[0] < 46){temperatureTextView.setText("Warm");}
+            else if(sensorEvent.values[0] >= 46){temperatureTextView.setText("Too Warm");}
+            else{temperatureTextView.setText("Error");}
         }
 
         else if(sensorEvent.sensor.getType() == Sensor.TYPE_RELATIVE_HUMIDITY)
         {
             TextView humidityTextView = (TextView) findViewById(R.id.HumiditySensor);
-            humidityTextView.setText("Humidity: " + sensorEvent.values[0]);
+            if(sensorEvent.values[0] >= 0 && sensorEvent.values[0] < 10){humidityTextView.setText("Humidity: 0-9%  Too Low");}
+            else if(sensorEvent.values[0] >= 10 && sensorEvent.values[0] < 19){humidityTextView.setText("Humidity: 10-19%  Too Low");}
+            else if(sensorEvent.values[0] >= 20 && sensorEvent.values[0] < 29){humidityTextView.setText("Humidity: 20-29%  Increase");}
+            else if(sensorEvent.values[0] >= 30 && sensorEvent.values[0] < 39){humidityTextView.setText("Humidity: 30-39%  Increase");}
+            else if(sensorEvent.values[0] >= 40 && sensorEvent.values[0] < 49){humidityTextView.setText("Humidity: 40-49%  Perfect");}
+            else if(sensorEvent.values[0] >= 50 && sensorEvent.values[0] < 59){humidityTextView.setText("Humidity: 50-59%  Lower");}
+            else if(sensorEvent.values[0] >= 60 && sensorEvent.values[0] < 69){humidityTextView.setText("Humidity: 60-69%  Lower");}
+            else if(sensorEvent.values[0] >= 70 && sensorEvent.values[0] < 79){humidityTextView.setText("Humidity: 70-79%  Lower");}
+            else if(sensorEvent.values[0] >= 80 && sensorEvent.values[0] < 89){humidityTextView.setText("Humidity: 80-89%  Lower");}
+            else if(sensorEvent.values[0] >= 90 && sensorEvent.values[0] < 99){humidityTextView.setText("Humidity: 90-99%  Too High");}
+            else if(sensorEvent.values[0] == 100){humidityTextView.setText("Humidity: 100%  Too High");}
+            else {humidityTextView.setText("Error");}
+
+
+
         }
 
 

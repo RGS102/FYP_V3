@@ -59,14 +59,13 @@ public class Tasks extends AppCompatActivity {
         SharedPreferences sharedPreferences1 = getSharedPreferences("DT1", 0);
         String taskOne = sharedPreferences1.getString("DT1", "Walk and Jog");
 
-        SharedPreferences sharedPreferences2 = getSharedPreferences("DT1", 0);
+        SharedPreferences sharedPreferences2 = getSharedPreferences("DT2", 0);
         String taskTwo = sharedPreferences2.getString("DT2", "Deep Breathing and Body Scan");
 
         TextView dailyTaskOne = (TextView)findViewById(R.id.DailyTaskOne);
         TextView dailyTaskTwo = (TextView)findViewById(R.id.DailyTaskTwo);
         dailyTaskOne.setText(taskOne);
         dailyTaskTwo.setText(taskTwo);
-
 
         TextView completedTasks = (TextView)findViewById(R.id.CompletedTasks);
         TextView completedExercises = (TextView)findViewById(R.id.ExercisesCompleted);
@@ -141,8 +140,8 @@ public class Tasks extends AppCompatActivity {
         if(r1 == r2){dailyExercises = "Double " + allExercises[r2];}
         else{dailyExercises = allExercises[r1] + " and " + allExercises[r2];}
 
-        if(r3 == r4){dailyMeditations = "Double " + allMeditations[r2];}
-        else{dailyMeditations = allMeditations[r1] + " and " + allMeditations[r2];}
+        if(r3 == r4){dailyMeditations = "Double " + allMeditations[r4];}
+        else{dailyMeditations = allMeditations[r3] + " and " + allMeditations[r4];}
 
         SharedPreferences sharedPreferences1 = getSharedPreferences("DT1", 0);
         SharedPreferences.Editor editor = sharedPreferences1.edit();
