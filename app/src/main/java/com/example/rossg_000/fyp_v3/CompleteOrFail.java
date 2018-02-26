@@ -26,11 +26,14 @@ public class CompleteOrFail extends AppCompatActivity {
                 int finalValue = 0;
                 int finalDuration = 0;
 
-                if(Progress.getText().toString().trim().length()>0){
+                if(Progress.getText().toString().trim().length()>0)
+                {
                     String value = Progress.getText().toString();
                     finalValue = Integer.parseInt(value);
                 }
-                if(Duration.getText().toString().trim().length()>0){
+
+                if(Duration.getText().toString().trim().length()>0)
+                {
                     String durationValue = Duration.getText().toString();
                     finalDuration = Integer.parseInt(durationValue);
                 }
@@ -45,7 +48,7 @@ public class CompleteOrFail extends AppCompatActivity {
         });
     }
 
-    public static int getResult(Intent intent){
+    public static int getResult(Intent intent) {
         return intent.getIntExtra("CompleteOrFail", 0);
     }
 }

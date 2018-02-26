@@ -10,19 +10,14 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.AudioManager;
 import android.media.ToneGenerator;
-import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.Toast;
-import android.widget.ToggleButton;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
@@ -30,11 +25,8 @@ import java.util.ArrayList;
 import java.util.List;
 import static java.lang.Math.atan2;
 
-
 public class Exercise extends AppCompatActivity implements SensorEventListener {
     public static final int REQUEST_CODE_COMPLETE_OR_FAIL = 101;
-
-    //private GestureDetectorCompat gestureDetectorCompat;
     private ListView taskDetails;
     private TaskDetailsAdapter adapter;
     private List<TaskDetails> taskDetailsListTest;
@@ -44,9 +36,8 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
     private SensorManager sensorManager2;
     private Sensor sensor2;
     private boolean notePlayed = false;
-
-    SensorManager sensorManager;    //To do with the step count sensor, might change later
-    boolean running = false;    //To do with the step count sensor, might change later
+    SensorManager sensorManager;
+    boolean running = false;
     boolean sitUpsRunning = false;
     Switch sitUpToggle;
 
@@ -58,13 +49,12 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
-        //gestureDetectorCompat = new GestureDetectorCompat(this, new Exercise.Gesture());
         final String [] taskInfo = popUpInfo();
         taskDetails = (ListView) findViewById(R.id.taskListView);
         loadData();
         adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
         taskDetails.setAdapter(adapter);
-        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);   //To do with the step count sensor, might change later
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         sensorManager2 = (SensorManager)getSystemService(SENSOR_SERVICE);
         sensor2 = sensorManager2.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         sensorManager2.registerListener(this, sensor2, sensorManager2.SENSOR_DELAY_NORMAL);
@@ -90,10 +80,7 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
                 final Intent intent = new Intent(getApplicationContext(), PopUpInfo.class);
                 intent.putExtra("details", taskInfo[i]);
                 startActivity(intent);
-
-
                 loadExcess();
-                //Toast.makeText(Exercise.this, "Excess: " +excessList.get(i), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -105,12 +92,6 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
                     final Intent intent2 = new Intent(getApplicationContext(), CompleteOrFail.class);
                     startActivityForResult(intent2, REQUEST_CODE_COMPLETE_OR_FAIL);
                 }
-                //if(i == 4)
-                //{
-                //    if(sitUpsRunning == false){sitUpsRunning = true;}
-                //    else if(sitUpsRunning == true){sitUpsRunning = false;}
-                //}
-
                 return true;
             }
         });
@@ -130,10 +111,7 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
                     int progressMade = data.getIntExtra("Progress", 0);
                     int duration = data.getIntExtra("Duration", 0);
 
-                    if(CompleteOrFail == +1)
-                    {
-                        if(progressMade > 0) {progressUpdate(clickedList, dataTest, progressMade, duration);}
-                    }
+                    if(CompleteOrFail == +1) {if(progressMade > 0) {progressUpdate(clickedList, dataTest, progressMade, duration);}}
                 }
         }
     }
@@ -380,8 +358,7 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
     }
 
     public String[] popUpInfo(){
-        //Fill this in later, position in array should correspond to position of list view
-        String[] popUpInfo = new String[25]; //Dont forget to change size of array to match amount of elements in it
+        String[] popUpInfo = new String[25];
         popUpInfo[0] =
                 "\n\nWalk:" +
                 "\n\nPut one foot in front of the other";
@@ -508,16 +485,22 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         return popUpInfo;
     }
 
-    @Override   //To do with the step count sensor, might change later
+    @Override
     protected void onResume(){
         super.onResume();
         running = true;
         Sensor countSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
-        if(countSensor!=null){sensorManager.registerListener(this, countSensor, SensorManager.SENSOR_DELAY_UI);
-        }else{Toast.makeText(this, "Sensor not found", Toast.LENGTH_SHORT).show();}
+        if(countSensor!=null)
+        {
+            sensorManager.registerListener(this, countSensor, SensorManager.SENSOR_DELAY_UI);
+        }
+        else
+        {
+            Toast.makeText(this, "Sensor not found", Toast.LENGTH_SHORT).show();//HMM!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        }
     }
 
-    @Override   //To do with the step count sensor, might change later
+    @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
         if (sensorEvent.sensor.getType() == Sensor.TYPE_STEP_COUNTER)
         {

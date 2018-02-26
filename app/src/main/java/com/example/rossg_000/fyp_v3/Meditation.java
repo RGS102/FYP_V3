@@ -52,29 +52,16 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
         TextView lightTextView = (TextView) findViewById(R.id.LightSensor);
 
         light = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
-        if(light != null){
-            sensorManager.registerListener(Meditation.this, light, SensorManager.SENSOR_DELAY_NORMAL);
-        }else{
-            lightTextView.setText("Light Sensor Not Supported");
-        }
+        if(light != null){sensorManager.registerListener(Meditation.this, light, SensorManager.SENSOR_DELAY_NORMAL);}
+        else{lightTextView.setText("Light Sensor Not Supported");}
 
         temperature = sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE);
-        if(temperature != null){
-            sensorManager.registerListener(Meditation.this, temperature, SensorManager.SENSOR_DELAY_NORMAL);
-        }else{
-            temperatureTextView.setText("Temperature Sensor Not Supported");
-        }
+        if(temperature != null){sensorManager.registerListener(Meditation.this, temperature, SensorManager.SENSOR_DELAY_NORMAL);}
+        else{temperatureTextView.setText("Temperature Sensor Not Supported");}
 
         humidity = sensorManager.getDefaultSensor(Sensor.TYPE_RELATIVE_HUMIDITY);
-        if(humidity != null){
-            sensorManager.registerListener(Meditation.this, humidity, SensorManager.SENSOR_DELAY_NORMAL);
-        }else{
-            humidityTextView.setText("Humidity Sensor Not Supported");
-        }
-
-
-
-
+        if(humidity != null){sensorManager.registerListener(Meditation.this, humidity, SensorManager.SENSOR_DELAY_NORMAL);}
+        else{humidityTextView.setText("Humidity Sensor Not Supported");}
 
         final String [] meditationInfo = popUpInfo();
         meditationDetails = (ListView) findViewById(R.id.MeditationListView);
@@ -136,7 +123,6 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
 
         if(meditationDetailsListTest == null){
             meditationDetailsListTest = new ArrayList<>();
-
             meditationDetailsListTest.add(new TaskDetails(26,"Deep Breathing",1, "minute(s)",1,1));
             meditationDetailsListTest.add(new TaskDetails(27,"Power Nap",1, "minute(s)",1,1));
             meditationDetailsListTest.add(new TaskDetails(28,"Muscle Relaxation",1, "minute(s)",1,1));
@@ -293,11 +279,7 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
 
-        if(levelUpOrDown!=-1) {
-            if (compareValue > cRequirmentInteger) {
-                cRequirmentInteger = compareValue + e;
-            }
-        }
+        if(levelUpOrDown!=-1) {if (compareValue > cRequirmentInteger) {cRequirmentInteger = compareValue + e;}}
 
         int meditationsCompleted = MainActivity.getMeditationsCompleted();
         int tasksCompleted = MainActivity.getTasksCompleted();
@@ -330,22 +312,18 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
         saveData();
         loadExcess();
 
-        if(newValue <= 0)
-        {
+        if(newValue <= 0) {
             int temp = newValue*-1;
             int temp2 = excessList.get(i);
-            if(temp > temp2)
-            {
+            if(temp > temp2) {
                 excessList.set(i, temp);
                 saveExcess();
             }
 
             difficultyLevels(clickedList, i, e, +1, progress,duration);
         }
-        else
-        {
-            if(f>=2)
-            {
+        else {
+            if(f>=2) {
                 int temp = excessList.get(i);
                 if(temp>=2) {temp = temp/2;}
                 else{temp = 0;}
@@ -353,8 +331,7 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
                 saveExcess();
                 difficultyLevels(clickedList, i, e, -1, progress,duration);
             }
-            else
-            {
+            else {
                 passToJournal(a,b,newValue,d,e,f+1,0, progress, duration);
                 meditationDetailsListTest.set(i, new TaskDetails(a,b,newValue,d,e,f));
                 adapter = new TaskDetailsAdapter(getApplicationContext(), meditationDetailsListTest);
@@ -362,11 +339,9 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
                 saveData();
             }
         }
-
     }
 
     public String[] popUpInfo(){
-        //Fill this in later, position in array should correspond to position of list view
         String[] popUpInfo = new String[23]; //Dont forget to change size of array to match amount of elements in it
         popUpInfo[0] =
                 "\n\nDeep Breathing" +
@@ -567,8 +542,7 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
-        if(sensorEvent.sensor.getType() == Sensor.TYPE_LIGHT)
-        {
+        if(sensorEvent.sensor.getType() == Sensor.TYPE_LIGHT) {
             TextView lightSensor = (TextView) findViewById(R.id.LightSensor);
             if(sensorEvent.values[0] >= 0 && sensorEvent.values[0] < 50){lightSensor.setText("Too Dark");}
             else if(sensorEvent.values[0] >= 50 && sensorEvent.values[0] < 100){lightSensor.setText("Dark");}
@@ -576,11 +550,9 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
             else if(sensorEvent.values[0] >= 150 && sensorEvent.values[0] < 250){lightSensor.setText("Bright");}
             else if(sensorEvent.values[0] >= 250){lightSensor.setText("Too Bright");}
             else{lightSensor.setText("Error");}
-
         }
 
-        else if(sensorEvent.sensor.getType() == Sensor.TYPE_AMBIENT_TEMPERATURE)
-        {
+        else if(sensorEvent.sensor.getType() == Sensor.TYPE_AMBIENT_TEMPERATURE) {
             TextView temperatureTextView = (TextView) findViewById(R.id.TemperatureSensor);
             if(sensorEvent.values[0] <= 0){temperatureTextView.setText("Too Cold");}
             else if(sensorEvent.values[0] >= 1 && sensorEvent.values[0] < 20){temperatureTextView.setText("Cold");}
@@ -590,8 +562,7 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
             else{temperatureTextView.setText("Error");}
         }
 
-        else if(sensorEvent.sensor.getType() == Sensor.TYPE_RELATIVE_HUMIDITY)
-        {
+        else if(sensorEvent.sensor.getType() == Sensor.TYPE_RELATIVE_HUMIDITY) {
             TextView humidityTextView = (TextView) findViewById(R.id.HumiditySensor);
             if(sensorEvent.values[0] >= 0 && sensorEvent.values[0] < 10){humidityTextView.setText("Humidity: 0-9%  Too Low");}
             else if(sensorEvent.values[0] >= 10 && sensorEvent.values[0] < 19){humidityTextView.setText("Humidity: 10-19%  Too Low");}
@@ -605,48 +576,9 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
             else if(sensorEvent.values[0] >= 90 && sensorEvent.values[0] < 99){humidityTextView.setText("Humidity: 90-99%  Too High");}
             else if(sensorEvent.values[0] == 100){humidityTextView.setText("Humidity: 100%  Too High");}
             else {humidityTextView.setText("Error");}
-
-
-
         }
-
-
-        //if(sensorEvent.sensor.getType() == Sensor.TYPE_AMBIENT_TEMPERATURE) {
-            //TextView lightSensor = (TextView) findViewById(R.id.LightSensor);
-            //float ambientTemp = sensorEvent.values[0];
-            //lightSensor.setText(String.valueOf(ambientTemp));
-       // }
-
     }
-
-
-
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {}
-
-    /*
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        this.gestureDetectorCompat.onTouchEvent(event);
-        return super.onTouchEvent(event);
-    }
-
-    class Gesture extends GestureDetector.SimpleOnGestureListener{
-        @Override
-        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-            if(e2.getX() > e1.getX()){
-                Intent intent = new Intent(Meditation.this, Stretches.class);
-                startActivity(intent);
-            }
-            if(e2.getX() < e1.getX()){
-                Intent intent = new Intent(Meditation.this, Exercise.class);
-                startActivity(intent);
-            }
-
-            return true;
-            //return super.onFling(e1, e2, velocityX, velocityY);
-        }
-    }
-    */
 }

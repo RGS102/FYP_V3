@@ -52,7 +52,6 @@ public class Rewards extends AppCompatActivity {
         unlockRewards(k,i,j);
     }
 
-
     private void unlockRewards(int task, int exe, int med){
         loadData();
 
@@ -111,44 +110,6 @@ public class Rewards extends AppCompatActivity {
         adapter = new RewardsDetailsAdapter(getApplicationContext(), rewardList);
         rewardDetails.setAdapter(adapter);
         saveData();
-
-
-
-        /*
-
-        //SOME OF THIS WILL BE USED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        int checkedTasks = MainActivity.getCheckedTasks();
-        int checkedExercise = MainActivity.getCheckedExercises();
-        int checkedMeditation = MainActivity.getCheckedMeditations();
-
-        if((exe % 10 == 0) && checkedExercise != exe){
-            if(!rewardList.contains("tester")) {rewardList.add(0,"tester");}
-            else if(!rewardList.contains("2")) {rewardList.add(0,"2");}
-            else if(!rewardList.contains("3")) {rewardList.add(0,"3");}
-
-            MainActivity.setCheckedExercises(exe);
-        }
-
-        if((med % 10 == 0) && checkedMeditation != med){
-            if(!rewardList.contains("4")) {rewardList.add(0,"4");}
-            else if(!rewardList.contains("5")) {rewardList.add(0,"5");}
-            else if(!rewardList.contains("6")) {rewardList.add(0,"6");}
-
-            MainActivity.setCheckedMeditations(med);
-        }
-
-        if((task % 20 == 0) && checkedTasks != task){
-            if(!rewardList.contains("7")) {rewardList.add(0,"7");}
-            else if(!rewardList.contains("8")) {rewardList.add(0,"8");}
-            else if(!rewardList.contains("9")) {rewardList.add(0,"9");}
-
-            MainActivity.setCheckedTasks(task);
-        }
-
-        adapter = new RewardsDetailsAdapter(getApplicationContext(), rewardList);
-        rewardDetails.setAdapter(adapter);
-        saveData();
-        */
     }
 
     private void saveData(){
@@ -188,19 +149,13 @@ public class Rewards extends AppCompatActivity {
         int j = MainActivity.getMeditationsCompleted();
         int k = MainActivity.getTasksCompleted();
 
-        //int tempi = Main.getAvailableExerciseRewards
-        //if tempi > 0{
-        //Display trophy, give reward, setAvailableExerciseRewards-1
-
-
-
         Boolean taskAlmostComplete = MainActivity.isTaskAlmostComplete();//MainActivity.taskAlmostComplete;
         Boolean exeAlmostComplete = MainActivity.isExeAlmostComplete();//MainActivity.exeAlmostComplete;
         Boolean medAlmostComplete = MainActivity.isMedAlmostComplete();//MainActivity.medAlmostComplete;
 
         if(((k % 20 == 0) && taskAlmostComplete == true) ||
-                ((i % 10 == 0) && exeAlmostComplete == true) ||
-                ((j % 10 == 0) && medAlmostComplete == true)){
+           ((i % 10 == 0) && exeAlmostComplete  == true) ||
+           ((j % 10 == 0) && medAlmostComplete  == true)){
             trophy.setVisibility(View.VISIBLE);
             notTrophy.setVisibility(View.INVISIBLE);
         }
@@ -208,7 +163,6 @@ public class Rewards extends AppCompatActivity {
             trophy.setVisibility(View.INVISIBLE);
             notTrophy.setVisibility(View.VISIBLE);
         }
-
 
         if((k % 20 == 0) && taskAlmostComplete == false){taskProgressBar.setProgress(0);}
         if(k % 20 == 1){taskProgressBar.setProgress(5);}
@@ -229,9 +183,8 @@ public class Rewards extends AppCompatActivity {
         if(k % 20 == 16){taskProgressBar.setProgress(80);}
         if(k % 20 == 17){taskProgressBar.setProgress(85);}
         if(k % 20 == 18){taskProgressBar.setProgress(90);}
-        if(k % 20 == 19){taskProgressBar.setProgress(95); /*MainActivity.setTaskAlmostComplete(true);*/}
-        if((k % 20 == 0) && taskAlmostComplete == true){taskProgressBar.setProgress(100); /*MainActivity.setTaskAlmostComplete(false);*/}
-
+        if(k % 20 == 19){taskProgressBar.setProgress(95);}
+        if((k % 20 == 0) && taskAlmostComplete == true){taskProgressBar.setProgress(100);}
 
         if((i % 10 == 0) && exeAlmostComplete == false){exerciseProgressBar.setProgress(0);}
         if(i % 10 == 1){exerciseProgressBar.setProgress(10);}
@@ -241,9 +194,9 @@ public class Rewards extends AppCompatActivity {
         if(i % 10 == 5){exerciseProgressBar.setProgress(50);}
         if(i % 10 == 6){exerciseProgressBar.setProgress(60);}
         if(i % 10 == 7){exerciseProgressBar.setProgress(70);}
-        if(i % 10 == 8){exerciseProgressBar.setProgress(80); }
-        if(i % 10 == 9){exerciseProgressBar.setProgress(90); /*MainActivity.setExeAlmostComplete(true);*/}
-        if((i % 10 == 0) && exeAlmostComplete == true){exerciseProgressBar.setProgress(100); /*MainActivity.setExeAlmostComplete(false);*/}
+        if(i % 10 == 8){exerciseProgressBar.setProgress(80);}
+        if(i % 10 == 9){exerciseProgressBar.setProgress(90);}
+        if((i % 10 == 0) && exeAlmostComplete == true){exerciseProgressBar.setProgress(100);}
 
         if((j % 10 == 0) && medAlmostComplete == false){meditationProgressBar.setProgress(0);}
         if(j % 10 == 1){meditationProgressBar.setProgress(10);}
@@ -254,11 +207,7 @@ public class Rewards extends AppCompatActivity {
         if(j % 10 == 6){meditationProgressBar.setProgress(60);}
         if(j % 10 == 7){meditationProgressBar.setProgress(70);}
         if(j % 10 == 8){meditationProgressBar.setProgress(80);}
-        if(j % 10 == 9){meditationProgressBar.setProgress(90); /*MainActivity.setMedAlmostComplete(true);*/}
-        if((j % 10 == 0) && medAlmostComplete == true){meditationProgressBar.setProgress(100); /*MainActivity.setMedAlmostComplete(false);*/}
-
+        if(j % 10 == 9){meditationProgressBar.setProgress(90);}
+        if((j % 10 == 0) && medAlmostComplete == true){meditationProgressBar.setProgress(100);}
     }
-
-
-
 }

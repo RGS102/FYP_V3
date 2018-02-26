@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HowTo extends AppCompatActivity {
-
     private ListView howToDetails;
     private StretchDetailsAdapter adapter;
     private List<StretchDetails> howToList;
@@ -40,7 +39,7 @@ public class HowTo extends AppCompatActivity {
         });
     }
 
-    private void saveData(){
+    private void saveData() {
         SharedPreferences sharedPreferences = getSharedPreferences("shared preferences how to", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         Gson gson = new Gson();
@@ -49,14 +48,15 @@ public class HowTo extends AppCompatActivity {
         editor.apply();
     }
 
-    private void loadData(){
+    private void loadData() {
         SharedPreferences sharedPreferences = getSharedPreferences("shared preferences how to", MODE_PRIVATE);
         Gson gson = new Gson();
         String json = sharedPreferences.getString("how to list", null);
         Type type = new TypeToken<ArrayList<StretchDetails>>() {}.getType();
         howToList = gson.fromJson(json, type);
 
-        if(howToList == null){
+        if(howToList == null)
+        {
             howToList = new ArrayList<>();
             howToList.add(new StretchDetails("Page: Main"));
             howToList.add(new StretchDetails("Page: Journal"));
@@ -74,10 +74,8 @@ public class HowTo extends AppCompatActivity {
         }
     }
 
-    public String[] popUpInfo(){
-        //Fill this in later, position in array should correspond to position of list view
+    public String[] popUpInfo() {
         String[] popUpInfo = new String[13];    //Dont forget to change size of array to match amount of elements in it
-        //Need to tab them down a bit
         popUpInfo[0] = "\n\njdhjdjhkddhjksdhjs";
         popUpInfo[1] = "\n\n2";
         popUpInfo[2] = "\n\n3";
@@ -94,7 +92,4 @@ public class HowTo extends AppCompatActivity {
 
         return popUpInfo;
     }
-
-
-
 }

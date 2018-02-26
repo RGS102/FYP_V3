@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-
 import java.util.List;
 
 /**
@@ -42,11 +41,5 @@ public class RewardsDetailsAdapter extends BaseAdapter {
         TextView reward = (TextView) rewardViewTest.findViewById(R.id.StretchName);
         reward.setText(RewardList.get(i));
         return rewardViewTest;
-
     }
-
-
-
-
-
 }

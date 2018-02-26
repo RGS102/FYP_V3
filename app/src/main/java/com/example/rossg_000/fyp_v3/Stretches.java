@@ -2,11 +2,8 @@ package com.example.rossg_000.fyp_v3;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -17,18 +14,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Stretches extends AppCompatActivity {
-
     private ListView stretchDetails;
     private StretchDetailsAdapter adapter;
     private List<StretchDetails> stretchList;
-    //private GestureDetectorCompat gestureDetectorCompat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stretches);
-        //gestureDetectorCompat = new GestureDetectorCompat(this, new Stretches.Gesture());
-
         final String [] stretchInfo = popUpInfo();
         stretchDetails = (ListView) findViewById(R.id.StretchesListView);
         loadData();
@@ -81,7 +74,6 @@ public class Stretches extends AppCompatActivity {
     }
 
     public String[] popUpInfo(){
-        //Fill this in later, position in array should correspond to position of list view
         String[] popUpInfo = new String[12];    //Dont forget to change size of array to match amount of elements in it
         popUpInfo[0] = "\n\nStretch 1 test test test test test test test test test test test test test test test test test test";
         popUpInfo[1] = "\n\nStretch 2";
@@ -98,29 +90,4 @@ public class Stretches extends AppCompatActivity {
 
         return popUpInfo;
     }
-
-    /*
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        this.gestureDetectorCompat.onTouchEvent(event);
-        return super.onTouchEvent(event);
-    }
-
-    class Gesture extends GestureDetector.SimpleOnGestureListener{
-        @Override
-        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-            if(e2.getX() > e1.getX()){
-                Intent intent = new Intent(Stretches.this, Exercise.class);
-                startActivity(intent);
-            }
-            if(e2.getX() < e1.getX()){
-                Intent intent = new Intent(Stretches.this, Meditation.class);
-                startActivity(intent);
-
-            }
-
-            return true;
-            //return super.onFling(e1, e2, velocityX, velocityY);
-        }
-    }*/
 }

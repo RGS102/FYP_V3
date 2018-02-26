@@ -5,40 +5,29 @@ import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
-import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.graphics.Color;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity{
-
-    //private final int LOCATION_REQUEST_COARSE_CODE = 123; //WORKS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    //private GestureDetectorCompat gestureDetectorCompat;    //swipe
     public static String titleDisplay = "A Rookie";
-
     public static boolean taskAlmostComplete = false;
     public static boolean exeAlmostComplete = false;
     public static boolean medAlmostComplete = false;
-
     public static boolean taskRewardGiven = false;
     public static boolean exeRewardGiven = false;
     public static boolean medRewardGiven = false;
-
     public static int taskRewardsEarned = 0;
     public static int exerciseRewardsEarned = 0;
     public static int meditationRewardsEarned = 0;
-
     public static int tasksCompleted = 0;
     public static int exercisesCompleted = 0;
     public static int meditationsCompleted = 0;
-
     public static int checkedTasks = 0;
     public static int checkedExercises = 0;
     public static int checkedMeditations = 0;
@@ -47,7 +36,6 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //gestureDetectorCompat = new GestureDetectorCompat(this, new Gesture()); //swipe
 
         /*
         //Works!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -248,8 +236,7 @@ public class MainActivity extends AppCompatActivity{
         boolean medBool = MainActivity.isMedRewardGiven();
         boolean taskBool = MainActivity.isTaskRewardGiven();
 
-        if(i%10==0 && i!=0 && exeBool == false)
-        {
+        if(i%10==0 && i!=0 && exeBool == false) {
             exeRewards+=1;
             setExerciseRewardsEarned(exeRewards);
             setExeRewardGiven(true);
@@ -260,8 +247,7 @@ public class MainActivity extends AppCompatActivity{
             setExeAlmostComplete(false);
         }
 
-        if(j%10==0 && j!=0 && medBool == false)
-        {
+        if(j%10==0 && j!=0 && medBool == false) {
             medRewards+=1;
             setMeditationRewardsEarned(medRewards);
             setMedRewardGiven(true);
@@ -272,8 +258,7 @@ public class MainActivity extends AppCompatActivity{
             setMedAlmostComplete(false);
         }
 
-        if(k%20==0 && k!=0 && taskBool == false)
-        {
+        if(k%20==0 && k!=0 && taskBool == false) {
             taskRewards+=1;
             setTaskRewardsEarned(taskRewards);
             setTaskRewardGiven(true);
@@ -285,7 +270,6 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
-    /** Called when the user taps the button */
     public void goToTask(View view) {
         Intent intent = new Intent(this, Tasks.class);
         startActivity(intent);
@@ -315,9 +299,6 @@ public class MainActivity extends AppCompatActivity{
         Intent intent = new Intent(this, Stretches.class);
         startActivity(intent);
     }
-
-
-
 
     public static int getTasksCompleted() {
         return tasksCompleted;
@@ -473,32 +454,4 @@ public class MainActivity extends AppCompatActivity{
         }
     }
     */
-
-    //Swipe
-    /*
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        this.gestureDetectorCompat.onTouchEvent(event);
-        return super.onTouchEvent(event);
-    }
-
-    class Gesture extends GestureDetector.SimpleOnGestureListener{
-        @Override
-        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-            if(e2.getX() > e1.getX()){
-                Intent intent = new Intent(MainActivity.this, Tasks.class);
-                startActivity(intent);
-            }
-            if(e2.getX() < e1.getX()){
-                Intent intent = new Intent(MainActivity.this, Journal.class);
-                startActivity(intent);
-
-            }
-
-            return true;
-            //return super.onFling(e1, e2, velocityX, velocityY);
-        }
-    }
-    */
-    //Swipe
 }
