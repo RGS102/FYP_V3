@@ -29,7 +29,6 @@
             android:scaleType="fitXY"
             android:src="@drawable/cardviewbackground1"/>
 
-
         <LinearLayout
             android:id="@+id/TitleLinearLayout"
             android:layout_width="match_parent"
@@ -57,7 +56,6 @@
         </LinearLayout>
     </android.support.v7.widget.CardView>
 
-
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
@@ -66,7 +64,6 @@
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@+id/MainCardView">
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -155,7 +152,6 @@
                 </LinearLayout>
             </android.support.v7.widget.CardView>
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -247,7 +243,6 @@
             </android.support.v7.widget.CardView>
         </LinearLayout>
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="115dp"
@@ -336,161 +331,4 @@
             </android.support.v7.widget.CardView>
         </LinearLayout>
     </LinearLayout>
-
-
-    <!--
-    <LinearLayout
-        android:id="@+id/MainLinearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        >
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="125dp"
-            android:layout_height="125dp"
-            android:layout_gravity="center"
-            app:srcCompat="@drawable/trident3" />
-
-        <android.support.v7.widget.CardView
-            android:id="@+id/MainCardView1"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="50dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            app:cardElevation="0dp"
-            app:cardMaxElevation="0dp"
-            card_view:cardCornerRadius="1dp">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                android:src="@drawable/cardviewbackground1"
-                app:layout_constraintBottom_toBottomOf="@id/MainCardView1"
-                app:layout_constraintEnd_toEndOf="@id/MainCardView1"
-                app:layout_constraintStart_toStartOf="@id/MainCardView1"
-                app:layout_constraintTop_toTopOf="@id/MainCardView1" />
-
-            <LinearLayout
-                android:id="@+id/linearLayout2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="@id/MainCardView1"
-                app:layout_constraintEnd_toEndOf="@id/MainCardView1"
-                app:layout_constraintStart_toStartOf="@id/MainCardView1"
-                app:layout_constraintTop_toTopOf="@id/MainCardView1">
-
-                <TextView
-                    android:id="@+id/Quote"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="10dp"
-                    android:text="Your Goals Are Not The Finish Line"
-                    android:textColor="@android:color/black"
-                    android:textSize="15dp"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-                <TextView
-                    android:id="@+id/Quote2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="10dp"
-                    android:text="They Are Only The Beginning"
-                    android:textColor="@android:color/black"
-                    android:textSize="15dp"
-                    app:layout_constraintTop_toBottomOf="@+id/Quote" />
-
-                <TextView
-                    android:id="@+id/YouAreString"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="10dp"
-                    android:text="You Are"
-                    android:textColor="@android:color/black"
-                    android:textSize="15dp"
-                    app:layout_constraintTop_toBottomOf="@+id/Quote2" />
-
-                <TextView
-                    android:id="@+id/UserTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:textColor="@android:color/black"
-                    android:textSize="15dp"
-                    app:layout_constraintTop_toBottomOf="@+id/YouAreString" />
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:id="@+id/MainCardView2"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_gravity="center"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            app:cardElevation="0dp"
-            app:cardMaxElevation="0dp"
-            card_view:cardCornerRadius="1dp">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                android:src="@drawable/cardviewbackground1"
-                app:layout_constraintBottom_toBottomOf="@id/MainCardView1"
-                app:layout_constraintEnd_toEndOf="@id/MainCardView1"
-                app:layout_constraintStart_toStartOf="@id/MainCardView1"
-                app:layout_constraintTop_toTopOf="@id/MainCardView1" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="@id/MainCardView2"
-                app:layout_constraintEnd_toEndOf="@id/MainCardView2"
-                app:layout_constraintStart_toStartOf="@id/MainCardView2"
-                app:layout_constraintTop_toTopOf="@id/MainCardView2">
-
-
-                <ImageButton
-                    android:id="@+id/toTasksButton"
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
-                    android:layout_gravity="center"
-                    android:onClick="goToPage"
-                    android:src="@drawable/checklist" />
-
-                <ImageButton
-                    android:id="@+id/toRewardsButton"
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginRight="35dp"
-                    android:onClick="goToRewards"
-                    android:src="@drawable/trophy_icon" />
-
-                <ImageButton
-                    android:id="@+id/toJournalButton"
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
-                    android:layout_gravity="center"
-                    android:onClick="goToJournal"
-                    android:src="@drawable/journal" />
-            </LinearLayout>
-
-        </android.support.v7.widget.CardView>
-
-    </LinearLayout>
-    -->
-
 </android.support.constraint.ConstraintLayout>

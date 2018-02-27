@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/underwater"
+    android:alpha="0.9"
+    android:background="@drawable/cardviewbackground1"
     tools:context="com.example.rossg_000.fyp_v3.PopUpInfo">
 
     <TextView
@@ -17,12 +18,10 @@
         android:layout_marginTop="8dp"
         android:fontFamily="serif"
         android:text="TextView"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
 </android.support.constraint.ConstraintLayout>

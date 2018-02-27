@@ -8,7 +8,6 @@
     android:background="@drawable/app_background_image"
     tools:context="com.example.rossg_000.fyp_v3.Rewards">
 
-
     <android.support.v7.widget.CardView
         android:id="@+id/RewardCardView1"
         android:layout_width="match_parent"
@@ -169,7 +168,6 @@
         </LinearLayout>
     </android.support.v7.widget.CardView>
 
-
     <ListView
         android:id="@+id/RewardsListView"
         android:layout_width="0dp"
@@ -183,6 +181,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/RewardCardView1" />
-
-
 </android.support.constraint.ConstraintLayout>

@@ -124,28 +124,28 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
         if(meditationDetailsListTest == null){
             meditationDetailsListTest = new ArrayList<>();
             meditationDetailsListTest.add(new TaskDetails(26,"Deep Breathing",1, "minute(s)",1,1));
-            meditationDetailsListTest.add(new TaskDetails(27,"Power Nap",1, "minute(s)",1,1));
-            meditationDetailsListTest.add(new TaskDetails(28,"Muscle Relaxation",1, "minute(s)",1,1));
-            meditationDetailsListTest.add(new TaskDetails(29,"Body Scan",1, "minute(s)",1,1));
-            meditationDetailsListTest.add(new TaskDetails(30,"Open Monitoring",1, "minute(s)",1,1));
-            meditationDetailsListTest.add(new TaskDetails(31,"Focused Attention",1, "minute(s)",1,1));
-            meditationDetailsListTest.add(new TaskDetails(32,"Walking Meditation",1, "minute(s)",1,1));
-            meditationDetailsListTest.add(new TaskDetails(33,"Yoga",1, "minute(s)",1,1));
-            meditationDetailsListTest.add(new TaskDetails(34,"Tai Chi",1, "minute(s)",1,1));
-            meditationDetailsListTest.add(new TaskDetails(35,"Sleep",1, "hour(s)",1,1));
-            meditationDetailsListTest.add(new TaskDetails(36,"Mindful Eating",1, "times",1,1));
-            meditationDetailsListTest.add(new TaskDetails(37,"Visualisation",1, "minute(s)",1,1));
-            meditationDetailsListTest.add(new TaskDetails(38,"Mantra Meditation",1, "minute(s)",1,1));
-            meditationDetailsListTest.add(new TaskDetails(39,"Metta Meditation",1, "minute(s)",1,1));
-            meditationDetailsListTest.add(new TaskDetails(40,"Self Enquiry",1, "minute(s)",1,1));
-            meditationDetailsListTest.add(new TaskDetails(41,"Scalp Soother",1, "minute(s)",1,1));
-            meditationDetailsListTest.add(new TaskDetails(42,"Easy on the Eyes",1, "minute(s)",1,1));
-            meditationDetailsListTest.add(new TaskDetails(43,"Sinus Pressure Relief",1, "minute(s)",1,1));
-            meditationDetailsListTest.add(new TaskDetails(44,"Shoulder Tension Relief",1, "minute(s)",1,1));
-            meditationDetailsListTest.add(new TaskDetails(45,"Listen to Music",1, "minute(s)",1,1));
-            meditationDetailsListTest.add(new TaskDetails(46,"Reading",1, "minute(s)",1,1));
-            meditationDetailsListTest.add(new TaskDetails(47,"Effortless Presence",1, "minute(s)",1,1));
-            meditationDetailsListTest.add(new TaskDetails(48,"Zen Meditation",1, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(27,"Power Nap",10, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(28,"Muscle Relaxation",10, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(29,"Body Scan",10, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(30,"Open Monitoring",10, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(31,"Focused Attention",10, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(32,"Walking Meditation",10, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(33,"Yoga",10, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(34,"Tai Chi",10, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(35,"Sleep",8, "hour(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(36,"Mindful Eating",10, "bite(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(37,"Visualisation",10, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(38,"Mantra Meditation",10, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(39,"Metta Meditation",10, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(40,"Self Enquiry",10, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(41,"Scalp Soother",10, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(42,"Easy on the Eyes",10, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(43,"Sinus Pressure Relief",10, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(44,"Shoulder Tension Relief",10, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(45,"Listen to Music",10, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(46,"Reading",10, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(47,"Effortless Presence",10, "minute(s)",1,1));
+            meditationDetailsListTest.add(new TaskDetails(48,"Zen Meditation",10, "minute(s)",1,1));
         }
     }
 
@@ -165,117 +165,117 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
 
         if(cId == 26){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {1,2,3,4,5,6,7,8,9,10};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 27){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 28){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 29){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 30){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 31){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 32){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 33){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 34){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 35){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {8,8,8,9,9,9,10,10,10,11};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 36){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {1,2,3,4,5,6,7,8,9,10};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 37){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 38){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 39){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 40){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 41){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 42){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 43){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 44){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 45){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 46){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 47){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 48){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {11,12,13,14,15,16,17,18,19,20};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
 

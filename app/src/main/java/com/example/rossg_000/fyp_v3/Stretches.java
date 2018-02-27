@@ -58,35 +58,49 @@ public class Stretches extends AppCompatActivity {
 
         if(stretchList == null){
             stretchList = new ArrayList<>();
-            stretchList.add(new StretchDetails("Stretch 1"));
-            stretchList.add(new StretchDetails("Stretch 2"));
-            stretchList.add(new StretchDetails("Stretch 3"));
-            stretchList.add(new StretchDetails("Stretch 4"));
-            stretchList.add(new StretchDetails("Stretch 5"));
-            stretchList.add(new StretchDetails("Stretch 6"));
-            stretchList.add(new StretchDetails("Stretch 7"));
-            stretchList.add(new StretchDetails("Stretch 8"));
-            stretchList.add(new StretchDetails("Stretch 9"));
-            stretchList.add(new StretchDetails("Stretch 10"));
-            stretchList.add(new StretchDetails("Stretch 11"));
-            stretchList.add(new StretchDetails("Stretch 12"));
+            stretchList.add(new StretchDetails("Downward Dog"));
+            stretchList.add(new StretchDetails("Side Oblique Stretch"));
+            stretchList.add(new StretchDetails("Crescent Pose"));
+            stretchList.add(new StretchDetails("Single Leg Stretch"));
+            stretchList.add(new StretchDetails("Cat"));
+            stretchList.add(new StretchDetails("Sumo Squat"));
+            stretchList.add(new StretchDetails("Lying Hug Stretch"));
+            stretchList.add(new StretchDetails("Crab Reach"));
         }
     }
 
     public String[] popUpInfo(){
-        String[] popUpInfo = new String[12];    //Dont forget to change size of array to match amount of elements in it
-        popUpInfo[0] = "\n\nStretch 1 test test test test test test test test test test test test test test test test test test";
-        popUpInfo[1] = "\n\nStretch 2";
-        popUpInfo[2] = "\n\nStretch 3";
-        popUpInfo[3] = "\n\nStretch 4";
-        popUpInfo[4] = "\n\nStretch 5";
-        popUpInfo[5] = "\n\nStretch 6";
-        popUpInfo[6] = "\n\nStretch 7";
-        popUpInfo[7] = "\n\nStretch 8";
-        popUpInfo[8] = "\n\nStretch 9";
-        popUpInfo[9] = "\n\nStretch 10";
-        popUpInfo[10] = "\n\nStretch 11";
-        popUpInfo[11] = "\n\nStretch 12";
+        String[] popUpInfo = new String[8];    //Dont forget to change size of array to match amount of elements in it
+        popUpInfo[0] = "\n\nDownward Dog" +
+                "\n\nStarting position: plank position with shoulders over waist" +
+                "\n\nPush hips up towards ceiling to form a triangle with your body" +
+                "\n\nKeep head between arms, straighten your legs, reach heels towards ground and spread fingers, hold for several seconds";
+        popUpInfo[1] = "\n\nSide Obligue Stretch" +
+                "\n\nStarting position: Stand with feet wider than hip distance apart" +
+                "\n\nLift one arm overhead with your palm facing inward, and lean towards the opposite side of the raised arm" +
+                "\n\nHold for several seconds and switch arms";
+        popUpInfo[2] = "\n\nCrescent Pose" +
+                "\n\nCrescent Pose" +
+                "\n\nStand with one font infront of you and the other behind, bend front knee to a 90 degree angle, with your back straight" +
+                "\n\nLift your arms straight upwards, palms facing in. Lift your chest up, slightly arching your back as you press your back hip forward" +
+                "\n\nExhale as you lower your lunge and hold for several seconds";
+        popUpInfo[3] = "\n\nSingle Leg Stretch" +
+                "\n\nLie on back, lift legs towards ceiling. Lower one leg towards the floor, pull the other leg towards your head" +
+                "\n\nHold the back of your rasied legs, lift shoulders off ground. Maintain straight legs, pointed toes, and hold for several seconds";
+        popUpInfo[4] = "\n\nCat" +
+                "\n\nOn hands and knees, with wrists in line with shoulders, and knees in line with hips" +
+                "\n\nRound your back and tuck your pelvis as you look towards the floor, then scoop your abs upwars";
+        popUpInfo[5] = "\n\nSumo Squat" +
+                "\n\nStand with your feet wide, toes pointed outwards, and hands just above knees" +
+                "\n\nLean forward as you bend your knees to 90 degrees" +
+                "\n\nBring one shoulder towards the floor as you look over the opposite shoulder" +
+                "\n\nMaintain straight arms and keep hips aligned, hold for several seconds and switch sides";
+        popUpInfo[6] = "\n\nLying Hug Stretch" +
+                "\n\nLie on back, tuck your knees towards your chest, grab your calves, roll your head up to meet your knees";
+        popUpInfo[7] = "\n\nCrab Reach" +
+                "\n\nSit with feet flat on floor, hip distance apart. Place hands down a few inches behind your hips, fingers facing away from you" +
+                "\n\nBring one arm towards your chest, lift your hips upwards to form a table pose, reach your arm over your head" +
+                "\n\nPress into your feet, rotate torso, and look down at your bottom hand. Hold for several seconds and switch sides";
 
         return popUpInfo;
     }

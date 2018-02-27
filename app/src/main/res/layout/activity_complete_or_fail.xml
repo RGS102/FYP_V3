@@ -6,78 +6,75 @@
     android:layout_height="match_parent"
     tools:context="com.example.rossg_000.fyp_v3.CompleteOrFail">
 
-    <!--
-    <Button
-        android:id="@+id/Fail"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:text="Give Up"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-     -->
+        android:orientation="vertical"
+        android:alpha="0.9"
+        android:background="@drawable/cardviewbackground1">
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="8dp">
 
-    <Button
-        android:id="@+id/Complete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="20dp"
-        android:text="Submit Progress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/NumberInput"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="100dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:gravity="center|start"
+                    android:text="Progress made:"
+                    android:textColor="@android:color/black"
+                    android:textSize="15dp" />
 
-    <EditText
-        android:id="@+id/DurationInput"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NumberInput" />
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:gravity="center|start"
+                    android:text="Time spent (Minutes):"
+                    android:textColor="@android:color/black"
+                    android:textSize="15dp"/>
+            </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="120dp"
-        android:text="Progress made:"
-        android:textColor="@android:color/white"
-        android:textSize="15dp"
-        app:layout_constraintEnd_toStartOf="@+id/NumberInput"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:text="Time spent (Minutes):"
-        android:textColor="@android:color/white"
-        android:textSize="15dp"
-        app:layout_constraintEnd_toStartOf="@+id/DurationInput"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+                <EditText
+                    android:id="@+id/NumberInput"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:backgroundTint="@android:color/black"/>
 
+                <EditText
+                    android:id="@+id/DurationInput"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:backgroundTint="@android:color/black"/>
+            </LinearLayout>
+        </LinearLayout>
 
+        <Button
+            android:id="@+id/Complete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@android:color/black"
+            android:text="Submit Progress" />
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

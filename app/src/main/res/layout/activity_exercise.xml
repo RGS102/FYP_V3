@@ -8,7 +8,6 @@
     android:background="@drawable/app_background_image"
     tools:context="com.example.rossg_000.fyp_v3.Exercise">
 
-
     <ListView
         android:id="@+id/taskListView"
         android:layout_width="0dp"
@@ -77,5 +76,4 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </LinearLayout>
     </android.support.v7.widget.CardView>
-
 </android.support.constraint.ConstraintLayout>

@@ -87,7 +87,7 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         taskDetails.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if(i != 0 && i != 4) {
+                if(i != 0 && i != 1) {
                     dataTest = i;
                     final Intent intent2 = new Intent(getApplicationContext(), CompleteOrFail.class);
                     startActivityForResult(intent2, REQUEST_CODE_COMPLETE_OR_FAIL);
@@ -135,10 +135,17 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         if(taskDetailsListTest == null){
             taskDetailsListTest = new ArrayList<>();
             taskDetailsListTest.add(new TaskDetails(1, "Walk" , 500, "step(s)"  , 1, 1));
-            taskDetailsListTest.add(new TaskDetails(2, "Run"  , 1, "mile(s)"  , 1, 1));
+            taskDetailsListTest.add(new TaskDetails(2, "Sit Ups:", 10, "sit up(s)"  ,  1, 1));
+
+
+
             taskDetailsListTest.add(new TaskDetails(3, "Jog"  , 1, "mile(s)"  ,  1, 1));
             taskDetailsListTest.add(new TaskDetails(4, "Swim" , 1, "length(s)",  1, 1));
-            taskDetailsListTest.add(new TaskDetails(5, "Sit Ups:", 10, "sit up(s)"  ,  1, 1));
+
+            taskDetailsListTest.add(new TaskDetails(5, "Run"  , 1, "mile(s)"  , 1, 1));
+
+
+
             taskDetailsListTest.add(new TaskDetails(6, "Push Ups:", 10, "push up(s)",  1, 1));
             taskDetailsListTest.add(new TaskDetails(7, "Cycle" , 10, "mile(s)",  1, 1));
             taskDetailsListTest.add(new TaskDetails(8, "Crunches:"  , 10, "crunches(s)",  1, 1));
@@ -219,7 +226,7 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
             else{cRequirmentInteger = 1400;}}
         if(cId == 2){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {1,2,3,4,5,6,7,8,9,10};
+                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 3){
@@ -234,7 +241,7 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
             else{cRequirmentInteger = 21+e;}}
         if(cId == 5){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
-                int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
+                int[] tempArray = {1,2,3,4,5,6,7,8,9,10};
                 cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
             else{cRequirmentInteger = 21+e;}}
         if(cId == 6){
@@ -363,9 +370,11 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
                 "\n\nWalk:" +
                 "\n\nPut one foot in front of the other";
         popUpInfo[1] =
-                "\n\nRun:" +
-                "\n\nMove at a faster speed than a walk" +
-                "\n\nAim to never have both or either foot on the ground at the same time";
+                "\n\nSit Ups:" +
+                "\n\nEnsure sit up detector is switched on" +
+                "\n\nStarting position: Lie on floor with bent knees, with feet shoulder width apart and flat on floor, hold your phone facing outwards with the top of it pointed towards your head" +
+                "\n\nUpward phase: Curl your body upwards off the floor to an upright semi-seated position, a beep will indicate when you have reached the desired angle, exhale as you rise" +
+                "\n\nDownward phase: Return to starting position, inhaling as you do so";
         popUpInfo[2] =
                 "\n\nJog:" +
                 "\n\nRun at a steady gentle pace";
@@ -374,10 +383,9 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
                 "\n\nPropel body through water" +
                 "\n\nStyle of swimming depends on preference";
         popUpInfo[4] =
-                "\n\nSit Ups:" +
-                "\n\nStarting position: Lie on floor with bent knees, with feet shoulder width apart and flat on floor, with your hands crossed on chest/behind head/at ears/at side, head tucked forward" +
-                "\n\nUpward phase: Curl your body upwards off the floor to an upright semi-seated position, exhale as you rise" +
-                "\n\nDownward phase: Return to starting position, inhaling as you do so";
+                "\n\nRun:" +
+                "\n\nMove at a faster speed than a walk" +
+                "\n\nAim to never have both or either foot on the ground at the same time";
         popUpInfo[5] =
                 "\n\nPush Ups:" +
                 "\n\nStarting Position: Kneel with hands flat on the floor, feet together, and shoulders directly above your hands" +
@@ -535,18 +543,18 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
                 //pitch = atan2((-x), Math.sqrt(y * y + z * z)) * 5.73;
 
                 if (roll >= 0 && roll <= 19) {notePlayed = false;}
-                if (roll >= 90 && roll <= 99 && notePlayed == false)
+                if (roll >= 60 && roll <= 99 && notePlayed == false)
                 {
                     ToneGenerator toneGenerator = new ToneGenerator(AudioManager.STREAM_MUSIC, 200);
                     toneGenerator.startTone(ToneGenerator.TONE_CDMA_PIP, 100);
                     notePlayed = true;
 
-                    TaskDetails a = taskDetailsListTest.get(4);
-                    taskDetailsListTest.set(4, new TaskDetails(a.getId(), a.getTaskName(), a.getTaskRequirementInteger() - 1, a.getTaskRequirementString(),/*a.getTaskLevelString(),*/a.getTaskLevelInteger(), a.getAttempts()));
+                    TaskDetails a = taskDetailsListTest.get(1);
+                    taskDetailsListTest.set(1, new TaskDetails(a.getId(), a.getTaskName(), a.getTaskRequirementInteger() - 1, a.getTaskRequirementString(),/*a.getTaskLevelString(),*/a.getTaskLevelInteger(), a.getAttempts()));
                     if (a.getTaskRequirementInteger() == 0)
                     {
                         toneGenerator.startTone(ToneGenerator.TONE_CDMA_PRESSHOLDKEY_LITE, 150);
-                        difficultyLevels(a, 4, a.getTaskLevelInteger(), 1, 0, 0);
+                        difficultyLevels(a, 1, a.getTaskLevelInteger(), 1, 0, 0);
                     }
 
                     adapter = new TaskDetailsAdapter(getApplicationContext(), taskDetailsListTest);
@@ -595,10 +603,10 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         if(excessList == null){
             excessList = new ArrayList<>();
             excessList.add(0);  //Walk
-            excessList.add(0);  //Run
+            excessList.add(0);  //Sit ups
             excessList.add(0);  //Jog
             excessList.add(0);  //Swim
-            excessList.add(0);  //Sit ups
+            excessList.add(0);  //Run
             excessList.add(0);  //Push ups
             excessList.add(0);  //Cycle
             excessList.add(0);  //Crunches
@@ -621,31 +629,5 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
             excessList.add(0);  //25
         }
     }
-
-    /*
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        this.gestureDetectorCompat.onTouchEvent(event);
-        return super.onTouchEvent(event);
-    }
-
-    class Gesture extends GestureDetector.SimpleOnGestureListener{
-        @Override
-        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-            if(e2.getX() > e1.getX()){
-                Intent intent = new Intent(Exercise.this, Meditation.class);
-                startActivity(intent);
-            }
-            if(e2.getX() < e1.getX()){
-                Intent intent = new Intent(Exercise.this, Stretches.class);
-                startActivity(intent);
-
-            }
-
-            return true;
-            //return super.onFling(e1, e2, velocityX, velocityY);
-        }
-    }
-    */
 }
 
