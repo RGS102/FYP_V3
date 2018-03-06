@@ -39,6 +39,8 @@ public class Stretches extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 final Intent intent = new Intent(getApplicationContext(), PopUpInfo.class);
                 intent.putExtra("details", stretchInfo[i]);
+                intent.putExtra("ImageFrom", "Stretches");
+                intent.putExtra("Position", i);
                 startActivity(intent);
             }
         });
@@ -100,35 +102,56 @@ public class Stretches extends AppCompatActivity {
     public String[] popUpInfo(){
         String[] popUpInfo = new String[8];    //Dont forget to change size of array to match amount of elements in it
         popUpInfo[0] = "Downward Dog" +
-                "\nStarting position: plank position with shoulders over waist" +
-                "\nPush hips up towards ceiling to form a triangle with your body" +
-                "\nKeep head between arms, straighten your legs, reach heels towards ground and spread fingers, hold for several seconds";
+                "\n\nStarting position: plank position with shoulders over waist" +
+                "\n\nPush hips up towards ceiling to form a triangle with your body" +
+                "\n\nKeep head between arms, straighten your legs, reach heels towards ground and spread fingers, hold for several seconds";
         popUpInfo[1] = "Side Obligue Stretch" +
-                "\nStarting position: Stand with feet wider than hip distance apart" +
-                "\nLift one arm overhead with your palm facing inward, and lean towards the opposite side of the raised arm" +
-                "\nHold for several seconds and switch arms";
+                "\n\nStarting position: Stand with feet wider than hip distance apart" +
+                "\n\nLift one arm overhead with your palm facing inward, and lean towards the opposite side of the raised arm" +
+                "\n\nHold for several seconds and switch arms";
         popUpInfo[2] = "Crescent Pose" +
-                "\nStand with one foot in front of you and the other behind, bend front knee to a 90 degree angle, with your back straight" +
-                "\nLift your arms straight upwards, palms facing in. Lift your chest up, slightly arching your back as you press your back hip forward" +
-                "\nExhale as you lower your lunge and hold for several seconds";
+                "\n\nStand with one foot in front of you and the other behind, bend front knee to a 90 degree angle, with your back straight" +
+                "\n\nLift your arms straight upwards, palms facing in. Lift your chest up, slightly arching your back as you press your back hip forward" +
+                "\n\nExhale as you lower your lunge and hold for several seconds";
         popUpInfo[3] = "Single Leg Stretch" +
-                "\nLie on back, lift legs towards ceiling. Lower one leg towards the floor, pull the other leg towards your head" +
-                "\nHold the back of your raised legs, lift shoulders off ground. Maintain straight legs, pointed toes, and hold for several seconds";
+                "\n\nLie on back, lift legs towards ceiling. Lower one leg towards the floor, pull the other leg towards your head" +
+                "\n\nHold the back of your raised legs, lift shoulders off ground. Maintain straight legs, pointed toes, and hold for several seconds";
         popUpInfo[4] = "Cat" +
-                "\nOn hands and knees, with wrists in line with shoulders, and knees in line with hips" +
-                "\nRound your back and tuck your pelvis as you look towards the floor, then scoop your abs upwards";
+                "\n\nOn hands and knees, with wrists in line with shoulders, and knees in line with hips" +
+                "\n\nRound your back and tuck your pelvis as you look towards the floor, then scoop your abs upwards";
         popUpInfo[5] = "Sumo Squat" +
-                "\nStand with your feet wide, toes pointed outwards, and hands just above knees" +
-                "\nLean forward as you bend your knees to 90 degrees" +
-                "\nBring one shoulder towards the floor as you look over the opposite shoulder" +
-                "\nMaintain straight arms and keep hips aligned, hold for several seconds and switch sides";
+                "\n\nStand with your feet wide, toes pointed outwards, and hands just above knees" +
+                "\n\nLean forward as you bend your knees to 90 degrees" +
+                "\n\nBring one shoulder towards the floor as you look over the opposite shoulder" +
+                "\n\nMaintain straight arms and keep hips aligned, hold for several seconds and switch sides";
         popUpInfo[6] = "Lying Hug Stretch" +
-                "\nLie on back, tuck your knees towards your chest, grab your calves, roll your head up to meet your knees";
+                "\n\nLie on back, tuck your knees towards your chest, grab your calves, roll your head up to meet your knees";
         popUpInfo[7] = "Crab Reach" +
-                "\nSit with feet flat on floor, hip distance apart. Place hands down a few inches behind your hips, fingers facing away from you" +
-                "\nBring one arm towards your chest, lift your hips upwards to form a table pose, reach your arm over your head" +
-                "\nPress into your feet, rotate torso, and look down at your bottom hand. Hold for several seconds and switch sides";
+                "\n\nSit with feet flat on floor, hip distance apart. Place hands down a few inches behind your hips, fingers facing away from you" +
+                "\n\nBring one arm towards your chest, lift your hips upwards to form a table pose, reach your arm over your head" +
+                "\n\nPress into your feet, rotate torso, and look down at your bottom hand. Hold for several seconds and switch sides";
 
         return popUpInfo;
     }
+
+
+    /*
+    public int popUpImage(){
+        int[] popUpImage = new int[8];
+        popUpImage[0] = 0;
+        popUpImage[1] = 1;
+        popUpImage[2] = 2;
+        popUpImage[3] = 3;
+        popUpImage[4] = 4;
+        popUpImage[5] = 5;
+        popUpImage[6] = 6;
+        popUpImage[7] = 7;
+
+
+        return popUpImage;
+    }
+    */
+
+
+
 }
