@@ -18,12 +18,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.google.gson.Gson;
@@ -51,6 +53,9 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meditation);
+        Boolean lightSupported = true;
+        Boolean temperatureSupported = true;
+        Boolean humiditySupported = true;
 
         sensorManager = (SensorManager) getSystemService(Service.SENSOR_SERVICE);
         TextView temperatureTextView = (TextView) findViewById(R.id.TemperatureSensor);
@@ -60,23 +65,44 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
         light = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
         if(light != null){sensorManager.registerListener(Meditation.this, light, SensorManager.SENSOR_DELAY_NORMAL);}
         else{
-            lightTextView.setVisibility(View.INVISIBLE);
+            //lightTextView.setVisibility(View.INVISIBLE);
             //lightTextView.setText("Light Sensor Not Supported");
+            lightSupported = false;
+
         }
 
         temperature = sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE);
         if(temperature != null){sensorManager.registerListener(Meditation.this, temperature, SensorManager.SENSOR_DELAY_NORMAL);}
         else{
-            temperatureTextView.setVisibility(View.INVISIBLE);
+            //temperatureTextView.setVisibility(View.INVISIBLE);
             //temperatureTextView.setText("Temperature Sensor Not Supported");
+            temperatureSupported = false;
+
         }
 
         humidity = sensorManager.getDefaultSensor(Sensor.TYPE_RELATIVE_HUMIDITY);
         if(humidity != null){sensorManager.registerListener(Meditation.this, humidity, SensorManager.SENSOR_DELAY_NORMAL);}
         else{
-            humidityTextView.setVisibility(View.INVISIBLE);
+            //humidityTextView.setVisibility(View.INVISIBLE);
             //humidityTextView.setText("Humidity Sensor Not Supported");
+            humiditySupported = false;
         }
+
+        sensorNotSupported(lightSupported,temperatureSupported,humiditySupported);
+
+        /*
+        if(humiditySupported == false && temperatureSupported == false){
+            //To deal with the condition where ambient temperature and humidity are not supported
+            LinearLayout theSensors = (LinearLayout) findViewById(R.id.TheSensors);
+            TextView temp = (TextView) findViewById(R.id.LightSensor);
+            theSensors.removeAllViews();
+            theSensors.addView(temp);
+            theSensors.setGravity(Gravity.CENTER);
+            theSensors.layout(0,0,0,0);
+            lightTextView.setTextSize(30);
+        }
+        */
+
 
         final String [] meditationInfo = popUpInfo();
         meditationDetails = (ListView) findViewById(R.id.MeditationListView);
@@ -618,4 +644,77 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {}
+
+    public void sensorNotSupported(Boolean light, Boolean temp, Boolean hum){
+        LinearLayout theSensors = (LinearLayout) findViewById(R.id.TheSensors);
+        TextView tempLight = (TextView) findViewById(R.id.LightSensor);
+        TextView tempTemp = (TextView) findViewById(R.id.TemperatureSensor);
+        TextView tempHum = (TextView) findViewById(R.id.HumiditySensor);
+
+        if(light == false && temp != false && hum != false){
+            //Light sensor not supported
+            theSensors.removeAllViews();
+            theSensors.addView(tempTemp);
+            theSensors.addView(tempHum);
+            theSensors.setGravity(Gravity.CENTER);
+            theSensors.layout(0, 0, 0, 0);
+            tempTemp.setTextSize(20);
+            tempHum.setTextSize(20);
+        }
+
+        if(light != false && temp == false && hum != false){
+            //Temperature sensor not supported
+            theSensors.removeAllViews();
+            theSensors.addView(tempLight);
+            theSensors.addView(tempHum);
+            theSensors.setGravity(Gravity.CENTER);
+            theSensors.layout(0, 0, 0, 0);
+            tempLight.setTextSize(20);
+            tempHum.setTextSize(20);
+        }
+
+        if(light != false && temp != false && hum == false){
+            //Humidity sensor not supported
+            theSensors.removeAllViews();
+            theSensors.addView(tempLight);
+            theSensors.addView(tempTemp);
+            theSensors.setGravity(Gravity.CENTER);
+            theSensors.layout(0, 0, 0, 0);
+            tempLight.setTextSize(20);
+            tempTemp.setTextSize(20);
+        }
+
+        if(light != false && temp == false && hum == false) {
+            //temperature and humidity sensors not supported
+            theSensors.removeAllViews();
+            theSensors.addView(tempLight);
+            theSensors.setGravity(Gravity.CENTER);
+            theSensors.layout(0, 0, 0, 0);
+            tempLight.setTextSize(30);
+        }
+
+        if(light == false && temp != false && hum == false) {
+            //Light and humidity sensors not supported
+            theSensors.removeAllViews();
+            theSensors.addView(tempTemp);
+            theSensors.setGravity(Gravity.CENTER);
+            theSensors.layout(0, 0, 0, 0);
+            tempTemp.setTextSize(30);
+        }
+
+        if(light == false && temp == false && hum != false) {
+            //Light and temperature sensors not supported
+            theSensors.removeAllViews();
+            theSensors.addView(tempHum);
+            theSensors.setGravity(Gravity.CENTER);
+            theSensors.layout(0, 0, 0, 0);
+            tempHum.setTextSize(30);
+        }
+
+        if(light == false && temp == false && hum == false) {
+            //Light, temperature and humidity sensors not supported
+            theSensors.removeAllViews();
+            theSensors.layout(0, 0, 0, 0);
+        }
+    }
 }
