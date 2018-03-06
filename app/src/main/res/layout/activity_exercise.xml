@@ -5,7 +5,7 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/app_background_image"
+    android:background="@drawable/backgroundimage3"
     tools:context="com.example.rossg_000.fyp_v3.Exercise">
 
     <ListView
@@ -31,6 +31,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:backgroundTint="#4D131e72"
         app:cardElevation="0dp"
         app:cardMaxElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -44,6 +45,7 @@
             android:src="@drawable/cardviewbackground1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:alpha="0.5"
             android:scaleType="fitXY"
             />
 
@@ -58,22 +60,43 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sit Up Detector"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:textSize="30dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginEnd="30dp"
                 tools:text="Sit Up Detector" />
+
+            <TextView
+                android:id="@+id/OffString"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Off"
+                android:textColor="@android:color/white"
+                android:textSize="15dp"/>
 
             <Switch
                 android:id="@+id/switch1"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="50dp"
+                android:layout_gravity="center"
                 android:textOff="Off"
                 android:textOn="On"
                 android:checked="false"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/SitUpDetectorString"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:scaleX="1.2"
+                android:scaleY="1.2"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                />
+
+            <TextView
+                android:id="@+id/OnString"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="On"
+                android:textColor="@android:color/white"
+                android:textSize="15dp"
+                />
+
+
         </LinearLayout>
     </android.support.v7.widget.CardView>
 </android.support.constraint.ConstraintLayout>

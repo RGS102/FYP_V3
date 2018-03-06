@@ -2,8 +2,14 @@ package com.example.rossg_000.fyp_v3;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -40,6 +46,28 @@ public class Stretches extends AppCompatActivity {
         saveData();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_main, menu);
+        Drawable drawable = menu.findItem(R.id.questionMark).getIcon();
+        if(drawable!=null){
+            drawable.mutate();
+            drawable.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
+        }
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int res_id = item.getItemId();
+        if(res_id == R.id.questionMark){
+            Intent intent = new Intent(this, HowTo.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     private void saveData(){
         SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -72,35 +100,34 @@ public class Stretches extends AppCompatActivity {
     public String[] popUpInfo(){
         String[] popUpInfo = new String[8];    //Dont forget to change size of array to match amount of elements in it
         popUpInfo[0] = "Downward Dog" +
-                "\n\nStarting position: plank position with shoulders over waist" +
-                "\n\nPush hips up towards ceiling to form a triangle with your body" +
-                "\n\nKeep head between arms, straighten your legs, reach heels towards ground and spread fingers, hold for several seconds";
+                "\nStarting position: plank position with shoulders over waist" +
+                "\nPush hips up towards ceiling to form a triangle with your body" +
+                "\nKeep head between arms, straighten your legs, reach heels towards ground and spread fingers, hold for several seconds";
         popUpInfo[1] = "Side Obligue Stretch" +
-                "\n\nStarting position: Stand with feet wider than hip distance apart" +
-                "\n\nLift one arm overhead with your palm facing inward, and lean towards the opposite side of the raised arm" +
-                "\n\nHold for several seconds and switch arms";
+                "\nStarting position: Stand with feet wider than hip distance apart" +
+                "\nLift one arm overhead with your palm facing inward, and lean towards the opposite side of the raised arm" +
+                "\nHold for several seconds and switch arms";
         popUpInfo[2] = "Crescent Pose" +
-                "\n\nCrescent Pose" +
-                "\n\nStand with one font infront of you and the other behind, bend front knee to a 90 degree angle, with your back straight" +
-                "\n\nLift your arms straight upwards, palms facing in. Lift your chest up, slightly arching your back as you press your back hip forward" +
-                "\n\nExhale as you lower your lunge and hold for several seconds";
+                "\nStand with one foot in front of you and the other behind, bend front knee to a 90 degree angle, with your back straight" +
+                "\nLift your arms straight upwards, palms facing in. Lift your chest up, slightly arching your back as you press your back hip forward" +
+                "\nExhale as you lower your lunge and hold for several seconds";
         popUpInfo[3] = "Single Leg Stretch" +
-                "\n\nLie on back, lift legs towards ceiling. Lower one leg towards the floor, pull the other leg towards your head" +
-                "\n\nHold the back of your rasied legs, lift shoulders off ground. Maintain straight legs, pointed toes, and hold for several seconds";
+                "\nLie on back, lift legs towards ceiling. Lower one leg towards the floor, pull the other leg towards your head" +
+                "\nHold the back of your raised legs, lift shoulders off ground. Maintain straight legs, pointed toes, and hold for several seconds";
         popUpInfo[4] = "Cat" +
-                "\n\nOn hands and knees, with wrists in line with shoulders, and knees in line with hips" +
-                "\n\nRound your back and tuck your pelvis as you look towards the floor, then scoop your abs upwars";
+                "\nOn hands and knees, with wrists in line with shoulders, and knees in line with hips" +
+                "\nRound your back and tuck your pelvis as you look towards the floor, then scoop your abs upwards";
         popUpInfo[5] = "Sumo Squat" +
-                "\n\nStand with your feet wide, toes pointed outwards, and hands just above knees" +
-                "\n\nLean forward as you bend your knees to 90 degrees" +
-                "\n\nBring one shoulder towards the floor as you look over the opposite shoulder" +
-                "\n\nMaintain straight arms and keep hips aligned, hold for several seconds and switch sides";
+                "\nStand with your feet wide, toes pointed outwards, and hands just above knees" +
+                "\nLean forward as you bend your knees to 90 degrees" +
+                "\nBring one shoulder towards the floor as you look over the opposite shoulder" +
+                "\nMaintain straight arms and keep hips aligned, hold for several seconds and switch sides";
         popUpInfo[6] = "Lying Hug Stretch" +
-                "\n\nLie on back, tuck your knees towards your chest, grab your calves, roll your head up to meet your knees";
+                "\nLie on back, tuck your knees towards your chest, grab your calves, roll your head up to meet your knees";
         popUpInfo[7] = "Crab Reach" +
-                "\n\nSit with feet flat on floor, hip distance apart. Place hands down a few inches behind your hips, fingers facing away from you" +
-                "\n\nBring one arm towards your chest, lift your hips upwards to form a table pose, reach your arm over your head" +
-                "\n\nPress into your feet, rotate torso, and look down at your bottom hand. Hold for several seconds and switch sides";
+                "\nSit with feet flat on floor, hip distance apart. Place hands down a few inches behind your hips, fingers facing away from you" +
+                "\nBring one arm towards your chest, lift your hips upwards to form a table pose, reach your arm over your head" +
+                "\nPress into your feet, rotate torso, and look down at your bottom hand. Hold for several seconds and switch sides";
 
         return popUpInfo;
     }

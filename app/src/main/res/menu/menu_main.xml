@@ -7,6 +7,7 @@
         android:id="@+id/questionMark"
         android:title="questionMark"
         android:icon="@drawable/question_mark"
+        android:iconTint="@android:color/white"
         app:showAsAction="ifRoom"
         />
 

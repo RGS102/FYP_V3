@@ -2,10 +2,16 @@ package com.example.rossg_000.fyp_v3;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.GestureDetector;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
@@ -17,13 +23,12 @@ import java.util.Random;
 public class Tasks extends AppCompatActivity {
     //private GestureDetectorCompat gestureDetectorCompat;
     //private ImageButton getNewTasks = (ImageButton) findViewById(R.id.GetNewTasks);
+    //private ImageButton newTaskButton = (ImageButton) findViewById(R.id.NewTaskImageButton);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tasks);
-        //gestureDetectorCompat = new GestureDetectorCompat(this, new Tasks.Gesture());
-
 
         Calendar calendar = Calendar.getInstance();
         int today = calendar.get(Calendar.DAY_OF_MONTH);
@@ -78,6 +83,9 @@ public class Tasks extends AppCompatActivity {
         completedExercises.setText(String.valueOf(i));
         completedMeditations.setText(String.valueOf(j));
         completedTasks.setText(String.valueOf(k));
+
+
+
     }
 
     @Override
@@ -96,22 +104,29 @@ public class Tasks extends AppCompatActivity {
         completedTasks.setText(String.valueOf(k));
     }
 
-    /*
-    public void goToStretches(View view) {
-        Intent intent = new Intent(this, Stretches.class);
-        startActivity(intent);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_main, menu);
+        Drawable drawable = menu.findItem(R.id.questionMark).getIcon();
+        if(drawable!=null){
+            drawable.mutate();
+            drawable.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
+        }
+        return true;
     }
 
-    public void goToExercise(View view) {
-        Intent intent = new Intent(this, Exercise.class);
-        startActivity(intent);
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int res_id = item.getItemId();
+        if(res_id == R.id.questionMark){
+            Intent intent = new Intent(this, HowTo.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
-    public void goToMeditation(View view) {
-        Intent intent = new Intent(this, Meditation.class);
-        startActivity(intent);
-    }
-    */
+
 
     public void dailyTasks(){
         String[] allExercises = new String[]{"Walk","Run","Jog","Swim","Sit Ups","Push Ups","Cycle","Crunches",
@@ -152,6 +167,12 @@ public class Tasks extends AppCompatActivity {
         SharedPreferences.Editor editor2 = sharedPreferences2.edit();
         editor2.putString("DT2", dailyMeditations);
         editor2.commit();
+
+
+        TextView dailyTaskOne = (TextView)findViewById(R.id.DailyTaskOne);
+        TextView dailyTaskTwo = (TextView)findViewById(R.id.DailyTaskTwo);
+        dailyTaskOne.setText(dailyExercises);
+        dailyTaskTwo.setText(dailyMeditations);
     }
 
     /*
@@ -167,34 +188,9 @@ public class Tasks extends AppCompatActivity {
 
 
 
-
-    /*
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        this.gestureDetectorCompat.onTouchEvent(event);
-        return super.onTouchEvent(event);
+    public void getNewTasks(View view){
+        dailyTasks();
     }
-
-    class Gesture extends GestureDetector.SimpleOnGestureListener{
-        @Override
-        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-            //if(e2.getX() > e1.getX()){
-            //    Intent intent = new Intent(Tasks.this, Stretches.class);
-            //    startActivity(intent);
-            //}
-            if(e2.getX() < e1.getX()){
-                Intent intent = new Intent(Tasks.this, MainActivity.class);
-                startActivity(intent);
-
-            }
-
-            return true;
-            //return super.onFling(e1, e2, velocityX, velocityY);
-        }
-    }
-    */
-
-
 
 
 }

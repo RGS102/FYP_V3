@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/app_background_image"
+    android:background="@drawable/backgroundimage3"
     tools:context="com.example.rossg_000.fyp_v3.MainActivity">
 
 
@@ -16,7 +16,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:backgroundTint="#8C131e72"
+        android:backgroundTint="#4D131e72"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -25,7 +25,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:alpha="0.4"
+            android:alpha="0.3"
             android:scaleType="fitXY"
             android:src="@drawable/cardviewbackground1"/>
 
@@ -42,17 +42,32 @@
                 android:id="@+id/YouAreString"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Welcome to Trident, You are"
-                android:textColor="@android:color/black"
+                android:text="Welcome to TRIDENT"
+                android:textStyle="italic"
+                android:textColor="@android:color/white"
                 android:textSize="22dp" />
 
-            <TextView
-                android:id="@+id/UserTitle"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="A Rookie"
-                android:textColor="@android:color/black"
-                android:textSize="22dp" />
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/YouAre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="You are "
+                    android:textColor="@android:color/white"
+                    android:textSize="22dp" />
+
+                <TextView
+                    android:id="@+id/UserTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A Rookie"
+                    android:textColor="@android:color/white"
+                    android:textSize="22dp" />
+            </LinearLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>
 
@@ -84,7 +99,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:alpha="0.4"
+                    android:alpha="0.3"
                     android:scaleType="fitXY"
                     android:src="@drawable/cardviewbackground1" />
 
@@ -108,7 +123,9 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Exercise"
-                        android:textSize="15dp" />
+                        android:textColor="@android:color/white"
+                        android:textSize="15dp"
+                        android:textStyle="bold"/>
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
@@ -124,7 +141,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:alpha="0.4"
+                    android:alpha="0.3"
                     android:scaleType="fitXY"
                     android:src="@drawable/cardviewbackground1" />
 
@@ -148,7 +165,9 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Meditation"
-                        android:textSize="15dp" />
+                        android:textColor="@android:color/white"
+                        android:textSize="15dp"
+                        android:textStyle="bold"/>
                 </LinearLayout>
             </android.support.v7.widget.CardView>
         </LinearLayout>
@@ -174,7 +193,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:alpha="0.4"
+                    android:alpha="0.3"
                     android:scaleType="fitXY"
                     android:src="@drawable/cardviewbackground1" />
 
@@ -198,7 +217,9 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Stretches"
-                        android:textSize="15dp" />
+                        android:textColor="@android:color/white"
+                        android:textSize="15dp"
+                        android:textStyle="bold"/>
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
@@ -214,7 +235,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:alpha="0.4"
+                    android:alpha="0.3"
                     android:scaleType="fitXY"
                     android:src="@drawable/cardviewbackground1" />
 
@@ -238,7 +259,9 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Tasks"
-                        android:textSize="15dp" />
+                        android:textColor="@android:color/white"
+                        android:textSize="15dp"
+                        android:textStyle="bold"/>
                 </LinearLayout>
             </android.support.v7.widget.CardView>
         </LinearLayout>
@@ -262,7 +285,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:alpha="0.4"
+                    android:alpha="0.3"
                     android:scaleType="fitXY"
                     android:src="@drawable/cardviewbackground1" />
 
@@ -286,7 +309,9 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Rewards"
-                        android:textSize="15dp" />
+                        android:textColor="@android:color/white"
+                        android:textSize="15dp"
+                        android:textStyle="bold"/>
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
@@ -302,7 +327,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:alpha="0.4"
+                    android:alpha="0.3"
                     android:scaleType="fitXY"
                     android:src="@drawable/cardviewbackground1" />
 
@@ -326,7 +351,9 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Journal"
-                        android:textSize="15dp" />
+                        android:textColor="@android:color/white"
+                        android:textSize="15dp"
+                        android:textStyle="bold"/>
                 </LinearLayout>
             </android.support.v7.widget.CardView>
         </LinearLayout>

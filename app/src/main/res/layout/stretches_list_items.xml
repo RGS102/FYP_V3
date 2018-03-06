@@ -20,7 +20,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha="0.4"
+        android:alpha="0.3"
         android:scaleType="fitXY"
         android:src="@drawable/cardviewbackground1" />
 
@@ -32,7 +32,7 @@
         android:layout_marginTop="8dp"
         android:layout_gravity="center"
         android:text="Stretch"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

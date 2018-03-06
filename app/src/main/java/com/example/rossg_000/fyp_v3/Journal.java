@@ -1,8 +1,16 @@
 package com.example.rossg_000.fyp_v3;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -57,8 +65,8 @@ public class Journal extends AppCompatActivity {
             else{progressString = taskAction + " " +  String.valueOf(progressMade) + " " + RequirmentString + " for " + String.valueOf(duration) + " minutes";}
 
             String upOrDown = "";
-            if(upOrDowntemp == 1){upOrDown = "Leveled up";}
-            else if(upOrDowntemp==-1){upOrDown = "Leveled down";}
+            if(upOrDowntemp == 1){upOrDown = "Levelled up";}
+            else if(upOrDowntemp==-1){upOrDown = "Levelled down";}
 
             journalDetailsListTest.add(0,new JournalDetails(ID, TaskName,RequirmentInteger, level, attempts, upOrDown, formattedTime, formattedDate, progressString));
         }
@@ -66,6 +74,28 @@ public class Journal extends AppCompatActivity {
         adapter = new JournalDetailsAdapter(getApplicationContext(), journalDetailsListTest);
         JournalDetails.setAdapter(adapter);
         saveData();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_main, menu);
+        Drawable drawable = menu.findItem(R.id.questionMark).getIcon();
+        if(drawable!=null){
+            drawable.mutate();
+            drawable.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
+        }
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int res_id = item.getItemId();
+        if(res_id == R.id.questionMark){
+            Intent intent = new Intent(this, HowTo.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void saveData() {
@@ -85,4 +115,44 @@ public class Journal extends AppCompatActivity {
         journalDetailsListTest = gson.fromJson(json, type);
         if(journalDetailsListTest == null){journalDetailsListTest = new ArrayList<>();}
     }
+
+    public void emailButtonClicked(View view){sendEmail();}
+
+    public void sendEmail(){
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("plain/text");
+        intent.putExtra(Intent.EXTRA_EMAIL, "ross.gs95@gmail.com");
+        intent.putExtra(Intent.EXTRA_SUBJECT, "APP TEST");
+        loadData();
+
+        StringBuilder stringBuilder = new StringBuilder();
+        for(JournalDetails journalDetails: journalDetailsListTest){
+
+            int taskId = journalDetails.getId();
+            String taskName = journalDetails.getTaskName();
+            int level = journalDetails.getTaskLevelInteger();
+            int attempts = journalDetails.getAttempts();
+            String upOrDown = journalDetails.getUpOrDown();
+            String progress = journalDetails.getProgressString();
+            String time = journalDetails.getTime();
+            String date = journalDetails.getDate();
+
+            String full = "ID: " + Integer.toString(taskId) +
+                    ", Task: " + taskName +
+                    ", Progress: " + progress +
+                    ", Time: " + time +
+                    ", Date: " + date +
+                    ", Level: " + Integer.toString(level) +
+                    ", Attempts: " + Integer.toString(attempts) +
+                    ", Level_Change: " + upOrDown;
+            stringBuilder.append(full);
+            stringBuilder.append("\n\n");
+        }
+        intent.putExtra(Intent.EXTRA_TEXT, stringBuilder.toString());
+        startActivity(Intent.createChooser(intent, "Choose app to send:"));
+
+
+    }
+
+
 }

@@ -1,8 +1,10 @@
 package com.example.rossg_000.fyp_v3;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Window;
 import android.widget.TextView;
 
 public class PopUpInfo extends AppCompatActivity {

@@ -5,7 +5,7 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/app_background_image"
+    android:background="@drawable/backgroundimage3"
     tools:context="com.example.rossg_000.fyp_v3.Meditation">
 
     <android.support.v7.widget.CardView
@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 android:layout_marginStart="10dp"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:textSize="18dp" />
 
             <TextView
@@ -49,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 android:layout_marginStart="10dp"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:textSize="18dp" />
 
             <TextView
@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 android:layout_marginStart="10dp"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:textSize="18dp" />
         </LinearLayout>
     </android.support.v7.widget.CardView>
