@@ -24,6 +24,8 @@ public class Journal extends AppCompatActivity {
     private ListView JournalDetails;
     private JournalDetailsAdapter adapter;
     private List<JournalDetails> journalDetailsListTest;
+    //private Exercise exercise;
+    //private Meditation meditation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,6 +128,33 @@ public class Journal extends AppCompatActivity {
         loadData();
 
         StringBuilder stringBuilder = new StringBuilder();
+
+        int tasksComp = MainActivity.getTasksCompleted();
+        int exeComp = MainActivity.getExercisesCompleted();
+        int medComp = MainActivity.getMeditationsCompleted();
+
+        String taskCompString = "Tasks Completed: " + Integer.toString(tasksComp) +
+                "\nExercises Completed: " + Integer.toString(exeComp) +
+                "\nMeditations Completed: " + Integer.toString(medComp);
+
+        stringBuilder.append(taskCompString);
+        stringBuilder.append("\n\n");
+
+        //exercise = new Exercise();
+        //List<Integer> exeExcess = exercise.getExcessList();
+        //meditation = new Meditation();
+        //List<Integer> medExcess = meditation.getExcessList();
+
+        //int test = exeExcess.get(3);
+        //String test2 = Integer.toString(test);
+
+        //stringBuilder.append(test2);
+        //stringBuilder.append("\n\n");
+
+        //List<Integer> fullList = new ArrayList<>();
+        //fullList.addAll(exeExcess);
+        //fullList.addAll(medExcess);
+
         for(JournalDetails journalDetails: journalDetailsListTest){
 
             int taskId = journalDetails.getId();
@@ -136,6 +165,7 @@ public class Journal extends AppCompatActivity {
             String progress = journalDetails.getProgressString();
             String time = journalDetails.getTime();
             String date = journalDetails.getDate();
+            //int excess = fullList.get(taskId-1);
 
             String full = "ID: " + Integer.toString(taskId) +
                     ", Task: " + taskName +
@@ -144,10 +174,12 @@ public class Journal extends AppCompatActivity {
                     ", Date: " + date +
                     ", Level: " + Integer.toString(level) +
                     ", Attempts: " + Integer.toString(attempts) +
+                    //", Excess: " + Integer.toString(excess) +
                     ", Level_Change: " + upOrDown;
             stringBuilder.append(full);
             stringBuilder.append("\n\n");
         }
+
         intent.putExtra(Intent.EXTRA_TEXT, stringBuilder.toString());
         startActivity(Intent.createChooser(intent, "Choose app to send:"));
 

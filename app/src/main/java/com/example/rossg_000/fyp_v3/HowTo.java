@@ -34,6 +34,8 @@ public class HowTo extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 final Intent intent = new Intent(getApplicationContext(), PopUpInfo.class);
                 intent.putExtra("details", howToInfo[i]);
+                intent.putExtra("ImageFrom", "HowTo");
+                intent.putExtra("Position", i);
                 startActivity(intent);
             }
         });

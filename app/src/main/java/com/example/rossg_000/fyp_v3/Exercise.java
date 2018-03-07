@@ -391,7 +391,8 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         String[] popUpInfo = new String[25];
         popUpInfo[0] =
                 "Walk:" +
-                "\n\nPut one foot in front of the other";
+                "\n\nPut one foot in front of the other" +
+                "\n\nAutomatically recorded through the use of sensors";
         popUpInfo[1] =
                 "Sit Ups:" +
                 "\n\nEnsure sit up detector is switched on" +
@@ -400,118 +401,141 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
                 "\n\nDownward phase: Return to starting position, inhaling as you do so";
         popUpInfo[2] =
                 "Jog:" +
-                "\n\nRun at a steady gentle pace";
+                "\n\nRun at a steady gentle pace" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";
         popUpInfo[3] =
                 "Swim:" +
                 "\n\nPropel body through water" +
-                "\nS\ntyle of swimming depends on preference";
+                "\n\nStyle of swimming depends on preference" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";
         popUpInfo[4] =
                 "Run:" +
                 "\n\nMove at a faster speed than a walk" +
-                "\n\nAim to never have both or either foot on the ground at the same time";
+                "\n\nAim to never have both or either foot on the ground at the same time" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";
         popUpInfo[5] =
                 "Push Ups:" +
                 "\n\nStarting Position: Kneel with hands flat on the floor, feet together, and shoulders directly above your hands" +
                 "\n\nDownward phase: slowly lower your body until your chest/chin touches the floor" +
-                "\n\nUpward phase: Press up through your arms, while maintaining a rigid torso and keep your head aligned with your spine";
+                "\n\nUpward phase: Press up through your arms, while maintaining a rigid torso and keep your head aligned with your spine" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";
         popUpInfo[6] =
                 "Cycle:" +
-                "\n\nRide a bicycle";
+                "\n\nRide a bicycle" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";
         popUpInfo[7] =
                 "Crunches:" +
                 "\n\nStarting position: Lie on floor with bent knees, with feet shoulder width apart and flat on floor, arms crossed on chest or hands lightly at ears" +
                 "\n\nUpward phase: Raise only your head and shoulders from the floor to feel the abdominal muscles contract, exhale while rising" +
                 "\n\nAvoid pulling or flexing your head foreward" +
-                "\n\nDownward phase: Return to starting position while inhaling";
+                "\n\nDownward phase: Return to starting position while inhaling" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";
         popUpInfo[8] =
                 "Squats:" +
                 "\n\nStarting position: Stand with feet hip width apart, arms down by your side, and a staight posture" +
                 "\n\nDownward phase: Shift hips backwards, bend your knees and descend until your heels feel as if they are about to lift off the floor" +
-                "\n\nUpwards phase: Return to starting position";
+                "\n\nUpwards phase: Return to starting position" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";
         popUpInfo[9] =
                 "Supermans" +
                 "\n\nStarting position: Lie face down with both arms and legs extended outwards" +
                 "\n\nUpward phase: While keeping your torso as still as possible, simultaneously raise both your arms and legs to form a small curve in your body, and hold for a few seconds" +
-                "\n\nDownward phase: Slowly return to starting position";
+                "\n\nDownward phase: Slowly return to starting position" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";
         popUpInfo[10] =
                 "Tuck Jumps" +
                 "\n\nStarting position: Stand with knees slightly bent" +
                 "\n\nUpward phase: Jump up and bring your knees in towards your chest, while extending your arms out straight" +
-                "\n\nDownward phase: Land with knees slightly bent and repeat";
+                "\n\nDownward phase: Land with knees slightly bent and repeat" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";
         popUpInfo[11] =
                 "Prone Walkout" +
                 "\n\nStarting position: Begin on all fours" +
                 "\n\nOutward phase: Slowly walk your hands out forward, while staying on your toes and not moving them" +
-                "\n\nInward phase: Slowly walk your hands back in to the starting position";
+                "\n\nInward phase: Slowly walk your hands back in to the starting position" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";
         popUpInfo[12] =
                 "Burpees" +
                 "\n\nStarting position: Begin in a low squat position with your hands on the floor" +
                 "\n\nKick your feet back into a push up position and perform one push up" +
                 "\n\nReturn to starting position" +
                 "\n\nJump up as high as possible" +
-                "\n\nReturn to starting position and repeat";
+                "\n\nReturn to starting position and repeat" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";
         popUpInfo[13] =
                 "Plank" +
                 "\n\nStarting position: Lie face down with your forearms on the floor and your hands clasped" +
                 "\n\nExtend your legs behind your body and rise up on your toes" +
-                "\n\nMaintain a straight back, tighten your core, and hold the position";
+                "\n\nMaintain a straight back, tighten your core, and hold the position" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";
         popUpInfo[14] =
                 "Wall Sit" +
                 "\n\nRest your back against a wall" +
                 "\n\nEnsure your thighs parallel to the ground, your knees are directly above your ankles and your back is straight" +
-                "\n\nHold for 60 second or until your legs start to ache";
+                "\n\nHold for 60 second or until your legs start to ache" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";
         popUpInfo[15] =
                 "Lunge" +
                 "\n\nStarting position: Standing, hands on hips and feet hip width apart" +
                 "\n\nWith one leg step out forward, slowly lowering your body until the knee on your opposite leg is close to touching the floor and bent at least 90 degrees" +
                 "\n\nReturn to starting position" +
-                "\n\nRepeat with opposite leg";
+                "\n\nRepeat with opposite leg" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";
         popUpInfo[16] =
                 "Clock Lunge" +
                 "\n\nSimilar to ordinary lunges" +
                 "\n\nAfter each lunge take a big step to the right and perform another lunge, continue to do so until you have turned a complete 360" +
-                "\n\nAfter a complete circle repeat with the opposite leg";
+                "\n\nAfter a complete circle repeat with the opposite leg" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";
         popUpInfo[17] =
                 "Single Leg Deadlift" +
                 "\n\nStarting position: Stand up straight with feet together" +
                 "\n\nBend your right leg slightly upwards, lower your arms and torso while raising your right leg behind your body. Keep your left knee slightly bent and reach with your arms as close as you can to the floor" +
                 "\n\nRaise your torso while lowering your right leg" +
-                "\n\nRepeat with your left leg";
+                "\n\nRepeat with your left leg" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";
         popUpInfo[18] =
                 "Step-Up" +
                 "\n\nMaking use of a step or bench, place your right foot on the elevated surface" +
                 "\n\nStep up until your right leg is straight, then return to the start" +
-                "\n\nRepeat with your other leg";
+                "\n\nRepeat with your other leg" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";
         popUpInfo[19] =
                 "Calf Raise" +
                 "\n\nStarting position: stand up straight" +
                 "\n\nSlowly rise up on your toes, make sure your knees remain straight and your heels are off the floor" +
-                "\n\nHold for several seconds then return to starting position";
+                "\n\nHold for several seconds then return to starting position" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";
         popUpInfo[20] =
                 "Tricep Dip" +
                 "\n\nStarting position: sit on the floor, with your knees bent, near a slightly elevated surface (step or bench), grab the edge of this elevated surface and straighten your arms" +
-                "\n\nBend your arms to a 90 degree angle, and straighten them again while your heels push towards the floor";
+                "\n\nBend your arms to a 90 degree angle, and straighten them again while your heels push towards the floor" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";
         popUpInfo[21] =
                 "Boxer" +
                 "\n\nStarting position: Feet hip-width apart and knees bent" +
                 "\n\nKeep elbows in and extend one arm forward and the other arm back" +
-                "\n\nHug the arm back in and switch arms";
+                "\n\nHug the arm back in and switch arms" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";
         popUpInfo[22] =
                 "Flutter Kicks" +
                 "\n\nStarting position: Lie on back, arms by side, palms faced down, with your legs extended out straight" +
                 "\n\nLift your heels off the floor and make quick, small up and down movement with your legs" +
-                "\n\nAim to keep your core engaged";
+                "\n\nAim to keep your core engaged" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";
         popUpInfo[23] =
                 "Shoulder Bridge" +
                 "\n\nStarting position: Lie on back, knees bent, feet hip width apart, with arms at your side" +
                 "\n\nLift up your spine and hips, ensuring that the only parts of your body touching the ground are your head, feet, arms, and shoulders" +
                 "\n\nLift one leg upwards, keep your core tight, then slowly bring it back down, then back up, repeat this several times for each leg" +
-                "\n\nBring your knees into place and bring your spine back down onto the floor";
+                "\n\nBring your knees into place and bring your spine back down onto the floor" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";
         popUpInfo[24] =
                 "Sprinter Sit-Up" +
                 "\n\nStarting position: Lie on back, legs straight, arms by side, elbows bent at 90 degree angle" +
                 "\n\nSit up, bring your left knee towards your right elbow" +
-                "\n\nLower your body and repeat on the other side";
+                "\n\nLower your body and repeat on the other side" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";
 
         return popUpInfo;
     }
@@ -651,6 +675,11 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
             excessList.add(0);  //24
             excessList.add(0);  //25
         }
+    }
+
+    public List<Integer> getExcessList() {
+        //loadData();
+        return excessList;
     }
 }
 

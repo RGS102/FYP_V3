@@ -413,11 +413,13 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
                 "\n\nSit comfortably with your back straight, one hand on your chest and one on your stomach" +
                 "\n\nBreath in through your nose, the hand on your stomach should rise, the hand on your chest should move very little" +
                 "\n\nExhale as much air as possible out through your mouth, the hand on your stomach should move in, the hand on your chest should move very little" +
-                "\n\nRepeat";    //26
+                "\n\nRepeat" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";    //26
 
         popUpInfo[1] =
                 "Power Nap" +
-                "\n\nTaking just a few minutes a day to have a quick nap will be of great benefit"; //27
+                "\n\nTaking just a few minutes a day to have a quick nap will be of great benefit" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds"; //27
 
         popUpInfo[2] =
                 "Progressive Muscular Relaxation" +
@@ -425,106 +427,127 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
                 "\n\nStarting with your right foot, focus on how it feels, then slowly tense its muscles as hard as you can for 10 seconds" +
                 "\n\nRelax your foot, focus on the release of tension and how your foot feels" +
                 "\n\nRemain in a relaxed state for a moment, while performing deep breathing exercises" +
-                "\n\nRepeat with other parts of your body"; //28
+                "\n\nRepeat with other parts of your body" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds"; //28
 
         popUpInfo[3] =
                 "Body Scan" +
                 "\n\nSimilar to progressive muscular relaxation, but instead of tensing your muscles you simply focus on how each part of your body feels individually" +
-                "\n\nRefrain from labelling these feelings as 'good' or 'bad'"; //29
+                "\n\nRefrain from labelling these feelings as 'good' or 'bad'" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds"; //29
 
         popUpInfo[4] =
                 "Open Monitoring Meditation" +
                 "\n\nThroughout your meditation monitor all aspects of your experience, without judgment or attachment" +
                 "\n\nRecognise all forms of perception, internal (thoughts, memory, feeling, etc) or external (sound, smell, etc)" +
-                "\n\nAttempt to monitor these things without response, and simply experience them on a moment to moment basis";    //30
+                "\n\nAttempt to monitor these things without response, and simply experience them on a moment to moment basis" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";    //30
 
         popUpInfo[5] =
                 "Focused Attention Meditation" +
                 "\n\nFocus your attention entirely on a single object throughout your meditation" +
                 "\n\nThis object can be your breath, a part of your body, a mantra, a visualisation, as well as many other things" +
-                "\n\nAim to ignore distractions and maintain your focus";  //31
+                "\n\nAim to ignore distractions and maintain your focus" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";  //31
 
         popUpInfo[6] =
                 "Walking Meditation" +
-                "\n\nFocus on the feeling of each step as it touches the ground, the rhythm your breathing and the sensation caused by the environment around you"; //32
+                "\n\nFocus on the feeling of each step as it touches the ground, the rhythm your breathing and the sensation caused by the environment around you" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds"; //32
 
         popUpInfo[7] =
                 "Yoga" +
                 "\n\nInvolves performing a series of poses as well as deep breathing" +
-                "\n\nMany examples can be easily found"; //33
+                "\n\nMany examples can be easily found" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds"; //33
 
         popUpInfo[8] =
                 "Tai Chi" +
                 "\n\nInvolves performing slow moving body movements as well as deep breathing" +
-                "\n\nFocus your mind on your bodily movements and your breathing"; //34
+                "\n\nFocus your mind on your bodily movements and your breathing" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds"; //34
 
         popUpInfo[9] =
                 "Sleep" +
-                "\n\nThe body and mind can not function properly with inadequate levels of sleep"; //35
+                "\n\nThe body and mind can not function properly with inadequate levels of sleep" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds"; //35
 
         popUpInfo[10] =
                 "Mindful Eating" +
-                "\n\nEat slowly and concentrate on every single bite you take"; //36
+                "\n\nEat slowly and concentrate on every single bite you take" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds"; //36
 
         popUpInfo[11] =
                 "Visualisation" +
-                "\n\nImagine a scene where you feel at most peace and calm";    //37
+                "\n\nImagine a scene where you feel at most peace and calm" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";    //37
 
         popUpInfo[12] =
                 "Mantra Meditation" +
                 "\n\nThroughout your meditation repeat a simple word or phrase with no meaning" +
-                "\n\nRepeat the mantra either within your mind or gently whisper it";    //38
+                "\n\nRepeat the mantra either within your mind or gently whisper it" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";    //38
 
         popUpInfo[13] =
                 "Metta Meditation" +
                 "\n\nWhile meditating with closed eyes, generate both in your mind and in your heart feelings of kindness and benevolence" +
-                "\n\nBegin by generating these feelings about yourself, then a close friend, someone you know, someone who is difficult, all four of them equally, and finally the universe";    //39
+                "\n\nBegin by generating these feelings about yourself, then a close friend, someone you know, someone who is difficult, all four of them equally, and finally the universe" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";    //39
 
         popUpInfo[14] =
                 "Self enquiry" +
                 "\n\nAsk yourself 'Who am I?', then question what this 'I' is" +
                 "\n\nReject any verbal answers and delve deeper, focusing on your feelings of 'I'" +
-                "\n\nReveal to yourself your true 'I'"; //40
+                "\n\nReveal to yourself your true 'I'" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds"; //40
 
         popUpInfo[15] =
                 "Scalp Massage" +
                 "\n\nPlace your thumb behind your ears, with your fingers on top of your head" +
                 "\n\nMove your fingers in circular motions, moving your scalp back and forth slightly" +
-                "\n\nRepeat for 20 seconds";    //41
+                "\n\nRepeat for 20 seconds" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";    //41
 
         popUpInfo[16] =
                 "Eye Soother" +
                 "\n\nWith closed eyes and your ring finger directly under your eyebrow near the bridge of your nose" +
-                "\n\nSlowly increase pressure pressure for 10 seconds";
+                "\n\nSlowly increase pressure pressure for 10 seconds" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";
 
         popUpInfo[17] =
                 "Sinus Relief" +
-                "\n\nWith your fingertips on the bridge of your nose, slowly slide them outwards across the top of your cheekbones to the outside of your eyes";
+                "\n\nWith your fingertips on the bridge of your nose, slowly slide them outwards across the top of your cheekbones to the outside of your eyes" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";
 
         popUpInfo[18] =
                 "Shoulder Tension Relief" +
                 "\n\nReach one arm over to the opposite shoulder" +
                 "\n\nPress firmly and make a circular motion on the muscle above your shoulder blade" +
-                "\n\nRepeat on the other side";
+                "\n\nRepeat on the other side" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";
 
         popUpInfo[19] =
                 "Listen to Music" +
-                "\n\nAllow your mind to focus primarily on the music";
+                "\n\nAllow your mind to focus primarily on the music" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";
 
         popUpInfo[20] =
                 "Read" +
-                "\n\nAllow yourself to become lost among the words on each and every page";    //46
+                "\n\nAllow yourself to become lost among the words on each and every page" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";    //46
 
         popUpInfo[21] =
                 "Effortless Presence" +
                 "\n\nMeditation without focus or attention" +
-                "\n\nSimply embrace the quiet";
+                "\n\nSimply embrace the quiet" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";
 
         popUpInfo[22] =
                 "Zen Meditation" +
                 "\n\nWhile seated on the floor with your legs crossed and your back straight" +
                 "\n\nWith your mouth closed and eyes lowered, focus your gaze on the ground a few feet in front of you" +
-                "\n\nFocus on your breathing";
+                "\n\nFocus on your breathing" +
+                "\n\nTo submit your progress for this task: hold down on the task for a few seconds";
 
         return popUpInfo;
     }
@@ -647,6 +670,10 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {}
 
+    public List<Integer> getExcessList() {
+        return excessList;
+    }
+
     public void sensorNotSupported(Boolean light, Boolean temp, Boolean hum){
         LinearLayout theSensors = (LinearLayout) findViewById(R.id.TheSensors);
         TextView tempLight = (TextView) findViewById(R.id.LightSensor);
@@ -718,5 +745,8 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
             theSensors.removeAllViews();
             theSensors.layout(0, 0, 0, 0);
         }
+
+
+
     }
 }
