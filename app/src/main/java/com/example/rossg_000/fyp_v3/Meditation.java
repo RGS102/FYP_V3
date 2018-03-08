@@ -221,128 +221,203 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
         String cRequirmentString = clickedList.getTaskRequirementString();
         int cAttempts = clickedList.getAttempts();
 
-        passToJournal(cId, cTaskName, cRequirmentInteger, cRequirmentString, cLevelInteger, cAttempts, levelUpOrDown, progress, duration);
+        loadExcess();
+        int e = excessList.get(i);
+        int oldLevel = cLevelInteger;
+        int LM = oldLevel - 1;
+        if(LM<0){LM = 0;}
         cLevelInteger = cLevelInteger + levelUpOrDown;
 
         if(cLevelInteger<1){cLevelInteger = 1;}
-        loadExcess();
-        int e = excessList.get(i);
+        int baseReq = 0;
+
 
         if(cId == 26){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {1,2,3,4,5,6,7,8,9,10};
-                cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
-            else{cRequirmentInteger = 21+e;}}
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;
+                baseReq = tempArray[LM];}
+            else{
+                cRequirmentInteger = 10+e;
+                baseReq=10;}}
         if(cId == 27){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
-                cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
-            else{cRequirmentInteger = 21+e;}}
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;
+                baseReq = tempArray[oldLevel];}
+            else{
+                cRequirmentInteger = 28+e;
+                baseReq = 28;}}
         if(cId == 28){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
-                cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
-            else{cRequirmentInteger = 21+e;}}
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;
+                baseReq = tempArray[LM];}
+            else{
+                cRequirmentInteger = 28+e;
+                baseReq = 28;}}
         if(cId == 29){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
-                cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
-            else{cRequirmentInteger = 21+e;}}
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;
+                baseReq = tempArray[LM];}
+            else{
+                cRequirmentInteger = 28+e;
+                baseReq = 28;}}
         if(cId == 30){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
-                cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
-            else{cRequirmentInteger = 21+e;}}
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;
+                baseReq = tempArray[LM];}
+            else{
+                cRequirmentInteger = 28+e;
+                baseReq = 28;}}
         if(cId == 31){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
-                cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
-            else{cRequirmentInteger = 21+e;}}
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;
+                baseReq = tempArray[LM];}
+            else{
+                cRequirmentInteger = 28+e;
+                baseReq = 28;}}
         if(cId == 32){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
-                cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
-            else{cRequirmentInteger = 21+e;}}
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;
+                baseReq = tempArray[LM];}
+            else{
+                cRequirmentInteger = 28+e;
+                baseReq = 28;}}
         if(cId == 33){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
-                cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
-            else{cRequirmentInteger = 21+e;}}
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;
+                baseReq = tempArray[LM];}
+            else{
+                cRequirmentInteger = 28+e;
+                baseReq = 28;}}
         if(cId == 34){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
-                cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
-            else{cRequirmentInteger = 21+e;}}
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;
+                baseReq = tempArray[LM];}
+            else{
+                cRequirmentInteger = 28+e;
+                baseReq = 28;}}
         if(cId == 35){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {8,8,8,9,9,9,10,10,10,11};
-                cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
-            else{cRequirmentInteger = 21+e;}}
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;
+                baseReq = tempArray[LM];}
+            else{
+                cRequirmentInteger = 10+e;
+                baseReq = 10;}}
         if(cId == 36){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {1,2,3,4,5,6,7,8,9,10};
-                cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
-            else{cRequirmentInteger = 21+e;}}
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;
+                baseReq = tempArray[LM];}
+            else{
+                cRequirmentInteger = 10+e;
+                baseReq=10;}}
         if(cId == 37){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
-                cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
-            else{cRequirmentInteger = 21+e;}}
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;
+                baseReq = tempArray[LM];}
+            else{
+                cRequirmentInteger = 28+e;
+                baseReq = 28;}}
         if(cId == 38){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
-                cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
-            else{cRequirmentInteger = 21+e;}}
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;
+                baseReq = tempArray[LM];}
+            else{
+                cRequirmentInteger = 28+e;
+                baseReq = 28;}}
         if(cId == 39){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
-                cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
-            else{cRequirmentInteger = 21+e;}}
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;
+                baseReq = tempArray[LM];}
+            else{
+                cRequirmentInteger = 28+e;
+                baseReq = 28;}}
         if(cId == 40){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
-                cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
-            else{cRequirmentInteger = 21+e;}}
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;
+                baseReq = tempArray[LM];}
+            else{
+                cRequirmentInteger = 28+e;
+                baseReq = 28;}}
         if(cId == 41){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
-                cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
-            else{cRequirmentInteger = 21+e;}}
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;
+                baseReq = tempArray[LM];}
+            else{
+                cRequirmentInteger = 28+e;
+                baseReq = 28;}}
         if(cId == 42){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
-                cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
-            else{cRequirmentInteger = 21+e;}}
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;
+                baseReq = tempArray[LM];}
+            else{
+                cRequirmentInteger = 28+e;
+                baseReq = 28;}}
         if(cId == 43){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
-                cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
-            else{cRequirmentInteger = 21+e;}}
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;
+                baseReq = tempArray[LM];}
+            else{
+                cRequirmentInteger = 28+e;
+                baseReq = 28;}}
         if(cId == 44){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
-                cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
-            else{cRequirmentInteger = 21+e;}}
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;
+                baseReq = tempArray[LM];}
+            else{
+                cRequirmentInteger = 28+e;
+                baseReq = 28;}}
         if(cId == 45){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
-                cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
-            else{cRequirmentInteger = 21+e;}}
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;
+                baseReq = tempArray[LM];}
+            else{
+                cRequirmentInteger = 28+e;
+                baseReq = 28;}}
         if(cId == 46){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
-                cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
-            else{cRequirmentInteger = 21+e;}}
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;
+                baseReq = tempArray[LM];}
+            else{
+                cRequirmentInteger = 28+e;
+                baseReq = 28;}}
         if(cId == 47){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
-                cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
-            else{cRequirmentInteger = 21+e;}}
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;
+                baseReq = tempArray[LM];}
+            else{
+                cRequirmentInteger = 28+e;
+                baseReq = 28;}}
         if(cId == 48){
             if(cLevelInteger >= 1 && cLevelInteger <= 10) {
                 int[] tempArray = {10,12,14,16,18,20,22,24,26,28};
-                cRequirmentInteger = tempArray[cLevelInteger-1]+e;}
-            else{cRequirmentInteger = 21+e;}}
+                cRequirmentInteger = tempArray[cLevelInteger-1]+e;
+                baseReq = tempArray[LM];}
+            else{
+                cRequirmentInteger = 28+e;
+                baseReq = 28;}}
+
+        passToJournal(cId, cTaskName, cRequirmentInteger, cRequirmentString, oldLevel, cAttempts, levelUpOrDown, progress, duration, e, baseReq);
 
         if(levelUpOrDown!=-1) {if (compareValue > cRequirmentInteger) {cRequirmentInteger = compareValue + e;}}
 
@@ -376,6 +451,7 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
         meditationDetails.setAdapter(adapter);
         saveData();
         loadExcess();
+        int temp3 = excessList.get(i);
 
         if(newValue <= 0) {
             int temp = newValue*-1;
@@ -397,7 +473,7 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
                 difficultyLevels(clickedList, i, e, -1, progress,duration);
             }
             else {
-                passToJournal(a,b,newValue,d,e,f+1,0, progress, duration);
+                passToJournal(a,b,newValue,d,e,f+1,0, progress, duration, temp3, c);
                 meditationDetailsListTest.set(i, new TaskDetails(a,b,newValue,d,e,f));
                 adapter = new TaskDetailsAdapter(getApplicationContext(), meditationDetailsListTest);
                 meditationDetails.setAdapter(adapter);
@@ -552,7 +628,7 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
         return popUpInfo;
     }
 
-    public void passToJournal(int ID, String TaskName, int RequirmentInteger, String RequirmentString, int level, int attempts, int upOrDown, int progress, int duration) {
+    public void passToJournal(int ID, String TaskName, int RequirmentInteger, String RequirmentString, int level, int attempts, int upOrDown, int progress, int duration, int excess, int baseReq) {
         Intent passInfoToJournal = new Intent(this, Journal.class);
         passInfoToJournal.putExtra("ID", ID);
         passInfoToJournal.putExtra("TaskName", TaskName);
@@ -563,6 +639,8 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
         passInfoToJournal.putExtra("upOrDown", upOrDown);
         passInfoToJournal.putExtra("progress", progress);
         passInfoToJournal.putExtra("duration", duration);
+        passInfoToJournal.putExtra("excess", excess);
+        passInfoToJournal.putExtra("baseReq", baseReq);
 
         startActivity(passInfoToJournal);
     }

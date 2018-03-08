@@ -45,6 +45,8 @@ public class Journal extends AppCompatActivity {
             int upOrDowntemp = bundle.getInt("upOrDown");
             int progressMade = bundle.getInt("progress");
             int duration = bundle.getInt("duration");
+            int excess = bundle.getInt("excess");
+            int baseReq = bundle.getInt("baseReq");
             String formattedTime = new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
             String formattedDate = new SimpleDateFormat("dd-MM-yy").format(Calendar.getInstance().getTime());
 
@@ -62,6 +64,10 @@ public class Journal extends AppCompatActivity {
             String taskAction = taskArray[ID-1];
             String progressString="";
 
+            if(ID == 2){
+                progressMade = baseReq + excess;
+            }
+
             if(duration == 0 && progressMade == 0){progressString = "";}
             if(duration == 0 && progressMade != 0){progressString = taskAction + " " + String.valueOf(progressMade) + " " + RequirmentString;}
             else{progressString = taskAction + " " +  String.valueOf(progressMade) + " " + RequirmentString + " for " + String.valueOf(duration) + " minutes";}
@@ -70,7 +76,8 @@ public class Journal extends AppCompatActivity {
             if(upOrDowntemp == 1){upOrDown = "Levelled up";}
             else if(upOrDowntemp==-1){upOrDown = "Levelled down";}
 
-            journalDetailsListTest.add(0,new JournalDetails(ID, TaskName,RequirmentInteger, level, attempts, upOrDown, formattedTime, formattedDate, progressString));
+
+            journalDetailsListTest.add(0,new JournalDetails(ID, TaskName,RequirmentInteger, level, attempts, upOrDown, formattedTime, formattedDate, progressString, excess, baseReq));
         }
 
         adapter = new JournalDetailsAdapter(getApplicationContext(), journalDetailsListTest);
@@ -140,21 +147,6 @@ public class Journal extends AppCompatActivity {
         stringBuilder.append(taskCompString);
         stringBuilder.append("\n\n");
 
-        //exercise = new Exercise();
-        //List<Integer> exeExcess = exercise.getExcessList();
-        //meditation = new Meditation();
-        //List<Integer> medExcess = meditation.getExcessList();
-
-        //int test = exeExcess.get(3);
-        //String test2 = Integer.toString(test);
-
-        //stringBuilder.append(test2);
-        //stringBuilder.append("\n\n");
-
-        //List<Integer> fullList = new ArrayList<>();
-        //fullList.addAll(exeExcess);
-        //fullList.addAll(medExcess);
-
         for(JournalDetails journalDetails: journalDetailsListTest){
 
             int taskId = journalDetails.getId();
@@ -165,7 +157,8 @@ public class Journal extends AppCompatActivity {
             String progress = journalDetails.getProgressString();
             String time = journalDetails.getTime();
             String date = journalDetails.getDate();
-            //int excess = fullList.get(taskId-1);
+            int excess = journalDetails.getExcess();
+            int baseReq = journalDetails.getBaseReq();
 
             String full = "ID: " + Integer.toString(taskId) +
                     ", Task: " + taskName +
@@ -174,7 +167,8 @@ public class Journal extends AppCompatActivity {
                     ", Date: " + date +
                     ", Level: " + Integer.toString(level) +
                     ", Attempts: " + Integer.toString(attempts) +
-                    //", Excess: " + Integer.toString(excess) +
+                    ", Base Level Req: " + Integer.toString(baseReq) +
+                    ", Adapted Extra Req: " + Integer.toString(excess) +
                     ", Level_Change: " + upOrDown;
             stringBuilder.append(full);
             stringBuilder.append("\n\n");
