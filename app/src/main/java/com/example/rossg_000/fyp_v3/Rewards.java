@@ -41,6 +41,7 @@ public class Rewards extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String title = rewardList.get(i);
                 if(!"??????".equals(title)){
+                    MainActivity.setRewardClicked(true);
                     MainActivity.setTitleDisplay(title);
                 }
             }

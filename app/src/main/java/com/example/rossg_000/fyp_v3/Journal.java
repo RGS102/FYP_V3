@@ -24,8 +24,6 @@ public class Journal extends AppCompatActivity {
     private ListView JournalDetails;
     private JournalDetailsAdapter adapter;
     private List<JournalDetails> journalDetailsListTest;
-    //private Exercise exercise;
-    //private Meditation meditation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,9 +62,8 @@ public class Journal extends AppCompatActivity {
             String taskAction = taskArray[ID-1];
             String progressString="";
 
-            if(ID == 2){
-                progressMade = baseReq + excess;
-            }
+            if(ID == 1){progressMade = baseReq;}
+            if(ID == 2){progressMade = baseReq + excess;}
 
             if(duration == 0 && progressMade == 0){progressString = "";}
             if(duration == 0 && progressMade != 0){progressString = taskAction + " " + String.valueOf(progressMade) + " " + RequirmentString;}
@@ -162,23 +159,19 @@ public class Journal extends AppCompatActivity {
 
             String full = "ID: " + Integer.toString(taskId) +
                     ", Task: " + taskName +
-                    ", Progress: " + progress +
-                    ", Time: " + time +
-                    ", Date: " + date +
                     ", Level: " + Integer.toString(level) +
                     ", Attempts: " + Integer.toString(attempts) +
+                    ", Level_Change: " + upOrDown +
+                    "\nProgress: " + progress +
                     ", Base Level Req: " + Integer.toString(baseReq) +
                     ", Adapted Extra Req: " + Integer.toString(excess) +
-                    ", Level_Change: " + upOrDown;
+                    "\nTime: " + time +
+                    ", Date: " + date;
             stringBuilder.append(full);
             stringBuilder.append("\n\n");
         }
 
         intent.putExtra(Intent.EXTRA_TEXT, stringBuilder.toString());
         startActivity(Intent.createChooser(intent, "Choose app to send:"));
-
-
     }
-
-
 }

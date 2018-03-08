@@ -106,11 +106,30 @@ public class PopUpInfo extends AppCompatActivity {
 
     public void setImageHowTo(int position){
         ImageView theImage = (ImageView) findViewById(R.id.TheImage);
+        theImage.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
         //0 to
-
-        if(position == 0){ theImage.setImageResource(R.drawable.downwarddog);}
-
-        //to ?? depends how many explanations i have at end
+        if(position == 0){ theImage.setImageResource(R.drawable.homepage);}
+        if(position == 1){ theImage.setImageResource(R.drawable.journalpage);}
+        if(position == 2){ theImage.setImageResource(R.drawable.taskpage);}
+        if(position == 3){ theImage.setImageResource(R.drawable.stretchespage);}
+        if(position == 4){ theImage.setImageResource(R.drawable.exercisepage);}
+        if(position == 5){ theImage.setImageResource(R.drawable.meditationpage);}
+        if(position == 6){ theImage.setImageResource(R.drawable.rewardspage);}
+        if(position == 7){ theImage.setImageResource(R.drawable.faqpage);}
+        if(position == 8){ theImage.setImageResource(R.drawable.activityinfo);}
+        if(position == 9){ theImage.setImageResource(R.drawable.progressreport);}
+        if(position == 10){ theImage.setImageResource(R.drawable.levelsandattempts);}
+        if(position == 11){ theImage.setImageResource(R.drawable.levelsandattempts);}
+        if(position == 12){ theImage.setImageResource(R.drawable.tracked);}
+        if(position == 13){ theImage.setImageResource(R.drawable.rewarsandtitles);}
+        if(position == 14){ theImage.setImageResource(R.drawable.adaptivity);}
+        if(position == 15){ theImage.setImageResource(R.drawable.situpdetector);}
+        if(position == 16){ theImage.setImageResource(R.drawable.exercisepage);}
+        if(position == 17){ theImage.setImageResource(R.drawable.light);}
+        if(position == 18){ theImage.setImageResource(R.drawable.temperature);}
+        if(position == 19){ theImage.setImageResource(R.drawable.humidity);}
+        if(position == 20){ theImage.setImageResource(R.drawable.journalpage);}
+        //to 20
     }
 
 

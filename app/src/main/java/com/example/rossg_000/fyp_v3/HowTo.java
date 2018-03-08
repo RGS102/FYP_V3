@@ -70,22 +70,22 @@ public class HowTo extends AppCompatActivity {
             howToList.add(new StretchDetails("Page: FAQ"));
             howToList.add(new StretchDetails("Activity Info"));
             howToList.add(new StretchDetails("Making Progress"));
-            howToList.add(new StretchDetails("Leveling Up and Down"));
+            howToList.add(new StretchDetails("Levelling Up and Down"));
             howToList.add(new StretchDetails("Activity Attempts"));
             howToList.add(new StretchDetails("Tracked Activities"));
-            howToList.add(new StretchDetails("Rewards"));
+            howToList.add(new StretchDetails("Rewards and Titles"));
             howToList.add(new StretchDetails("Adaptivity"));
             howToList.add(new StretchDetails("Sit Up Detector"));
             howToList.add(new StretchDetails("Step Counter"));
             howToList.add(new StretchDetails("Light Sensor"));
             howToList.add(new StretchDetails("Temperature Sensor"));
             howToList.add(new StretchDetails("Humidity Sensor"));
-
+            howToList.add(new StretchDetails("Send Journal Info via Email"));
         }
     }
 
     public String[] popUpInfo() {
-        String[] popUpInfo = new String[20];    //Dont forget to change size of array to match amount of elements in it
+        String[] popUpInfo = new String[21];    //Dont forget to change size of array to match amount of elements in it
         popUpInfo[0] = "Homepage" +
                 "\n\nThe homepage is the first page you see upon starting the app, it provides easy navigation to other pages, as well as allowing you to display your favourite reward title at the top of the screen";
 
@@ -93,7 +93,8 @@ public class HowTo extends AppCompatActivity {
                 "\n\nThe journal automatically updates each time you make submit your progress towards completing a goal, it will record things such as the progress you made, the time you spent, if you leveled up or down, and much more";
 
         popUpInfo[2] = "Task Page" +
-                "\n\nEach day the task page will recommend four new tasks for you to complete, two exercises and two meditations, it will also keep track of the amount of tasks you have already completed";
+                "\n\nEach day the task page will recommend four new tasks for you to complete, two exercises and two meditations, it will also keep track of the amount of tasks you have already completed" +
+                "\n\nIf the recommended tasks are not to your liking then you can press the 'New Tasks' button to get a new set of tasks";
 
         popUpInfo[3] = "Stretches Page" +
                 "\n\nThe stretches page provides you with several stretches that can be used during warm ups and cool downs before and after performing tasks" +
@@ -116,7 +117,8 @@ public class HowTo extends AppCompatActivity {
                 "\n\nClicking on one of the rewards will set it as your title back on the homepage";
 
         popUpInfo[7] = "FAQ Page" +
-                "\n\nThe FAQ page contains several pieces of information about the app, tap on each topic to learn more about it";
+                "\n\nThe FAQ page contains several pieces of information about the app, tap on each topic to learn more about it" +
+                "\n\nThe FAQ page can be reached from most pages by pressing the question mark button in the top right corner of the page";
 
         popUpInfo[8] = "Activity Info" +
                 "\n\nOn the exercise, meditation and stretches page you will be able to tap on each activity in order to receive more information about how to carry out that activity" +
@@ -128,7 +130,7 @@ public class HowTo extends AppCompatActivity {
                 "\n\nThis information will automatically be stored in the journal along with a few other pieces of information" +
                 "\n\nAfter submitting your progress, the goal for that activity will be changed accordingly";
 
-        popUpInfo[10] = "Leveling Up and Down" +
+        popUpInfo[10] = "Levelling Up and Down" +
                 "\n\nAchieving a goal for a particular activity will cause it to level up and give you a more challenging goal" +
                 "\n\nNot achieving a goal after two attempts will cause that activity to level down and give you an easier goal" +
                 "\n\nAlways remember, just because you leveled down doesn't mean you have failed, you are simply perfecting your ability to perform at this level before moving onto the next one";
@@ -144,7 +146,7 @@ public class HowTo extends AppCompatActivity {
         popUpInfo[13] = "Rewards and Titles" +
                 "\n\nRewards are unlocked after completing a certain number of activities" +
                 "\n\nA list of unlocked rewards can be found on the rewards page" +
-                "\n\nSimply click your favourite reward in the rewards list to set it as your title" +
+                "\n\nSimply click (no confirmation required) your favourite reward in the rewards list to set it as your title" +
                 "\n\nYour title can be found on the homepage" +
                 "\n\nTry to unlock every reward and wear them proudly as your title";
 
@@ -169,6 +171,12 @@ public class HowTo extends AppCompatActivity {
         popUpInfo[19] = "Humidity Sensor" +
                 "\n\nThe humidity sensor (on the meditation page) will indicate the current humidity, allowing you to adjust your surroundings to experience a tranquil meditation" +
                 "\n\nThe display will not appear if the sensor is not supported by your phone";
+
+        popUpInfo[20] = "Sending Journal Data via Email" +
+                "\n\nMainly for beta testing purposes" +
+                "\n\nAllows you to send on the journal data (your progress) via email" +
+                "\n\nSimply press the 'Send Email' button on the journal page, select the method you would like to use to send the data, then send the data (based on the method you chose)";
+
         return popUpInfo;
     }
 }

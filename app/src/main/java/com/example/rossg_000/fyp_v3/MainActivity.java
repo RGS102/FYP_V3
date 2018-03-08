@@ -12,6 +12,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.graphics.Color;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity{
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity{
     public static boolean taskRewardGiven = false;
     public static boolean exeRewardGiven = false;
     public static boolean medRewardGiven = false;
+    public static boolean rewardClicked = false;
     public static int taskRewardsEarned = 0;
     public static int exerciseRewardsEarned = 0;
     public static int meditationRewardsEarned = 0;
@@ -117,7 +120,11 @@ public class MainActivity extends AppCompatActivity{
     @Override
     protected void onResume(){
         super.onResume();
-        updateTitle();
+        if(rewardClicked == true){
+            titleAnimation();
+            setRewardClicked(false);
+        }
+        else {updateTitle();}
         isRewardEarned();
     }
 
@@ -143,10 +150,32 @@ public class MainActivity extends AppCompatActivity{
         return super.onOptionsItemSelected(item);
     }
 
+    public void titleAnimation(){
+        TextView userTitle = (TextView)findViewById(R.id.UserTitle);
+        Animation in = new AlphaAnimation(0.0f,1.0f);
+        in.setDuration(3000);
+        Animation out = new AlphaAnimation(1.0f,0.0f);
+        out.setDuration(3000);
+
+        String title = getTitleDisplay();
+        userTitle.startAnimation(out);
+        userTitle.setText(title);
+        userTitle.startAnimation(in);
+    }
+
+
+
     public void updateTitle(){
         TextView userTitle = (TextView)findViewById(R.id.UserTitle);
+        //Animation in = new AlphaAnimation(0.0f,1.0f);
+        //in.setDuration(3000);
+        //Animation out = new AlphaAnimation(1.0f,0.0f);
+        //out.setDuration(3000);
+
         String title = getTitleDisplay();
+        //userTitle.startAnimation(out);
         userTitle.setText(title);
+        //userTitle.startAnimation(in);
     }
 
     public void updateValues(){
@@ -426,6 +455,14 @@ public class MainActivity extends AppCompatActivity{
 
     public static void setMedRewardGiven(boolean medRewardGiven) {
         MainActivity.medRewardGiven = medRewardGiven;
+    }
+
+    public static boolean isRewardClicked() {
+        return rewardClicked;
+    }
+
+    public static void setRewardClicked(boolean rewardClicked) {
+        MainActivity.rewardClicked = rewardClicked;
     }
 
     /*
