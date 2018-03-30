@@ -1,10 +1,9 @@
 package com.example.rossg_000.fyp_v3;
 
-import android.app.Dialog;
+
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,9 +23,6 @@ public class PopUpInfo extends AppCompatActivity {
         if(imageFrom.matches("Exercise")){setImageExercise(position);}
         if(imageFrom.matches("Meditation")){setImageMeditation(position);}
         if(imageFrom.matches("HowTo")){setImageHowTo(position);}
-
-
-
 
         TextView PopUp = (TextView) findViewById(R.id.TaskPopUpInfo);
         PopUp.setText(value);
@@ -131,7 +127,4 @@ public class PopUpInfo extends AppCompatActivity {
         if(position == 20){ theImage.setImageResource(R.drawable.journalpage);}
         //to 20
     }
-
-
-
 }

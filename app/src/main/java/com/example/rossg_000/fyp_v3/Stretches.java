@@ -100,7 +100,7 @@ public class Stretches extends AppCompatActivity {
     }
 
     public String[] popUpInfo(){
-        String[] popUpInfo = new String[8];    //Dont forget to change size of array to match amount of elements in it
+        String[] popUpInfo = new String[8];
         popUpInfo[0] = "Downward Dog" +
                 "\n\nStarting position: plank position with shoulders over waist" +
                 "\n\nPush hips up towards ceiling to form a triangle with your body" +
@@ -133,25 +133,4 @@ public class Stretches extends AppCompatActivity {
 
         return popUpInfo;
     }
-
-
-    /*
-    public int popUpImage(){
-        int[] popUpImage = new int[8];
-        popUpImage[0] = 0;
-        popUpImage[1] = 1;
-        popUpImage[2] = 2;
-        popUpImage[3] = 3;
-        popUpImage[4] = 4;
-        popUpImage[5] = 5;
-        popUpImage[6] = 6;
-        popUpImage[7] = 7;
-
-
-        return popUpImage;
-    }
-    */
-
-
-
 }

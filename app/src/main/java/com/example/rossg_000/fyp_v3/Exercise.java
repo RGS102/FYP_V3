@@ -47,10 +47,6 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
     boolean sitUpsRunning = false;
     Switch sitUpToggle;
 
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    //If adding more exercises change: loadData, difficultyLevels, popUpInfo, loadExcess
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -512,7 +508,7 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
                 "Crunches:" +
                 "\n\nStarting position: Lie on floor with bent knees, with feet shoulder width apart and flat on floor, arms crossed on chest or hands lightly at ears" +
                 "\n\nUpward phase: Raise only your head and shoulders from the floor to feel the abdominal muscles contract, exhale while rising" +
-                "\n\nAvoid pulling or flexing your head foreward" +
+                "\n\nAvoid pulling or flexing your head forward" +
                 "\n\nDownward phase: Return to starting position while inhaling" +
                 "\n\nTo submit your progress for this task: hold down on the task for a few seconds";
         popUpInfo[8] =
@@ -634,10 +630,6 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         {
             sensorManager.registerListener(this, countSensor, SensorManager.SENSOR_DELAY_UI);
         }
-        else
-        {
-            Toast.makeText(this, "Sensor not found", Toast.LENGTH_SHORT).show();//HMM!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        }
     }
 
     @Override
@@ -697,7 +689,7 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
         }
     }
 
-    @Override   //To do with the step count sensor, might change later
+    @Override
     public void onAccuracyChanged(Sensor sensor, int i) {
     }
 
@@ -765,7 +757,6 @@ public class Exercise extends AppCompatActivity implements SensorEventListener {
     }
 
     public List<Integer> getExcessList() {
-        //loadData();
         return excessList;
     }
 }

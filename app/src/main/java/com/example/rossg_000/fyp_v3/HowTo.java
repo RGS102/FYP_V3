@@ -85,7 +85,7 @@ public class HowTo extends AppCompatActivity {
     }
 
     public String[] popUpInfo() {
-        String[] popUpInfo = new String[21];    //Dont forget to change size of array to match amount of elements in it
+        String[] popUpInfo = new String[21];
         popUpInfo[0] = "Homepage" +
                 "\n\nThe homepage is the first page you see upon starting the app, it provides easy navigation to other pages, as well as allowing you to display your favourite reward title at the top of the screen";
 

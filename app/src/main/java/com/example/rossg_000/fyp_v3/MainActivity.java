@@ -40,14 +40,6 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*
-        //Works!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)!= PackageManager.PERMISSION_GRANTED)
-        {
-            askPermission(Manifest.permission.ACCESS_COARSE_LOCATION, LOCATION_REQUEST_COARSE_CODE);
-        }
-        */
-
         SharedPreferences sharedPreferences = getSharedPreferences("SharedPreference One", MODE_PRIVATE);
         tasksCompleted = sharedPreferences.getInt("Task Completed", tasksCompleted);
         setTasksCompleted(tasksCompleted);
@@ -167,15 +159,8 @@ public class MainActivity extends AppCompatActivity{
 
     public void updateTitle(){
         TextView userTitle = (TextView)findViewById(R.id.UserTitle);
-        //Animation in = new AlphaAnimation(0.0f,1.0f);
-        //in.setDuration(3000);
-        //Animation out = new AlphaAnimation(1.0f,0.0f);
-        //out.setDuration(3000);
-
         String title = getTitleDisplay();
-        //userTitle.startAnimation(out);
         userTitle.setText(title);
-        //userTitle.startAnimation(in);
     }
 
     public void updateValues(){
@@ -464,31 +449,4 @@ public class MainActivity extends AppCompatActivity{
     public static void setRewardClicked(boolean rewardClicked) {
         MainActivity.rewardClicked = rewardClicked;
     }
-
-    /*
-    //WORKS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    private void askPermission(String permission, int requestCode){
-        if(ContextCompat.checkSelfPermission(this, permission)!= PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{permission}, requestCode);
-        }else{
-            //Toast.makeText(this, "permission granted", Toast.LENGTH_LONG).show();
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-
-        //super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch(requestCode){
-            case LOCATION_REQUEST_COARSE_CODE:
-                if(grantResults.length>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED){
-                    //Toast.makeText(this, "permission granted", Toast.LENGTH_LONG).show();
-                }
-                else{
-                    //Toast.makeText(this, "permission denied", Toast.LENGTH_LONG).show();
-                }
-
-        }
-    }
-    */
 }
