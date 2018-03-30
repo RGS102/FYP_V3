@@ -223,6 +223,7 @@ public class Meditation extends AppCompatActivity implements SensorEventListener
 
         loadExcess();
         int e = excessList.get(i);
+
         int oldLevel = cLevelInteger;
         int LM = oldLevel - 1;
         if(LM<0){LM = 0;}

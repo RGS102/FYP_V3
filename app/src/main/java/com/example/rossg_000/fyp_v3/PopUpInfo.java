@@ -124,8 +124,8 @@ public class PopUpInfo extends AppCompatActivity {
         if(position == 13){ theImage.setImageResource(R.drawable.rewarsandtitles);}
         if(position == 14){ theImage.setImageResource(R.drawable.adaptivity);}
         if(position == 15){ theImage.setImageResource(R.drawable.situpdetector);}
-        if(position == 16){ theImage.setImageResource(R.drawable.exercisepage);}
-        if(position == 17){ theImage.setImageResource(R.drawable.light);}
+        if(position == 16){ theImage.setImageResource(R.drawable.steps);}
+        if(position == 17){ theImage.setImageResource(R.drawable.meditationpage);}
         if(position == 18){ theImage.setImageResource(R.drawable.temperature);}
         if(position == 19){ theImage.setImageResource(R.drawable.humidity);}
         if(position == 20){ theImage.setImageResource(R.drawable.journalpage);}
